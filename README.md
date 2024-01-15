@@ -23,6 +23,7 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Sup
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Super><Shift>J']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Super><Shift>K']"
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 3
+gsettings set org.gnome.desktop.interface enable-animations false
 ```
 # 3. Setup terminal configuration
 
