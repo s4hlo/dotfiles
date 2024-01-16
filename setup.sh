@@ -3,8 +3,8 @@ ask_yes_no() {
     while true; do
         read -p "$1 (y/n): " yn
         case $yn in
-            [Yy]*) return 0 ;;
-            [Nn]*) return 1 ;;
+        [Yy]*) return 0 ;;
+        [Nn]*) return 1 ;;
         esac
     done
 }
@@ -18,14 +18,16 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Super
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 3
 gsettings set org.gnome.desktop.interface enable-animations false
 
-# Linking dotfiles
-rm ~/.tmux.conf
-ln -s ~/.tmux.conf .tmux.conf
-rm ~/.gitconfig
-ln -s ~/.gitconfig .gitconfig
-rm ~/.vimrc
-ln -s ~/.vimrc .vimrc
-
+if ask_yes_no "Do you want to link the dotfiles?"; then
+    # Linking dotfiles
+    rm -f ~/.bashrc ~/.tmux.conf ~/.gitconfig ~/.vimrc
+    ln -fns ./.tmux.conf ~/.tmux.conf
+    tmux source-file ~/.tmux.conf
+    ln -fns ./.gitconfig ~/.gitconfig
+    ln -fns ./.vimrc ~/.vimrc
+else
+    echo "Skipping dotfile linking."
+fi
 # Prompt to download the font
 if ask_yes_no "Do you want to download and install the Fira Code Nerd Font?"; then
     # Install Fira Code Nerd Font
