@@ -2,9 +2,9 @@
   /**
     * --- REQUIRIMENTS ---
     * 1. FiraCode Nerd Font Mono
-    * 2. Material Icon Theme
-    * 3. One Dark Pro
-    * 4. Vim
+    * 2. One Dark Pro
+    * 3. Material Icon Theme
+    * 4. Vim Extension
   */
 	// ? VS CODE SETTINGS
 	"window.menuBarVisibility": "toggle",
