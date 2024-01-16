@@ -16,46 +16,30 @@ node -v
 # 2. Setup gnome basic keybinds and config 
 
 reference: [All GNOME keybinds commands](https://gist.github.com/justgook/4257735)
+
+In the this `README.md` directory:
+
 ```
-gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>j']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super>k']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Super><Shift>J']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Super><Shift>K']"
-gsettings set org.gnome.desktop.wm.preferences num-workspaces 3
-gsettings set org.gnome.desktop.interface enable-animations false
+chmod +x gnome_config.sh
+./gnome_config.sh
 ```
 # 3. Setup terminal configuration
+
+In the this `README.md` directory:
 
 ### 3.1 install nerd fonts 
 
 reference: [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
 
 ```
-wget -O ~/Downloads/TempFile.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
-sudo unzip -j -o ~/Downloads/TempFile.zip '*.ttf' -d /usr/share/fonts/
-rm ~/Downloads/TempFile.zip
-sudo fc-cache -fv
-fc-list | grep "FiraCode"
-```
-
-Set NerdFont in GNOME terminal
-```
-DEFAULT_PROFILE=$(gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}')
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${DEFAULT_PROFILE}/ font 'Fira Code 12'
+chmod +x fira_code_nf.sh
+./fira_code_nf.sh
 ```
 
 ### 3.1 Setup tmux
 
 ```
-echo "unbind r
-bind r source-file ~/.tmux.conf
-
-setw -g mode-keys vi
-bind-key h select-pane -L
-bind-key j select-pane -D
-bind-key k select-pane -U
-bind-key l select-pane -R" > ~/.tmux.conf
+cp .tmux.conf ~/.tmux.conf
 tmux source ~/.tmux.conf
 ```
 
@@ -70,18 +54,8 @@ curl -sS https://starship.rs/install.sh | sh
 ### 3.3 Configure `.zshrc` and add aliases
 
 ```
-echo '
-eval "$(starship init zsh)"
-[ -z "$TMUX" ] && exec tmux 
-
-# Enable vim keybinds
-set -o vi
-
-# My personal aliases 
-alias tks="tmux kill-session -t"
-alias ipforward='sudo echo "1" | sudo tee /proc/sys/net/ipv4/ip_forward'
-
-' >> ~/.zshrc
+cat append.zshrc >> ~/.zshrc
+source ~/.zshrc
 ```
 # 4. install neovim with basic ide and update preferences 
 
