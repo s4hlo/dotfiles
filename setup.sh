@@ -20,11 +20,13 @@ gsettings set org.gnome.desktop.interface enable-animations false
 
 if ask_yes_no "Do you want to link the dotfiles?"; then
     # Linking dotfiles
-    rm -f ~/.bashrc ~/.tmux.conf ~/.gitconfig ~/.vimrc
-    ln -fns ./.tmux.conf ~/.tmux.conf
+    rm -f ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc
+    ln -fns ~/dotfiles/.tmux.conf ~/.tmux.conf
     tmux source-file ~/.tmux.conf
-    ln -fns ./.gitconfig ~/.gitconfig
-    ln -fns ./.vimrc ~/.vimrc
+    ln -fns ~/dotfiles/.gitconfig ~/.gitconfig
+    ln -fns ~/dotfiles/.vimrc ~/.vimrc
+    ln -fns ~/dotfiles/.zshrc ~/.zshrc
+    zsh -c "source ~/.zshrc" 
 else
     echo "Skipping dotfile linking."
 fi

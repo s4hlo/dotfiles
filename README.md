@@ -1,4 +1,12 @@
 > WARNING 2: theres a lot of link and files in this text, is important to check if all of them are available
+
+
+# install repo
+
+
+```
+git clone https://github.com/s4hlo/dotfiles ~/dotfiles  
+```
 # 0. Install Snap
 ``` 
 sudo apt install snapd
@@ -12,38 +20,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | zsh
 nvm install --lts
 node -v
 ```
-
-# 2. Setup gnome basic keybinds and config 
-
-reference: [All GNOME keybinds commands](https://gist.github.com/justgook/4257735)
-
-In the this `README.md` directory:
-
-```
-chmod +x gnome_config.sh
-./gnome_config.sh
-```
-# 3. Setup terminal configuration
-
-In the this `README.md` directory:
-
-### 3.1 install nerd fonts 
-
-reference: [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
-
-```
-chmod +x fira_code_nf.sh
-./fira_code_nf.sh
-```
-
-### 3.1 Setup tmux
-
-```
-cp .tmux.conf ~/.tmux.conf
-tmux source ~/.tmux.conf
-```
-
-### 3.2 Setup Starship
+# 3. Install Starship
 
 Reference: [Starship Website](https://starship.rs/)
 
@@ -51,12 +28,20 @@ Reference: [Starship Website](https://starship.rs/)
 curl -sS https://starship.rs/install.sh | sh
 ```
 
-### 3.3 Configure `.zshrc` and add aliases
+# 2. Setup dotfiles
+
+reference: [All GNOME keybinds commands](https://gist.github.com/justgook/4257735)
+
+reference: [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
+
+
+In the this `README.md` directory:
 
 ```
-cat append.zshrc >> ~/.zshrc
-source ~/.zshrc
+chmod +x setup.sh
+./setup.sh
 ```
+
 # 4. install neovim with basic ide and update preferences 
 
 ### 4.2 install nvim and make some ajusts
