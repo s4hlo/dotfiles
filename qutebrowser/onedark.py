@@ -268,13 +268,13 @@ c.colors.tabs.even.fg = fg_default
 c.colors.tabs.even.bg = bg_default
 
 # Background color of pinned unselected even tabs.
-c.colors.tabs.pinned.even.bg = bg_passthrough_mode
+c.colors.tabs.pinned.even.bg = "#222222"
 
 # Foreground color of pinned unselected even tabs.
 c.colors.tabs.pinned.even.fg = bg_lightest
 
 # Background color of pinned unselected odd tabs.
-c.colors.tabs.pinned.odd.bg = fg_matched_text
+c.colors.tabs.pinned.odd.bg = "#222222" 
 
 # Foreground color of pinned unselected odd tabs.
 c.colors.tabs.pinned.odd.fg = bg_lightest

@@ -67,7 +67,7 @@ set -o vi
 alias ls='ls -AFG --color=auto --group-directories-first'
 alias tks="tmux kill-session -t"
 alias ipforward='sudo echo "1" | sudo tee /proc/sys/net/ipv4/ip_forward'
-alias ssnap='sudo service snapd.apparmor start'
+alias ssnap='sudo service snapd.apparmor start && sudo service snapd start'
 alias gl='grep -lr --exclude-dir=.git'
 alias setup='~/dotfiles/setup.sh'
 alias fcd='cd "$(dirname "$(fzf)")"'

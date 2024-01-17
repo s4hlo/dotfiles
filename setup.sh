@@ -91,6 +91,7 @@ if ask_yes_no "Do you want to link the dotfiles?"; then
     ln -fns ~/dotfiles/.zshrc ~/.zshrc
     ln -fns ~/dotfiles/qutebrowser/config.py ~/.config/qutebrowser/config.py
     ln -fns ~/dotfiles/qutebrowser/onedark.py ~/.config/qutebrowser/onedark.py
+    ln -fns ~/dotfiles/qutebrowser/quickmarks ~/.config/qutebrowser/quickmarks
 
     zsh -c "source ~/.zshrc" 
 else
