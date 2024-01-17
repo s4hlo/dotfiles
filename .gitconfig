@@ -18,3 +18,5 @@
 
 [color]
     ui = auto
+[push]
+	autoSetupRemote = true
