@@ -9,7 +9,8 @@
 
 bg_default = "#282c34"          # main shade darkest
 bg_lighter = "#353b45"
-bg_selection = "#3e4451"
+bg_selection = "#698DDA"
+fg_selection = "#DDDDDD"
 # "#545862"
 fg_disabled = "#565c64"
 fg_default = "#abb2bf"
@@ -115,7 +116,7 @@ c.colors.hints.fg = bg_default
 
 # Background color for hints. Note that you can use a `rgba(...)` value
 # for transparency.
-c.colors.hints.bg = bg_hint
+c.colors.hints.bg = bg_selection
 
 # Font color for the matched part of hints.
 c.colors.hints.match.fg = fg_default
@@ -291,13 +292,13 @@ c.colors.tabs.pinned.selected.odd.bg = bg_selection
 c.colors.tabs.pinned.selected.odd.fg = fg_default
 
 # Foreground color of selected odd tabs.
-c.colors.tabs.selected.odd.fg = fg_default
+c.colors.tabs.selected.odd.fg = fg_selection
 
 # Background color of selected odd tabs.
 c.colors.tabs.selected.odd.bg = bg_selection
 
 # Foreground color of selected even tabs.
-c.colors.tabs.selected.even.fg = fg_default
+c.colors.tabs.selected.even.fg = fg_selection
 
 # Background color of selected even tabs.
 c.colors.tabs.selected.even.bg = bg_selection
