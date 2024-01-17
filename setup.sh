@@ -18,6 +18,12 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Super
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 3
 gsettings set org.gnome.desktop.interface enable-animations false
 
+## MAKES FLATPAK WORK AGAIN - TODO
+# killall gnome-software
+# rm -rf ~/.cache/gnome-software
+# sudo apt-get --reinstall install -y gnome-software-plugin-flatpak
+# sudo flatpak update
+
 if ask_yes_no "Do you want to link the dotfiles?"; then
     # Linking dotfiles
     rm -f ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc
@@ -26,6 +32,9 @@ if ask_yes_no "Do you want to link the dotfiles?"; then
     ln -fns ~/dotfiles/.gitconfig ~/.gitconfig
     ln -fns ~/dotfiles/.vimrc ~/.vimrc
     ln -fns ~/dotfiles/.zshrc ~/.zshrc
+    ln -fns ~/dotfiles/qutebrowser/config.py ~/.config/qutebrowser/config.py
+    ln -fns ~/dotfiles/qutebrowser/onedark.py ~/.config/qutebrowser/onedark.py
+
     zsh -c "source ~/.zshrc" 
 else
     echo "Skipping dotfile linking."
