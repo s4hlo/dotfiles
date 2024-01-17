@@ -68,3 +68,4 @@ alias ls='ls -AFG --color=auto --group-directories-first'
 alias tks="tmux kill-session -t"
 alias ipforward='sudo echo "1" | sudo tee /proc/sys/net/ipv4/ip_forward'
 alias ssnap='sudo service snapd.apparmor start'
+alias gl='grep -lr --exclude-dir=.git'
