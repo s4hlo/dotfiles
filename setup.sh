@@ -9,6 +9,20 @@ ask_yes_no() {
     done
 }
 
+show_loading() {
+    local pid=$1
+    local delay=0.1
+    local spinstr='|/-\'
+    while ps -p $pid > /dev/null; do
+        local temp=${spinstr#?}
+        printf " [%c] " "$spinstr"
+        local spinstr=$temp${spinstr%"$temp"}
+        sleep $delay
+        printf "\b\b\b\b\b\b"
+    done
+    printf "    \b\b\b\b"
+}
+
 echo 'Welcome to the setup script for my dotfiles! :hearts:'
 
 echo '
@@ -62,24 +76,31 @@ echo '
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⡇⠀⠀⠀⠀⠀⠀
 #################################################################################
 '
-
-if ask_yes_no "Do you want to setup GNOME configurations?"; then
-    # GNOME settings
-    gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>j']"
-    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super>k']"
-    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Super><Shift>J']"
-    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Super><Shift>K']"
-    gsettings set org.gnome.desktop.wm.preferences num-workspaces 3
-    gsettings set org.gnome.desktop.interface enable-animations false
-else
-    echo "Skipping GNOME configuration."
-fi
 ## MAKES FLATPAK WORK AGAIN - TODO
 # killall gnome-software
 # rm -rf ~/.cache/gnome-software
 # sudo apt-get --reinstall install -y gnome-software-plugin-flatpak
 # sudo flatpak update
+
+if ask_yes_no "Do you want to set up GNOME configurations"; then
+    # GNOME settings
+    echo -e "\033[1;32mSetting up GNOME configurations...\033[0m"  # Bold green text
+    {
+        gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+        gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>j']"
+        gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super>k']"
+        gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Super><Shift>J']"
+        gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Super><Shift>K']"
+        gsettings set org.gnome.desktop.wm.preferences num-workspaces 3
+        gsettings set org.gnome.desktop.interface enable-animations false
+    } &
+
+    show_loading $!
+
+    echo -e "\n\033[1;32mGNOME configurations set up successfully!\033[0m"
+else
+    echo "Skipping GNOME configuration."
+fi
 
 if ask_yes_no "Do you want to link the dotfiles?"; then
     # Linking dotfiles
