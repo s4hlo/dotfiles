@@ -13,6 +13,7 @@ select_number() {
     while true; do
         read -p "$1 (1/2/3/4/5): " yn
         case $yn in
+        [0]*) return 0 ;;
         [1]*) return 1 ;;
         [2]*) return 2 ;;
         [3]*) return 3 ;;
@@ -115,6 +116,58 @@ else
     echo "Skipping GNOME configuration."
 fi
 
+# Prompt to download the font
+# if ask_yes_no "Do you want to download and install the Fira Code Nerd Font?"; then
+if ask_yes_no "Do you want to download and install Nerd Fonts?"; then
+
+    # must choose 1 or 2
+    if select_number "Which font do you want to install?
+    0 - Fira Code Nerd Font
+    1 - JetBrains Mono Nerd Font
+    "; then
+
+        echo -e "\033[1;32mInstalling Fira Code Nerd Font...\033[0m"
+        {
+
+            # Install Fira Code Nerd Font
+            wget -O ~/Downloads/TempFile.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
+            sudo unzip -j -o ~/Downloads/TempFile.zip '*.ttf' -d /usr/share/fonts/
+            rm ~/Downloads/TempFile.zip
+            sudo fc-cache -fv
+
+            # Set NerdFont in GNOME Terminal
+            DEFAULT_PROFILE=$(gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}')
+            gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${DEFAULT_PROFILE}/ font 'Fira Code 12'
+        } &
+
+        show_loading $!
+        fc-list | grep -q "FiraCode"
+    else
+
+        echo -e "\033[1;32mInstalling JetBrainsMono Nerd Font...\033[0m"
+        {
+            # Install JetBrains Mono Nerd Font
+            wget -O ~/Downloads/TempFile.zip https://download-cdn.jetbrains.com/fonts/JetBrainsMono-2.304.zip # TODO Mantain
+            sudo unzip -j -o ~/Downloads/TempFile.zip '*.ttf' -d /usr/share/fonts/
+            rm ~/Downloads/TempFile.zip
+            wget -O ~/Downloads/TempFile.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip # TODO Mantain
+            sudo unzip -j -o ~/Downloads/TempFile.zip '*.ttf' -d /usr/share/fonts/
+            rm ~/Downloads/TempFile.zip
+            sudo fc-cache -fv
+
+            # Set NerdFont in GNOME Terminal
+            DEFAULT_PROFILE=$(gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}')
+            gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${DEFAULT_PROFILE}/ font 'JetBrainsMono Nerd Font Mono 12'
+        } &
+
+        show_loading $!
+        fc-list | grep -q "JetBrainsMono"
+    fi
+
+else
+    echo "Skipping font installation."
+fi
+
 if ask_yes_no "Do you want to link the dotfiles?"; then
     # Linking dotfiles
     rm -f ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc
@@ -132,44 +185,6 @@ if ask_yes_no "Do you want to link the dotfiles?"; then
     zsh -c "source ~/.zshrc"
 else
     echo "Skipping dotfile linking."
-fi
-
-# Prompt to download the font
-# if ask_yes_no "Do you want to download and install the Fira Code Nerd Font?"; then
-if ask_yes_no "Do you want to download and install Nerd Fonts?"; then
-
-    # must choose 1 or 2
-    if select_number "Which font do you want to install?
-    0 - Fira Code Nerd Font
-    1 - JetBrains Mono Nerd Font
-    "; then
-        echo "Installing Fira Code Nerd Font..."
-        # Install Fira Code Nerd Font
-        wget -O ~/Downloads/TempFile.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
-        sudo unzip -j -o ~/Downloads/TempFile.zip '*.ttf' -d /usr/share/fonts/
-        rm ~/Downloads/TempFile.zip
-        sudo fc-cache -fv
-
-        # Set NerdFont in GNOME Terminal
-        DEFAULT_PROFILE=$(gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}')
-        gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${DEFAULT_PROFILE}/ font 'Fira Code 12'
-        fc-list | grep -q "FiraCode"
-    else
-        # Install JetBrains Mono Nerd Font
-        wget -O ~/Downloads/TempFile.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
-        sudo unzip -j -o ~/Downloads/TempFile.zip '*.ttf' -d /usr/share/fonts/
-        rm ~/Downloads/TempFile.zip
-        sudo fc-cache -fv
-
-        # # Set NerdFont in GNOME Terminal
-        # DEFAULT_PROFILE=$(gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}')
-        # gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${DEFAULT_PROFILE}/ font 'Fira Code 12'
-        # fc-list | grep -q "FiraCode"
-        echo "Installing JetBrains Mono Nerd Font..."
-    fi
-
-else
-    echo "Skipping font installation."
 fi
 
 # Additional commands if needed
