@@ -9,11 +9,24 @@ ask_yes_no() {
     done
 }
 
+select_number() {
+    while true; do
+        read -p "$1 (1/2/3/4/5): " yn
+        case $yn in
+        [1]*) return 1 ;;
+        [2]*) return 2 ;;
+        [3]*) return 3 ;;
+        [4]*) return 4 ;;
+        [5]*) return 5 ;;
+        esac
+    done
+}
+
 show_loading() {
     local pid=$1
     local delay=0.1
     local spinstr='|/-\'
-    while ps -p $pid > /dev/null; do
+    while ps -p $pid >/dev/null; do
         local temp=${spinstr#?}
         printf " [%c] " "$spinstr"
         local spinstr=$temp${spinstr%"$temp"}
@@ -84,7 +97,7 @@ echo '
 
 if ask_yes_no "Do you want to set up GNOME configurations"; then
     # GNOME settings
-    echo -e "\033[1;32mSetting up GNOME configurations...\033[0m"  # Bold green text
+    echo -e "\033[1;32mSetting up GNOME configurations...\033[0m" # Bold green text
     {
         gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
         gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>j']"
@@ -116,22 +129,45 @@ if ask_yes_no "Do you want to link the dotfiles?"; then
     ln -fns ~/dotfiles/gh/config.yml ~/.config/gh/config.yml
     ln -fns ~/dotfiles/gh/hosts.yml ~/.config/gh/hosts.yml
 
-    zsh -c "source ~/.zshrc" 
+    zsh -c "source ~/.zshrc"
 else
     echo "Skipping dotfile linking."
 fi
-# Prompt to download the font
-if ask_yes_no "Do you want to download and install the Fira Code Nerd Font?"; then
-    # Install Fira Code Nerd Font
-    wget -O ~/Downloads/TempFile.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
-    sudo unzip -j -o ~/Downloads/TempFile.zip '*.ttf' -d /usr/share/fonts/
-    rm ~/Downloads/TempFile.zip
-    sudo fc-cache -fv
 
-    # Set NerdFont in GNOME Terminal
-    DEFAULT_PROFILE=$(gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}')
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${DEFAULT_PROFILE}/ font 'Fira Code 12'
-    fc-list | grep -q "FiraCode"
+# Prompt to download the font
+# if ask_yes_no "Do you want to download and install the Fira Code Nerd Font?"; then
+if ask_yes_no "Do you want to download and install Nerd Fonts?"; then
+
+    # must choose 1 or 2
+    if select_number "Which font do you want to install?
+    0 - Fira Code Nerd Font
+    1 - JetBrains Mono Nerd Font
+    "; then
+        echo "Installing Fira Code Nerd Font..."
+        # Install Fira Code Nerd Font
+        wget -O ~/Downloads/TempFile.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
+        sudo unzip -j -o ~/Downloads/TempFile.zip '*.ttf' -d /usr/share/fonts/
+        rm ~/Downloads/TempFile.zip
+        sudo fc-cache -fv
+
+        # Set NerdFont in GNOME Terminal
+        DEFAULT_PROFILE=$(gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}')
+        gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${DEFAULT_PROFILE}/ font 'Fira Code 12'
+        fc-list | grep -q "FiraCode"
+    else
+        # Install JetBrains Mono Nerd Font
+        wget -O ~/Downloads/TempFile.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
+        sudo unzip -j -o ~/Downloads/TempFile.zip '*.ttf' -d /usr/share/fonts/
+        rm ~/Downloads/TempFile.zip
+        sudo fc-cache -fv
+
+        # # Set NerdFont in GNOME Terminal
+        # DEFAULT_PROFILE=$(gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}')
+        # gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${DEFAULT_PROFILE}/ font 'Fira Code 12'
+        # fc-list | grep -q "FiraCode"
+        echo "Installing JetBrains Mono Nerd Font..."
+    fi
+
 else
     echo "Skipping font installation."
 fi
