@@ -66,15 +66,15 @@ bindkey -M viins jj vi-cmd-mode
 # My personal aliases 
 # Improved ls alias with additional options
 alias ls='ls -AFG --color=auto --group-directories-first'
+alias g='git'
 alias tks="tmux kill-session -t"
 alias ipforward='sudo echo "1" | sudo tee /proc/sys/net/ipv4/ip_forward'
 alias ssnap='sudo service snapd.apparmor start && sudo service snapd start'
 alias gl='grep -lr --exclude-dir=.git'
-alias setup='~/dotfiles/setup.sh'
 alias fcd='cd "$(dirname "$(fzf)")"'
+alias setup='~/dotfiles/setup.sh'
 alias hubserver='cd ~/dev/hub-server'
 alias dotfiles='cd ~/dotfiles'
-alias lg='lazygit'
 
 
 ###### MEMENTO MORI ######
