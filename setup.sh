@@ -34,7 +34,7 @@ fi
 
 # DOTFILES LINKS
 if ask_yes_no "Do you want to link the dotfiles?"; then
-    rm -f ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc
+    rm -rf ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc ~/.config/nvim
     ln -fns ~/dotfiles/.tmux.conf ~/.tmux.conf
     tmux source-file ~/.tmux.conf
 
