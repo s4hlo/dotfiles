@@ -47,5 +47,33 @@ sed -i '35s/.*/vim.opt.wrap = true/' ~/.config/nvim/lua/user/options.lua
 echo 'keymap("i", "jj", "<Esc>", opts)' >> ~/.config/nvim/lua/user/keymaps.lua
 ```
 
-#### Basic softwares - WIP ⚙️
+#### Basic softwares - WIP ⚙️ 
 > VS code, Discord
+
+### Nvim setup - WIP
+```
+:checkhealth
+```
+You'll probably notice you don't have support for copy/paste also that python and node haven't been setup
+
+So let's fix that
+
+First we'll fix copy/paste
+
+- On Ubuntu
+
+  ```sh
+  sudo apt install xsel # for X11
+  sudo apt install wl-clipboard # for wayland
+  ```
+
+Next we need to install python support (node is optional)
+
+- Neovim python support
+
+  ```sh
+  pip install pynvim
+  npm i -g neovim
+  sudo apt install ripgrep
+  ```
+

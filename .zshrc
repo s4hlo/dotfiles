@@ -73,6 +73,8 @@ alias gl='grep -lr --exclude-dir=.git'
 alias setup='~/dotfiles/setup.sh'
 alias fcd='cd "$(dirname "$(fzf)")"'
 alias hubserver='cd ~/dev/hub-server'
+alias dotfiles='cd ~/dotfiles'
+alias lg='lazygit'
 
 
 ###### MEMENTO MORI ######
