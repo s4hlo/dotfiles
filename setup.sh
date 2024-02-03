@@ -10,6 +10,11 @@ ask_yes_no() {
 }
 
 echo 'Welcome to the setup script for my dotfiles! :hearts:'
+echo ' REQUIREMENTS: 
+- Git
+- Gnome 
+- Zsh
+'
 ## MAKES FLATPAK WORK AGAIN - TODO
 # killall gnome-software
 # rm -rf ~/.cache/gnome-software
@@ -35,7 +40,11 @@ fi
 if ask_yes_no "Do you want to install base apps?( some tools required before)"; then
     # TMUX installation
     sudo apt install tmux
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     echo "TMUX installation finished"
+
+    # quteBrowser installation
+    sudo apt install qutebrowser
 
     # BPYTOP installation
     pip3 install bpytop --upgrade
@@ -43,15 +52,14 @@ if ask_yes_no "Do you want to install base apps?( some tools required before)"; 
 
     # github-cli installation
     type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
-    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-    && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-    && sudo apt update \
-    && sudo apt install gh -y
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
+        sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
+        sudo apt update &&
+        sudo apt install gh -y
     echo "github-cli installation finished"
 
-
-else 
+else
     echo "Skipping apps installation"
 fi
 
