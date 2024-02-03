@@ -32,6 +32,29 @@ else
     echo "Skipping GNOME configuration."
 fi
 
+if ask_yes_no "Do you want to install base apps?( some tools required before)"; then
+    # TMUX installation
+    sudo apt install tmux
+    echo "TMUX installation finished"
+
+    # BPYTOP installation
+    pip3 install bpytop --upgrade
+    echo "bpytop installation finished"
+
+    # github-cli installation
+    type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+    && sudo apt update \
+    && sudo apt install gh -y
+    echo "github-cli installation finished"
+
+
+else 
+    echo "Skipping apps installation"
+fi
+
 # DOTFILES LINKS
 if ask_yes_no "Do you want to link the dotfiles?"; then
     rm -rf ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc ~/.config/nvim
