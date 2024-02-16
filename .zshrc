@@ -75,6 +75,9 @@ alias fcd='cd "$(dirname "$(fzf)")"'
 alias setup='~/dotfiles/setup.sh'
 alias hubserver='cd ~/dev/hub-server'
 alias dotfiles='cd ~/dotfiles'
+alias aircrack='aircrack-ng'
+alias airmon='airmon-ng'
+alias airodump='airodump-ng'
 
 
 ###### MEMENTO MORI ######
