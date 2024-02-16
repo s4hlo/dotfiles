@@ -21,6 +21,8 @@ echo ' REQUIREMENTS:
 # sudo apt-get --reinstall install -y gnome-software-plugin-flatpak
 # sudo flatpak update
 
+# Daily commit 1
+
 # GNOME SETTINGS
 if ask_yes_no "Do you want to set up GNOME configurations"; then
     gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
