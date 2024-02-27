@@ -78,6 +78,7 @@ alias dotfiles='cd ~/dotfiles'
 alias aircrack='aircrack-ng'
 alias airmon='airmon-ng'
 alias airodump='airodump-ng'
+alias lpii='cd ~/dev/lpii'
 
 
 ###### MEMENTO MORI ######
