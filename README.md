@@ -66,7 +66,7 @@ npm i -g neovim
 # APPS REGISTER
 
 ```
-Base
+BASE
    - nvm
    - starship
    - xclip
@@ -75,16 +75,7 @@ Base
    - ripgrep
    - gh cli
 
-Job
-   - Dbeaver
-   - Insomnia
-   - pritunl-client
-
-College
-   - java and jdtls
-   - zulip
-
-Domestic
+DOMESTIC
     - bpytop
     - VLC
     - qbittorrent
@@ -92,4 +83,12 @@ Domestic
     - discord
     - spotify and spt
 
+JOB
+   - Dbeaver
+   - Insomnia
+   - pritunl-client
+
+College
+   - java and jdtls
+   - zulip
 ```
