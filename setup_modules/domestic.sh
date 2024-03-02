@@ -3,6 +3,7 @@ domestic_setup() {
     echo " ✅- BPYTOP installation finished - (1/5)"
 
     sudo apt install qutebrowser
+    sudo update-alternatives --config x-www-browser
     echo " ✅- QUTEBROWSER installation finished - (2/5)"
 
     sudo apt install vlc
