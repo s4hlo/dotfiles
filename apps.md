@@ -7,8 +7,6 @@ Warning: this is a wip, in the future create a script to auto install those apps
    Dbeaver,
    Insomnia,
    pritunl-client,
-   node,
-   nvm,
  }
 
  - College ralated apps
@@ -17,24 +15,29 @@ Warning: this is a wip, in the future create a script to auto install those apps
    zulip,
  }
 
- - Developer cycle apps ( * = setup.sh must cover this app)
+ - Base apps ( * = setup.sh must cover this app)
  {
-   tmux *, 
-   nvim *,
+   nvm,
    starship,
+   xclip,
+   nvim *,
+   tmux *, 
    ripgrep,
    lazygit,
    gh cli,
-   Forge, -> this is must quit here very soon
-   vs code,
  }
 
  - domestic uses
  {
-   bpytop,
+    bpytop,
     VLC,
     qbittorrent,
     qutebrowser,
     discord,
     spotify and spt,
  }
+
+ for manual instalation
+
+Forge, -> this is must quit here very soon
+   vs code,

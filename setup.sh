@@ -15,13 +15,12 @@ echo ' REQUIREMENTS:
 - Gnome 
 - Zsh
 '
+
 ## MAKES FLATPAK WORK AGAIN - TODO
 # killall gnome-software
 # rm -rf ~/.cache/gnome-software
 # sudo apt-get --reinstall install -y gnome-software-plugin-flatpak
 # sudo flatpak update
-
-# Daily commit 1
 
 # GNOME SETTINGS
 if ask_yes_no "Do you want to set up GNOME configurations"; then
@@ -43,38 +42,42 @@ if ask_yes_no "Do you want to install base apps?( some tools required before)"; 
     # update
     sudo apt update
 
-    # starship install
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | sh
+    echo " ✅ - NVM installation finished (1/7)"
+
     curl -sS https://starship.rs/install.sh | sh
+    echo " ✅ - STARSHIP installation finished (2/7)"
 
-    # nvim installation - just for notation - wip
-    # https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz
-    # tar xzvf ~/Downloads/nvim-linux64.tar.gz
+    sudo apt install xclip
+    echo " ✅- XCLIP installation finished (3/7)"
 
-    # TMUX installation
+    wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz -P ~/Downloads
+    tar xzvf ~/Downloads/nvim-linux64.tar.gz -C ~/dotfiles
+    echo " ✅ - NVIM installation finished (4/7)"
+
     sudo apt install tmux
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    echo "TMUX installation finished"
+    echo " ✅ - TMUX installation finished (5/7)"
 
-    # RipGrep installation
     sudo apt install ripgrep
-    echo "ripgrep installation finished"
-
-    # BPYTOP installation
-    pip3 install bpytop --upgrade
-    echo "bpytop installation finished"
+    echo " ✅ - RIPGREP installation finished (6/7)"
 
     # github-cli installation
     type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
-        sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
-        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
-        sudo apt update &&
-        sudo apt install gh -y
-    echo "github-cli installation finished"
+    sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
+    sudo apt update &&
+    sudo apt install gh -y
+    echo  " ✅ - GITHUB-CLI installation finished (7/7)"
 
 else
-    echo "Skipping apps installation"
+    echo " 🟡  Skipping apps installation"
 fi
+
+# # BPYTOP installation
+# pip3 install bpytop --upgrade
+# echo "bpytop installation finished"
 
 # DOTFILES LINKS
 if ask_yes_no "Do you want to link the dotfiles?"; then
@@ -94,11 +97,11 @@ if ask_yes_no "Do you want to link the dotfiles?"; then
 
     zsh -c "source ~/.zshrc"
 else
-    echo "Skipping dotfile linking."
+    echo " 🟡 Skipping dotfile linking."
 fi
 
 # NERD FONT
-if ask_yes_no "Do you want to download and install the Fira Code Nerd Font?"; then
+if ask_yes_no "Do you want to download and install the Nerd Font?"; then
     wget -O ~/Downloads/TempFile.zip https://download-cdn.jetbrains.com/fonts/JetBrainsMono-2.304.zip # ! Mantain
     sudo unzip -j -o ~/Downloads/TempFile.zip '*.ttf' -d /usr/share/fonts/
     rm ~/Downloads/TempFile.zip
@@ -112,7 +115,7 @@ if ask_yes_no "Do you want to download and install the Fira Code Nerd Font?"; th
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${DEFAULT_PROFILE}/ font 'JetBrainsMono Nerd Font Mono 12'
     fc-list | grep -q "JetBrainsMono"
 else
-    echo "Skipping font installation."
+    echo " 🟡 Skipping font installation."
 fi
 
 echo '
