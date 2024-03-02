@@ -34,7 +34,6 @@ fi
 if ask_yes_no "Do you want to install base apps?"; then
     . ~/dotfiles/setup_modules/base.sh
     base_setup
-
 else
     echo " 🟡  Skipping base apps installation"
 fi
@@ -47,9 +46,9 @@ else
 fi
 
 if ask_yes_no "Do you want to install job apps?"; then
-  . ~/dotfiles/setup_modules/job.sh
-  job_setup
-  else
+    . ~/dotfiles/setup_modules/job.sh
+    job_setup
+else
     echo " 🟡  Skipping job apps installation"
 fi
 
@@ -61,25 +60,15 @@ else
 fi
 
 if ask_yes_no "Do you want to link the dotfiles?"; then
-  . ~/dotfiles/setup_modules/links.sh
-  links_setup
+    . ~/dotfiles/setup_modules/links.sh
+    links_setup
 else
     echo " 🟡 Skipping dotfile linking."
 fi
 
 if ask_yes_no "Do you want to download and install the Nerd Font?"; then
-    wget -O ~/Downloads/TempFile.zip https://download-cdn.jetbrains.com/fonts/JetBrainsMono-2.304.zip
-    sudo unzip -j -o ~/Downloads/TempFile.zip '*.ttf' -d /usr/share/fonts/
-    rm ~/Downloads/TempFile.zip
-    wget -O ~/Downloads/TempFile.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
-    sudo unzip -j -o ~/Downloads/TempFile.zip '*.ttf' -d /usr/share/fonts/
-    rm ~/Downloads/TempFile.zip
-    sudo fc-cache -fv
-
-    # Set NerdFont in GNOME Terminal
-    DEFAULT_PROFILE=$(gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}')
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${DEFAULT_PROFILE}/ font 'JetBrainsMono Nerd Font Mono 12'
-    fc-list | grep -q "JetBrainsMono"
+  . ~/dotfiles/setup_modules/font.sh
+  font_setup
 else
     echo " 🟡 Skipping font installation."
 fi
