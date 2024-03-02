@@ -23,7 +23,7 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
-## 3. Neovim setup after installation
+## 3. Neovim setup P.I 
 
 ```
 :checkhealth
@@ -49,10 +49,19 @@ npm i -g neovim
 
 ```
 
-## 4. Manual installation
+## 4. Qutebrowser setup P.I
+
+```
+:config-source
+```
+
+## 4. Manual installation 
+
+> TODO : automate this in setup.sh
 
 - Forge -> gnome-shell-extension
 - vs code -> download .deb
+- discord -> download .deb
 
 # APPS REGISTER
 
