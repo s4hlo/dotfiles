@@ -96,6 +96,27 @@ else
     echo " 🟡  Skipping domestic apps installation"
 fi
 
+if ask_yes_no "Do you want to install job apps?"; then
+    repo_line="deb http://deb.debian.org/debian oldstable main non-free contrib"
+    if grep -Fxq "$repo_line" /etc/apt/sources.list; then
+        echo "Repository line already exists in sources.list. No changes made."
+    else
+        echo "$repo_line" | sudo tee -a /etc/apt/sources.list
+        sudo apt update
+        echo "Repository line added and package lists updated."
+    fi
+
+    sudo tee /etc/apt/sources.list.d/pritunl.list <<EOF
+deb http://repo.pritunl.com/stable/apt bookworm main
+EOF
+    sudo apt install dirmngr
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
+    sudo apt update
+    sudo apt install pritunl-client-electron
+
+else
+    echo " 🟡  Skipping job apps installation"
+fi
 
 if ask_yes_no "Do you want to link the dotfiles?"; then
     rm -rf ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc ~/.config/nvim
