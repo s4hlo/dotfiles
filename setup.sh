@@ -22,7 +22,6 @@ echo ' REQUIREMENTS:
 # sudo apt-get --reinstall install -y gnome-software-plugin-flatpak
 # sudo flatpak update
 
-# GNOME SETTINGS
 if ask_yes_no "Do you want to set up GNOME configurations"; then
     gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
     # gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>j']"
@@ -72,14 +71,13 @@ if ask_yes_no "Do you want to install base apps?( some tools required before)"; 
     echo  " ✅ - GITHUB-CLI installation finished (7/7)"
 
 else
-    echo " 🟡  Skipping apps installation"
+    echo " 🟡  Skipping base apps installation"
 fi
 
 # # BPYTOP installation
 # pip3 install bpytop --upgrade
 # echo "bpytop installation finished"
 
-# DOTFILES LINKS
 if ask_yes_no "Do you want to link the dotfiles?"; then
     rm -rf ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc ~/.config/nvim
     ln -fns ~/dotfiles/.tmux.conf ~/.tmux.conf
@@ -100,7 +98,6 @@ else
     echo " 🟡 Skipping dotfile linking."
 fi
 
-# NERD FONT
 if ask_yes_no "Do you want to download and install the Nerd Font?"; then
     wget -O ~/Downloads/TempFile.zip https://download-cdn.jetbrains.com/fonts/JetBrainsMono-2.304.zip # ! Mantain
     sudo unzip -j -o ~/Downloads/TempFile.zip '*.ttf' -d /usr/share/fonts/

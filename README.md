@@ -1,79 +1,86 @@
 # Welcome to my Dotfiles! 😳
 
-## 0. Clone this repo 🗿
-```
-git clone https://github.com/s4hlo/dotfiles ~/dotfiles  
-```
-## 1. Install Requiriments 📝 
-References:
+## References 📝
+
 - Snapd: [Snapcraft Website](https://snapcraft.io/snapd)
 - NVM: [NVM Github repositoy](https://github.com/nvm-sh/nvm#installing-and-updating)
 - Starship: [Starship Website](https://starship.rs/)
-``` 
-sudo apt install snapd
-sudo service snapd start
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | zsh
-nvm install --lts
-node -v
-curl -sS https://starship.rs/install.sh | sh
+- [All GNOME keybinds commands](https://gist.github.com/justgook/4257735)
+- [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
+
+## 1. Clone this repo 🗿
+
+```
+git clone https://github.com/s4hlo/dotfiles ~/dotfiles
 ```
 
 ## 2. Setup dotfiles 🐦
 
-References:
-- [All GNOME keybinds commands](https://gist.github.com/justgook/4257735)
-- [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
-
-In the this `README.md` directory:
+In this `README.md` directory:
 
 ```
 chmod +x setup.sh
 ./setup.sh
 ```
 
-## 4. install neovim with basic ide and update preferences ✍️
+## 3. Neovim setup after installation
 
-#### 4.2 install nvim and make some ajusts
-
-```
-sudo snap install nvim --classic
-git clone https://github.com/LunarVim/Launch.nvim.git ~/.config/nvim
-```
-Update nvim configs:
-
-```
-sed -i '32s/.*/vim.opt.relativenumber = false/' ~/.config/nvim/lua/user/options.lua
-sed -i '35s/.*/vim.opt.wrap = true/' ~/.config/nvim/lua/user/options.lua
-echo 'keymap("i", "jj", "<Esc>", opts)' >> ~/.config/nvim/lua/user/keymaps.lua
-```
-
-#### Basic softwares - WIP ⚙️ 
-> VS code, Discord
-
-### Nvim setup - WIP
 ```
 :checkhealth
 ```
+
 You'll probably notice you don't have support for copy/paste also that python and node haven't been setup
 
-So let's fix that
+To fix copy/paste:
 
-First we'll fix copy/paste
+> TODO: how to check if is X11 or wayland
 
-- On Ubuntu
+```sh
+sudo apt install xclip # for X11 (prefer this, will be installed in setup.sh)
+sudo apt install xsel # for X11
+sudo apt install wl-clipboard # for wayland
+```
 
-  ```sh
-  sudo apt install xsel # for X11
-  sudo apt install wl-clipboard # for wayland
-  ```
+To install python and node support:
 
-Next we need to install python support (node is optional)
+```sh
+pip install pynvim
+npm i -g neovim
 
-- Neovim python support
+```
 
-  ```sh
-  pip install pynvim
-  npm i -g neovim
-  sudo apt install ripgrep
-  ```
+## 4. Manual installation
 
+- Forge -> gnome-shell-extension
+- vs code -> download .deb
+
+# APPS REGISTER
+
+```
+Base
+   - nvm
+   - starship
+   - xclip
+   - nvim
+   - tmux
+   - ripgrep
+   - gh cli
+
+Job
+   - Dbeaver
+   - Insomnia
+   - pritunl-client
+
+College
+   - java and jdtls
+   - zulip
+
+Domestic
+    - bpytop
+    - VLC
+    - qbittorrent
+    - qutebrowser
+    - discord
+    - spotify and spt
+
+```
