@@ -21,15 +21,18 @@ Warning: this is a wip, in the future create a script to auto install those apps
  {
    tmux *, 
    nvim *,
-   vs code,
+   starship,
+   ripgrep,
    lazygit,
    gh cli,
+   Forge, -> this is must quit here very soon
+   vs code,
  }
 
  - domestic uses
  {
+   bpytop,
     VLC,
-    Forge, -> this is must quit here very soon
     qbittorrent,
     qutebrowser,
     discord,

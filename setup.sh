@@ -40,13 +40,24 @@ else
 fi
 
 if ask_yes_no "Do you want to install base apps?( some tools required before)"; then
+    # update
+    sudo apt update
+
+    # starship install
+    curl -sS https://starship.rs/install.sh | sh
+
+    # nvim installation - just for notation - wip
+    # https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz
+    # tar xzvf ~/Downloads/nvim-linux64.tar.gz
+
     # TMUX installation
     sudo apt install tmux
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     echo "TMUX installation finished"
 
-    # quteBrowser installation
-    sudo apt install qutebrowser
+    # RipGrep installation
+    sudo apt install ripgrep
+    echo "ripgrep installation finished"
 
     # BPYTOP installation
     pip3 install bpytop --upgrade
