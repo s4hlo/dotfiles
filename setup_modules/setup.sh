@@ -6,6 +6,10 @@
 # sudo apt-get --reinstall install -y gnome-software-plugin-flatpak
 # sudo flatpak update
 
+# source ~/dotfiles/setup_modules/college.sh
+# chmod +x ~/dotfiles/setup_modules/college.sh
+
+
 # Function to prompt for yes/no
 ask_yes_no() {
     while true; do
@@ -130,6 +134,14 @@ EOF
     echo " ✅- INSOMNIA installation finished - (3/3)"
 
 
+else
+    echo " 🟡  Skipping job apps installation"
+fi
+
+if ask_yes_no "Do you want to install college apps?"; then
+    . ~/dotfiles/setup_modules/college.sh
+    type college_setup 
+    college_setup
 else
     echo " 🟡  Skipping job apps installation"
 fi
