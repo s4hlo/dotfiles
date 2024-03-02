@@ -6,10 +6,6 @@
 # sudo apt-get --reinstall install -y gnome-software-plugin-flatpak
 # sudo flatpak update
 
-# source ~/dotfiles/setup_modules/college.sh
-# chmod +x ~/dotfiles/setup_modules/college.sh
-
-
 # Function to prompt for yes/no
 ask_yes_no() {
     while true; do
@@ -29,82 +25,23 @@ echo ' REQUIREMENTS:
 '
 
 if ask_yes_no "Do you want to set up GNOME configurations"; then
-    repo_line="deb http://deb.debian.org/debian oldstable main non-free contrib"
-    if grep -Fxq "$repo_line" /etc/apt/sources.list; then
-        echo "Repository line already exists in sources.list. No changes made."
-    else
-        echo "$repo_line" | sudo tee -a /etc/apt/sources.list
-        sudo apt update
-        echo "Repository line added and package lists updated."
-    fi
-
-    gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-    # gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>j']"
-    # gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super>k']"
-    # gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Super><Shift>J']"
-    # gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Super><Shift>K']"
-    gsettings set org.gnome.desktop.wm.preferences num-workspaces 3
-    gsettings set org.gnome.desktop.interface enable-animations false
-    gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
-    gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false
-    gsettings set org.gnome.shell.extensions.dash-to-dock autohide false
+    . ~/dotfiles/setup_modules/gnome.sh
+    gnome_setup
 else
     echo "Skipping GNOME configuration."
 fi
 
 if ask_yes_no "Do you want to install base apps?"; then
-    sudo apt update
-
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | sh
-    echo " ✅ - NVM installation finished (1/7)"
-
-    curl -sS https://starship.rs/install.sh | sh
-    echo " ✅ - STARSHIP installation finished (2/7)"
-
-    sudo apt install xclip
-    echo " ✅- XCLIP installation finished (3/7)"
-
-    wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz -P ~/Downloads
-    tar xzvf ~/Downloads/nvim-linux64.tar.gz -C ~/dotfiles
-    echo " ✅ - NVIM installation finished (4/7)"
-
-    sudo apt install tmux
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    echo " ✅ - TMUX installation finished (5/7)"
-
-    sudo apt install ripgrep
-    echo " ✅ - RIPGREP installation finished (6/7)"
-
-    type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
-    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
-        sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
-        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
-        sudo apt update &&
-        sudo apt install gh -y
-    echo " ✅ - GITHUB-CLI installation finished (7/7)"
+    . ~/dotfiles/setup_modules/base.sh
+    base_setup
 
 else
     echo " 🟡  Skipping base apps installation"
 fi
 
 if ask_yes_no "Do you want to install domestic apps?"; then
-    pip3 install bpytop --upgrade
-    echo " ✅- BPYTOP installation finished - (1/5)"
-
-    sudo apt install qutebrowser
-    echo " ✅- QUTEBROWSER installation finished - (2/5)"
-
-    sudo apt install VLC
-    echo " ✅- VLC installation finished - (3/5)"
-
-    sudo apt install qbittorrent
-    echo " ✅- QBITTORRENT installation finished - (4/5)"
-
-    curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
-    echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-    sudo apt-get update && sudo apt-get install spotify-client
-    echo " ✅- SPOTIFY installation finished - (5/5)"
-
+    . ~/dotfiles/setup_modules/domestic.sh
+    domestic_setup
 else
     echo " 🟡  Skipping domestic apps installation"
 fi
@@ -127,12 +64,11 @@ EOF
     echo " ✅- DBEAVER installation finished - (2/3)"
 
     curl -1sLf \
-      'https://packages.konghq.com/public/insomnia/setup.deb.sh' \
-      | sudo -E distro=ubuntu codename=focal bash
+        'https://packages.konghq.com/public/insomnia/setup.deb.sh' |
+        sudo -E distro=ubuntu codename=focal bash
     sudo apt-get update
     sudo apt-get install insomnia
     echo " ✅- INSOMNIA installation finished - (3/3)"
-
 
 else
     echo " 🟡  Skipping job apps installation"
@@ -140,28 +76,14 @@ fi
 
 if ask_yes_no "Do you want to install college apps?"; then
     . ~/dotfiles/setup_modules/college.sh
-    type college_setup 
     college_setup
 else
     echo " 🟡  Skipping job apps installation"
 fi
 
 if ask_yes_no "Do you want to link the dotfiles?"; then
-    rm -rf ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc ~/.config/nvim
-    ln -fns ~/dotfiles/.tmux.conf ~/.tmux.conf
-    tmux source-file ~/.tmux.conf
-
-    ln -fns ~/dotfiles/.gitconfig ~/.gitconfig
-    ln -fns ~/dotfiles/.vimrc ~/.vimrc
-    ln -fns ~/dotfiles/.zshrc ~/.zshrc
-    ln -fns ~/dotfiles/qutebrowser/config.py ~/.config/qutebrowser/config.py
-    ln -fns ~/dotfiles/qutebrowser/onedark.py ~/.config/qutebrowser/onedark.py
-    ln -fns ~/dotfiles/qutebrowser/quickmarks ~/.config/qutebrowser/quickmarks
-    ln -fns ~/dotfiles/gh/config.yml ~/.config/gh/config.yml
-    ln -fns ~/dotfiles/gh/hosts.yml ~/.config/gh/hosts.yml
-    ln -fns ~/dotfiles/nvim ~/.config/nvim
-
-    zsh -c "source ~/.zshrc"
+  . ~/dotfiles/setup_modules/links.sh
+  links_setup
 else
     echo " 🟡 Skipping dotfile linking."
 fi
