@@ -1,3 +1,4 @@
+-- ! CODE SMELLS ALERT
 local M = {
   'romgrk/barbar.nvim',
     dependencies = {
@@ -20,7 +21,7 @@ function M.config()
     sidebar_filetypes = {
       NvimTree = true,
     }
-}
+  }
 end
 
 return M

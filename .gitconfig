@@ -3,7 +3,7 @@
     email = rfl.magno02@gmail.com
 
 [core]
-    editor = nvim
+    editor = ~/dotfiles/nvim-linux64/bin/nvim 
     autocrlf = input
 
 [credential]
