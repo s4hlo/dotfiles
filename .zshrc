@@ -50,6 +50,8 @@ if [ -f /etc/zsh_command_not_found ]; then
     . /etc/zsh_command_not_found
 fi
 
+[ -f "/home/sleight/.ghcup/env" ] && source "/home/sleight/.ghcup/env" # ghcup-env
+
 # nvm 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -79,7 +81,9 @@ alias aircrack='aircrack-ng'
 alias airmon='airmon-ng'
 alias airodump='airodump-ng'
 alias lpii='cd ~/dev/lpii'
+alias fmcii='cd ~/dev/fmcii'
 alias nvim='~/dotfiles/nvim-linux64/bin/nvim'
 
 
 ###### MEMENTO MORI ######
+
