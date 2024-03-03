@@ -168,6 +168,7 @@ focus_follows_mouse yes
 # ! this may change depend of the laptop, to check the name use xinput
 exec xinput set-prop "MSFT0001:01 06CB:CE78 Touchpad" "libinput Tapping Enabled" 1
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec xwallpaper -zoom ~/dotfiles/wallpaper.png
 
 # has to add a image
 set $i3lockwall i3lock -i ~/dotfiles/wallpaper.png -t
