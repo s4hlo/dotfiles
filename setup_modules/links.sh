@@ -13,6 +13,9 @@ links_setup() {
     ln -fns ~/dotfiles/gh/hosts.yml ~/.config/gh/hosts.yml
     ln -fns ~/dotfiles/nvim ~/.config/nvim
     ln -fns ~/dotfiles/i3/config ~/.config/i3/config
+    ln -fns ~/dotfiles/polybar/launch.sh ~/.config/polybar/launch.sh
+    ln -fns ~/dotfiles/polybar/config.ini ~/.config/polybar/config.ini
 
+    chmod +x $HOME/dotfiles/polybar/launch.sh
     zsh -c "source ~/.zshrc"
 }
