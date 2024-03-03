@@ -12,6 +12,7 @@ links_setup() {
     ln -fns ~/dotfiles/gh/config.yml ~/.config/gh/config.yml
     ln -fns ~/dotfiles/gh/hosts.yml ~/.config/gh/hosts.yml
     ln -fns ~/dotfiles/nvim ~/.config/nvim
+    ln -fns ~/dotfiles/i3/config ~/.config/i3/config
 
     zsh -c "source ~/.zshrc"
 }

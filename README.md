@@ -92,3 +92,12 @@ College
    - java and jdtls
    - zulip
 ```
+
+
+
+setting up the i3wm
+```
+sudo apt install i3
+sudo apt install xinput
+sudo apt install polybar
+```
