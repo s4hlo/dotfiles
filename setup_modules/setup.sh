@@ -31,6 +31,13 @@ else
     echo "Skipping GNOME configuration."
 fi
 
+if ask_yes_no "Do you want to install i3 base apps?"; then
+    . ~/dotfiles/setup_modules/i3.sh
+    i3_setup
+else
+    echo " 🟡  Skipping base apps installation"
+fi
+
 if ask_yes_no "Do you want to install base apps?"; then
     . ~/dotfiles/setup_modules/base.sh
     base_setup

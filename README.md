@@ -101,4 +101,9 @@ sudo apt install i3
 sudo apt install xinput
 sudo apt install polybar
 sudo apt install brightnessctl
+sudo apt install pavucontrol
+sudo apt install playerctl
+sudo apt install rofi
+sudo apt install xwallpaper
+
 ```

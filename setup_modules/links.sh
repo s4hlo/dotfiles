@@ -15,6 +15,7 @@ links_setup() {
     ln -fns ~/dotfiles/i3/config ~/.config/i3/config
     ln -fns ~/dotfiles/polybar/launch.sh ~/.config/polybar/launch.sh
     ln -fns ~/dotfiles/polybar/config.ini ~/.config/polybar/config.ini
+    ln -fns ~/dotfiles/rofi/config.rasi ~/.config/rofi/config.rasi
 
     chmod +x $HOME/dotfiles/polybar/launch.sh
     zsh -c "source ~/.zshrc"
