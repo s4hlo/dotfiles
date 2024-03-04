@@ -6,7 +6,7 @@
  *******************************************************************************/
 
 * {
-    font:   "IBM Plex Mono 12";
+    font:   "JetBrainsMono Nerd Font Mono 12";
 
     nord0:     #2e3440;
     nord1:     #3b4252;
@@ -18,7 +18,7 @@
     nord6:     #eceff4;
 
     nord7:     #8fbcbb;
-    nord8:     #88c0d0;
+    nord8:     #698ddA;
     nord9:     #81a1c1;
     nord10:    #5e81ac;
     nord11:    #bf616a;
@@ -43,7 +43,7 @@ window {
 
     location:   center;
     width:      480px;
-    border:     1px;
+    border:     2px;
 }
 
 inputbar {
