@@ -107,4 +107,7 @@ sudo apt install rofi
 sudo apt install xwallpaper
 sudo apt install xprop 
 
+sudo apt install taskwarrior
+sudo apt install scrot
+
 ```

@@ -23,6 +23,6 @@ i3_setup() {
     echo " ✅- ROFI installation finished (7/8)"
 
     sudo apt install xwallpaper
-    echo " ✅- XWALLPAPER installation finished (7/8)"
+    echo " ✅- XWALLPAPER installation finished (8/8)"
 
 }

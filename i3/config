@@ -13,7 +13,7 @@ set $i3lockwall i3lock -i ~/dotfiles/wallpaper.png -t
 set $terms "1: "
 set $web "2: "
 set $chat "3: 󰆄"
-set $file_manager "4: 󰆼"
+set $database "4: 󰆼"
 set $mail "5: mails"
 set $documents "6: documents"
 set $mindmap "7: mindmap"
@@ -27,6 +27,8 @@ assign [instance="qutebrowse"] → $web
 assign [class="Gnome-terminal"] → $terms
 assign [class="Spotify"] → $chat
 assign [class="discord"] → $chat
+assign [class="Insomnia"] → $database
+assign [class="DBeaver"] → $database
 
 # MISC --------------------------------------------------------------------------------
 
@@ -148,7 +150,7 @@ bindsym $mod+a focus parent
 bindsym $mod+1 workspace $terms
 bindsym $mod+2 workspace $web
 bindsym $mod+3 workspace $chat
-bindsym $mod+4 workspace $file_manager
+bindsym $mod+4 workspace $database
 bindsym $mod+5 workspace $mail
 bindsym $mod+6 workspace $documents
 bindsym $mod+7 workspace $mindmap
@@ -160,7 +162,7 @@ bindsym $mod+0 workspace 10
 bindsym $mod+Shift+1 move container to workspace $terms
 bindsym $mod+Shift+2 move container to workspace $web
 bindsym $mod+Shift+3 move container to workspace $db
-bindsym $mod+Shift+4 move container to workspace $file_manager
+bindsym $mod+Shift+4 move container to workspace $database
 bindsym $mod+Shift+5 move container to workspace $mail
 bindsym $mod+Shift+6 move container to workspace $documents
 bindsym $mod+Shift+7 move container to workspace $mindmap
