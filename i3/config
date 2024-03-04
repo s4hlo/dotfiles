@@ -10,10 +10,10 @@ set $refresh_i3status killall -SIGUSR1 i3status
 set $i3lockwall i3lock -i ~/dotfiles/wallpaper.png -t
 
 # workspaces definitions
-set $terms "1: terms"
-set $web "2: web"
-set $chat "3: chat"
-set $file_manager "4: files"
+set $terms "1: "
+set $web "2: "
+set $chat "3: 󰆄"
+set $file_manager "4: 󰆼"
 set $mail "5: mails"
 set $documents "6: documents"
 set $mindmap "7: mindmap"
