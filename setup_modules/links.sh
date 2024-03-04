@@ -16,6 +16,8 @@ links_setup() {
     ln -fns ~/dotfiles/polybar/launch.sh ~/.config/polybar/launch.sh
     ln -fns ~/dotfiles/polybar/config.ini ~/.config/polybar/config.ini
     ln -fns ~/dotfiles/rofi/config.rasi ~/.config/rofi/config.rasi
+    mkdir -p ~/.local/share/rofi/themes/
+    ln -fns ~/dotfiles/rofi/theme.rasi ~/.local/share/rofi/themes/theme.rasi
 
     chmod +x $HOME/dotfiles/polybar/launch.sh
     zsh -c "source ~/.zshrc"
