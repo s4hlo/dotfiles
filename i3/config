@@ -21,6 +21,7 @@ set $mindmap "7: mindmap"
 # ASSIGNS -----------------------------------------------------------------------------
 
 # ! to check instance or/and class use -> xprop
+# ! you can also check the class name via Rofi
 assign [instance="Navigator"] → $web
 assign [instance="qutebrowse"] → $web
 assign [class="Gnome-terminal"] → $terms
@@ -207,8 +208,10 @@ bindsym $mod+BackSpace mode "system"
 
 default_border pixel 
 
-gaps inner 10px
-smart_gaps inverse_outer
+gaps inner 10
+gaps top 40
+
+# smart_gaps inverse_outer
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #698ddA #698ddA #ffffff #2e9ef4   #698ddA 
