@@ -83,7 +83,7 @@ alias airodump='airodump-ng'
 alias lpii='cd ~/dev/lpii'
 alias fmcii='cd ~/dev/fmcii'
 alias nvim='~/dotfiles/nvim-linux64/bin/nvim'
-
+alias xprop='xprop | grep WM_CLASS'
 
 ###### MEMENTO MORI ######
 

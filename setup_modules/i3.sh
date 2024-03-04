@@ -2,8 +2,10 @@ i3_setup() {
     sudo apt install i3
     echo " ✅- I3 installation finished (1/8)"
 
+    # this is utility apps
     sudo apt install xinput
-    echo " ✅- XINPUT installation finished (2/8)"
+    sudo apt install xprop
+    echo " ✅- XINPUT and XPROP installation finished (2/8)"
 
     sudo apt install polybar
     echo " ✅- POLYBAR installation finished (3/8)"
