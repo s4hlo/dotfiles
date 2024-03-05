@@ -19,11 +19,11 @@ git clone https://github.com/s4hlo/dotfiles ~/dotfiles
 In this `README.md` directory:
 
 ```
-chmod +x setup.sh
-./setup.sh
+chmod +x ./setup_modules/setup.sh
+./setup_modules/setup.sh
 ```
 
-## 3. Neovim setup P.I 
+## 3. Neovim setup P.I (is optional)
 
 ```
 :checkhealth
@@ -91,4 +91,23 @@ JOB
 College
    - java and jdtls
    - zulip
+```
+
+
+# WIP
+setting up the i3wm
+```
+sudo apt install i3
+sudo apt install polybar
+sudo apt install brightnessctl
+sudo apt install pavucontrol
+sudo apt install playerctl
+sudo apt install rofi
+sudo apt install xwallpaper
+
+sudo apt install xinput
+sudo apt install xprop 
+
+sudo apt install taskwarrior
+
 ```
