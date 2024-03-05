@@ -1,4 +1,7 @@
+## ! THIS SCRIPT IS ARCHIVED BECAUSE I AM NOT USING GNOME WINDOW MANAGER ANYMORE
+
 gnome_setup() {
+    # ! this is being executted in other script - ARCHIVE NOTE
     repo_line="deb http://deb.debian.org/debian oldstable main non-free contrib"
     if grep -Fxq "$repo_line" /etc/apt/sources.list; then
         echo "Repository line already exists in sources.list. No changes made."

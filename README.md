@@ -98,16 +98,16 @@ College
 setting up the i3wm
 ```
 sudo apt install i3
-sudo apt install xinput
 sudo apt install polybar
 sudo apt install brightnessctl
 sudo apt install pavucontrol
 sudo apt install playerctl
 sudo apt install rofi
 sudo apt install xwallpaper
+
+sudo apt install xinput
 sudo apt install xprop 
 
 sudo apt install taskwarrior
-sudo apt install scrot
 
 ```

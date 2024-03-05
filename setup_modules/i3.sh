@@ -1,28 +1,22 @@
 i3_setup() {
     sudo apt install i3
-    echo " ✅- I3 installation finished (1/8)"
-
-    # this is utility apps
-    sudo apt install xinput
-    sudo apt install xprop
-    echo " ✅- XINPUT and XPROP installation finished (2/8)"
+    echo " ✅- I3 installation finished (1/7)"
 
     sudo apt install polybar
-    echo " ✅- POLYBAR installation finished (3/8)"
+    echo " ✅- POLYBAR installation finished (2/7)"
 
     sudo apt install brightnessctl
-    echo " ✅- BRIGHTNESSCTL installation finished (4/8)"
+    echo " ✅- BRIGHTNESSCTL installation finished (3/7)"
 
     sudo apt install pavucontrol
-    echo " ✅- PAVUCONTROL installation finished (5/8)"
+    echo " ✅- PAVUCONTROL installation finished (4/7)"
 
     sudo apt install playerctl
-    echo " ✅- PLAYERCTL installation finished (6/8)"
+    echo " ✅- PLAYERCTL installation finished (5/7)"
 
     sudo apt install rofi
-    echo " ✅- ROFI installation finished (7/8)"
+    echo " ✅- ROFI installation finished (6/7)"
 
     sudo apt install xwallpaper
-    echo " ✅- XWALLPAPER installation finished (8/8)"
-
+    echo " ✅- XWALLPAPER installation finished (7/7)"
 }

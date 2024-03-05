@@ -25,13 +25,6 @@ else
     echo " 🟡 Skipping dotfile linking."
 fi
 
-if ask_yes_no "Do you want to set up GNOME configurations"; then
-    . ~/dotfiles/setup_modules/gnome.sh
-    gnome_setup
-else
-    echo "Skipping GNOME configuration."
-fi
-
 if ask_yes_no "Do you want to install i3 base apps?"; then
     . ~/dotfiles/setup_modules/i3.sh
     i3_setup
