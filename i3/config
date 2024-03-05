@@ -2,8 +2,9 @@
 
 # SETS --------------------------------------------------------------------------------
 
+# this define Mata keys as prefix
 set $mod Mod4
-#refresh_i3status
+
 set $refresh_i3status killall -SIGUSR1 i3status
 
 # to lock screen with the wallpaper
