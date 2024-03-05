@@ -84,6 +84,7 @@ alias lpii='cd ~/dev/lpii'
 alias fmcii='cd ~/dev/fmcii'
 alias nvim='~/dotfiles/nvim-linux64/bin/nvim'
 alias xprop='xprop | grep WM_CLASS'
+alias zulip='~/.local/bin/zulip-term'
 
 ###### MEMENTO MORI ######
 
