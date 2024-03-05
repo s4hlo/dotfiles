@@ -1,11 +1,5 @@
 ## NOTES FOR S4HLO
 
-## MAKES FLATPAK WORK AGAIN - TODO
-# killall gnome-software
-# rm -rf ~/.cache/gnome-software
-# sudo apt-get --reinstall install -y gnome-software-plugin-flatpak
-# sudo flatpak update
-
 # Function to prompt for yes/no
 ask_yes_no() {
     while true; do
@@ -23,6 +17,13 @@ echo ' REQUIREMENTS:
 - Gnome 
 - Zsh
 '
+
+if ask_yes_no "Do you want to link the dotfiles?"; then
+    . ~/dotfiles/setup_modules/links.sh
+    links_setup
+else
+    echo " 🟡 Skipping dotfile linking."
+fi
 
 if ask_yes_no "Do you want to set up GNOME configurations"; then
     . ~/dotfiles/setup_modules/gnome.sh
@@ -64,13 +65,6 @@ if ask_yes_no "Do you want to install college apps?"; then
     college_setup
 else
     echo " 🟡  Skipping college apps installation"
-fi
-
-if ask_yes_no "Do you want to link the dotfiles?"; then
-    . ~/dotfiles/setup_modules/links.sh
-    links_setup
-else
-    echo " 🟡 Skipping dotfile linking."
 fi
 
 if ask_yes_no "Do you want to download and install the Nerd Font?"; then
