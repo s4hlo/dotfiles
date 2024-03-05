@@ -1,4 +1,14 @@
 base_setup() {
+    # add debian source file bacause Kali linux sorce sucks
+    repo_line="deb http://deb.debian.org/debian oldstable main non-free contrib"
+    if grep -Fxq "$repo_line" /etc/apt/sources.list; then
+        echo "Repository line already exists in sources.list. No changes made."
+    else
+        echo "$repo_line" | sudo tee -a /etc/apt/sources.list
+        sudo apt update
+        echo "Repository line added and package lists updated."
+    fi
+
     sudo apt update
 
     # ! those two apps are not required to setup 
