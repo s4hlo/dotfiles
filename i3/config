@@ -27,6 +27,7 @@ assign [instance="qutebrowse"] → $web
 assign [class="Gnome-terminal"] → $terms
 assign [class="Spotify"] → $chat
 assign [class="discord"] → $chat
+assign [class="Zulip"] → $chat
 assign [class="Insomnia"] → $database
 assign [class="DBeaver"] → $database
 for_window [class="pritunl"] floating enable
