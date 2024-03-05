@@ -10,15 +10,23 @@ EOF
     else
         echo "Pritunl is already installed. Skipping installation."
     fi
-    echo " ✅- PRITUNL-CLIENT installation finished - (1/3)"
+    echo " ✅- PRITUNL-CLIENT installation finished - (1/4)"
 
     sudo apt install dbeaver
-    echo " ✅- DBEAVER installation finished - (2/3)"
+    echo " ✅- DBEAVER installation finished - (2/4)"
 
     curl -1sLf \
         'https://packages.konghq.com/public/insomnia/setup.deb.sh' |
         sudo -E distro=ubuntu codename=focal bash
     sudo apt-get update
     sudo apt-get install insomnia
-    echo " ✅- INSOMNIA installation finished - (3/3)"
+    echo " ✅- INSOMNIA installation finished - (3/4)"
+
+    type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
+        sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
+        sudo apt update &&
+        sudo apt install gh -y
+    echo " ✅ - GITHUB-CLI installation finished (4/4)"
 }
