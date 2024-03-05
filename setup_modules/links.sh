@@ -18,6 +18,8 @@ links_setup() {
     ln -fns ~/dotfiles/rofi/config.rasi ~/.config/rofi/config.rasi
 
     tmux source-file ~/.tmux.conf
-    chmod +x $HOME/dotfiles/polybar/launch.sh
     zsh -c "source ~/.zshrc"
+
+    # all .sh file but the setup.sh will be turn executable here
+    chmod +x $HOME/dotfiles/polybar/launch.sh
 }
