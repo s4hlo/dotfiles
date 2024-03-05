@@ -1,7 +1,9 @@
 domestic_setup() {
-    pip3 install bpytop --upgrade
+    sudo apt install bpytop
     echo " ✅- BPYTOP installation finished - (1/5)"
 
+    # this also add the option to make qutebrowser
+    # default browser
     sudo apt install qutebrowser
     sudo update-alternatives --config x-www-browser
     echo " ✅- QUTEBROWSER installation finished - (2/5)"
