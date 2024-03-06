@@ -52,6 +52,8 @@ fi
 
 [ -f "/home/sleight/.ghcup/env" ] && source "/home/sleight/.ghcup/env" # ghcup-env
 
+export PATH=$PATH:~/.cargo/bin/
+
 # nvm 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -85,6 +87,7 @@ alias fmcii='cd ~/dev/fmcii'
 alias nvim='~/dotfiles/nvim-linux64/bin/nvim'
 alias xprop='xprop | grep WM_CLASS'
 alias zulip='~/.local/bin/zulip-term'
+alias taskj='task add +tarken'
 
 ###### MEMENTO MORI ######
 
