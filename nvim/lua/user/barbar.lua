@@ -17,10 +17,13 @@ local M = {
 
 function M.config()
   require("barbar").setup {
-    insert_at_end = true,
-    sidebar_filetypes = {
+     insert_at_end = true,
+     sidebar_filetypes = {
       NvimTree = true,
-    }
+      undotree = {text = 'undotree'},
+      ['neo-tree'] = {event = 'BufWipeout'},
+      Outline = {event = 'BufWinLeave', text = 'symbols-outline'},
+    },
   }
 end
 
