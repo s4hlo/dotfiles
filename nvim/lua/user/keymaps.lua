@@ -17,6 +17,8 @@ keymap('n', '<A-J>', '<Cmd>BufferMovePrevious<CR>', opts)
 keymap('n', '<A-K>', '<Cmd>BufferMoveNext<CR>', opts)
 keymap('n', 'J', '<Cmd>BufferPrevious<CR>', opts)
 keymap('n', 'K', '<Cmd>BufferNext<CR>', opts)
+keymap('n',  '<leader>bd', '<Cmd>BufferClose<CR>', opts)
+keymap('n',  '<leader>bad', '<Cmd>BufferClose<CR>', opts)
 
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
