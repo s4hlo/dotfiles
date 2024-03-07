@@ -29,6 +29,8 @@ spec "user.netrw"
 spec "user.project"
 spec "user.bufdelete"
 spec "user.barbar"
+spec "user.blamer"
+-- specific related plugins
 spec "user.prettier"
 spec "user.lean"
 require "user.lazy"
