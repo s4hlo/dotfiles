@@ -16,7 +16,8 @@ base_setup() {
     # ! CONFIG TOOL - to check where use it, search for ocurrences using grep
     sudo apt install xinput
     sudo apt install xprop
-    echo " ✅- TOOLS --> XINPUT and XPROP installation finished"
+    sudo apt install xdotool
+    echo " ✅- TOOLS --> XINPUT, XPROP, XDOTOOL installation finished"
 
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | sh
     echo " ✅ - NVM installation finished (1/6)"

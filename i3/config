@@ -80,6 +80,12 @@ exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpaper.png
 
 # KEYMAPS -----------------------------------------------------------------------------
 
+# Utility maps
+# ! OVER C - those binds ara scalable to be overcomplicated - be careful
+# ! All those binds can be safely deleted
+# ! CONFIG TOOL - to define remap a shortcut or create a macro(check how to) use -> xprop
+bindsym --release $mod+space exec --no-startup-id xdotool key ctrl+shift+p
+
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
@@ -148,7 +154,8 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# OVER C - this is substituted as not used
+# bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
