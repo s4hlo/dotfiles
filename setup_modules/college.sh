@@ -5,5 +5,8 @@ college_setup() {
         sudo tee /etc/apt/sources.list.d/zulip-desktop.list
     sudo apt update
     sudo apt install zulip
-    echo " ✅ - ZULIP installation finished (1/1)"
+    echo " ✅ - ZULIP installation finished (1/2)"
+
+    sudo apt install xournalpp
+    echo " ✅ - XOURNAL++ installation finished (2/2)"
 }
