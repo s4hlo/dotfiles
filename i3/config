@@ -11,18 +11,19 @@ set $refresh_i3status killall -SIGUSR1 i3status
 set $i3lockwall i3lock -i ~/dotfiles/wallpaper.png -t
 
 # workspaces definitions
+# ! you can find more icons in:
+# ! > https://www.nerdfonts.com/cheat-sheet
 set $terms "1: "
 set $web "2: "
 set $chat "3: 󰆄"
 set $database "4: 󰆼"
-set $mail "5: mails"
+set $notes "5: "
 set $documents "6: documents"
 set $mindmap "7: mindmap"
 
 # ASSIGNS -----------------------------------------------------------------------------
 
 # ! CONFIG TOOL - to check instance or/and class use -> xprop
-# ! you can also check the class name via Rofi
 assign [instance="Navigator"] → $web
 assign [instance="qutebrowse"] → $web
 assign [class="Gnome-terminal"] → $terms
@@ -31,6 +32,7 @@ assign [class="discord"] → $chat
 assign [class="Zulip"] → $chat
 assign [class="Insomnia"] → $database
 assign [class="DBeaver"] → $database
+assign [class="Com.github.xournalpp.xournalpp"] → $notes
 for_window [class="pritunl"] floating enable
 
 # MISC --------------------------------------------------------------------------------
@@ -155,7 +157,7 @@ bindsym $mod+1 workspace $terms
 bindsym $mod+2 workspace $web
 bindsym $mod+3 workspace $chat
 bindsym $mod+4 workspace $database
-bindsym $mod+5 workspace $mail
+bindsym $mod+5 workspace $notes
 bindsym $mod+6 workspace $documents
 bindsym $mod+7 workspace $mindmap
 bindsym $mod+8 workspace 8
@@ -167,7 +169,7 @@ bindsym $mod+Shift+1 move container to workspace $terms
 bindsym $mod+Shift+2 move container to workspace $web
 bindsym $mod+Shift+3 move container to workspace $db
 bindsym $mod+Shift+4 move container to workspace $database
-bindsym $mod+Shift+5 move container to workspace $mail
+bindsym $mod+Shift+5 move container to workspace $notes
 bindsym $mod+Shift+6 move container to workspace $documents
 bindsym $mod+Shift+7 move container to workspace $mindmap
 bindsym $mod+Shift+8 move container to workspace 8
