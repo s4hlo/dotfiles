@@ -1,5 +1,5 @@
 base_setup() {
-    # add debian source file bacause Kali linux sorce sucks
+    # add debian source repo bacause Kali linux source repo sucks
     repo_line="deb http://deb.debian.org/debian oldstable main non-free contrib"
     if grep -Fxq "$repo_line" /etc/apt/sources.list; then
         echo "Repository line already exists in sources.list. No changes made."
@@ -29,8 +29,9 @@ base_setup() {
     sudo apt install xclip
     echo " ✅- XCLIP installation finished (3/6)"
 
-    # this assure nvim to be installed with the latest version
-    # TODO add a path to nvim
+    # this assure nvim to be installed 
+    # with the latest version                           [update version]
+    # TODO add a path to nvim                                  V
     wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz -P ~/Downloads
     tar xzvf ~/Downloads/nvim-linux64.tar.gz -C ~/dotfiles
     echo " ✅ - NVIM installation finished (4/6)"
