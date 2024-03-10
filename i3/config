@@ -174,7 +174,7 @@ bindsym $mod+0 workspace 10
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $terms
 bindsym $mod+Shift+2 move container to workspace $web
-bindsym $mod+Shift+3 move container to workspace $db
+bindsym $mod+Shift+3 move container to workspace $chat
 bindsym $mod+Shift+4 move container to workspace $database
 bindsym $mod+Shift+5 move container to workspace $notes
 bindsym $mod+Shift+6 move container to workspace $documents
