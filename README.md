@@ -6,7 +6,7 @@
 - [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
 - [All GNOME keybinds commands](https://gist.github.com/justgook/4257735) > deprecated\_
 
-## 1. INCIPIENT
+## 1. Incipient
 
 > the path matters
 
@@ -18,7 +18,7 @@ chmod +x ./setup_modules/setup.sh
 
 ```
 
-## 2. NEOVIM SUPPLEMENTAL
+## 2. Neovim Supplemental
 
 ```
 :checkhealth
@@ -44,7 +44,7 @@ npm i -g neovim
 
 ```
 
-## 3. QUTEBROWSER MEMENTO
+## 3. Qutebrowser Memento
 
 ```
 :config-source
