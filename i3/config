@@ -8,6 +8,7 @@ set $mod Mod4
 set $refresh_i3status killall -SIGUSR1 i3status
 
 # to lock screen with the wallpaper
+# @target
 set $i3lockwall i3lock -i ~/dotfiles/wallpaper.png -t
 
 # workspaces definitions
@@ -76,6 +77,7 @@ exec xinput set-prop "MSFT0001:01 06CB:CE78 Touchpad" "libinput Tapping Enabled"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # ! to avoid change this file, always rename the wallpaper to "wallpaper.png"
+# @target
 exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpaper.png
 
 # KEYMAPS -----------------------------------------------------------------------------

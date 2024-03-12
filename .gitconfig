@@ -3,6 +3,7 @@
     email = rfl.magno02@gmail.com
 
 [core]
+    ; @target
     editor = ~/dotfiles/nvim-linux64/bin/nvim 
     autocrlf = input
 
