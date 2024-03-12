@@ -29,6 +29,7 @@ spec "user.netrw"
 spec "user.project"
 spec "user.barbar"
 spec "user.blamer"
+spec "user.glance"
 -- specific related plugins
 spec "user.prettier"
 spec "user.lean"
