@@ -1,12 +1,12 @@
 ## References
 
-- Snapd: [Snapcraft Website](https://snapcraft.io/snapd)
-- NVM: [NVM Github repositoy](https://github.com/nvm-sh/nvm#installing-and-updating)
-- Starship: [Starship Website](https://starship.rs/)
+- [Snapcraft Website](https://snapcraft.io/snapd)
+- [NVM Github repositoy](https://github.com/nvm-sh/nvm#installing-and-updating)
+- [Starship Website](https://starship.rs/)
 - [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
 - [All GNOME keybinds commands](https://gist.github.com/justgook/4257735) > deprecated\_
 
-## 1. Clone this repo
+## 1. INCIPIENT
 
 > the path matters
 
@@ -18,7 +18,7 @@ chmod +x ./setup_modules/setup.sh
 
 ```
 
-## 2. Neovim setup
+## 2. NEOVIM SUPPLEMENTAL
 
 ```
 :checkhealth
@@ -26,7 +26,7 @@ chmod +x ./setup_modules/setup.sh
 
 You'll probably notice you don't have support for copy/paste also that python and node haven't been setup
 
-> TODO: how to check if is X11 or wayland
+> TODO: auto-check X11 or wayland
 
 copy/paste:
 
@@ -44,7 +44,7 @@ npm i -g neovim
 
 ```
 
-## 3. Qutebrowser setup
+## 3. QUTEBROWSER MEMENTO
 
 ```
 :config-source
