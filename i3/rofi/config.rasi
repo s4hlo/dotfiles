@@ -149,5 +149,5 @@ configuration {
       sorting-method:    "name";
   }
 }
-/* @target
+/* @target */
 @theme "~/dotfiles/i3/rofi/theme.rasi" 
