@@ -13,8 +13,8 @@
 ```
 git clone https://github.com/s4hlo/dotfiles ~/dotfiles
 cd ~/dotfiles
-chmod +x ./setup_modules/setup.sh
-./setup_modules/setup.sh
+chmod +x ./scripts/setup.sh
+./scripts/setup.sh
 
 ```
 
