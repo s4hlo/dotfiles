@@ -14,12 +14,12 @@ links_setup() {
     ln -fns ~/dotfiles/nvim ~/.config/nvim
     ln -fns ~/dotfiles/i3/config ~/.config/i3/config
     ln -fns ~/dotfiles/i3/rofi/config.rasi ~/.config/rofi/config.rasi
-    ln -fns ~/dotfiles/polybar/launch.sh ~/.config/polybar/launch.sh
-    ln -fns ~/dotfiles/polybar/config.ini ~/.config/polybar/config.ini
+    ln -fns ~/dotfiles/i3/polybar/launch.sh ~/.config/polybar/launch.sh
+    ln -fns ~/dotfiles/i3/polybar/config.ini ~/.config/polybar/config.ini
 
     tmux source-file ~/.tmux.conf
     zsh -c "source ~/.zshrc"
 
     # all .sh file but the setup.sh will be turn executable here
-    chmod +x $HOME/dotfiles/polybar/launch.sh
+    chmod +x $HOME/dotfiles/i3/polybar/launch.sh
 }
