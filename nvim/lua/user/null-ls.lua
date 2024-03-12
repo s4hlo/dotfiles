@@ -24,11 +24,6 @@ function M.config()
     },
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
-        -- ! TODO this is a paletive - fix this
-          vim.keymap.set("n", "<Leader>lq", function()
-            vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-          end, { buffer = bufnr, desc = "[lsp] format" })
-
           -- format on save
           vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
           vim.api.nvim_create_autocmd(event, {
@@ -41,12 +36,6 @@ function M.config()
           })
         end
 
-        if client.supports_method("textDocument/rangeFormatting") then
-          -- ! TODO this is a paletive - fix this
-          vim.keymap.set("x", "<Leader>lq", function()
-            vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-          end, { buffer = bufnr, desc = "[lsp] format" })
-        end
       end,
   }
 end

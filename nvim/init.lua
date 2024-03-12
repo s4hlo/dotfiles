@@ -27,7 +27,6 @@ spec "user.indentline"
 spec "user.alpha"
 spec "user.netrw"
 spec "user.project"
-spec "user.bufdelete"
 spec "user.barbar"
 spec "user.blamer"
 -- specific related plugins
