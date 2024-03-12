@@ -100,6 +100,12 @@ function M.config()
     local opts = {
       on_attach = M.on_attach,
       capabilities = M.common_capabilities(),
+      init_options = {
+        preferences = {
+          importModuleSpecifierPreference = "relative",
+          importModuleSpecifierEnding = "minimal",
+        },
+      }
     }
 
     local require_ok, settings = pcall(require, "user.lspsettings." .. server)
