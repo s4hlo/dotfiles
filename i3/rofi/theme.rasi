@@ -8,7 +8,7 @@
 * {
     font:   "JetBrainsMono Nerd Font Mono 12";
 
-    background-s4:   #282A2E;
+    background-s4:   #22272E;
     primaray-s4:     #d8dee9;
     nord8:           #698ddA;
     nord13:          #ebcb8b;
@@ -25,6 +25,7 @@
 window {
     background-color:   @background-s4;
     border-color:       @accent-color;
+    border-radius:     5px;
 
     location:   center;
     width:      480px;
