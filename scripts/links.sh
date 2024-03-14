@@ -16,6 +16,8 @@ links_setup() {
     ln -fns ~/dotfiles/i3/rofi/config.rasi ~/.config/rofi/config.rasi
     ln -fns ~/dotfiles/i3/polybar/launch.sh ~/.config/polybar/launch.sh
     ln -fns ~/dotfiles/i3/polybar/config.ini ~/.config/polybar/config.ini
+    ln -fns ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
+    ln -fns ~/dotfiles/kitty/current-theme.conf ~/.config/kitty/current-theme.conf
 
     tmux source-file ~/.tmux.conf
     zsh -c "source ~/.zshrc"
