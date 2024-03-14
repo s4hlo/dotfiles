@@ -227,7 +227,7 @@ bindsym $mod+BackSpace mode "system"
 default_border pixel 
 
 # gaps inner 10
-gaps top 32
+gaps top 25
 
 # smart_gaps inverse_outer
 
