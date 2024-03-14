@@ -27,7 +27,7 @@ set $mindmap "7: mindmap"
 # ! CONFIG TOOL - to check instance or/and class use -> xprop
 assign [instance="Navigator"] → $web
 assign [instance="qutebrowse"] → $web
-assign [class="Gnome-terminal"] → $terms
+assign [class="kitty"] → $terms
 assign [class="Spotify"] → $chat
 assign [class="discord"] → $chat
 assign [class="Zulip"] → $chat
@@ -106,7 +106,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
