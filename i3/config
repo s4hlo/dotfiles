@@ -14,13 +14,13 @@ set $i3lockwall i3lock -i ~/dotfiles/wallpaper.png -t
 # workspaces definitions
 # ! you can find more icons in:
 # ! > https://www.nerdfonts.com/cheat-sheet
-set $terms "1: "
-set $web "2: "
-set $chat "3: 󰆄"
-set $database "4: 󰆼"
-set $notes "5: "
-set $documents "6: documents"
-set $mindmap "7: mindmap"
+set $terms "1"
+set $web "2"
+set $chat "3"
+set $database "4"
+set $notes "5"
+set $documents "6"
+set $mindmap "7"
 
 # ASSIGNS -----------------------------------------------------------------------------
 
