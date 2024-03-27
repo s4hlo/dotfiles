@@ -24,6 +24,7 @@ function M.config()
   local icons = require "user.icons"
 
   require("nvim-tree").setup {
+    view = { adaptive_size = true },
     on_attach = my_on_attach,
     sync_root_with_cwd = true,
     renderer = {

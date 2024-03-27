@@ -19,49 +19,49 @@ echo ' REQUIREMENTS:
 '
 
 if ask_yes_no "Do you want to link the dotfiles?"; then
-    . ~/dotfiles/setup_modules/links.sh
+    . ~/dotfiles/scripts/links.sh
     links_setup
 else
     echo " 🟡 Skipping dotfile linking."
 fi
 
-if ask_yes_no "Do you want to install i3 base apps?"; then
-    . ~/dotfiles/setup_modules/i3.sh
-    i3_setup
-else
-    echo " 🟡  Skipping base apps installation"
-fi
-
 if ask_yes_no "Do you want to install base apps?"; then
-    . ~/dotfiles/setup_modules/base.sh
+    . ~/dotfiles/scripts/base.sh
     base_setup
 else
     echo " 🟡  Skipping base apps installation"
 fi
 
+if ask_yes_no "Do you want to install i3 base apps?"; then
+    . ~/dotfiles/scripts/i3.sh
+    i3_setup
+else
+    echo " 🟡  Skipping base apps installation"
+fi
+
 if ask_yes_no "Do you want to install domestic apps?"; then
-    . ~/dotfiles/setup_modules/domestic.sh
+    . ~/dotfiles/scripts/domestic.sh
     domestic_setup
 else
     echo " 🟡  Skipping domestic apps installation"
 fi
 
 if ask_yes_no "Do you want to install job apps?"; then
-    . ~/dotfiles/setup_modules/job.sh
+    . ~/dotfiles/scripts/job.sh
     job_setup
 else
     echo " 🟡  Skipping job apps installation"
 fi
 
 if ask_yes_no "Do you want to install college apps?"; then
-    . ~/dotfiles/setup_modules/college.sh
+    . ~/dotfiles/scripts/college.sh
     college_setup
 else
     echo " 🟡  Skipping college apps installation"
 fi
 
 if ask_yes_no "Do you want to download and install the Nerd Font?"; then
-  . ~/dotfiles/setup_modules/font.sh
+  . ~/dotfiles/scripts/font.sh
   font_setup
 else
     echo " 🟡 Skipping font installation."

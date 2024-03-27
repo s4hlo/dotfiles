@@ -8,29 +8,32 @@ set $mod Mod4
 set $refresh_i3status killall -SIGUSR1 i3status
 
 # to lock screen with the wallpaper
+# @target
 set $i3lockwall i3lock -i ~/dotfiles/wallpaper.png -t
 
 # workspaces definitions
-set $terms "1: "
-set $web "2: "
-set $chat "3: 󰆄"
-set $database "4: 󰆼"
-set $mail "5: mails"
-set $documents "6: documents"
-set $mindmap "7: mindmap"
+# ! you can find more icons in:
+# ! > https://www.nerdfonts.com/cheat-sheet
+set $terms "1"
+set $web "2"
+set $chat "3"
+set $database "4"
+set $notes "5"
+set $documents "6"
+set $mindmap "7"
 
 # ASSIGNS -----------------------------------------------------------------------------
 
 # ! CONFIG TOOL - to check instance or/and class use -> xprop
-# ! you can also check the class name via Rofi
 assign [instance="Navigator"] → $web
 assign [instance="qutebrowse"] → $web
-assign [class="Gnome-terminal"] → $terms
+assign [class="kitty"] → $terms
 assign [class="Spotify"] → $chat
 assign [class="discord"] → $chat
 assign [class="Zulip"] → $chat
 assign [class="Insomnia"] → $database
 assign [class="DBeaver"] → $database
+assign [class="Com.github.xournalpp.xournalpp"] → $notes
 for_window [class="pritunl"] floating enable
 
 # MISC --------------------------------------------------------------------------------
@@ -45,8 +48,9 @@ tiling_drag modifier titlebar
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+hide_edge_borders smart
 
-workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth no
 focus_follows_mouse yes
 
 # EXECS -------------------------------------------------------------------------------
@@ -74,9 +78,16 @@ exec xinput set-prop "MSFT0001:01 06CB:CE78 Touchpad" "libinput Tapping Enabled"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # ! to avoid change this file, always rename the wallpaper to "wallpaper.png"
+# @target
 exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpaper.png
 
 # KEYMAPS -----------------------------------------------------------------------------
+
+# Utility maps
+# ! OVER C - those binds ara scalable to be overcomplicated - be careful
+# ! All those binds can be safely deleted
+# ! CONFIG TOOL - to define remap a shortcut or create a macro(check how to) use -> xprop
+bindsym --release $mod+space exec --no-startup-id xdotool key ctrl+shift+p
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -95,7 +106,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -146,7 +157,8 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# OVER C - this is substituted as not used
+# bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
@@ -155,7 +167,7 @@ bindsym $mod+1 workspace $terms
 bindsym $mod+2 workspace $web
 bindsym $mod+3 workspace $chat
 bindsym $mod+4 workspace $database
-bindsym $mod+5 workspace $mail
+bindsym $mod+5 workspace $notes
 bindsym $mod+6 workspace $documents
 bindsym $mod+7 workspace $mindmap
 bindsym $mod+8 workspace 8
@@ -165,9 +177,9 @@ bindsym $mod+0 workspace 10
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $terms
 bindsym $mod+Shift+2 move container to workspace $web
-bindsym $mod+Shift+3 move container to workspace $db
+bindsym $mod+Shift+3 move container to workspace $chat
 bindsym $mod+Shift+4 move container to workspace $database
-bindsym $mod+Shift+5 move container to workspace $mail
+bindsym $mod+Shift+5 move container to workspace $notes
 bindsym $mod+Shift+6 move container to workspace $documents
 bindsym $mod+Shift+7 move container to workspace $mindmap
 bindsym $mod+Shift+8 move container to workspace 8
@@ -214,8 +226,8 @@ bindsym $mod+BackSpace mode "system"
 
 default_border pixel 
 
-gaps inner 10
-gaps top 40
+# gaps inner 10
+gaps top 25
 
 # smart_gaps inverse_outer
 

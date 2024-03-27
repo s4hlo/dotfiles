@@ -52,6 +52,8 @@ fi
 
 [ -f "/home/sleight/.ghcup/env" ] && source "/home/sleight/.ghcup/env" # ghcup-env
 
+export PATH=$PATH:~/.cargo/bin/
+
 # nvm 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -74,16 +76,18 @@ alias ipforward='sudo echo "1" | sudo tee /proc/sys/net/ipv4/ip_forward'
 alias ssnap='sudo service snapd.apparmor start && sudo service snapd start'
 alias gl='grep -lr --exclude-dir=.git'
 alias fcd='cd "$(dirname "$(fzf)")"'
-alias setup='~/dotfiles/setup_modules/setup.sh'
+alias setup='~/dotfiles/setup.sh'
 alias hubserver='cd ~/dev/hub-server'
 alias dotfiles='cd ~/dotfiles'
 alias aircrack='aircrack-ng'
 alias airmon='airmon-ng'
 alias airodump='airodump-ng'
 alias lpii='cd ~/dev/lpii'
-alias fmcii='cd ~/dev/fmcii'
+alias fmcii='cd ~/dev/fmclean'
 alias nvim='~/dotfiles/nvim-linux64/bin/nvim'
 alias xprop='xprop | grep WM_CLASS'
+alias zulip='~/.local/bin/zulip-term'
+alias taskj='task add +tarken'
 
 ###### MEMENTO MORI ######
 
