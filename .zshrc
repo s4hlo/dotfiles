@@ -88,6 +88,9 @@ alias nvim='~/dotfiles/nvim-linux64/bin/nvim'
 alias xprop='xprop | grep WM_CLASS'
 alias zulip='~/.local/bin/zulip-term'
 alias taskj='task add +tarken'
+alias kls='sudo logkeys -s -o ~/sleight.log -m ~/dev/logkeys/keymaps/en_US_ubuntu_1204.map'
+alias klm='sudo tail --follow ~/sleight.log'
+alias klk='sudo logkeys -k'
 
 ###### MEMENTO MORI ######
 
