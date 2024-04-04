@@ -30,6 +30,7 @@ spec "user.barbar"
 spec "user.jdtls"
 spec "user.blamer"
 spec "user.glance"
+spec "user.transparent"
 -- specific related plugins
 spec "user.vimtex"
 spec "user.prettier"
