@@ -1,14 +1,15 @@
 local M = {
   "navarasu/onedark.nvim",
   lazy = false,
-  pririty = 1000,
-  opts = {
-    style = 'warm'
-  }
+  priority = 1000,
 }
 
-function M.config()
-  vim.cmd.colorscheme "onedark"
+
+M.config = function()
+  require('onedark').setup({
+    style='cool'
+  })
+  vim.cmd.colorscheme('onedark')
 end
 
 return M
