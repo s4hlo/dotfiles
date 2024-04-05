@@ -227,7 +227,7 @@ bindsym $mod+BackSpace mode "system"
 
 # THEME -------------------------------------------------------------------------------
 
-default_border pixel 
+default_border none
 
 gaps inner 10
 gaps top 25
