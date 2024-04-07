@@ -6,11 +6,12 @@
  *******************************************************************************/
 
 * {
-    font:   "JetBrainsMono Nerd Font Mono 12";
+    font:   "JetBrainsMono Nerd Font 12";
 
-    background-s4:   #22272E;
+    background-s4:   #00000000;
     primaray-s4:     #d8dee9;
-    nord8:           #698ddA;
+    secundary-24:    #444444;
+    nord8:           #C5C8C6;
     nord13:          #ebcb8b;
 
     background-color:   transparent;
@@ -67,7 +68,7 @@ element normal active {
 }
 
 element selected {
-    text-color: @background-s4;
+    text-color: @secundary-24;
 }
 
 element selected normal {
