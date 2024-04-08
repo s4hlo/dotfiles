@@ -1,12 +1,10 @@
-## References
+# Sahlo's dotfiles
 
-- [Snapcraft Website](https://snapcraft.io/snapd)
-- [NVM Github repositoy](https://github.com/nvm-sh/nvm#installing-and-updating)
-- [Starship Website](https://starship.rs/)
-- [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
-- [All GNOME keybinds commands](https://gist.github.com/justgook/4257735) > deprecated\_
+## 1. Specimen
 
-## 1. Incipient
+![Captura de tela do projeto](Screenshot.png)
+
+## 2. Incipient
 
 > the path matters
 
@@ -18,7 +16,7 @@ chmod +x ./setup.sh
 
 ```
 
-## 2. Neovim Supplemental
+## 3. Neovim Supplemental
 
 ```
 :checkhealth
@@ -44,8 +42,14 @@ npm i -g neovim
 
 ```
 
-## 3. Qutebrowser Memento
+## 4. Qutebrowser Memento
 
 ```
 :config-source
 ```
+## References
+
+- [Snapcraft Website](https://snapcraft.io/snapd)
+- [NVM Github repositoy](https://github.com/nvm-sh/nvm#installing-and-updating)
+- [Starship Website](https://starship.rs/)
+- [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
