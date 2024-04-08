@@ -210,6 +210,21 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+mode "move" {
+    bindsym $mod+Tab focus right
+
+    bindsym h move left
+    bindsym j move down
+    bindsym k move up
+    bindsym l move right
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+m mode "move" focus floating
+
 # System mode 
 mode "system" {
     bindsym l exec --no-startup-id $i3lockwall, mode "default"

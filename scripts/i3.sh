@@ -20,4 +20,6 @@ i3_setup() {
     sudo apt install picom
     echo " ✅- PICOM installation finished (7/7)"
 
+    # cava todo
+    # tty-clock todo
 }
