@@ -38,18 +38,18 @@ function M.config()
             -- Requires `nvim-web-devicons` if `true`
             enabled = true,
           },
-          separator = {left = '', right = '▕'},
+          separator = {left = '', right = ''},
 
           -- Configure the icons on the bufferline when modified or pinned.
           -- Supports all the base icon options.
           modified = {button = '●'},
-          pinned = {buffer_index = true, filename = true, button = '', separator = { right = '▕', left = ''} },
+          pinned = {buffer_index = true, filename = true, button = '', separator = { right = '', left = ''} },
 
           -- Configure the icons on the bufferline based on the visibility of a buffer.
           -- Supports all the base icon options, plus `modified` and `pinned`.
           alternate = {filetype = {enabled = false}},
           current = {buffer_index = false},
-          inactive = {button = '', separator = {left = '', right = '▕'}},
+          inactive = {button = '', separator = {left = '', right = ''}},
           visible = {modified = {buffer_number = false}},
         },
       sidebar_filetypes = {
