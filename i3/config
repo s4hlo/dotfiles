@@ -79,7 +79,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # ! to avoid change this file, always rename the wallpaper to "wallpaper.png"
 # @target
-exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpaper.jpg
+exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpaper3.jpg
 
 # startup picom
 exec --no-startup-id picom -b -f --config ~/dotfiles/picom.conf
@@ -213,10 +213,10 @@ bindsym $mod+r mode "resize"
 mode "move" {
     bindsym $mod+Tab focus right
 
-    bindsym h move left
-    bindsym j move down
-    bindsym k move up
-    bindsym l move right
+    bindsym h move left 30
+    bindsym j move down 30
+    bindsym k move up 30
+    bindsym l move right 30
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
