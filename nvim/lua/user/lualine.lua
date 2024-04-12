@@ -60,8 +60,7 @@ function M.config()
 			-- lualine_y = { "filetype" },
 			-- lualine_z = { "progress" },
 			lualine_a = { "mode" },
-			lualine_b = {},
-			lualine_c = {
+			lualine_b = {
 				{
 					"buffers",
 					show_filename_only = true, -- Shows shortened relative path when set to false.
@@ -102,6 +101,7 @@ function M.config()
 					},
 				},
 			},
+			lualine_c = {},
 
 			lualine_x = {
 				"diagnostics",
