@@ -37,13 +37,49 @@ function M.config()
 		end
 		return ""
 	end
+	local theme = function()
+		local colors = {
+			blue = "#61afef",
+			green = "#98c379",
+			purple = "#c678dd",
+			cyan = "#56b6c2",
+			red1 = "#e06c75",
+			red2 = "#be5046",
+			yellow = "#e5c07b",
+			fg = "#abb2bf",
+			bg = "#282c34",
+			gray1 = "#828997",
+			gray2 = nil,
+			gray3 = "#3e4452",
+		}
+
+		return {
+			normal = {
+				a = { fg = colors.bg, bg = colors.green, gui = "bold" },
+				b = { fg = colors.fg, bg = colors.gray3 },
+				c = { fg = colors.fg, bg = colors.gray2 },
+			},
+			command = { a = { fg = colors.bg, bg = colors.yellow, gui = "bold" } },
+			insert = { a = { fg = colors.bg, bg = colors.blue, gui = "bold" } },
+			visual = { a = { fg = colors.bg, bg = colors.purple, gui = "bold" } },
+			terminal = { a = { fg = colors.bg, bg = colors.cyan, gui = "bold" } },
+			replace = { a = { fg = colors.bg, bg = colors.red1, gui = "bold" } },
+			inactive = {
+				a = { fg = colors.gray1, bg = colors.bg, gui = "bold" },
+				b = { fg = colors.gray1, bg = colors.bg },
+				c = { fg = colors.gray1, bg = colors.gray2 },
+			},
+		}
+	end
 
 	require("lualine").setup({
 		options = {
-			-- component_separators = { left = "", right = "" },
-			-- section_separators = { left = "", right = "" },
+			theme = theme(),
+			-- theme = custom_onedark,
 			component_separators = { left = "", right = "" },
-			section_separators = { left = "", right = "" },
+			section_separators = { left = "", right = "" },
+			-- component_separators = { left = "", right = "" },
+			-- section_separators = { left = "", right = "" },
 
 			always_divide_middle = true, -- When set to true, left sections i.e. 'a','b' and 'c'
 			-- can't take over the entire statusline even
