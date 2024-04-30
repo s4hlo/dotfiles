@@ -3,7 +3,10 @@ local M = {
 }
 
 function M.config()
-	require("copilot").setup({})
+	require("copilot").setup({
+		suggestion = { enabled = true },
+		panel = { enabled = true },
+	})
 end
 
 return M

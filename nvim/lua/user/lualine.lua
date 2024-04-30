@@ -33,7 +33,7 @@ function M.config()
 		end
 
 		if copilot_active then
-			return "%#Copilot#" .. icons.git.Octoface .. "%*"
+			return "%#Copilot#" .. ""
 		end
 		return ""
 	end
@@ -104,11 +104,14 @@ function M.config()
 			lualine_c = {},
 
 			lualine_x = {
+				-- copilot,
 				"diagnostics",
-				copilot,
 			},
 			-- lualine_x = { "branch" },
-			lualine_y = { { "filetype", icon_only = true } },
+			lualine_y = {
+				copilot,
+				{ "filetype", icon_only = true },
+			},
 			lualine_z = { "progress" },
 		},
 		extensions = { "quickfix", "man", "fugitive" },
