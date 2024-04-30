@@ -20,6 +20,7 @@ links_setup() {
     ln -fns ~/dotfiles/kitty/current-theme.conf ~/.config/kitty/current-theme.conf
 
     tmux source-file ~/.tmux.conf
+    xmodmap ~/dotfiles/.Xmodmap
     zsh -c "source ~/.zshrc"
 
     # all .sh file but the setup.sh will be turn executable here
