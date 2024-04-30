@@ -63,7 +63,7 @@ export NVM_DIR="$HOME/.nvm"
 # Start Staship and tmux 
 eval "$(starship init zsh)"
 # [ -z "$TMUX" ] && exec tmux 
-echo 'eval "$(zellij setup --generate-auto-start zsh)"' >> ~/.zshrc
+echo 'eval "$(zellij setup --generate-auto-start zsh)"' 
 
 # Enable vim keybinds
 set -o vi
