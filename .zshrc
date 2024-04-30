@@ -53,6 +53,7 @@ fi
 [ -f "/home/sleight/.ghcup/env" ] && source "/home/sleight/.ghcup/env" # ghcup-env
 
 export PATH=$PATH:~/.cargo/bin/
+export PATH=$PATH:~/dotfiles/zellij
 
 # nvm 
 export NVM_DIR="$HOME/.nvm"
@@ -61,7 +62,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # Start Staship and tmux 
 eval "$(starship init zsh)"
-[ -z "$TMUX" ] && exec tmux 
+# [ -z "$TMUX" ] && exec tmux 
+echo 'eval "$(zellij setup --generate-auto-start zsh)"' >> ~/.zshrc
 
 # Enable vim keybinds
 set -o vi
@@ -91,6 +93,7 @@ alias taskj='task add +tarken'
 alias kls='sudo logkeys -s -o ~/sleight.log -m ~/dev/logkeys/keymaps/en_US_ubuntu_1204.map'
 alias klm='sudo tail --follow ~/sleight.log'
 alias klk='sudo logkeys -k'
+alias tar='tar –xvzf'
 
 ###### MEMENTO MORI ######
 
