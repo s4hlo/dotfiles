@@ -26,6 +26,8 @@ spec("user.indentline")
 spec("user.alpha")
 spec("user.netrw")
 spec("user.project")
+spec("user.copilot")
+spec("user.copilot-cmp")
 -- spec("user.barbar") -- experiment
 spec("user.jdtls")
 spec("user.blamer")
