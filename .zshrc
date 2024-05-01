@@ -91,6 +91,7 @@ alias taskj='task add +tarken'
 alias kls='sudo logkeys -s -o ~/sleight.log -m ~/dev/logkeys/keymaps/en_US_ubuntu_1204.map'
 alias klm='sudo tail --follow ~/sleight.log'
 alias klk='sudo logkeys -k'
+alias tar='tar –xvzf'
 
 ###### MEMENTO MORI ######
 

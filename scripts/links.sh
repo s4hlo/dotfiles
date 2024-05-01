@@ -18,6 +18,7 @@ links_setup() {
     ln -fns ~/dotfiles/i3/polybar/config.ini ~/.config/polybar/config.ini
     ln -fns ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
     ln -fns ~/dotfiles/kitty/current-theme.conf ~/.config/kitty/current-theme.conf
+    ln -fns ~/dotfiles/i3/dunstrc ~/.config/dunst/dunstrc
 
     tmux source-file ~/.tmux.conf
     xmodmap ~/dotfiles/.Xmodmap
