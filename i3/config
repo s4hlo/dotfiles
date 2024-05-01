@@ -79,7 +79,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # ! to avoid change this file, always rename the wallpaper to "wallpaper.png"
 # @target
-exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpaper10.jpg
+exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpaper2.jpg
 
 # startup picom
 exec --no-startup-id picom -b -f --config ~/dotfiles/picom.conf

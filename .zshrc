@@ -53,7 +53,6 @@ fi
 [ -f "/home/sleight/.ghcup/env" ] && source "/home/sleight/.ghcup/env" # ghcup-env
 
 export PATH=$PATH:~/.cargo/bin/
-export PATH=$PATH:~/dotfiles/zellij
 
 # nvm 
 export NVM_DIR="$HOME/.nvm"
@@ -62,8 +61,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Start Staship and tmux 
 eval "$(starship init zsh)"
-# [ -z "$TMUX" ] && exec tmux 
-eval "$(zellij setup --generate-auto-start zsh)"
+[ -z "$TMUX" ] && exec tmux 
 
 # Enable vim keybinds
 set -o vi
