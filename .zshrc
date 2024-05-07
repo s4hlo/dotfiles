@@ -98,4 +98,3 @@ alias klk='sudo logkeys -k'
 alias tar='tar –xvzf'
 
 ###### MEMENTO MORI ######
-

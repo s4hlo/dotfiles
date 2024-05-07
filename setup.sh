@@ -14,7 +14,6 @@ ask_yes_no() {
 echo 'Welcome to the setup script for my dotfiles! :hearts:'
 echo ' REQUIREMENTS: 
 - Git
-- Gnome 
 - Zsh
 '
 
@@ -51,13 +50,6 @@ if ask_yes_no "Do you want to install job apps?"; then
     job_setup
 else
     echo " 🟡  Skipping job apps installation"
-fi
-
-if ask_yes_no "Do you want to install college apps?"; then
-    . ~/dotfiles/scripts/college.sh
-    college_setup
-else
-    echo " 🟡  Skipping college apps installation"
 fi
 
 if ask_yes_no "Do you want to download and install the Nerd Font?"; then

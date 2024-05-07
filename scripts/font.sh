@@ -7,8 +7,5 @@ font_setup() {
     rm ~/Downloads/TempFile.zip
     sudo fc-cache -fv
 
-    # Set NerdFont in GNOME Terminal
-    DEFAULT_PROFILE=$(gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}')
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${DEFAULT_PROFILE}/ font 'JetBrainsMono Nerd Font Mono 12'
     fc-list | grep -q "JetBrainsMono"
 }

@@ -21,9 +21,8 @@ links_setup() {
     ln -fns ~/dotfiles/i3/dunstrc ~/.config/dunst/dunstrc
 
     tmux source-file ~/.tmux.conf
-    xmodmap ~/dotfiles/.Xmodmap
     zsh -c "source ~/.zshrc"
 
     # all .sh file but the setup.sh will be turn executable here
-    chmod +x $HOME/dotfiles/i3/polybar/launch.sh
+    chmod +x "$HOME"/dotfiles/i3/polybar/launch.sh
 }
