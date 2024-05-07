@@ -1,5 +1,5 @@
-! clear Lock
-! keysym Caps_Lock = Control_L
+clear Lock
+keycode 66 = Control_L
+add Control = Control_L
 
-! add Control = Control_L 
 keysym grave = Escape grave

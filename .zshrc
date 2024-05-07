@@ -67,6 +67,10 @@ eval "$(starship init zsh)"
 set -o vi
 bindkey -M viins jj vi-cmd-mode
 
+# run keyboard remaps
+
+xmodmap ~/dotfiles/.Xmodmap
+
 # My personal aliases 
 # Improved ls alias with additional options
 alias ls='ls -AFG --color=auto --group-directories-first'
