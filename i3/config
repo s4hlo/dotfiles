@@ -245,7 +245,7 @@ bindsym $mod+BackSpace mode "system"
 default_border none
 
 gaps inner 10
-gaps bottom 25
+gaps top 25
 
 # smart_gaps inverse_outer
 
