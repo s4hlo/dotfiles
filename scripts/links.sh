@@ -2,7 +2,7 @@ links_setup() {
     rm -rf ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc ~/.config/nvim
 
     # all links are defined here
-    ln -fns ~/dotfiles/.tmux.conf ~/.tmux.conf
+    ln -fns ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
     ln -fns ~/dotfiles/.gitconfig ~/.gitconfig
     ln -fns ~/dotfiles/.vimrc ~/.vimrc
     ln -fns ~/dotfiles/.zshrc ~/.zshrc
