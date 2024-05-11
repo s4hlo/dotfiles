@@ -1,9 +1,8 @@
 local M = {
   "lervag/vimtex",
-  init = function ()
+  init = function()
     -- nothing here
-  end
+  end,
 }
-
 
 return M

@@ -105,7 +105,7 @@ function M.config()
           importModuleSpecifierPreference = "relative",
           importModuleSpecifierEnding = "minimal",
         },
-      }
+      },
     }
 
     local require_ok, settings = pcall(require, "user.lspsettings." .. server)

@@ -1,10 +1,10 @@
 local M = {
   "Julian/lean.nvim",
-  event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
+  event = { "BufReadPre *.lean", "BufNewFile *.lean" },
 
   dependencies = {
-    'neovim/nvim-lspconfig',
-    'nvim-lua/plenary.nvim',
+    "neovim/nvim-lspconfig",
+    "nvim-lua/plenary.nvim",
     -- you also will likely want nvim-cmp or some completion engine
   },
 
@@ -14,7 +14,7 @@ local M = {
       on_attach = on_attach,
     },
     mappings = true,
-  }
+  },
 }
 
 function M.config()
