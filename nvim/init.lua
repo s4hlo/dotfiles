@@ -2,6 +2,7 @@ require "user.launch"
 require "user.options"
 require "user.keymaps"
 require "user.autocmds"
+-- general porpouse
 spec "user.colorscheme"
 spec "user.devicons"
 spec "user.treesitter"
@@ -30,12 +31,11 @@ spec "user.netrw"
 spec "user.project"
 spec "user.copilot"
 spec "user.copilot-cmp"
--- spec("user.barbar") -- experiment
-spec "user.jdtls"
 spec "user.blamer"
 spec "user.glance"
 spec "user.transparent"
--- specific related plugins
+-- filetype related plugins
+spec "user.jdtls"
 spec "user.vimtex"
 spec "user.prettier"
 spec "user.lean"
