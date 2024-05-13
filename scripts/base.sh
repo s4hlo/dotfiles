@@ -19,7 +19,7 @@ base_setup() {
     sudo apt install xdotool
     echo " ✅- TOOLS --> XINPUT, XPROP, XDOTOOL installation finished"
 
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | sh
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
     echo " ✅ - NVM installation finished (1/7)"
 
     curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
