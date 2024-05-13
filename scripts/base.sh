@@ -22,7 +22,7 @@ base_setup() {
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
     echo " ✅ - NVM installation finished (1/7)"
 
-    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+    sudo apt install kitty
     echo " ✅ - KITTY installation finished (2/7)"
 
     curl -sS https://starship.rs/install.sh | sh
