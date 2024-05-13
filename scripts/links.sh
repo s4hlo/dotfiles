@@ -1,6 +1,8 @@
 links_setup() {
     rm -rf ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc ~/.config/nvim
 
+    mkdir -p ~/.config/gh ~/.config/rofi ~/.config/polybar ~/.config/dunst ~/.config/kitty
+
     # all links are defined here
     ln -fns ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
     ln -fns ~/dotfiles/.gitconfig ~/.gitconfig
