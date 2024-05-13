@@ -20,32 +20,35 @@ base_setup() {
     echo " ✅- TOOLS --> XINPUT, XPROP, XDOTOOL installation finished"
 
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | sh
-    echo " ✅ - NVM installation finished (1/7)"
+    echo " ✅ - NVM installation finished (1/8)"
+
+    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+    echo " ✅ - KITTY installation finished (2/8)"
 
     curl -sS https://starship.rs/install.sh | sh
-    echo " ✅ - STARSHIP installation finished (2/7)"
+    echo " ✅ - STARSHIP installation finished (3/8)"
 
     # xclip is necessary to enable shared clipboard but only works in x11 system
     # ! CONFIG TOOL - to check where use it, search for ocurrences using grep
     sudo apt install xclip
-    echo " ✅- XCLIP installation finished (3/7)"
+    echo " ✅- XCLIP installation finished (4/8)"
 
     # this assure nvim to be installed 
     # with the latest version                           [update version]
     # TODO add a path to nvim                                  V
     wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz -P ~/Downloads
     tar xzvf ~/Downloads/nvim-linux64.tar.gz -C ~/dotfiles
-    echo " ✅ - NVIM installation finished (4/7)"
+    echo " ✅ - NVIM installation finished (5/8)"
 
     sudo apt install tmux
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    echo " ✅ - TMUX installation finished (5/7)"
+    echo " ✅ - TMUX installation finished (6/8)"
 
     # ripgrep is necessary to enable search in files using telescope
     sudo apt install ripgrep
-    echo " ✅ - RIPGREP installation finished (6/7)"
+    echo " ✅ - RIPGREP installation finished (7/8)"
 
     # xrandr is necessary to enable screen configuration
     sudo apt install xrandr
-    echo " ✅ - XRANDR installation finished (7/7)"
+    echo " ✅ - XRANDR installation finished (8/8)"
 }
