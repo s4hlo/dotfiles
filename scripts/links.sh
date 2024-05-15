@@ -19,9 +19,11 @@ links_setup() {
     ln -fns ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
     ln -fns ~/dotfiles/kitty/current-theme.conf ~/.config/kitty/current-theme.conf
 
+    # all .sh file but the setup.sh will be turn executable here
+    chmod +x "$HOME"/dotfiles/i3/polybar/launch.sh
+    chmod +x "$HOME"/dotfiles/tmux/theme.tmux
+
     tmux source-file ~/.tmux.conf
     zsh -c "source ~/.zshrc"
 
-    # all .sh file but the setup.sh will be turn executable here
-    chmod +x "$HOME"/dotfiles/i3/polybar/launch.sh
 }
