@@ -39,7 +39,7 @@ LIGHT_GREY=#3e4452 #236
 DARK_GREY=#282c34 #241
 
 # Status options
-tmux_set status-interval 1
+tmux_set status-interval 5
 tmux_set status on
 
 # Basic status bar colors
@@ -59,20 +59,16 @@ tmux_set @prefix_highlight_output_suffix "#[fg=$BLUE]#[bg=$NIL]$rarrow"
 tmux_set status-left-bg "$NIL"
 tmux_set status-left-fg "$WHITE"
 tmux_set status-left-length 150
-LS="#[fg=$NIL,bg=$BLUE,bold]  ⠀"
+# LS="#[fg=$NIL,bg=$BLUE,bold]  ⠀"
 
-wait_mode="#[fg=$BLUE]#[bg=$GREEN]$rarrow #[fg=$WHITE]#[bg=$GREEN] #S #[fg=$GREEN]#[bg=$LIGHT_GREY]$rarrow"
-tmux_mode="#[fg=$BLUE]#[bg=$BLUE]$rarrow #[fg=$DARK_GREY]#[bg=$BLUE] #S #[fg=$BLUE]#[bg=$LIGHT_GREY]$rarrow"
-copy_mode="#[fg=$BLUE]#[bg=$PURPLE]$rarrow #[fg=$DARK_GREY]#[bg=$PURPLE] #S #[fg=$PURPLE]#[bg=$LIGHT_GREY]$rarrow"
-sync_mode="#[fg=$BLUE]#[bg=$RED]$rarrow #[fg=$DARK_GREY]#[bg=$RED] #S #[fg=$RED]#[bg=$LIGHT_GREY]$rarrow"
+copy_mode="#[fg=$BLUE]#[bg=$GREEN]$rarrow #[fg=$DARK_GREY]#[bg=$GREEN]#[bold] #(whoami) #[fg=$GREEN]#[bg=$LIGHT_GREY]$rarrow"
+tmux_mode="#[fg=$BLUE]#[bg=$BLUE]$rarrow #[fg=$DARK_GREY]#[bg=$BLUE] #(whoami) #[fg=$BLUE]#[bg=$LIGHT_GREY]$rarrow"
+wait_mode="#[fg=$BLUE]#[bg=$PURPLE]$rarrow #[fg=$DARK_GREY]#[bg=$PURPLE] #(whoami) #[fg=$PURPLE]#[bg=$LIGHT_GREY]$rarrow"
+sync_mode="#[fg=$BLUE]#[bg=$RED]$rarrow #[fg=$DARK_GREY]#[bg=$RED] #(whoami) #[fg=$RED]#[bg=$LIGHT_GREY]$rarrow"
 
-LS="$LS#{?client_prefix,$wait_mode,#{?pane_in_mode,$copy_mode,#{?pane_synchronized,$sync_mode,$tmux_mode} } } "
+LS="$LS#{?client_prefix,$wait_mode,#{?pane_in_mode,$copy_mode,#{?pane_synchronized,$sync_mode,$tmux_mode}}} "
 
-if "$show_upload_speed"; then
-    LS="$LS#[fg=$WHITE,bg=$LIGHT_GREY] $upload_speed_icon #{upload_speed} #[fg=$LIGHT_GREY,bg=$NIL]$rarrow"
-else
-    LS="$LS#[fg=$DARK_GREY,bg=$NIL]$rarrow"
-fi
+LS="$LS#[fg=$WHITE,bg=$LIGHT_GREY] #(git -C #{pane_current_path} branch --show-current) #[fg=$LIGHT_GREY,bg=$NIL]$rarrow"
 
 tmux_set status-left "$LS"
 
