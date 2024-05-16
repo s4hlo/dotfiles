@@ -35,6 +35,7 @@ LIGHT_GREY=#3e4452 #236
 DARK_GREY=#282c34 #241
 
 # Status options
+tmux_set status-style                 "fg=$NIL,bg=$NIL"
 tmux_set status-interval 5
 tmux_set status on
 
@@ -74,7 +75,7 @@ tmux_set status-right-fg "$WHITE"
 tmux_set status-right-length 150
 
 copy_right="#[fg=$GREEN]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$GREEN]#[bold]  $date_format  "
-tmux_right="#[fg=$BLUE]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$BLUE]#[bold]  $󰸗date_format "
+tmux_right="#[fg=$BLUE]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$BLUE]#[bold]  $date_format "
 wait_right="#[fg=$PURPLE]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$PURPLE]#[bold]  $date_format  "
 sync_right="#[fg=$RED]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$RED]#[bold]  $date_format  "
 
@@ -95,9 +96,10 @@ sync_window="#[fg=$RED]#[bg=$NIL]$i_rarrow#[fg=$DARK_GREY]#[bg=$RED]#[bold] #I #
 
 WS="#{?client_prefix,$wait_window,#{?pane_in_mode,$copy_window,#{?pane_synchronized,$sync_window,$tmux_window}}}"
 
-tmux_set window-status-current-format "#[fg=$NIL,bg=default]$i_rarrow#[fg=$DARK_GREY,bg=$BLUE] #I #W #[fg=$BLUE,bg=$NIL]$rarrow"
 tmux_set window-status-current-format "$WS"
 
+# Window separator
+tmux_set window-status-separator ""
 
 # Window status style
 tmux_set window-status-style          "fg=$BLUE,bg=$NIL,none"
