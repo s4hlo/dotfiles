@@ -20,8 +20,6 @@ tmux_set() {
 # Options
 # TODO this i will turn a style option in the future
 STYLE='angled'
-
-# Set arrow symbols based on the selected theme
 case $STYLE in
   flat)
     i_rarrow=''
@@ -32,6 +30,11 @@ case $STYLE in
     i_rarrow=''
     rarrow=''
     larrow=''
+    ;;
+  arrow)
+    i_rarrow=''
+    rarrow=''
+    larrow=''
     ;;
   rounded)
     i_rarrow=' '
@@ -102,9 +105,9 @@ tmux_set status-right "$RS"
 
 
 # ---------------------------WINDOW STATUS FORMAT
-tmux_set window-status-format         "#[fg=$DARK_GREY,bg=default]$i_rarrow#[fg=$WHITE,bg=$DARK_GREY] #I #W #[fg=$DARK_GREY,bg=$NIL]$rarrow"
+tmux_set window-status-format         "#[fg=$DARK_GREY,bg=default]#[bold]$i_rarrow#[fg=$WHITE,bg=$DARK_GREY] #I #W #[fg=$DARK_GREY,bg=$NIL]$rarrow"
 
-WS="#[fg=$STATUS_COLOR]#[bg=$NIL]$i_rarrow#[fg=$DARK_GREY]#[bg=$STATUS_COLOR]#[bold] #I #W #[fg=$STATUS_COLOR]#[bg=$NIL]$rarrow"
+WS="#[fg=$STATUS_COLOR]#[bg=$NIL]#[bold]$i_rarrow#[fg=$DARK_GREY]#[bg=$STATUS_COLOR]#[bold] #I #W #[fg=$STATUS_COLOR]#[bg=$NIL]$rarrow"
 
 tmux_set window-status-current-format "$WS"
 
