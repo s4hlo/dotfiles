@@ -29,22 +29,10 @@ show_download_speed="$(tmux_get @tmux_power_show_download_speed false)"
 time_format=$(tmux_get @tmux_power_time_format '%T')
 date_format=$(tmux_get @tmux_power_date_format '%F')
 
-# local colors = {
-#       blue = "#61afef",
-#       green = "#98c379",
-#       purple = "#c678dd",
-#       cyan = "#56b6c2",
-#       red1 = "#e06c75",
-#       red2 = "#be5046",
-#       yellow = "#e5c07b",
-#       fg = "#abb2bf",
-#       bg = "#282c34",
-#       gray1 = "#828997",
-#       gray2 = nil,
-#       gray3 = "#3e4452",
-#     }
-
-TC=#698DDA
+BLUE=#698DDA
+RED=#e06c75
+PURPLE=#c678dd
+GREEN=#98c379
 WHITE=#abb2bf
 NIL=default #235
 LIGHT_GREY=#3e4452 #236
@@ -63,17 +51,22 @@ tmux_set status-attr none
 tmux_set @prefix_highlight_fg "$NIL"
 tmux_set @prefix_highlight_bg "$DARK_GREY"
 tmux_set @prefix_highlight_show_copy_mode 'on'
-tmux_set @prefix_highlight_copy_mode_attr "fg=$TC,bg=$NIL,bold"
-tmux_set @prefix_highlight_output_prefix "#[fg=$TC]#[bg=$NIL]$larrow#[bg=$TC]#[fg=$NIL]"
-tmux_set @prefix_highlight_output_suffix "#[fg=$TC]#[bg=$NIL]$rarrow"
+tmux_set @prefix_highlight_copy_mode_attr "fg=$BLUE,bg=$NIL,bold"
+tmux_set @prefix_highlight_output_prefix "#[fg=$BLUE]#[bg=$NIL]$larrow#[bg=$BLUE]#[fg=$NIL]"
+tmux_set @prefix_highlight_output_suffix "#[fg=$BLUE]#[bg=$NIL]$rarrow"
 
 # ---------------------- LEFT SIDE OF STATUS BAR
 tmux_set status-left-bg "$NIL"
 tmux_set status-left-fg "$WHITE"
 tmux_set status-left-length 150
-LS="#[fg=$NIL,bg=$TC,bold]  ⠀"
+LS="#[fg=$NIL,bg=$BLUE,bold]  ⠀"
 
-LS="$LS#{?client_prefix,#[fg=$TC]#[bg=$TC]$rarrow #[fg=$NIL]#[bg=$TC] #S #[fg=$TC]#[bg=$LIGHT_GREY]$rarrow,#[fg=$TC]#[bg=$DARK_GREY]$rarrow #[fg=$WHITE]#[bg=$DARK_GREY] #S #[fg=$DARK_GREY]#[bg=$LIGHT_GREY]$rarrow} "
+wait_mode="#[fg=$BLUE]#[bg=$GREEN]$rarrow #[fg=$WHITE]#[bg=$GREEN] #S #[fg=$GREEN]#[bg=$LIGHT_GREY]$rarrow"
+tmux_mode="#[fg=$BLUE]#[bg=$BLUE]$rarrow #[fg=$DARK_GREY]#[bg=$BLUE] #S #[fg=$BLUE]#[bg=$LIGHT_GREY]$rarrow"
+copy_mode="#[fg=$BLUE]#[bg=$PURPLE]$rarrow #[fg=$DARK_GREY]#[bg=$PURPLE] #S #[fg=$PURPLE]#[bg=$LIGHT_GREY]$rarrow"
+sync_mode="#[fg=$BLUE]#[bg=$RED]$rarrow #[fg=$DARK_GREY]#[bg=$RED] #S #[fg=$RED]#[bg=$LIGHT_GREY]$rarrow"
+
+LS="$LS#{?client_prefix,$wait_mode,#{?pane_in_mode,$copy_mode,#{?pane_synchronized,$sync_mode,$tmux_mode} } } "
 
 if "$show_upload_speed"; then
     LS="$LS#[fg=$WHITE,bg=$LIGHT_GREY] $upload_speed_icon #{upload_speed} #[fg=$LIGHT_GREY,bg=$NIL]$rarrow"
@@ -88,42 +81,42 @@ tmux_set status-right-bg "$NIL"
 tmux_set status-right-fg "$WHITE"
 tmux_set status-right-length 150
 
-RS="#[fg=$DARK_GREY]$larrow#[fg=$TC,bg=$DARK_GREY]$time_format #[fg=$TC,bg=$DARK_GREY]$larrow#[fg=$NIL,bg=$TC] ⠀  $date_format  "
+RS="#[fg=$DARK_GREY]$larrow#[fg=$BLUE,bg=$DARK_GREY]$time_format #[fg=$BLUE,bg=$DARK_GREY]$larrow#[fg=$NIL,bg=$BLUE] ⠀  $date_format  "
 if "$show_download_speed"; then
-    RS="#[fg=$LIGHT_GREY,bg=$NIL]$larrow#[fg=$TC,bg=$LIGHT_GREY] $download_speed_icon #{download_speed} $RS"
+    RS="#[fg=$LIGHT_GREY,bg=$NIL]$larrow#[fg=$BLUE,bg=$LIGHT_GREY] $download_speed_icon #{download_speed} $RS"
 fi
 tmux_set status-right "$RS"
 
 
 # ---------------------------WINDOW STATUS FORMAT
 tmux_set window-status-format         "#[fg=$DARK_GREY,bg=default]$i_rarrow#[fg=$WHITE,bg=$DARK_GREY] #I #W #[fg=$DARK_GREY,bg=$NIL]$rarrow"
-tmux_set window-status-current-format "#[fg=$NIL,bg=default]$i_rarrow#[fg=$DARK_GREY,bg=$TC] #I #W #[fg=$TC,bg=$NIL]$rarrow"
+tmux_set window-status-current-format "#[fg=$NIL,bg=default]$i_rarrow#[fg=$DARK_GREY,bg=$BLUE] #I #W #[fg=$BLUE,bg=$NIL]$rarrow"
 
 
 # Window status style
-tmux_set window-status-style          "fg=$TC,bg=$NIL,none"
-tmux_set window-status-last-style     "fg=$TC,bg=$NIL,none"
-tmux_set window-status-activity-style "fg=$TC,bg=$NIL,bold"
+tmux_set window-status-style          "fg=$BLUE,bg=$NIL,none"
+tmux_set window-status-last-style     "fg=$BLUE,bg=$NIL,none"
+tmux_set window-status-activity-style "fg=$BLUE,bg=$NIL,bold"
 
 # Pane border
 tmux_set pane-border-style "fg=$DARK_GREY,bg=default"
 
 # Active pane border
-tmux_set pane-active-border-style "fg=$TC,bg=default"
+tmux_set pane-active-border-style "fg=$BLUE,bg=default"
 
 # Pane number indicator
 tmux_set display-panes-colour "$DARK_GREY"
-tmux_set display-panes-active-colour "$TC"
+tmux_set display-panes-active-colour "$BLUE"
 
 # Clock mode
-tmux_set clock-mode-colour "$TC"
+tmux_set clock-mode-colour "$BLUE"
 tmux_set clock-mode-style 24
 
 # Message
-tmux_set message-style "fg=$TC,bg=$NIL"
+tmux_set message-style "fg=$BLUE,bg=$NIL"
 
 # Command message
-tmux_set message-command-style "fg=$TC,bg=$NIL"
+tmux_set message-command-style "fg=$BLUE,bg=$NIL"
 
 # Copy mode highlight
-tmux_set mode-style "bg=$TC,fg=$DARK_GREY"
+tmux_set mode-style "bg=$BLUE,fg=$DARK_GREY"
