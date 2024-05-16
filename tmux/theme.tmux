@@ -22,11 +22,7 @@ tmux_set() {
 i_rarrow=''
 rarrow=''
 larrow=''
-upload_speed_icon='󰕒'
 download_speed_icon='󰇚'
-show_upload_speed="$(tmux_get @tmux_power_show_upload_speed false)"
-show_download_speed="$(tmux_get @tmux_power_show_download_speed false)"
-time_format=$(tmux_get @tmux_power_time_format '%T')
 date_format=$(tmux_get @tmux_power_date_format '%F')
 
 BLUE=#698DDA
@@ -77,11 +73,11 @@ tmux_set status-right-bg "$NIL"
 tmux_set status-right-fg "$WHITE"
 tmux_set status-right-length 150
 
-copy_right="#[fg=$GREEN]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$GREEN]#[bold] ⠀  $date_format  "
-tmux_right="#[fg=$BLUE]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$BLUE]#[bold] ⠀  $date_format  "
-wait_right="#[fg=$PURPLE]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$PURPLE]#[bold] ⠀  $date_format  "
-sync_right="#[fg=$RED]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$RED]#[bold] ⠀  $date_format  "
-# LS="$LS#[fg=$WHITE,bg=$LIGHT_GREY] #(git -C #{pane_current_path} branch --show-current) #[fg=$LIGHT_GREY,bg=$NIL]$rarrow"
+copy_right="#[fg=$GREEN]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$GREEN]#[bold]  $date_format  "
+tmux_right="#[fg=$BLUE]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$BLUE]#[bold]  $󰸗date_format "
+wait_right="#[fg=$PURPLE]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$PURPLE]#[bold]  $date_format  "
+sync_right="#[fg=$RED]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$RED]#[bold]  $date_format  "
+
 RS="#{?client_prefix,$wait_right,#{?pane_in_mode,$copy_right,#{?pane_synchronized,$sync_right,$tmux_right}}}"
 
 RS="#[fg=$LIGHT_GREY]$larrow#[fg=$WHITE]#[bg=$LIGHT_GREY]#[bold]  #(git -C #{pane_current_path} branch --show-current) $RS"
