@@ -68,25 +68,6 @@ tmux_set @prefix_highlight_output_prefix "#[fg=$TC]#[bg=$NIL]$larrow#[bg=$TC]#[f
 tmux_set @prefix_highlight_output_suffix "#[fg=$TC]#[bg=$NIL]$rarrow"
 
 # ---------------------- LEFT SIDE OF STATUS BAR
-color_bg="#2e323b"
-color_fg="#282c34"
-color_green="#98c379"
-color_red="#e06c75"
-color_blue="#61afef"
-color_purple="#c678dd"
-
-mode_separator=""
-set -g @mode_indicator_empty_prompt " TMUX PINTO #[default]#[fg=$color_fg]$mode_separator"
-set -g @mode_indicator_empty_mode_style fg=$color_purple,bold
-set -g @mode_indicator_prefix_prompt " TMUX PENIS #[default]#[fg=$color_blue]$mode_separator"
-set -g @mode_indicator_prefix_mode_style fg=$color_bg,bg=$color_blue,bold
-set -g @mode_indicator_copy_prompt " COPY #[default]#[fg=$color_green]$mode_separator"
-set -g @mode_indicator_copy_mode_style fg=$color_bg,bg=$color_green,bold
-set -g @mode_indicator_sync_prompt " SYNC #[default]#[fg=$color_red]$mode_separator"
-set -g @mode_indicator_sync_mode_style fg=$color_bg,bg=$color_red,bold
-
-
-
 tmux_set status-left-bg "$NIL"
 tmux_set status-left-fg "$WHITE"
 tmux_set status-left-length 150
