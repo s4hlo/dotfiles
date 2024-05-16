@@ -19,7 +19,7 @@ tmux_set() {
 
 # Options
 # TODO this i will turn a style option in the future
-STYLE='angled'
+STYLE=$(tmux_get @tmux_line_style 'angled')
 case $STYLE in
   flat)
     i_rarrow=''
@@ -97,7 +97,7 @@ tmux_set status-right-bg "$NIL"
 tmux_set status-right-fg "$WHITE"
 tmux_set status-right-length 150
 
-RS="#[fg=$STATUS_COLOR]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$STATUS_COLOR]#[bold]   $date_format  "
+RS="#[fg=$STATUS_COLOR]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$STATUS_COLOR]#[bold] $date_format⠀"
 
 RS="#[fg=$LIGHT_GREY]$larrow#[fg=$WHITE]#[bg=$LIGHT_GREY]#[bold]  #(git -C #{pane_current_path} branch --show-current) $RS"
 RS="#[fg=$DARK_GREY,bg=$NIL]$larrow#[fg=$WHITE,bg=$DARK_GREY] $download_speed_icon #{download_speed} $RS"
