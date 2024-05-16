@@ -61,14 +61,14 @@ tmux_set status-left-fg "$WHITE"
 tmux_set status-left-length 150
 # LS="#[fg=$NIL,bg=$BLUE,bold]  ⠀"
 
-copy_mode="#[fg=$BLUE]#[bg=$GREEN]$rarrow #[fg=$DARK_GREY]#[bg=$GREEN]#[bold] #(whoami) #[fg=$GREEN]#[bg=$LIGHT_GREY]$rarrow"
-tmux_mode="#[fg=$BLUE]#[bg=$BLUE]$rarrow #[fg=$DARK_GREY]#[bg=$BLUE] #(whoami) #[fg=$BLUE]#[bg=$LIGHT_GREY]$rarrow"
-wait_mode="#[fg=$BLUE]#[bg=$PURPLE]$rarrow #[fg=$DARK_GREY]#[bg=$PURPLE] #(whoami) #[fg=$PURPLE]#[bg=$LIGHT_GREY]$rarrow"
-sync_mode="#[fg=$BLUE]#[bg=$RED]$rarrow #[fg=$DARK_GREY]#[bg=$RED] #(whoami) #[fg=$RED]#[bg=$LIGHT_GREY]$rarrow"
+copy_mode="#[fg=$DARK_GREY]#[bg=$GREEN]#[bold]  ⠀#[fg=$GREEN]#[bg=$LIGHT_GREY]$rarrow"
+tmux_mode="#[fg=$DARK_GREY]#[bg=$BLUE]#[bold]  ⠀#[fg=$BLUE]#[bg=$LIGHT_GREY]$rarrow"
+wait_mode="#[fg=$DARK_GREY]#[bg=$PURPLE]#[bold]  ⠀#[fg=$PURPLE]#[bg=$LIGHT_GREY]$rarrow"
+sync_mode="#[fg=$DARK_GREY]#[bg=$RED]#[bold]  ⠀#[fg=$RED]#[bg=$LIGHT_GREY]$rarrow"
 
-LS="$LS#{?client_prefix,$wait_mode,#{?pane_in_mode,$copy_mode,#{?pane_synchronized,$sync_mode,$tmux_mode}}} "
+LS="#{?client_prefix,$wait_mode,#{?pane_in_mode,$copy_mode,#{?pane_synchronized,$sync_mode,$tmux_mode}}} "
 
-LS="$LS#[fg=$WHITE,bg=$LIGHT_GREY] #(git -C #{pane_current_path} branch --show-current) #[fg=$LIGHT_GREY,bg=$NIL]$rarrow"
+LS="$LS#[fg=$WHITE,bg=$LIGHT_GREY]#(whoami) #[fg=$LIGHT_GREY,bg=$NIL]$rarrow"
 
 tmux_set status-left "$LS"
 
@@ -77,16 +77,30 @@ tmux_set status-right-bg "$NIL"
 tmux_set status-right-fg "$WHITE"
 tmux_set status-right-length 150
 
-RS="#[fg=$DARK_GREY]$larrow#[fg=$BLUE,bg=$DARK_GREY]$time_format #[fg=$BLUE,bg=$DARK_GREY]$larrow#[fg=$NIL,bg=$BLUE] ⠀  $date_format  "
-if "$show_download_speed"; then
-    RS="#[fg=$LIGHT_GREY,bg=$NIL]$larrow#[fg=$BLUE,bg=$LIGHT_GREY] $download_speed_icon #{download_speed} $RS"
-fi
+copy_right="#[fg=$GREEN]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$GREEN]#[bold] ⠀  $date_format  "
+tmux_right="#[fg=$BLUE]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$BLUE]#[bold] ⠀  $date_format  "
+wait_right="#[fg=$PURPLE]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$PURPLE]#[bold] ⠀  $date_format  "
+sync_right="#[fg=$RED]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$RED]#[bold] ⠀  $date_format  "
+# LS="$LS#[fg=$WHITE,bg=$LIGHT_GREY] #(git -C #{pane_current_path} branch --show-current) #[fg=$LIGHT_GREY,bg=$NIL]$rarrow"
+RS="#{?client_prefix,$wait_right,#{?pane_in_mode,$copy_right,#{?pane_synchronized,$sync_right,$tmux_right}}}"
+
+RS="#[fg=$LIGHT_GREY]$larrow#[fg=$WHITE]#[bg=$LIGHT_GREY]#[bold]  #(git -C #{pane_current_path} branch --show-current) $RS"
+RS="#[fg=$DARK_GREY,bg=$NIL]$larrow#[fg=$WHITE,bg=$DARK_GREY] $download_speed_icon #{download_speed} $RS"
 tmux_set status-right "$RS"
 
 
 # ---------------------------WINDOW STATUS FORMAT
 tmux_set window-status-format         "#[fg=$DARK_GREY,bg=default]$i_rarrow#[fg=$WHITE,bg=$DARK_GREY] #I #W #[fg=$DARK_GREY,bg=$NIL]$rarrow"
+
+copy_window="#[fg=$GREEN]#[bg=$NIL]$i_rarrow#[fg=$DARK_GREY]#[bg=$GREEN]#[bold] #I #W #[fg=$GREEN]#[bg=$NIL]$rarrow"
+tmux_window="#[fg=$BLUE]#[bg=$NIL]$i_rarrow#[fg=$DARK_GREY]#[bg=$BLUE]#[bold] #I #W #[fg=$BLUE]#[bg=$NIL]$rarrow"
+wait_window="#[fg=$PURPLE]#[bg=$NIL]$i_rarrow#[fg=$DARK_GREY]#[bg=$PURPLE]#[bold] #I #W #[fg=$PURPLE]#[bg=$NIL]$rarrow"
+sync_window="#[fg=$RED]#[bg=$NIL]$i_rarrow#[fg=$DARK_GREY]#[bg=$RED]#[bold] #I #W #[fg=$RED]#[bg=$NIL]$rarrow"
+
+WS="#{?client_prefix,$wait_window,#{?pane_in_mode,$copy_window,#{?pane_synchronized,$sync_window,$tmux_window}}}"
+
 tmux_set window-status-current-format "#[fg=$NIL,bg=default]$i_rarrow#[fg=$DARK_GREY,bg=$BLUE] #I #W #[fg=$BLUE,bg=$NIL]$rarrow"
+tmux_set window-status-current-format "$WS"
 
 
 # Window status style
