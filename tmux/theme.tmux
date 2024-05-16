@@ -36,17 +36,32 @@ prefix_highlight_pos=$(tmux_get @tmux_power_prefix_highlight_pos)
 time_format=$(tmux_get @tmux_power_time_format '%T')
 date_format=$(tmux_get @tmux_power_date_format '%F')
 # short for Theme-Colour
+
+# local colors = {
+#       blue = "#61afef",
+#       green = "#98c379",
+#       purple = "#c678dd",
+#       cyan = "#56b6c2",
+#       red1 = "#e06c75",
+#       red2 = "#be5046",
+#       yellow = "#e5c07b",
+#       fg = "#abb2bf",
+#       bg = "#282c34",
+#       gray1 = "#828997",
+#       gray2 = nil,
+#       gray3 = "#3e4452",
+#     }
+
 TC=#698DDA
-
-G04=default #235
-G05=#303030 #236
-G06=#3a3a3a #237
+WHITE=#abb2bf
+NIL=default #235
+G05=#3e4452 #236
+G06=#282c34 #237
 G07=#444444 #238
-G10=#626262 #241
+G10=#282c34 #241
 G12=#767676 #243
-
+# 828997
 FG="$G10"
-BG="$G04"
 
 # Status options
 tmux_set status-interval 1
@@ -54,41 +69,41 @@ tmux_set status on
 
 # Basic status bar colors
 tmux_set status-fg "$FG"
-tmux_set status-bg "$BG"
+tmux_set status-bg "$NIL"
 tmux_set status-attr none
 
 # tmux-prefix-highlight
-tmux_set @prefix_highlight_fg "$BG"
+tmux_set @prefix_highlight_fg "$NIL"
 tmux_set @prefix_highlight_bg "$FG"
 tmux_set @prefix_highlight_show_copy_mode 'on'
-tmux_set @prefix_highlight_copy_mode_attr "fg=$TC,bg=$BG,bold"
-tmux_set @prefix_highlight_output_prefix "#[fg=$TC]#[bg=$BG]$larrow#[bg=$TC]#[fg=$BG]"
-tmux_set @prefix_highlight_output_suffix "#[fg=$TC]#[bg=$BG]$rarrow"
+tmux_set @prefix_highlight_copy_mode_attr "fg=$TC,bg=$NIL,bold"
+tmux_set @prefix_highlight_output_prefix "#[fg=$TC]#[bg=$NIL]$larrow#[bg=$TC]#[fg=$NIL]"
+tmux_set @prefix_highlight_output_suffix "#[fg=$TC]#[bg=$NIL]$rarrow"
 
 #     
 # Left side of status bar
-tmux_set status-left-bg "$G04"
+tmux_set status-left-bg "$NIL"
 tmux_set status-left-fg "$G12"
 tmux_set status-left-length 150
 user=$(whoami)
-LS="#[fg=$G04,bg=$TC,bold]   #[fg=$TC,bg=$G06,nobold]$rarrow#[fg=$TC,bg=$G06] $session_icon #S "
+LS="#[fg=$NIL,bg=$TC,bold]  ⠀"
+LS="$LS#{?client_prefix,#[fg=$TC]#[bg=$TC]$rarrow #[fg=$NIL]#[bg=$TC] #S #[fg=$TC]#[bg=$G05]$rarrow,#[fg=$TC]#[bg=$G06]$rarrow #[fg=$WHITE]#[bg=$G06] #S #[fg=$G06]#[bg=$G05]$rarrow} "
+
 if "$show_upload_speed"; then
-    LS="$LS#[fg=$G06,bg=$G05]$rarrow#[fg=$TC,bg=$G05] $upload_speed_icon #{upload_speed} #[fg=$G05,bg=$BG]$rarrow"
+    LS="$LS#[fg=$WHITE,bg=$G05] $upload_speed_icon #{upload_speed} #[fg=$G05,bg=$NIL]$rarrow"
 else
-    LS="$LS#[fg=$G06,bg=$BG]$rarrow"
+    LS="$LS#[fg=$G06,bg=$NIL]$rarrow"
 fi
-if [[ $prefix_highlight_pos == 'L' || $prefix_highlight_pos == 'LR' ]]; then
-    LS="$LS#{prefix_highlight}"
-fi
+
 tmux_set status-left "$LS"
 
 # Right side of status bar
-tmux_set status-right-bg "$BG"
+tmux_set status-right-bg "$NIL"
 tmux_set status-right-fg "$G12"
 tmux_set status-right-length 150
-RS="#[fg=$G06]$larrow#[fg=$TC,bg=$G06] $time_icon $time_format #[fg=$TC,bg=$G06]$larrow#[fg=$G04,bg=$TC] $date_icon $date_format "
+RS="#[fg=$G06]$larrow#[fg=$TC,bg=$G06] $time_icon $time_format #[fg=$TC,bg=$G06]$larrow#[fg=$NIL,bg=$TC] $date_format  "
 if "$show_download_speed"; then
-    RS="#[fg=$G05,bg=$BG]$larrow#[fg=$TC,bg=$G05] $download_speed_icon #{download_speed} $RS"
+    RS="#[fg=$G05,bg=$NIL]$larrow#[fg=$TC,bg=$G05] $download_speed_icon #{download_speed} $RS"
 fi
 if "$show_web_reachable"; then
     RS=" #{web_reachable_status} $RS"
@@ -99,16 +114,14 @@ fi
 tmux_set status-right "$RS"
 
 
-
-#    
 # Window status format
-tmux_set window-status-format         "#[fg=$G06,bg=default]$i_rarrow#[fg=$TC,bg=$G06] #I:#W#F #[fg=$G06,bg=$BG]$rarrow"
-tmux_set window-status-current-format "#[fg=$BG,bg=default]$i_rarrow#[fg=$BG,bg=$TC,bold] #I:#W#F #[fg=$TC,bg=$BG,nobold]$rarrow"
+tmux_set window-status-format         "#[fg=$G06,bg=default]$i_rarrow#[fg=$WHITE,bg=$G06] #I #W #[fg=$G06,bg=$NIL]$rarrow"
+tmux_set window-status-current-format "#[fg=$NIL,bg=default]$i_rarrow#[fg=$G06,bg=$TC] #I #W #[fg=$TC,bg=$NIL]$rarrow"
 
 # Window status style
-tmux_set window-status-style          "fg=$TC,bg=$BG,none"
-tmux_set window-status-last-style     "fg=$TC,bg=$BG,bold"
-tmux_set window-status-activity-style "fg=$TC,bg=$BG,bold"
+tmux_set window-status-style          "fg=$TC,bg=$NIL,none"
+tmux_set window-status-last-style     "fg=$TC,bg=$NIL,bold"
+tmux_set window-status-activity-style "fg=$TC,bg=$NIL,bold"
 
 # Window separator
 tmux_set window-status-separator ""
@@ -128,10 +141,10 @@ tmux_set clock-mode-colour "$TC"
 tmux_set clock-mode-style 24
 
 # Message
-tmux_set message-style "fg=$TC,bg=$BG"
+tmux_set message-style "fg=$TC,bg=$NIL"
 
 # Command message
-tmux_set message-command-style "fg=$TC,bg=$BG"
+tmux_set message-command-style "fg=$TC,bg=$NIL"
 
 # Copy mode highlight
 tmux_set mode-style "bg=$TC,fg=$FG"
