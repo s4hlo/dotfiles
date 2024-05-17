@@ -17,9 +17,24 @@ tmux_set() {
     tmux set-option -gq "$1" "$2"
 }
 
-# Options
-# TODO this i will turn a style option in the future
+# ------- CUSTOMIZATION --------------
+MAIN_ICON=$(tmux_get @tmux_line_indicator 'TMUX')
+DATE_FORMAT=$(tmux_get @tmux_power_date_format '%F')
 STYLE=$(tmux_get @tmux_line_style 'angled')
+
+# ------ THEME -------
+BLUE=$(tmux_get @tmux_line_color_blue "#698DDA")
+RED=$(tmux_get @tmux_line_color_red "#e06c75")
+PURPLE=$(tmux_get @tmux_line_color_purple "#c678dd")
+GREEN=$(tmux_get @tmux_line_color_green "#98c379")
+
+WHITE=$(tmux_get @tmux_line_color_white "#abb2bf")
+LIGHT_GREY=$(tmux_get @tmux_line_color_light_grey "#3e4452")
+DARK_GREY=$(tmux_get @tmux_line_color_dark_grey "#282c34")
+NIL=$(tmux_get @tmux_line_color_nil "default")
+
+STATUS_COLOR="#{?client_prefix,$PURPLE,#{?pane_in_mode,$GREEN,#{?pane_synchronized,$RED,$BLUE}}}"
+
 case $STYLE in
   flat)
     i_rarrow=''
@@ -47,20 +62,7 @@ case $STYLE in
 esac
 
 download_speed_icon='󰇚'
-date_format=$(tmux_get @tmux_power_date_format '%F')
 
-# ------ THEME -------
-BLUE=#698DDA
-RED=#e06c75
-PURPLE=#c678dd
-GREEN=#98c379
-
-WHITE=#abb2bf
-LIGHT_GREY=#3e4452
-DARK_GREY=#282c34
-NIL=default
-
-STATUS_COLOR="#{?client_prefix,$PURPLE,#{?pane_in_mode,$GREEN,#{?pane_synchronized,$RED,$BLUE}}}"
 # ---------------------
 
 # Status options
@@ -73,20 +75,12 @@ tmux_set status-fg "$DARK_GREY"
 tmux_set status-bg "$NIL"
 tmux_set status-attr none
 
-# tmux-prefix-highlight
-tmux_set @prefix_highlight_fg "$NIL"
-tmux_set @prefix_highlight_bg "$DARK_GREY"
-tmux_set @prefix_highlight_show_copy_mode 'on'
-tmux_set @prefix_highlight_copy_mode_attr "fg=$STATUS_COLOR,bg=$NIL,bold"
-tmux_set @prefix_highlight_output_prefix "#[fg=$STATUS_COLOR]#[bg=$NIL]$larrow#[bg=$STATUS_COLOR]#[fg=$NIL]"
-tmux_set @prefix_highlight_output_suffix "#[fg=$STATUS_COLOR]#[bg=$NIL]$rarrow"
-
 # ---------------------- LEFT SIDE OF STATUS BAR
 tmux_set status-left-bg "$NIL"
 tmux_set status-left-fg "$WHITE"
 tmux_set status-left-length 150
 
-LS="#[fg=$DARK_GREY]#[bg=$STATUS_COLOR]#[bold]  ⠀#[fg=$STATUS_COLOR]#[bg=$LIGHT_GREY]$rarrow"
+LS="#[fg=$DARK_GREY]#[bg=$STATUS_COLOR]#[bold] $MAIN_ICON ⠀#[fg=$STATUS_COLOR]#[bg=$LIGHT_GREY]$rarrow"
 
 LS="$LS#[fg=$WHITE,bg=$LIGHT_GREY] #(whoami) #[fg=$LIGHT_GREY,bg=$NIL]$rarrow"
 
@@ -97,9 +91,9 @@ tmux_set status-right-bg "$NIL"
 tmux_set status-right-fg "$WHITE"
 tmux_set status-right-length 150
 
-RS="#[fg=$STATUS_COLOR]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$STATUS_COLOR]#[bold] $date_format⠀"
+RS="#[fg=$STATUS_COLOR]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$STATUS_COLOR]#[bold] $DATE_FORMAT⠀"
 
-RS="#[fg=$LIGHT_GREY]$larrow#[fg=$WHITE]#[bg=$LIGHT_GREY]#[bold]  #(git -C #{pane_current_path} branch --show-current) $RS"
+RS="#[fg=$LIGHT_GREY]$larrow#[fg=$WHITE]#[bg=$LIGHT_GREY]#[bold] $GIT   #(git -C #{pane_current_path} branch --show-current) $RS"
 RS="#[fg=$DARK_GREY,bg=$NIL]$larrow#[fg=$WHITE,bg=$DARK_GREY] $download_speed_icon #{download_speed} $RS"
 tmux_set status-right "$RS"
 

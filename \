@@ -25,6 +25,7 @@ set -g @plugin 'tmux-plugins/tpm'
 
 set -g @plugin 'wfxr/tmux-net-speed'
 
+# set -g @minimal-tmux-bg "#698DDA"
 set -g @tmux_line_indicator " "
 
 #  styles:
@@ -32,6 +33,7 @@ set -g @tmux_line_indicator " "
 # angled
 # arrow
 # flat
+
 set -g @tmux_line_style "angled"
 
 # this will be removed when the plugin releases a first version
