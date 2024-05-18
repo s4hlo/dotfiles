@@ -21,7 +21,6 @@ links_setup() {
 
     # all .sh file but the setup.sh will be turn executable here
     chmod +x "$HOME"/dotfiles/i3/polybar/launch.sh
-    chmod +x "$HOME"/dotfiles/tmux/theme.tmux
 
     tmux source-file ~/.tmux.conf
     zsh -c "source ~/.zshrc"
