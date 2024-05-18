@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
 #===============================================================================
 #   Author: S4hlo
-#  Created: 2024-05-16 17:37
 #===============================================================================
 
-# $1: option
-# $2: default value
 tmux_get() {
     local value="$(tmux show -gqv "$1")"
     [ -n "$value" ] && echo "$value" || echo "$2"
 }
 
-# $1: option
-# $2: value
 tmux_set() {
     tmux set-option -gq "$1" "$2"
 }
@@ -21,6 +16,7 @@ tmux_set() {
 MAIN_ICON=$(tmux_get @tmux_line_indicator 'TMUX')
 DATE_FORMAT=$(tmux_get @tmux_power_date_format '%F')
 STYLE=$(tmux_get @tmux_line_style 'angled')
+JUSTIFY=$(tmux_get @tmux_line_justify 'left')
 
 # ------ THEME -------
 BLUE=$(tmux_get @tmux_line_color_blue "#698DDA")
@@ -35,6 +31,7 @@ NIL=$(tmux_get @tmux_line_color_nil "default")
 
 STATUS_COLOR="#{?client_prefix,$PURPLE,#{?pane_in_mode,$GREEN,#{?pane_synchronized,$RED,$BLUE}}}"
 
+# ---------------------------------------
 case $STYLE in
   flat)
     i_rarrow=''
@@ -63,38 +60,30 @@ esac
 
 download_speed_icon='󰇚'
 
-# ---------------------
+# --------------------- GENERAL
 
 # Status options
-tmux_set status-style                 "fg=$NIL,bg=$NIL"
-tmux_set status-interval 0
+tmux_set status-style "fg=$WHITE,bg=$NIL"
+tmux_set status-interval  1
+tmux_set status-justify "$JUSTIFY"
 tmux_set status on
-
-# Basic status bar colors
-tmux_set status-fg "$DARK_GREY"
-tmux_set status-bg "$NIL"
 tmux_set status-attr none
 
 # ---------------------- LEFT SIDE OF STATUS BAR
-tmux_set status-left-bg "$NIL"
-tmux_set status-left-fg "$WHITE"
 tmux_set status-left-length 150
 
 LS="#[fg=$DARK_GREY]#[bg=$STATUS_COLOR]#[bold] $MAIN_ICON ⠀#[fg=$STATUS_COLOR]#[bg=$LIGHT_GREY]$rarrow"
-
 LS="$LS#[fg=$WHITE,bg=$LIGHT_GREY] #(whoami) #[fg=$LIGHT_GREY,bg=$NIL]$rarrow"
 
 tmux_set status-left "$LS"
 
 # --------------------- RIGHT SIDE OF STATUS BAR
-tmux_set status-right-bg "$NIL"
-tmux_set status-right-fg "$WHITE"
 tmux_set status-right-length 150
 
-RS="#[fg=$STATUS_COLOR]#[bg=$LIGHT_GREY]$larrow#[fg=$NIL]#[bg=$STATUS_COLOR]#[bold] $DATE_FORMAT⠀"
-
+RS="#[fg=$STATUS_COLOR]#[bg=$LIGHT_GREY]$larrow#[fg=$DARK_GREY]#[bg=$STATUS_COLOR]#[bold] $DATE_FORMAT⠀"
 RS="#[fg=$LIGHT_GREY]$larrow#[fg=$WHITE]#[bg=$LIGHT_GREY]#[bold] $GIT   #(git -C #{pane_current_path} branch --show-current) $RS"
 RS="#[fg=$DARK_GREY,bg=$NIL]$larrow#[fg=$WHITE,bg=$DARK_GREY] $download_speed_icon #{download_speed} $RS"
+
 tmux_set status-right "$RS"
 
 
@@ -109,7 +98,7 @@ tmux_set window-status-current-format "$WS"
 tmux_set window-status-separator ""
 
 # Window status style
-tmux_set window-status-style          "fg=$STATUS_COLOR,bg=$NIL,none"
+tmux_set window-status-style          "fg=$STATUS_COLOR,bg=$NIL,bold"
 tmux_set window-status-last-style     "fg=$STATUS_COLOR,bg=$NIL,none"
 tmux_set window-status-activity-style "fg=$STATUS_COLOR,bg=$NIL,bold"
 
