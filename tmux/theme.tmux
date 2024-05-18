@@ -58,13 +58,11 @@ case $STYLE in
     ;;
 esac
 
-download_speed_icon='󰇚'
-
 # --------------------- GENERAL
 
 # Status options
 t_set status-style "fg=$WHITE,bg=$NIL"
-t_set status-interval  1
+t_set status-interval 1
 t_set status-justify "$JUSTIFY"
 t_set status on
 t_set status-attr none
@@ -72,7 +70,7 @@ t_set status-attr none
 # ---------------------- LEFT SIDE OF STATUS BAR
 t_set status-left-length 150
 
-LS="#[fg=$DARK_GREY]#[bg=$STATUS_COLOR]#[bold] $MAIN_ICON ⠀#[fg=$STATUS_COLOR]#[bg=$LIGHT_GREY]$rarrow"
+LS="#[fg=$DARK_GREY]#[bg=$STATUS_COLOR]#[bold] $MAIN_ICON #[fg=$STATUS_COLOR]#[bg=$LIGHT_GREY]$rarrow"
 LS="$LS#[fg=$WHITE,bg=$LIGHT_GREY] #(whoami) #[fg=$LIGHT_GREY,bg=$NIL]$rarrow"
 
 t_set status-left "$LS"
@@ -81,11 +79,11 @@ t_set status-left "$LS"
 t_set status-right-length 150
 
 RS="#[fg=$STATUS_COLOR]#[bg=$LIGHT_GREY]$larrow#[fg=$DARK_GREY]#[bg=$STATUS_COLOR]#[bold] $DATE_FORMAT⠀"
-RS="#[fg=$LIGHT_GREY]$larrow#[fg=$WHITE]#[bg=$LIGHT_GREY]#[bold] $GIT   #(git -C #{pane_current_path} branch --show-current) $RS"
-RS="#[fg=$DARK_GREY,bg=$NIL]$larrow#[fg=$WHITE,bg=$DARK_GREY] $download_speed_icon #{download_speed} $RS"
+RS="#[fg=$LIGHT_GREY]$larrow#[fg=$WHITE]#[bg=$LIGHT_GREY]#[bold] #(git -C #{pane_current_path} branch --show-current  | xargs -I {} echo  {}) $RS"
+
+RS="#[fg=$DARK_GREY,bg=$NIL]$larrow#[fg=$WHITE,bg=$DARK_GREY] #S $RS"
 
 t_set status-right "$RS"
-
 
 # ---------------------------WINDOW STATUS FORMAT
 t_set window-status-format         "#[fg=$DARK_GREY,bg=default]#[bold]$i_rarrow#[fg=$WHITE,bg=$DARK_GREY] #I #W #[fg=$DARK_GREY,bg=$NIL]$rarrow"
@@ -123,4 +121,4 @@ t_set message-style "fg=$STATUS_COLOR,bg=$NIL"
 t_set message-command-style "fg=$STATUS_COLOR,bg=$NIL"
 
 # Copy mode highlight
-t_set mode-style "bg=$STATUS_COLOR,fg=$DARK_GREY"
+t_set mode-style "bg=$GREEN,fg=$DARK_GREY"
