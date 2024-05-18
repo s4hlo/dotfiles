@@ -34,21 +34,25 @@ STATUS_COLOR="#{?client_prefix,$PURPLE,#{?pane_in_mode,$GREEN,#{?pane_synchroniz
 # ---------------------------------------
 case $STYLE in
   flat)
+    a_arrow="▕▏"
     i_rarrow=''
     rarrow=''
     larrow=''
     ;;
   angled)
+    a_arrow="  "
     i_rarrow=''
     rarrow=''
     larrow=''
     ;;
   arrow)
+    a_arrow="  "
     i_rarrow=''
     rarrow=''
     larrow=''
     ;;
   rounded)
+    a_arrow="▕▏"
     i_rarrow=' '
     rarrow=''
     larrow=''
@@ -86,9 +90,9 @@ RS="#[fg=$DARK_GREY,bg=$NIL]$larrow#[fg=$WHITE,bg=$DARK_GREY] #S $RS"
 t_set status-right "$RS"
 
 # ---------------------------WINDOW STATUS FORMAT
-t_set window-status-format         "#[fg=$DARK_GREY,bg=default]#[bold]$i_rarrow#[fg=$WHITE,bg=$DARK_GREY] #I #W #[fg=$DARK_GREY,bg=$NIL]$rarrow"
+t_set window-status-format  "#[fg=$DARK_GREY,bg=default]#[bold]$i_rarrow#[fg=$WHITE,bg=$DARK_GREY] #I #W #[fg=$DARK_GREY,bg=$NIL]$rarrow"
 
-WS="#[fg=$STATUS_COLOR]#[bg=$NIL]#[bold]$i_rarrow#[fg=$DARK_GREY]#[bg=$STATUS_COLOR]#[bold] #I #W #[fg=$STATUS_COLOR]#[bg=$NIL]$rarrow"
+WS="#[fg=$STATUS_COLOR]#[bg=$NIL]#[bold]$i_rarrow#[fg=$DARK_GREY]#[bg=$STATUS_COLOR]#[bold] #I #W#{?window_zoomed_flag,$a_arrow , }#[fg=$STATUS_COLOR]#[bg=$NIL]$rarrow"
 
 t_set window-status-current-format "$WS"
 
