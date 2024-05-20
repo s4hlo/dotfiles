@@ -34,6 +34,7 @@ spec "user.copilot-cmp"
 spec "user.blamer"
 spec "user.glance"
 spec "user.transparent"
+spec "user.colorizer"
 spec "user.lsp-file-ops"
 -- filetype related plugins
 spec "user.jdtls"
