@@ -1,12 +1,22 @@
 base_setup() {
     # add debian source repo bacause Kali linux source repo sucks
-    repo_line="deb http://deb.debian.org/debian oldstable main non-free contrib"
-    if grep -Fxq "$repo_line" /etc/apt/sources.list; then
-        echo "Repository line already exists in sources.list. No changes made."
+    repo_debian="deb http://deb.debian.org/debian oldstable main non-free contrib"
+    repo_ubuntu="deb http://archive.ubuntu.com/ubuntu focal-updates main"
+
+    # Add Debian repository if it doesn't exist
+    if grep -Fxq "$repo_debian" /etc/apt/sources.list; then
+        echo "Debian repository line already exists in sources.list. No changes made."
     else
-        echo "$repo_line" | sudo tee -a /etc/apt/sources.list
-        sudo apt update
-        echo "Repository line added and package lists updated."
+        echo "$repo_debian" | sudo tee -a /etc/apt/sources.list
+        echo "Debian repository line added."
+    fi
+
+    # Add Ubuntu repository if it doesn't exist
+    if grep -Fxq "$repo_ubuntu" /etc/apt/sources.list; then
+        echo "Ubuntu repository line already exists in sources.list. No changes made."
+    else
+        echo "$repo_ubuntu" | sudo tee -a /etc/apt/sources.list
+        echo "Ubuntu repository line added."
     fi
 
     sudo apt update
