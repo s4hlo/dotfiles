@@ -8,8 +8,8 @@ function M.config()
   local icons = require "user.icons"
 
   require("neogit").setup {
-    disable_signs = false,
-    -- disable_hint = true,
+    disable_signs = true,
+    disable_hint = true,
     disable_context_highlighting = false,
     disable_commit_confirmation = true,
     disable_insert_on_commit = "auto",
@@ -19,7 +19,7 @@ function M.config()
     disable_builtin_notifications = false,
     use_magit_keybindings = false,
     -- Change the default way of opening neogit
-    kind = "tab",
+    kind = "replace",
     -- Change the default way of opening the commit popup
     commit_popup = {
       kind = "split",

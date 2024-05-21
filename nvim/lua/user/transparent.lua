@@ -3,6 +3,7 @@ local M = {
 }
 
 function M.config()
+  require('transparent').clear_prefix('NeoTree')
   require("transparent").setup { -- Optional, you don't have to run setup.
     groups = { -- table: default groups
       "Normal",
@@ -31,7 +32,9 @@ function M.config()
       "StatusLineNC",
       "EndOfBuffer",
     },
-    extra_groups = {}, -- table: additional groups that should be cleared
+    extra_groups = {
+      "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
+    },
     exclude_groups = {}, -- table: groups you don't want to clear
   }
 end
