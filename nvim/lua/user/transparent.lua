@@ -48,7 +48,11 @@ function M.config()
       "TelescopePromptBorder",
       "SagaBorder",
       "SagaNormal",
-      -- "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
+      -- glance
+      "GlanceWinBarFilename",
+      "GlanceWinBarFilepath",
+      "GlanceWinBarTitle",
+      "GlanceBorderTop",
     },
 
     -- extra_groups = {
