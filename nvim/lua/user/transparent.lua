@@ -32,9 +32,28 @@ function M.config()
       "StatusLineNC",
       "EndOfBuffer",
     },
-    extra_groups = {
-      "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
+    extra_groups = { -- table/string: additional groups that should be cleared
+      "IndentBlanklineChar",
+      -- make floating windows transparent
+      "LspFloatWinNormal",
+      "Normal",
+      "Pmenu",
+      "Normal:Pmenu",
+      "CmpNormal",
+      "FloatBorder",
+      "Float",
+      "NormalFloat",
+      "TelescopeNormal",
+      "TelescopeBorder",
+      "TelescopePromptBorder",
+      "SagaBorder",
+      "SagaNormal",
+      -- "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
     },
+
+    -- extra_groups = {
+    --   "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
+    -- },
     exclude_groups = {}, -- table: groups you don't want to clear
   }
 end
