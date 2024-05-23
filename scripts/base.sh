@@ -46,7 +46,7 @@ base_setup() {
     # this assure nvim to be installed 
     # with the latest version                           [update version]
     # TODO add a path to nvim                                  V
-    wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz -P ~/Downloads
+    wget https://github.com/neovim/neovim/releases/download/v0.10.0/nvim-linux64.tar.gz -P ~/Downloads
     tar xzvf ~/Downloads/nvim-linux64.tar.gz -C ~/dotfiles
     echo " ✅ - NVIM installation finished (5/7)"
 
