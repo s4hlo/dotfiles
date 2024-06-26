@@ -32,6 +32,7 @@ spec "user.telescope"
 spec "user.transparent"
 spec "user.treesitter"
 spec "user.whichkey"
+-- spec "user.rainbow-delimiters"
 -- filetype related plugins
 spec "user.filetype.jdtls"
 spec "user.filetype.vimtex"

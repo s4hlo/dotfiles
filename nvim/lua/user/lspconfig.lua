@@ -49,6 +49,7 @@ function M.config()
   local icons = require "user.icons"
 
   local servers = {
+    "jdtls",
     "lua_ls",
     "cssls",
     "html",
