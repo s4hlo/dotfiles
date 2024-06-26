@@ -1,41 +1,43 @@
-require "user.launch"
-require "user.options"
-require "user.keymaps"
-require "user.autocmds"
--- general porpouse
-
-spec "user.alpha"
-spec "user.autopairs"
-spec "user.cmp"
-spec "user.colorizer"
-spec "user.colorscheme" -- colorscheme is difined in the file 
+require "user.config.launch"
+require "user.config.options"
+require "user.config.keymaps"
+require "user.config.autocmds"
+spec "user.filetype.jdtls"
+spec "user.filetype.prettier"
+-- ESSENCIAL PLUGINS
+spec "user.autopairs" -- TODO try dont use this 
 spec "user.comment"
-spec "user.copilot"
-spec "user.copilot-cmp"
-spec "user.devicons"
-spec "user.diffview" -- neogit
-spec "user.gitsigns"
 spec "user.glance"
 spec "user.illuminate"
 spec "user.indentline"
 spec "user.lsp-file-ops"
-spec "user.lspconfig"
 spec "user.lualine"
-spec "user.mason"
 spec "user.neo-tree"
-spec "user.neogit"
 spec "user.noice"
 spec "user.notify"
-spec "user.null-ls"
-spec "user.project"
 spec "user.telescope"
-spec "user.transparent"
+spec "user.colorizer"
+spec "user.neogit"
+spec "user.gitsigns"
+
+-- lsp and copilot related plugins
+-- TODO refactor those plugins
 spec "user.treesitter"
+spec "user.copilot-cmp"
+spec "user.copilot"
+spec "user.cmp"
+spec "user.lspconfig"
+spec "user.mason"
+spec "user.null-ls" -- TODO figure out the function of this
+
+spec "user.colorscheme" -- theme related
+spec "user.transparent" -- theme related
+
+-- good for organiation but not essencial
 spec "user.whichkey"
--- spec "user.rainbow-delimiters"
--- filetype related plugins
-spec "user.filetype.jdtls"
-spec "user.filetype.vimtex"
-spec "user.filetype.prettier"
-spec "user.filetype.lean"
+
+ -- not essential
+spec "user.project"
+spec "user.alpha"
+
 require "user.lazy"

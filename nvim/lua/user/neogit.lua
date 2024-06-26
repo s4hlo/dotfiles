@@ -2,6 +2,14 @@ local M = {
   "neogitorg/neogit",
   event = "VeryLazy",
   commit = "eb9d6b8f0840e4f2fa775bca7ec4a5df8b42ed6d",
+  dependencies = {
+    {
+     "sindrets/diffview.nvim",
+     event = "VeryLazy",
+     commit = "d38c1b5266850f77f75e006bcc26213684e1e141",
+     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
+    },
+  }
 }
 
 function M.config()
