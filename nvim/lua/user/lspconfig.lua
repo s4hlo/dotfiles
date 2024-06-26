@@ -50,14 +50,12 @@ function M.config()
 
   local servers = {
     "jdtls",
-    "lua_ls",
     "cssls",
     "html",
     "tsserver",
     "astro",
     "pyright",
     "bashls",
-    "jsonls",
     "yamlls",
     "marksman",
     "tailwindcss",
