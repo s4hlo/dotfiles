@@ -10,7 +10,7 @@ keymap("n", "<C-i>", "<C-i>", opts)
 -- glance
 keymap("n", "gD", "<CMD>Glance definitions<CR>")
 keymap("n", "gd", "<CMD>Glance references<CR>")
-keymap("n", "gY", "<CMD>Glance type_definitions<CR>")
+keymap("n", "gt", "<CMD>Glance type_definitions<CR>")
 keymap("n", "gM", "<CMD>Glance implementations<CR>")
 
 -- Better window navigation
