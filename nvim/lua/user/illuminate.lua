@@ -16,7 +16,6 @@ function M.config()
       "minifiles",
       "fugitive",
       "alpha",
-      "NvimTree",
       "lazy",
       "NeogitStatus",
       "Trouble",
