@@ -79,7 +79,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # ! to avoid change this file, always rename the wallpaper to "wallpaper.png"
 # @target
-exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpapers/wallpaper2.jpg
+exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpapers/wallpaper8.jpg
 
 # startup picom
 exec --no-startup-id picom -b -f --config ~/dotfiles/i3/picom.conf
@@ -91,6 +91,9 @@ exec --no-startup-id picom -b -f --config ~/dotfiles/i3/picom.conf
 # ! All those binds can be safely deleted
 # ! CONFIG TOOL - to define remap a shortcut or create a macro(check how to) use -> xprop
 bindsym --release $mod+space exec --no-startup-id xdotool key ctrl+shift+p
+
+# start flameshot for screenshots
+bindsym --release $mod+p exec flameshot gui
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status

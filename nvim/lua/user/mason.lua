@@ -15,7 +15,6 @@ M.servers = {
   "astro",
   "pyright",
   "bashls",
-  "jsonls",
   "yamlls",
   "marksman",
   "tailwindcss",

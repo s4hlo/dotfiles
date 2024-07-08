@@ -85,7 +85,7 @@ function M.config()
       -- can't take over the entire statusline even
       -- if neither of 'x', 'y' or 'z' are present.
 
-      ignore_focus = { "NvimTree" },
+      ignore_focus = {},
     },
 
     sections = {

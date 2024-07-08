@@ -9,7 +9,6 @@ function M.config()
     ["q"] = { "<cmd>confirm q<CR>", "Quit" },
     ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-    -- ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
     ["e"] = { "<cmd>Neotree reveal toggle<CR>", "Explorer" },
     b = {
       name = "Buffers",

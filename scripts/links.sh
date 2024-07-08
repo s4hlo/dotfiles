@@ -19,6 +19,8 @@ links_setup() {
     ln -fns ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
     ln -fns ~/dotfiles/kitty/current-theme.conf ~/.config/kitty/current-theme.conf
     ln -fns ~/dotfiles/starship/starship.toml ~/.config/starship.toml
+    ln -fns ~/dotfiles/gh/config.yml ~/.config/gh/config.yml
+    ln -fns ~/dotfiles/gh/hosts.yml ~/.config/gh/hosts.yml
 
     # all .sh file but the setup.sh will be turn executable here
     chmod +x "$HOME"/dotfiles/i3/polybar/launch.sh
