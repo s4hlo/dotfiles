@@ -1,4 +1,5 @@
 base_setup() {
+    . ~/dotfiles/scripts/utils.sh
     # add debian source repo bacause Kali linux source repo sucks
     repo_debian="deb http://deb.debian.org/debian oldstable main non-free contrib"
     repo_ubuntu="deb http://archive.ubuntu.com/ubuntu focal-updates main"
@@ -19,30 +20,20 @@ base_setup() {
         echo " 📦 - REPOSITORY - Ubuntu repository line added."
     fi
 
-    install() {
-        package=$1
-        if dpkg -l | grep -q "^ii  $package "; then
-            echo " ✅ - $package is already installed."
-        else
-            sudo apt install -y $package
-            echo " ✅ - $package installation finished"
-        fi
-    }
-
     # ! those two apps are not required to setup 
     # but they are useful tools to help in configuration
     # xclip is necessary to enable shared clipboard but only works in x11 system
     # ! CONFIG TOOL - to check where use it, search for ocurrences using grep
-    install xinput
-    install x11-utils # this provides xprop 
-    install xdotool
-    install xclip
-    install tmux
-    install ripgrep # ripgrep is necessary to enable search in files using telescope
-    install kitty
-    install flameshot 
+    install_package xinput
+    install_package x11-utils # this provides xprop 
+    install_package xdotool
+    install_package xclip
+    install_package tmux
+    install_package fonts-noto-cjk
+    install_package ripgrep # ripgrep is necessary to enable search in files using telescope
+    install_package kitty
+    install_package flameshot 
 
-    # Install nvm if not already installed
     if [ -d "$HOME/.nvm" ]; then
         echo " ✅ - nvm is already installed."
     else
@@ -50,11 +41,10 @@ base_setup() {
         echo " ✅ - nvm installation finished"
     fi
 
-    # Install starship if not already installed
     if command -v starship &> /dev/null; then
         echo " ✅ - starship is already installed."
     else
-        curl -sS https://starship.rs/install.sh | sh
+        (curl -sS https://starship.rs/install.sh | sh > /dev/null 2>&1)
         echo " ✅ - starship installation finished"
     fi
 
@@ -75,6 +65,4 @@ base_setup() {
     else
         echo " ✅ - tmux plugin manager is already installed."
     fi
-
-    echo " 🧰 - BASE APPS --> installation finished"
 }

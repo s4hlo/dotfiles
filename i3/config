@@ -9,7 +9,7 @@ set $refresh_i3status killall -SIGUSR1 i3status
 
 # to lock screen with the wallpaper
 # @target
-set $i3lockwall i3lock -i ~/dotfiles/wallpaper.png -t
+set $i3lockwall i3lock -i ~/dotfiles/wallpapers/wallpaper8.png -c 222222
 
 # workspaces definitions
 # ! you can find more icons in:
@@ -64,7 +64,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock 222222rk
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -79,7 +79,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # ! to avoid change this file, always rename the wallpaper to "wallpaper.png"
 # @target
-exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpapers/black.jpg
+exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpapers/wallpaper8.png
 
 # startup picom
 exec --no-startup-id picom -b -f --config ~/dotfiles/i3/picom.conf

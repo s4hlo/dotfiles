@@ -1,63 +1,15 @@
-## NOTES FOR S4HLO
-
-# Function to prompt for yes/no
-ask_yes_no() {
-    while true; do
-        read -p "$1 (y/n): " yn
-        case $yn in
-        [Yy]*) return 0 ;;
-        [Nn]*) return 1 ;;
-        esac
-    done
-}
-
-echo 'Welcome to the setup script for my dotfiles! :hearts:'
+echo 'Welcome to the setup script for my dotfiles! 🛠️'
 echo ' REQUIREMENTS: 
 - Git
 - Zsh
 '
-
-if ask_yes_no "Do you want to link the dotfiles?"; then
-    . ~/dotfiles/scripts/links.sh
-    links_setup
-else
-    echo " 🟡 Skipping dotfile linking."
-fi
-
-if ask_yes_no "Do you want to install base apps?"; then
-    . ~/dotfiles/scripts/base.sh
-    base_setup
-else
-    echo " 🟡  Skipping base apps installation"
-fi
-
-if ask_yes_no "Do you want to install i3 base apps?"; then
-    . ~/dotfiles/scripts/i3.sh
-    i3_setup
-else
-    echo " 🟡  Skipping base apps installation"
-fi
-
-if ask_yes_no "Do you want to install domestic apps?"; then
-    . ~/dotfiles/scripts/domestic.sh
-    domestic_setup
-else
-    echo " 🟡  Skipping domestic apps installation"
-fi
-
-if ask_yes_no "Do you want to install job apps?"; then
-    . ~/dotfiles/scripts/job.sh
-    job_setup
-else
-    echo " 🟡  Skipping job apps installation"
-fi
-
-if ask_yes_no "Do you want to download and install the Nerd Font?"; then
-  . ~/dotfiles/scripts/font.sh
-  font_setup
-else
-    echo " 🟡 Skipping font installation."
-fi
+. $HOME/dotfiles/scripts/utils.sh
+ask_and_execute "Do you want to link the dotfiles" "$HOME/dotfiles/scripts/links.sh" "links_setup"
+ask_and_execute "Do you want to install base apps" "$HOME/dotfiles/scripts/base.sh" "base_setup"
+ask_and_execute "Do you want to install i3 base apps" "$HOME/dotfiles/scripts/i3.sh" "i3_setup"
+ask_and_execute "Do you want to install domestic apps" "$HOME/dotfiles/scripts/domestic.sh" "domestic_setup"
+ask_and_execute "Do you want to install job apps" "$HOME/dotfiles/scripts/job.sh" "job_setup"
+ask_and_execute "Do you want to download and install the Nerd Font" "$HOME/dotfiles/scripts/font.sh" "font_setup"
 
 echo '
 #################################################################################
