@@ -82,7 +82,7 @@ alias gl='grep -lr --exclude-dir=.git'
 alias fcd='cd "$(dirname "$(fzf)")"'
 alias setup='~/dotfiles/setup.sh'
 alias hubserver='cd ~/dev/hub-server'
-alias hubweb='cd ~/dev/hub-web-client'
+Alias hubweb='cd ~/dev/hub-web-client'
 alias dotfiles='cd ~/dotfiles'
 alias nvim='~/dotfiles/nvim-linux64/bin/nvim'
 alias xprop='xprop | grep WM_CLASS'
@@ -91,5 +91,6 @@ alias kls='sudo logkeys -s -o ~/sleight.log -m ~/dev/logkeys/keymaps/en_US_ubunt
 alias klm='sudo tail --follow ~/sleight.log'
 alias klk='sudo logkeys -k'
 alias tar='tar –xvzf'
+alias uncaps='xset -q | grep "Caps Lock:   on" && xdotool key Caps_Lock'
 
 ###### MEMENTO MORI ######
