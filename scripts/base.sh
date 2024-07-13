@@ -19,7 +19,7 @@ base_setup() {
         echo " 📦 - REPOSITORY - Ubuntu repository line added."
     fi
 
-    install_if_not_installed() {
+    install() {
         package=$1
         if dpkg -l | grep -q "^ii  $package "; then
             echo " ✅ - $package is already installed."
@@ -33,14 +33,14 @@ base_setup() {
     # but they are useful tools to help in configuration
     # xclip is necessary to enable shared clipboard but only works in x11 system
     # ! CONFIG TOOL - to check where use it, search for ocurrences using grep
-    install_if_not_installed xinput
-    install_if_not_installed x11-utils # this provides xprop 
-    install_if_not_installed xdotool
-    install_if_not_installed xclip
-    install_if_not_installed tmux
-    install_if_not_installed ripgrep # ripgrep is necessary to enable search in files using telescope
-    install_if_not_installed kitty
-    install_if_not_installed flameshot 
+    install xinput
+    install x11-utils # this provides xprop 
+    install xdotool
+    install xclip
+    install tmux
+    install ripgrep # ripgrep is necessary to enable search in files using telescope
+    install kitty
+    install flameshot 
 
     # Install nvm if not already installed
     if [ -d "$HOME/.nvm" ]; then
