@@ -32,7 +32,7 @@ assign [class="Spotify"] → $chat
 assign [class="discord"] → $chat
 assign [class="Zulip"] → $chat
 assign [class="Insomnia"] → $database
-assign [class="DBeaver"] → $database
+assign [class="DBeaver"] → $notes
 assign [class="Com.github.xournalpp.xournalpp"] → $notes
 for_window [class="pritunl"] floating enable
 
@@ -79,7 +79,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # ! to avoid change this file, always rename the wallpaper to "wallpaper.png"
 # @target
-exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpapers/wallpaper8.jpg
+exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpapers/black.jpg
 
 # startup picom
 exec --no-startup-id picom -b -f --config ~/dotfiles/i3/picom.conf
@@ -247,7 +247,7 @@ bindsym $mod+BackSpace mode "system"
 
 default_border none
 
-gaps inner 10
+gaps inner 5
 gaps top 25
 
 # smart_gaps inverse_outer
