@@ -19,9 +19,6 @@ base_setup() {
         echo " 📦 - REPOSITORY - Ubuntu repository line added."
     fi
 
-    # sudo apt update
-
-
     install_if_not_installed() {
         package=$1
         if dpkg -l | grep -q "^ii  $package "; then
@@ -40,46 +37,44 @@ base_setup() {
     install_if_not_installed x11-utils # this provides xprop 
     install_if_not_installed xdotool
     install_if_not_installed xclip
-    echo " 🧰 - CONFIG TOOLS --> installation finished"
-
     install_if_not_installed tmux
     install_if_not_installed ripgrep # ripgrep is necessary to enable search in files using telescope
     install_if_not_installed kitty
+    install_if_not_installed flameshot 
 
     # Install nvm if not already installed
     if [ -d "$HOME/.nvm" ]; then
-        echo " ✅ - NVM is already installed."
+        echo " ✅ - nvm is already installed."
     else
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-        echo " ✅ - NVM installation finished"
+        echo " ✅ - nvm installation finished"
     fi
 
     # Install starship if not already installed
     if command -v starship &> /dev/null; then
-        echo " ✅ - STARSHIP is already installed."
+        echo " ✅ - starship is already installed."
     else
         curl -sS https://starship.rs/install.sh | sh
-        echo " ✅ - STARSHIP installation finished"
+        echo " ✅ - starship installation finished"
     fi
 
     # this assure nvim to be installed 
     # with the latest version
     # This ensures nvim to be installed with the latest version
     if [ -d "$HOME/dotfiles/nvim-linux64" ]; then
-        echo " ✅ - NVIM is already installed." #          [Update version]
+        echo " ✅ - neovim is already installed." #          [Update version]
     else #                                                         V
         wget https://github.com/neovim/neovim/releases/download/v0.10.0/nvim-linux64.tar.gz -P ~/Downloads
         tar xzvf ~/Downloads/nvim-linux64.tar.gz -C ~/dotfiles
-        echo " ✅ - NVIM installation finished"
+        echo " ✅ - neovim installation finished"
     fi 
 
     if [ ! -d ~/.tmux/plugins/tpm ]; then
         git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-        echo " ✅ - TMUX plugin manager installation finished"
+        echo " ✅ - tmux plugin manager installation finished"
     else
-        echo " ✅ - TMUX plugin manager is already installed."
+        echo " ✅ - tmux plugin manager is already installed."
     fi
 
     echo " 🧰 - BASE APPS --> installation finished"
-
 }
