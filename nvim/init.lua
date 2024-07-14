@@ -1,45 +1,45 @@
 require "user.config.launch"
-require "user.config.options"
+-- require "user.config.options"
 require "user.config.keymaps"
-require "user.config.autocmds"
--- spec "user.filetype.jdtls"
-spec "user.filetype.molten"
-spec "user.filetype.prettier"
-spec "user.filetype.quarto"
-spec "user.filetype.jupytext"
+-- require "user.config.autocmds"
+-- spec "plugins.filetype.jdtls"
+spec "plugins.filetype.molten"
+spec "plugins.filetype.prettier"
+spec "plugins.filetype.quarto"
+spec "plugins.filetype.jupytext"
 -- ESSENCIAL PLUGINS
-spec "user.autopairs" -- TODO try dont use this 
-spec "user.colorizer"
-spec "user.colorscheme" -- theme
-spec "user.comment"
-spec "user.gitsigns"
-spec "user.glance"
-spec "user.illuminate"
-spec "user.indentline"
-spec "user.lsp-file-ops"
-spec "user.lualine"
-spec "user.neo-tree"
-spec "user.neogit"
-spec "user.noice"
-spec "user.notify"
-spec "user.telescope"
-spec "user.transparent" -- theme
+spec "plugins.autopairs" -- TODO try dont use this 
+spec "plugins.colorizer"
+spec "plugins.colorscheme" -- theme
+spec "plugins.comment"
+spec "plugins.gitsigns"
+spec "plugins.glance"
+spec "plugins.illuminate"
+spec "plugins.indentline"
+spec "plugins.lsp-file-ops"
+spec "plugins.lualine"
+spec "plugins.neo-tree"
+spec "plugins.neogit"
+spec "plugins.noice"
+spec "plugins.notify"
+spec "plugins.telescope"
+spec "plugins.transparent" -- theme
 
 -- lsp and copilot related plugins
 -- TODO refactor those plugins
-spec "user.treesitter"
-spec "user.copilot-cmp"
-spec "user.copilot"
-spec "user.cmp"
-spec "user.lspconfig"
-spec "user.mason"
-spec "user.null-ls" -- TODO figure out the function of this
+spec "plugins.treesitter"
+spec "plugins.copilot-cmp"
+spec "plugins.copilot"
+spec "plugins.cmp"
+spec "plugins.lspconfig"
+spec "plugins.mason"
+spec "plugins.null-ls" -- TODO figure out the function of this
 
 -- good for organiation but not essencial
-spec "user.whichkey"
+spec "plugins.whichkey"
 
  -- not essential
-spec "user.project"
-spec "user.alpha"
+spec "plugins.project"
+spec "plugins.alpha"
 
 require "user.lazy"
