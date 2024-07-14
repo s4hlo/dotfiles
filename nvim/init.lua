@@ -1,45 +1,45 @@
-require "user.config.launch"
--- require "user.config.options"
-require "user.config.keymaps"
--- require "user.config.autocmds"
--- spec "plugins.filetype.jdtls"
-spec "plugins.filetype.molten"
-spec "plugins.filetype.prettier"
-spec "plugins.filetype.quarto"
-spec "plugins.filetype.jupytext"
+require "user.launch"
+require "user.options"
+require "user.keymaps"
+
+-- plugin "filetype.jdtls"
+plugin "filetype.molten"
+plugin "filetype.prettier"
+plugin "filetype.quarto"
+plugin "filetype.jupytext"
 -- ESSENCIAL PLUGINS
-spec "plugins.autopairs" -- TODO try dont use this 
-spec "plugins.colorizer"
-spec "plugins.colorscheme" -- theme
-spec "plugins.comment"
-spec "plugins.gitsigns"
-spec "plugins.glance"
-spec "plugins.illuminate"
-spec "plugins.indentline"
-spec "plugins.lsp-file-ops"
-spec "plugins.lualine"
-spec "plugins.neo-tree"
-spec "plugins.neogit"
-spec "plugins.noice"
-spec "plugins.notify"
-spec "plugins.telescope"
-spec "plugins.transparent" -- theme
+plugin "autopairs" -- TODO try dont use this 
+plugin "colorizer"
+plugin "colorscheme" -- theme
+plugin "comment"
+plugin "gitsigns"
+plugin "glance"
+plugin "illuminate"
+plugin "indentline"
+plugin "lsp-file-ops"
+plugin "lualine"
+plugin "neo-tree"
+plugin "neogit"
+plugin "noice"
+plugin "notify"
+plugin "telescope"
+plugin "transparent" -- theme
 
 -- lsp and copilot related plugins
 -- TODO refactor those plugins
-spec "plugins.treesitter"
-spec "plugins.copilot-cmp"
-spec "plugins.copilot"
-spec "plugins.cmp"
-spec "plugins.lspconfig"
-spec "plugins.mason"
-spec "plugins.null-ls" -- TODO figure out the function of this
+plugin "treesitter"
+plugin "copilot-cmp"
+plugin "copilot"
+plugin "cmp"
+plugin "lspconfig"
+plugin "mason"
+plugin "null-ls" -- TODO figure out the function of this
 
 -- good for organiation but not essencial
-spec "plugins.whichkey"
+plugin "whichkey"
 
  -- not essential
-spec "plugins.project"
-spec "plugins.alpha"
+plugin "project"
+plugin "alpha"
 
 require "user.lazy"

@@ -80,9 +80,9 @@ function M.config()
       theme = theme(),
       -- theme = custom_onedark,
       component_separators = { left = "", right = "" },
-      section_separators = { left = "", right = "" },
+      -- section_separators = { left = "", right = "" },
       -- component_separators = { left = "", right = "" },
-      -- section_separators = { left = "", right = "" },
+      section_separators = { left = "", right = "" },
 
       always_divide_middle = true, -- When set to true, left sections i.e. 'a','b' and 'c'
       -- can't take over the entire statusline even
