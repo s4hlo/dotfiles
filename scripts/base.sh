@@ -33,6 +33,7 @@ base_setup() {
     install_package ripgrep # ripgrep is necessary to enable search in files using telescope
     install_package kitty
     install_package flameshot 
+    install_package libmagickwand-dev
 
     if [ -d "$HOME/.nvm" ]; then
         echo " ✅ - nvm is already installed."
