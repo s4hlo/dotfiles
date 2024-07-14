@@ -19,7 +19,6 @@ function M.config()
       e = { "<cmd>MoltenEvaluateOperator<CR>", "Evaluate Operator" },
       o = { "<cmd>noautocmd MoltenEnterOutput<CR>", "Open Output" },
       r = { "<cmd>MoltenReevaluateCell<CR>", "Re-eval Cell" },
-      R = { "<cmd>MoltenEvaluateVisual<CR>gv", "Execute Visual" },
       h = { "<cmd>MoltenHideOutput<CR>", "Close Output" },
       d = { "<cmd>MoltenDelete<CR>", "Delete Cell" },
     },
@@ -163,6 +162,10 @@ function M.config()
       name = "LSP",
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     },
+    m = {
+      name = "Molten",
+      e = { "<cmd>MoltenEvaluateVisual<CR>", "Evaluate Visual" },
+    }
   }
 
   local vopts = {
