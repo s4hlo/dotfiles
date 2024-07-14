@@ -5,6 +5,8 @@ require "user.config.autocmds"
 -- spec "user.filetype.jdtls"
 spec "user.filetype.molten"
 spec "user.filetype.prettier"
+spec "user.filetype.quarto"
+spec "user.filetype.jupytext"
 -- ESSENCIAL PLUGINS
 spec "user.autopairs" -- TODO try dont use this 
 spec "user.colorizer"

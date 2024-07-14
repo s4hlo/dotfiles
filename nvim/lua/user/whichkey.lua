@@ -14,6 +14,15 @@ function M.config()
       name = "Buffers",
       b = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
     },
+    m = {
+      name = "Molten",
+      e = { "<cmd>MoltenEvaluateOperator<CR>", "Evaluate Operator" },
+      o = { "<cmd>noautocmd MoltenEnterOutput<CR>", "Open Output" },
+      r = { "<cmd>MoltenReevaluateCell<CR>", "Re-eval Cell" },
+      R = { "<cmd>MoltenEvaluateVisual<CR>gv", "Execute Visual" },
+      h = { "<cmd>MoltenHideOutput<CR>", "Close Output" },
+      d = { "<cmd>MoltenDelete<CR>", "Delete Cell" },
+    },
     d = {
       name = "Debug",
       t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
