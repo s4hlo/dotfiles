@@ -3,6 +3,7 @@ require "user.config.options"
 require "user.config.keymaps"
 require "user.config.autocmds"
 -- spec "user.filetype.jdtls"
+spec "user.filetype.molten"
 spec "user.filetype.prettier"
 -- ESSENCIAL PLUGINS
 spec "user.autopairs" -- TODO try dont use this 

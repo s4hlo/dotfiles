@@ -53,6 +53,7 @@ fi
 [ -f "/home/sleight/.ghcup/env" ] && source "/home/sleight/.ghcup/env" # ghcup-env
 
 export PATH=$PATH:~/.cargo/bin/
+export PATH=$PATH:~/.local/bin
 
 # nvm 
 export NVM_DIR="$HOME/.nvm"
