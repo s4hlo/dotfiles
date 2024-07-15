@@ -165,7 +165,7 @@ function M.config()
     m = {
       name = "Molten",
       e = { "<cmd>MoltenEvaluateVisual<CR>", "Evaluate Visual" },
-    }
+    },
   }
 
   local vopts = {

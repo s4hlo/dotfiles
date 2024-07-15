@@ -2,7 +2,7 @@ local M = {
   "nvim-lualine/lualine.nvim",
   commit = "7533b0ead663d80452210c0c089e5105089697e5",
   dependencies = {
-    { 'AndreM222/copilot-lualine' }
+    { "AndreM222/copilot-lualine" },
   },
 }
 
@@ -93,19 +93,19 @@ function M.config()
 
     sections = {
       lualine_a = { "mode" },
-      lualine_b = {'filename'},
-      lualine_c = {'diff'},
+      lualine_b = { "filename" },
+      lualine_c = { "diff" },
       lualine_y = {
         { "filetype", icon_only = true },
-         {
-            'copilot',
-            show_colors = true,
+        {
+          "copilot",
+          show_colors = true,
         },
       },
       lualine_x = {
         "diagnostics",
       },
-      lualine_z = { "progress"},
+      lualine_z = { "progress" },
     },
     extensions = { "quickfix", "man", "fugitive" },
   }

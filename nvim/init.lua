@@ -41,5 +41,6 @@ plugin "whichkey"
  -- not essential
 plugin "project"
 plugin "alpha"
+plugin "dadbod"
 
 require "user.lazy"

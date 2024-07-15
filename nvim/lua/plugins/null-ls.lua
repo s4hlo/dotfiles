@@ -19,7 +19,7 @@ function M.config()
         extra_filetypes = { "typescriptreact", "javascriptreact", "md", "json", "yaml", "toml" },
         -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
         condition = function(utils)
-           return utils.root_has_file ".prettierrc" or utils.root_has_file "prettier.config.js"
+          return utils.root_has_file ".prettierrc" or utils.root_has_file "prettier.config.js"
         end,
       },
       -- null_ls.builtins.diagnostics.eslint,
@@ -33,15 +33,15 @@ function M.config()
           buffer = bufnr,
           group = group,
           callback = function()
-              -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-              -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-              vim.lsp.buf.format {
-                bufnr = bufnr,
-                filter = function(cliente)
-                  return cliente.name == "null-ls" --this ensures null_ls client is called to format, not normal LspFormatting
-                end,
-                async = false,
-              }
+            -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+            -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
+            vim.lsp.buf.format {
+              bufnr = bufnr,
+              filter = function(cliente)
+                return cliente.name == "null-ls" --this ensures null_ls client is called to format, not normal LspFormatting
+              end,
+              async = false,
+            }
           end,
           -- callback = function()
           --   vim.lsp.buf.format { bufnr = bufnr, async = async }

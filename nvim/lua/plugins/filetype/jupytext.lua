@@ -6,18 +6,18 @@ local M = {
 }
 
 function M.config()
-  require("jupytext").setup({
-      style = "markdown",
-      output_extension = "md",
-      force_ft = "markdown",
-      custom_language_formatting = {
-        python = {
-          extension = "qmd",
-          style = "quarto",
-          force_ft = "quarto", -- you can set whatever filetype you want here
-        },
-      }
-  })
+  require("jupytext").setup {
+    style = "markdown",
+    output_extension = "md",
+    force_ft = "markdown",
+    custom_language_formatting = {
+      python = {
+        extension = "qmd",
+        style = "quarto",
+        force_ft = "quarto", -- you can set whatever filetype you want here
+      },
+    },
+  }
 end
 -- custom_language_formatting = {
 --   python = {
