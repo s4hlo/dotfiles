@@ -7,8 +7,9 @@ plugin "filetype.molten"
 plugin "filetype.prettier"
 plugin "filetype.quarto"
 plugin "filetype.jupytext"
+plugin "filetype.kulala"
 -- ESSENCIAL PLUGINS
-plugin "autopairs" -- TODO try dont use this 
+plugin "autopairs" -- TODO try dont use this
 plugin "colorizer"
 plugin "colorscheme" -- theme
 plugin "comment"
@@ -38,9 +39,8 @@ plugin "null-ls" -- TODO figure out the function of this
 -- good for organiation but not essencial
 plugin "whichkey"
 
- -- not essential
+-- not essential
 plugin "project"
 plugin "alpha"
-plugin "dadbod"
 
 require "user.lazy"
