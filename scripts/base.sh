@@ -35,6 +35,13 @@ base_setup() {
     install_package flameshot 
     install_package libmagickwand-dev
 
+    if [ -d "$HOME/.cargo" ]; then
+      echo " ✅ - rust is already installed."
+    else
+      curl https://sh.rustup.rs -sSf | sh
+      echo " ✅ - rust installation finished"
+    fi
+
     if [ -d "$HOME/.nvm" ]; then
         echo " ✅ - nvm is already installed."
     else
