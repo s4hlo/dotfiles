@@ -89,12 +89,12 @@ function M.config()
     --   lualine_z = { "progress" },
     -- },
 
-
     --minimal
     sections = {
-      lualine_a = {  
-    { "filetype", icon_only = true },
-        "filename" },
+      lualine_a = {
+        { "filetype", icon_only = true },
+        "filename",
+      },
       lualine_b = { "diff" },
       lualine_c = {
         {
