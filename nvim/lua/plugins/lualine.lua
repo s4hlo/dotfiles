@@ -8,53 +8,37 @@ local M = {
 
 function M.config()
   local sl_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
-  vim.api.nvim_set_hl(0, "Copilot", { fg = "#6CC644", bg = "#3e4452" })
-  local icons = require "user.icons"
-  local diff = {
-    "diff",
-    colored = true,
-    symbols = { added = icons.git.LineAdded, modified = icons.git.LineModified, removed = icons.git.LineRemoved }, -- Changes the symbols used by the diff.
-  }
 
-  local copilot = function()
-    local buf_clients = vim.lsp.get_active_clients { bufnr = 0 }
-    if #buf_clients == 0 then
-      return "LSP Inactive"
-    end
-
-    local buf_client_names = {}
-    local copilot_active = false
-
-    for _, client in pairs(buf_clients) do
-      if client.name ~= "null-ls" and client.name ~= "copilot" then
-        table.insert(buf_client_names, client.name)
-      end
-
-      if client.name == "copilot" then
-        copilot_active = true
-      end
-    end
-
-    if copilot_active then
-      return "%#Copilot#" .. ""
-    end
-    return ""
-  end
   local theme = function()
     local colors = {
-      blue = "#61afef",
-      green = "#98c379",
-      purple = "#c678dd",
-      cyan = "#56b6c2",
-      red1 = "#e06c75",
+      blue = nil,
+      green = nil,
+      purple = nil,
+      cyan = nil,
+      red1 = nil,
       red2 = "#be5046",
-      yellow = "#e5c07b",
-      fg = "#abb2bf",
-      bg = "#282c34",
-      gray1 = "#828997",
+      yellow = nil,
+      bg = nil,
+      fg = "#282c34",
+      gray1 = nil,
       gray2 = nil,
-      gray3 = "#3e4452",
+      gray3 = nil,
     }
+
+    -- local colors = {
+    --   blue = "#61afef",
+    --   green = "#98c379",
+    --   purple = "#c678dd",
+    --   cyan = "#56b6c2",
+    --   red1 = "#e06c75",
+    --   red2 = "#be5046",
+    --   yellow = "#e5c07b",
+    --   fg = "#abb2bf",
+    --   bg = "#282c34",
+    --   gray1 = "#828997",
+    --   gray2 = nil,
+    --   gray3 = "#3e4452",
+    -- }
 
     return {
       normal = {
@@ -78,10 +62,7 @@ function M.config()
   require("lualine").setup {
     options = {
       theme = theme(),
-      -- theme = custom_onedark,
       component_separators = { left = "", right = "" },
-      -- section_separators = { left = "", right = "" },
-      -- component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
 
       always_divide_middle = true, -- When set to true, left sections i.e. 'a','b' and 'c'
@@ -91,21 +72,62 @@ function M.config()
       ignore_focus = {},
     },
 
+    -- sections = {
+    --   lualine_a = { "mode" },
+    --   lualine_b = { "filename" },
+    --   lualine_c = { "diff" },
+    --   lualine_x = {
+    --     "diagnostics",
+    --   },
+    --   lualine_y = {
+    --     { "filetype", icon_only = true },
+    --     {
+    --       "copilot",
+    --       show_colors = true,
+    --     },
+    --   },
+    --   lualine_z = { "progress" },
+    -- },
+
+
+    --minimal
     sections = {
-      lualine_a = { "mode" },
-      lualine_b = { "filename" },
-      lualine_c = { "diff" },
-      lualine_y = {
-        { "filetype", icon_only = true },
+      lualine_a = {  
+    { "filetype", icon_only = true },
+        "filename" },
+      lualine_b = { "diff" },
+      lualine_c = {
         {
           "copilot",
+          -- Default values
+          symbols = {
+            status = {
+              icons = {
+                enabled = "",
+                sleep = " ", -- auto-trigger disabled
+                disabled = " ",
+                warning = " ",
+                unknown = " ",
+              },
+              hl = {
+                enabled = "#50FA7B",
+                sleep = "#AEB7D0",
+                disabled = "#6272A4",
+                warning = "#FFB86C",
+                unknown = "#FF5555",
+              },
+            },
+            spinners = require("copilot-lualine.spinners").dots,
+            spinner_color = "#6272A4",
+          },
           show_colors = true,
+          show_loading = true,
         },
       },
-      lualine_x = {
-        "diagnostics",
-      },
-      lualine_z = { "progress" },
+
+      lualine_x = { "diagnostics" },
+      lualine_y = {},
+      lualine_z = {},
     },
     extensions = { "quickfix", "man", "fugitive" },
   }

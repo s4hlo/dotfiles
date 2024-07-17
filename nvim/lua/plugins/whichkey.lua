@@ -14,10 +14,15 @@ function M.config()
       name = "Buffers",
       b = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
     },
-
-    -- vim.api.nvim_set_keymap("n", "<C-k>", ":lua require('kulala').jump_prev()<CR>", { noremap = true, silent = true })
-    -- vim.api.nvim_set_keymap("n", "<C-j>", ":lua require('kulala').jump_next()<CR>", { noremap = true, silent = true })
-    -- vim.api.nvim_set_keymap("n", "<C-l>", ":lua require('kulala').run()<CR>", { noremap = true, silent = true })
+    o = {
+      name = "Obsidian",
+      l = { "<cmd>ObsidianLinks<cr>", "Links" },
+      b = { "<cmd>ObsidianBackLinks<cr>", "Back-Links" },
+      d = { "<cmd>ObsidianDailies<cr>", "Dailies" },
+      n = { "<cmd>ObsidianToday<cr>", "Today" },
+      y = { "<cmd>ObsidianYesterday<cr>", "Yesterday" },
+      t = { "<cmd>ObsidianTags<cr>", "Tags" },
+    },
     k = {
       name = "Kulala",
       p = { ":lua require('kulala').jump_prev()<CR>", "Jump Prev" },
