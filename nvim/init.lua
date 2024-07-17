@@ -7,11 +7,11 @@ plugin "filetype.molten"
 plugin "filetype.prettier"
 plugin "filetype.quarto"
 plugin "filetype.jupytext"
+plugin "filetype.obsidian"
 plugin "filetype.kulala"
 -- ESSENCIAL PLUGINS
 plugin "autopairs" -- TODO try dont use this
 plugin "colorizer"
-plugin "colorscheme" -- theme
 plugin "comment"
 plugin "gitsigns"
 plugin "glance"
@@ -24,6 +24,8 @@ plugin "neogit"
 plugin "noice"
 plugin "notify"
 plugin "telescope"
+plugin "tmux"
+plugin "colorscheme" -- theme
 plugin "transparent" -- theme
 
 -- lsp and copilot related plugins
@@ -34,7 +36,7 @@ plugin "copilot"
 plugin "cmp"
 plugin "lspconfig"
 plugin "mason"
-plugin "null-ls" -- TODO figure out the function of this
+-- plugin "null-ls" -- TODO figure out the function of this
 
 -- good for organiation but not essencial
 plugin "whichkey"
