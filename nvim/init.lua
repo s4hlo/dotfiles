@@ -9,6 +9,7 @@ plugin "filetype.quarto"
 plugin "filetype.jupytext"
 plugin "filetype.obsidian"
 plugin "filetype.kulala"
+plugin "filetype.nest"
 -- ESSENCIAL PLUGINS
 plugin "autopairs" -- TODO try dont use this
 plugin "colorizer"
