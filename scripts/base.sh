@@ -67,10 +67,4 @@ base_setup() {
         echo " ✅ - neovim installation finished"
     fi 
 
-    if [ ! -d ~/.tmux/plugins/tpm ]; then
-        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-        echo " ✅ - tmux plugin manager installation finished"
-    else
-        echo " ✅ - tmux plugin manager is already installed."
-    fi
 }
