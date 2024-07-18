@@ -23,6 +23,9 @@ return {
         path = "~/obsidian/sleight/",
       },
     },
+    ui = {
+      enable = false,
+    },
 
     -- see below for full list of options 👇
     daily_notes = {
