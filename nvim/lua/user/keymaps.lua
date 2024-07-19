@@ -14,21 +14,8 @@ keymap("n", "gt", "<CMD>Glance type_definitions<CR>")
 keymap("n", "gM", "<CMD>Glance implementations<CR>")
 
 -- Better window navigation
-keymap("n", "<m-h>", "<C-w>h", opts)
-keymap("n", "<m-j>", "<C-w>j", opts)
-keymap("n", "<m-k>", "<C-w>k", opts)
-keymap("n", "<m-l>", "<C-w>l", opts)
-keymap("n", "<m-tab>", "<c-6>", opts)
-keymap("n", "<A-J>", "<Cmd>BufferMovePrevious<CR>", opts)
-keymap("n", "<A-K>", "<Cmd>BufferMoveNext<CR>", opts)
--- keymap('n', 'J', '<Cmd>BufferPrevious<CR>', opts)
--- keymap('n', 'K', '<Cmd>BufferNext<CR>', opts)
--- keymap('n',  '<leader>bd', '<Cmd>BufferClose<CR>', opts)
-
 keymap("n", "J", "<Cmd>bp<CR>", opts)
 keymap("n", "K", "<Cmd>bn<CR>", opts)
-keymap("n", "<leader>bd", "<Cmd>bd<CR>", opts)
-
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
 keymap("n", "*", "*zz", opts)
@@ -48,4 +35,6 @@ vim.cmd([[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<C
 
 vim.keymap.set("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
 vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
+
+-- THIS IS THE MOST IMPORT REMAP THAT I'VE EVER DONE
 keymap("i", "jj", "<Esc>", opts)

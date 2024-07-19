@@ -4,6 +4,12 @@ local M = {
 	commit = "d3a3056204e1a9dbb7c7fe36c114dc43b681768c",
 	dependencies = {
 		{
+			"zbirenbaum/copilot-cmp",
+			config = function()
+				require("copilot_cmp").setup()
+			end,
+		},
+		{
 			"hrsh7th/cmp-nvim-lsp",
 			event = "InsertEnter",
 			commit = "44b16d11215dce86f253ce0c30949813c0a90765",

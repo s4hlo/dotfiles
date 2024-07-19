@@ -2,15 +2,10 @@ require "user.launch"
 require "user.options"
 require "user.keymaps"
 
--- plugin "filetype.jdtls"
-plugin "filetype.molten"
 plugin "filetype.prettier"
-plugin "filetype.quarto"
-plugin "filetype.jupytext"
 plugin "filetype.obsidian"
-plugin "filetype.kulala"
 plugin "filetype.nest"
--- ESSENCIAL PLUGINS
+
 plugin "autopairs" -- TODO try dont use this
 plugin "colorizer"
 plugin "comment"
@@ -28,22 +23,15 @@ plugin "telescope"
 plugin "tmux"
 plugin "colorscheme" -- theme
 plugin "transparent" -- theme
+plugin "whichkey" -- I was wrong, this is very essencial
 
 -- lsp and copilot related plugins
 -- TODO refactor those plugins
 plugin "treesitter"
-plugin "copilot-cmp"
 plugin "copilot"
 plugin "cmp"
 plugin "lspconfig"
 plugin "mason"
 -- plugin "null-ls" -- TODO figure out the function of this
-
--- good for organiation but not essencial
-plugin "whichkey"
-
--- not essential
-plugin "project"
-plugin "alpha"
 
 require "user.lazy"
