@@ -1,9 +1,9 @@
 local M = {
-  "norcalli/nvim-colorizer.lua",
+	"norcalli/nvim-colorizer.lua",
 }
 
 M.config = function()
-  require("colorizer").setup()
+	require("colorizer").setup()
 end
 
 return M

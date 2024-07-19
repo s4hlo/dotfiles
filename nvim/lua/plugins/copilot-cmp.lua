@@ -1,9 +1,9 @@
 local M = {
-  "zbirenbaum/copilot-cmp",
+	"zbirenbaum/copilot-cmp",
 }
 
 function M.config()
-  require("copilot_cmp").setup()
+	require("copilot_cmp").setup()
 end
 
 return M

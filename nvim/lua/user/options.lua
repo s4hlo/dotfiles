@@ -39,11 +39,11 @@ vim.opt.title = false
 vim.opt.foldopen = "all" -- makes buffers open with all folds open
 vim.opt_local.foldmethod = "syntax" -- enable folding
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
-vim.opt.fillchars:append {
-  stl = " ",
-}
-vim.opt.shortmess:append "c"
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
+vim.opt.fillchars:append({
+	stl = " ",
+})
+vim.opt.shortmess:append("c")
+vim.cmd("set whichwrap+=<,>,[,],h,l")
+vim.cmd([[set iskeyword+=-]])
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
