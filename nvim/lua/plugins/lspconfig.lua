@@ -1,11 +1,10 @@
 local M = {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
-	commit = "e49b1e90c1781ce372013de3fa93a91ea29fc34a",
 	dependencies = {
 		{
-			"folke/neodev.nvim",
-			commit = "b094a663ccb71733543d8254b988e6bebdbdaca4",
+			"folke/lazydev.nvim",
+			ft = "lua", -- only load on lua files
 		},
 	},
 }
@@ -59,6 +58,7 @@ function M.config()
 		"yamlls",
 		"marksman",
 		"tailwindcss",
+		"lua_ls",
 	}
 
 	local default_diagnostic_config = {
@@ -111,10 +111,6 @@ function M.config()
 		local require_ok, settings = pcall(require, "user.lspsettings." .. server)
 		if require_ok then
 			opts = vim.tbl_deep_extend("force", settings, opts)
-		end
-
-		if server == "lua_ls" then
-			require("neodev").setup({})
 		end
 
 		lspconfig[server].setup(opts)

@@ -1,5 +1,5 @@
 local M = {
-	"jose-elias-alvarez/null-ls.nvim",
+	"nvimtools/none-ls.nvim",
 }
 
 local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
@@ -17,12 +17,10 @@ function M.config()
 			formatting.stylua,
 			formatting.prettier.with({
 				extra_filetypes = { "typescriptreact", "javascriptreact", "md", "json", "yaml", "toml" },
-				-- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
 				condition = function(utils)
 					return utils.root_has_file(".prettierrc") or utils.root_has_file("prettier.config.js")
 				end,
 			}),
-			-- null_ls.builtins.diagnostics.eslint,
 			null_ls.builtins.completion.spell,
 		},
 		on_attach = function(client, bufnr)
@@ -37,10 +35,7 @@ function M.config()
 						-- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
 						vim.lsp.buf.format({
 							bufnr = bufnr,
-							filter = function(cliente)
-								return cliente.name == "null-ls" --this ensures null_ls client is called to format, not normal LspFormatting
-							end,
-							async = false,
+							async = async,
 						})
 					end,
 					-- callback = function()
