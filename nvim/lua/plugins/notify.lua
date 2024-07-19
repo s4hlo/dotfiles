@@ -4,7 +4,7 @@ local M = {
 
 function M.config()
 	require("notify").setup({
-		background_colour = "#ffffff",
+		-- background_colour = "#ffffff",
 	})
 end
 
