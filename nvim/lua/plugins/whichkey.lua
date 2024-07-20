@@ -36,6 +36,7 @@ function M.config()
 			r = { "<cmd>MoltenReevaluateCell<CR>", "Re-eval Cell" },
 			h = { "<cmd>MoltenHideOutput<CR>", "Close Output" },
 			d = { "<cmd>MoltenDelete<CR>", "Delete Cell" },
+      i = { "<cmd>MoltenInit<CR>", "Init"}
 		},
 		d = {
 			name = "Debug",
@@ -179,7 +180,7 @@ function M.config()
 		},
 		m = {
 			name = "Molten",
-			e = { "<cmd>MoltenEvaluateVisual<CR>", "Evaluate Visual" },
+			e = { ":<C-u>MoltenEvaluateVisual<CR>", "Evaluate Visual" },
 		},
 	}
 
