@@ -14,10 +14,10 @@ local function lsp_keymaps(bufnr)
   local keymap = vim.api.nvim_buf_set_keymap
   -- keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   -- keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  keymap(bufnr, "n", "<leader>lt", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  -- keymap(bufnr, "n", "<leader>lt", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  -- keymap(bufnr, "n", "<leader>lh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  keymap(bufnr, "n", "<leader>lh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 end
 
 
