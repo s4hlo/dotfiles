@@ -29,11 +29,10 @@ local buf = api.nvim_get_current_buf()
 local parsername = 'markdown'
 local parser = ts.get_parser(buf, parsername)
 local tsquery = '(fenced_code_block)@codecell'
-
--- vim.api.nvim_set_hl(0, '@markup.codecell', { bg = '#000055' })
-vim.api.nvim_set_hl(0, '@markup.codecell', {
-  link = 'CursorLine',
-})
+vim.api.nvim_set_hl(0, '@markup.codecell', { bg = '#1E2030' })
+-- vim.api.nvim_set_hl(0, '@markup.codecell', {
+--   link = 'CursorLine',
+-- })
 
 local function clear_all()
   local all = api.nvim_buf_get_extmarks(buf, ns, 0, -1, {})

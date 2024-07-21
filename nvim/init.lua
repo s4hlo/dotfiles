@@ -6,7 +6,7 @@ plugin("filetype.prettier")
 plugin("filetype.obsidian")
 plugin("filetype.nest")
 plugin("filetype.prettier")
-plugin("filetype.quarto")
+plugin("filetype.molten")
 
 plugin("autopairs") -- TODO try dont use this
 plugin("colorizer")

@@ -63,7 +63,7 @@ return {
     build = ':UpdateRemotePlugins',
     init = function()
       vim.g.molten_image_provider = 'image.nvim'
-      vim.g.molten_output_win_max_height = 20
+      vim.g.molten_output_win_max_height = 40
       vim.g.molten_auto_open_output = false
 
       -- optional, I like wrapping. works for virt text and the output window
@@ -72,8 +72,13 @@ return {
       -- Output as virtual text. Allows outputs to always be shown, works with images, but can
       -- be buggy with longer images
       -- this make the image larger
-      vim.g.molten_virt_text_output = true
+      -- vim.g.molten_virt_text_output = true
 
+      vim.g.molten_output_show_more = true
+
+      -- vim.g.molten_output_win_border= true
+      -- vim.g.molten_output_win_style= "minimal"
+      
       -- this will make it so the output shows up below the \`\`\` cell delimiter
       vim.g.molten_virt_lines_off_by_1 = true
     end,

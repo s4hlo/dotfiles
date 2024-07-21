@@ -117,6 +117,21 @@ function M.config()
 
     lspconfig[server].setup(opts)
   end
+
+  require("lspconfig")["pyright"].setup({
+    on_attach = M.on_attach,
+    capabilities = M.common_capabilities(),
+    settings = {
+        python = {
+            analysis = {
+                diagnosticSeverityOverrides = {
+                    reportUnusedExpression = "none",
+                    reportAttributeAccessIssue = "none",
+                },
+            },
+        },
+    },
+})
 end
 
 return M
