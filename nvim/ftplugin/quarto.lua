@@ -1,6 +1,5 @@
 local api = vim.api
 local ts = vim.treesitter
-vim.cmd("TransparentDisable")
 
 vim.b.slime_cell_delimiter = '```'
 vim.b['quarto_is_r_mode'] = nil
