@@ -38,8 +38,8 @@ function M.config()
 		},
 		exclude = {
 			filetypes = {
-        "python",
-        "quarto",
+				"python",
+				"quarto",
 				"help",
 				"startify",
 				"dashboard",
