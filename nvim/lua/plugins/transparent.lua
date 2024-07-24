@@ -42,7 +42,7 @@ function M.config()
       "CmpNormal",
       "FloatBorder",
       "Float",
-      -- "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
+      "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
       "TelescopeNormal",
       "TelescopeBorder",
       "TelescopePromptBorder",
