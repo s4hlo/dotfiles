@@ -1,7 +1,7 @@
 local M = {
   "NeogitOrg/neogit",
   dependencies = {
-    "nvim-lua/plenary.nvim", -- required
+    "nvim-lua/plenary.nvim",  -- required
     "sindrets/diffview.nvim", -- optional - Diff integration
 
     -- Only one of these is needed, not both.
@@ -17,13 +17,16 @@ function M.config()
   local actions = require("diffview.actions")
 
   require("diffview").setup({
-    diff_binaries = false,  -- Show diffs for binaries
+    diff_binaries = false,    -- Show diffs for binaries
     enhanced_diff_hl = false, -- See |diffview-config-enhanced_diff_hl|
     keymaps = {
       file_panel = {
         ["gf"] = function()
           actions.goto_file_edit()
           vim.cmd("tabclose #")
+        end,
+        ["q"] = function()
+          vim.cmd("tabclose")
         end,
       },
     },
