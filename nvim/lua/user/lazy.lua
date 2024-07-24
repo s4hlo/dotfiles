@@ -24,9 +24,9 @@ require("user.options")
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  ui = {
-    border = "rounded",
-  },
+	ui = {
+		border = "rounded",
+	},
 	spec = LAZY_PLUGIN_SPEC,
 	-- spec = {
 	--   -- import your plugins
