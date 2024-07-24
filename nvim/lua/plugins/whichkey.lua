@@ -29,7 +29,7 @@ function M.config()
 		["q"] = { "<cmd>confirm q<CR>", "Quit" },
 		["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
 		["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-		["e"] = { "<cmd>Neotree reveal toggle<CR>", "Explorer" },
+		["e"] = { "<cmd>Neotree reveal toggle filesystem<CR>", "Explorer" },
 		b = {
 			name = "Buffers",
 			b = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
@@ -109,7 +109,7 @@ function M.config()
 
 		g = {
 			name = "Git",
-			g = { "<cmd>Neogit<cr>", "Neogit" },
+			g = { "<cmd>Neotree git_status<cr>", "Neogit" },
 			j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
 			k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
 			l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },

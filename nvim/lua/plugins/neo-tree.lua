@@ -78,8 +78,8 @@ M.config = function()
       "document_symbols",
     },
     source_selector = {
-      winbar = true,
-      statusline = true,
+      winbar = false,
+      statusline = false,
       separator = { left = "", right = "" },
       tabs_layout = "start",
       sources = {
@@ -388,7 +388,6 @@ M.config = function()
     },
     git_status = {
       window = {
-        position = "float",
         mappings = {
           ["A"] = "git_add_all",
           ["gu"] = "git_unstage_file",
