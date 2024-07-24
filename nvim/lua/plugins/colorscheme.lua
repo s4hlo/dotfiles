@@ -6,7 +6,7 @@ local M = {
 		require("onedark").setup({
 			style = "cool",
 		})
-		vim.cmd.colorscheme("tokyonight")
+		vim.cmd.colorscheme("tokyonight-night")
 	end,
 }
 
@@ -17,4 +17,6 @@ local N = {
 	opts = {},
 }
 
-return { M, N }
+local O = { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+
+return { M, N, O }
