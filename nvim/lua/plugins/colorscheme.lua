@@ -5,15 +5,13 @@ return {
     priority = 1000,
     opts = {},
     config = function()
-      vim.cmd.colorscheme("tokyonight")
-      -- vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#555566" })
+      vim.cmd.colorscheme("tokyonight-night")
       require("tokyonight").setup({
-        transparent = false, -- Enable this to disable setting the background color
-        styles = {
-          sidebars = "transparent",
-          floats = "transparent",
-        },
+        style = "night",
+        -- on_colors = function(colors)
+        -- 	colors.border = "#565f89"
+        -- end,
       })
     end,
-  }
+  },
 }

@@ -27,7 +27,7 @@ Plugin("telescope")
 Plugin("tmux")
 Plugin("colorscheme") -- theme
 Plugin("transparent") -- theme
-Plugin("whichkey")    -- I was wrong, this is very essencial
+Plugin("whichkey") -- I was wrong, this is very essencial
 Plugin("treesitter")
 
 -- lsp and copilot related plugins
