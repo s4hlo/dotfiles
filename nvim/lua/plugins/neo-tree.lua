@@ -78,7 +78,7 @@ M.config = function()
       "document_symbols",
     },
     source_selector = {
-      winbar = false,
+      winbar = true,
       statusline = false,
       separator = { left = "", right = "" },
       tabs_layout = "start",
