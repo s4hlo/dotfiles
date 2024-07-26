@@ -7,10 +7,8 @@ vim.g.maplocalleader = " "
 keymap("n", "<C-Space>", "<cmd>WhichKey \\<space><cr>", opts)
 
 -- glance
-keymap("n", "gD", "<CMD>Glance definitions<CR>")
-keymap("n", "gd", "<CMD>Glance references<CR>")
-keymap("n", "gt", "<CMD>Glance type_definitions<CR>")
-keymap("n", "gM", "<CMD>Glance implementations<CR>")
+keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+keymap("n", "gD", "<CMD>Glance references<CR>")
 
 -- Better window navigation
 keymap("n", "n", "nzz", opts)
@@ -26,5 +24,5 @@ keymap("v", ">", ">gv", opts)
 
 keymap("x", "p", [["_dP]])
 
--- THIS IS THE MOST IMPORT REMAP THAT I'VE EVER DONE
+-- THIS IS THE MOST IMPORTANT REMAP THAT I'VE EVER DONE
 keymap("i", "jj", "<Esc>", opts)
