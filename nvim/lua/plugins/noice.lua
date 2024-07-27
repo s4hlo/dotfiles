@@ -67,7 +67,6 @@ function M.config()
 			enabled = true, -- enables the Noice cmdline UI
 			view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
 			opts = {}, -- global options for the cmdline. See section on views
-			---@type table<string, CmdlineFormat>
 			format = {
 				-- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
 				-- view: (default is cmdline view)
@@ -95,9 +94,7 @@ function M.config()
 				enabled = true,
 				-- Lsp Progress is formatted using the builtins for lsp_progress. See config.format.builtin
 				-- See the section on formatting for more details on how to customize.
-				--- @type NoiceFormat|string
 				format = "lsp_progress",
-				--- @type NoiceFormat|string
 				format_done = "lsp_progress_done",
 				throttle = 1000 / 30, -- frequency to update lsp progress message
 				view = "mini",

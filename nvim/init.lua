@@ -32,6 +32,7 @@ Plugin("telescope")
 Plugin("tmux")
 Plugin("transparent") -- theme
 Plugin("treesitter")
-Plugin("whichkey") -- I was wrong, this is very essencial
+Plugin("whichkey")    -- I was wrong, this is very essencial
+Plugin("null-ls")
 
 require("user.lazy")

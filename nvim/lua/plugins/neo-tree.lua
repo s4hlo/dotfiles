@@ -75,10 +75,9 @@ M.config = function()
       "filesystem",
       "buffers",
       "git_status",
-      "document_symbols",
     },
     source_selector = {
-      winbar = true,
+      winbar = false,
       statusline = false,
       separator = { left = "", right = "" },
       tabs_layout = "start",
@@ -86,7 +85,6 @@ M.config = function()
         { source = "filesystem" },
         { source = "buffers" },
         { source = "git_status" },
-        { source = "document_symbols" },
       },
     },
     close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab

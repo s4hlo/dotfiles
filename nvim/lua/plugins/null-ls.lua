@@ -18,33 +18,32 @@ function M.config()
 			formatting.prettier.with({
 				extra_filetypes = { "typescriptreact", "javascriptreact", "md", "json", "yaml", "toml" },
 				condition = function(utils)
+					-- print both before
+					print(utils.root_has_file(".prettierrc"))
+					print(utils.root_has_file("prettier.config.js"))
 					return utils.root_has_file(".prettierrc") or utils.root_has_file("prettier.config.js")
 				end,
 			}),
 			null_ls.builtins.completion.spell,
 		},
-		on_attach = function(client, bufnr)
-			if client.supports_method("textDocument/formatting") then
-				-- format on save
-				vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-				vim.api.nvim_create_autocmd("BufWritePre", {
-					buffer = bufnr,
-					group = group,
-					callback = function()
-						-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-						-- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-						vim.lsp.buf.format({
-							bufnr = bufnr,
-							async = async,
-						})
-					end,
-					-- callback = function()
-					--   vim.lsp.buf.format { bufnr = bufnr, async = async }
-					-- end,
-					desc = "[lsp] format on save",
-				})
-			end
-		end,
+		-- on_attach = function(client, bufnr)
+		-- 	if client.supports_method("textDocument/formatting") then
+		-- 		-- format on save
+		-- 		vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+		-- 		vim.api.nvim_create_autocmd("BufWritePre", {
+		-- 			buffer = bufnr,
+		-- 			group = group,
+		-- 			callback = function()
+		-- 				-- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
+		-- 				vim.lsp.buf.format({
+		-- 					bufnr = bufnr,
+		-- 					async = async,
+		-- 				})
+		-- 			end,
+		-- 			desc = "[lsp] format on save",
+		-- 		})
+		-- 	end
+		-- end,
 	})
 end
 
