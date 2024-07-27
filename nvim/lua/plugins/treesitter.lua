@@ -1,7 +1,7 @@
 local M = {
 	"nvim-treesitter/nvim-treesitter",
 	event = { "BufReadPost", "BufNewFile" },
-	-- commit = "afa103385a2b5ef060596ed822ef63276ae88016",
+	commit = "afa103385a2b5ef060596ed822ef63276ae88016",
 	build = ":TSUpdate",
 	dependencies = {
 		{
@@ -18,12 +18,7 @@ local M = {
 			"windwp/nvim-ts-autotag",
 			event = "VeryLazy",
 			commit = "6be1192965df35f94b8ea6d323354f7dc7a557e4",
-		},
-		{
-			"windwp/nvim-autopairs",
-			event = "InsertEnter",
-			commit = "f6c71641f6f183427a651c0ce4ba3fb89404fa9e",
-		},
+		}
 	},
 }
 function M.config()
