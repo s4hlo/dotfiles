@@ -34,6 +34,7 @@ base_setup() {
     install_package kitty
     install_package flameshot 
     install_package libmagickwand-dev
+    install_package pulseaudio
 
     if [ -d "$HOME/.cargo" ]; then
       echo " ✅ - rust is already installed."
