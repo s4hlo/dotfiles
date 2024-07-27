@@ -45,4 +45,4 @@ vim.opt.fillchars:append({
 vim.opt.shortmess:append("c")
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
-vim.opt.fillchars = vim.opt.fillchars + 'diff: '
+vim.opt.fillchars = vim.opt.fillchars + "diff: "

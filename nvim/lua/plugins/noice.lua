@@ -58,7 +58,7 @@ function M.config()
 				filter = {
 					event = "msg_showmode",
 					any = {
-						{ find = "loren ipusum" }, -- this is very useful 
+						{ find = "loren ipusum" }, -- this is very useful
 					},
 				},
 			},
