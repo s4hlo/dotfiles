@@ -18,9 +18,6 @@ function M.config()
 			formatting.prettier.with({
 				extra_filetypes = { "typescriptreact", "javascriptreact", "md", "json", "yaml", "toml" },
 				condition = function(utils)
-					-- print both before
-					print(utils.root_has_file(".prettierrc"))
-					print(utils.root_has_file("prettier.config.js"))
 					return utils.root_has_file(".prettierrc") or utils.root_has_file("prettier.config.js")
 				end,
 			}),
