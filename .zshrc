@@ -75,10 +75,11 @@ xmodmap ~/dotfiles/.Xmodmap
 # My personal aliases 
 # Improved ls alias with additional options
 alias ls='ls -AFG --color=auto --group-directories-first'
-alias g='git'
 alias tks="tmux kill-session -t"
 alias ipforward='sudo echo "1" | sudo tee /proc/sys/net/ipv4/ip_forward'
+alias uncaps='xset -q | grep "Caps Lock:   on" && xdotool key Caps_Lock'
 alias ssnap='sudo service snapd.apparmor start && sudo service snapd start'
+alias tar='tar'
 alias gl='grep -lr --exclude-dir=.git'
 alias fcd='cd "$(dirname "$(fzf)")"'
 alias setup='~/dotfiles/setup.sh'
@@ -92,7 +93,5 @@ alias taskj='task add +tarken'
 alias kls='sudo logkeys -s -o ~/sleight.log -m ~/dev/logkeys/keymaps/en_US_ubuntu_1204.map'
 alias klm='sudo tail --follow ~/sleight.log'
 alias klk='sudo logkeys -k'
-alias tar='tar –xvzf'
-alias uncaps='xset -q | grep "Caps Lock:   on" && xdotool key Caps_Lock'
 
 ###### MEMENTO MORI ######
