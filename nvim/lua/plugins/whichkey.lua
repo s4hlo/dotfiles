@@ -122,7 +122,15 @@ function M.config()
 			},
 			o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 			b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-			c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+			c = {
+				name = "Conflict",
+        o = { "<cmd>GitConflictChooseOurs<cr>", "Choose Ours" },
+        t = { "<cmd>GitConflictChooseTheirs<cr>", "Choose Theirs" },
+        b = { "<cmd>GitConflictChooseBoth<cr>", "Choose Both" },
+        N = { "<cmd>GitConflictChooseNone<cr>", "Choose None" },
+        n = { "<cmd>GitConflictNextConflict<cr>", "Next Conflict" },
+        p = { "<cmd>GitConflictPrevConflict<cr>", "Prev Conflict" },
+			},
 			C = {
 				"<cmd>Telescope git_bcommits<cr>",
 				"Checkout commit(for current file)",
