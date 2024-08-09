@@ -13,9 +13,20 @@ return {
 				show_help_hints = false, -- Show hints for how to open the help panel
 				watch_index = true, -- Update views and index buffers when the git index changes.
 				file_panel = {
-					win_config = {
-						position = "right",
+					listing_style = "tree", -- One of 'list' or 'tree'
+					tree_options = { -- Only applies when listing_style is 'tree'
+						flatten_dirs = true, -- Flatten dirs that only contain one single dir
+						folder_statuses = "only_folded", -- One of 'never', 'only_folded' or 'always'.
 					},
+					win_config = { -- See |diffview-config-win_config|
+						position = "right",
+						width = 35,
+						win_opts = {},
+					},
+				},
+				icons = { -- Only applies when use_icons is true.
+					folder_closed = " ",
+					folder_open = " ",
 				},
 				keymaps = {
 					file_panel = {
