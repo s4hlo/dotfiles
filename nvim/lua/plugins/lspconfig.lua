@@ -39,6 +39,7 @@ function M.config()
 		"tsserver",
 		"astro",
 		"pyright",
+    "jsonls",
 		"bashls",
 		"yamlls",
 		"marksman",

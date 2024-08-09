@@ -22,6 +22,7 @@ function M.config()
 			"pyright",
 			"marksman",
 			"tailwindcss",
+      "jsonls"
 		},
 	})
 	require("mason-tool-installer").setup({
