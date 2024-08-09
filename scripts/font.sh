@@ -1,6 +1,6 @@
 font_setup() {
     if fc-list | grep -qi "JetBrains Mono"; then
-        echo " ✅ - JetBrains Mono font is already installed."
+        echo "\e[32m[INFO]\e[0m - jetbrains mono is already installed."
     else
         echo " ⬇️ - Downloading and installing JetBrains Mono font..."
         wget -O ~/Downloads/TempFile.zip https://download-cdn.jetbrains.com/fonts/JetBrainsMono-2.304.zip
@@ -13,6 +13,7 @@ font_setup() {
         rm ~/Downloads/TempFile.zip
         
         sudo fc-cache -fv
-        echo " ✅ - JetBrains Mono font installation finished."
+
+        echo "\e[32m[INFO]\e[0m - jetbrains mono installation finished"
     fi
 }

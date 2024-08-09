@@ -14,8 +14,8 @@ EOF
         sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
         sudo apt update
         sudo apt install -y pritunl-client-electron
-        echo " ✅ - Pritunl Client installation finished"
+        echo "\e[32m[INFO]\e[0m - pritunl-client is already installed."
     else
-        echo " ✅ - Pritunl Client is already installed"
+        echo "\e[32m[INFO]\e[0m - pritunl-client installation finished"
     fi
 }
