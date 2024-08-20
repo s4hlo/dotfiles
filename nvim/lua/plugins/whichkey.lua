@@ -148,7 +148,6 @@ function M.config()
 			D = { "<cmd>Glance definitions()<CR>", "Definitions" },
 			T = { "<cmd>Glance type_definitions()<CR>", "Type Definitions" },
 
-			t = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
 			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 			-- f = { "<cmd>lua vim.lsp.buf.format({timeout_ms = 1000000})<cr>", "Format" },
 			f = {
