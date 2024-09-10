@@ -18,7 +18,7 @@ function M.config()
 		ensure_installed = {
 			"lua_ls",
 			"html",
-			"tsserver",
+			"ts_ls",
 			"pyright",
 			"marksman",
 			"tailwindcss",

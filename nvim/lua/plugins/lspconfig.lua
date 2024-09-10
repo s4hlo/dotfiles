@@ -36,7 +36,7 @@ function M.config()
 		"jdtls",
 		"cssls",
 		"html",
-		"tsserver",
+		"ts_ls",
 		"astro",
 		"pyright",
     "jsonls",
