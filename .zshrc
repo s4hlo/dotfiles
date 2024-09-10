@@ -66,7 +66,7 @@ eval "$(starship init zsh)"
 
 # Enable vim keybinds
 set -o vi
-bindkey -M viins jj vi-cmd-mode
+bindkey -M viins jk vi-cmd-mode
 
 # run keyboard remaps
 
