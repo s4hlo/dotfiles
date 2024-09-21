@@ -21,6 +21,7 @@ links_setup() {
     ln -fns ~/dotfiles/starship/starship.toml ~/.config/starship.toml
     ln -fns ~/dotfiles/gh/config.yml ~/.config/gh/config.yml
     ln -fns ~/dotfiles/gh/hosts.yml ~/.config/gh/hosts.yml
+    ln -fns ~/dotfiles/yazi/yazi.toml ~/.config/yazi/yazi.toml
 
     # all .sh file but the setup.sh will be turn executable here
     chmod +x "$HOME"/dotfiles/i3/polybar/launch.sh
