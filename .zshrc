@@ -52,8 +52,19 @@ fi
 
 [ -f "/home/sleight/.ghcup/env" ] && source "/home/sleight/.ghcup/env" # ghcup-env
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 export PATH=$PATH:~/.cargo/bin/
 export PATH=$PATH:~/.local/bin
+
+export EDITOR='nvim'
 
 # nvm 
 export NVM_DIR="$HOME/.nvm"
