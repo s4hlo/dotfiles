@@ -25,6 +25,7 @@ base_setup() {
     # xclip is necessary to enable shared clipboard but only works in x11 system
     # ! CONFIG TOOL - to check where use it, search for ocurrences using grep
     install_package xinput
+    install_package gdm3
     install_package x11-utils # this provides xprop 
     install_package xdotool
     install_package xclip
@@ -33,10 +34,13 @@ base_setup() {
     install_package ripgrep # ripgrep is necessary to enable search in files using telescope
     install_package kitty
     install_package flameshot 
+    install_package luajit
     install_package libmagickwand-dev
+    install_package libgraphicsmagick1-dev
     install_package pulseaudio
     install_package hcxdumptool
     install_package hcxtools
+    install_package luarocks
 
     if [ -d "$HOME/.cargo" ]; then
       echo "\e[32m[INFO]\e[0m - rust is already installed." 
