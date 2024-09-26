@@ -1,11 +1,36 @@
+log() {
+    local content=$1
+    local type=$2
+
+    case $type in
+        0)
+            echo "\e[32m[INFO]\e[0m - $content"  # GREEN
+            ;;
+        1)
+            echo "\e[33m[WARN]\e[0m - $content"  # YELLOW
+            ;;
+        2)
+            echo "\e[31m[ERROR]\e[0m - $content"  # RED
+            ;;
+        3)
+            echo "\e[31m[EXIT]\e[0m - $content"  # RED
+            ;;
+        *)
+            echo "\e[32m[INFO]\e[0m - $content" # GREEN
+            ;;
+    esac
+}
+
+# Exemplo de como usar a função "log" no seu script
+
 install_package() {
     package=$1
     if dpkg -l | grep -q "^ii  $package "; then
-        echo "\e[32m[INFO]\e[0m - $package is already installed."  # Green for installed
+        log "$package is already installed." 0
     else
-        # TODO: update pack istaller to pacman when update to arch
+        # TODO: atualizar o instalador para pacman ao mudar para Arch
         sudo apt install -y $package
-        echo "\e[32m[INFO]\e[0m - $package installation finished"  # Green for success
+        log "$package installation finished" 0
     fi
 }
 
@@ -23,16 +48,16 @@ ask_and_execute() {
             return 0
             ;;
         [Nn]*) 
-            echo "\e[33m[WARN]\e[0m - Skipping $prompt_message"  # Yellow for warning
+            log "Skipping $prompt_message" 1
             return 1
             ;;
         [Qq]*) 
-            echo "\e[31m[EXIT]\e[0m - Exiting the program."  # Red for exit
+            log "Exiting the program." 3
             exit 0
             ;;
         *) 
-            echo "\e[31m[ERROR]\e[0m - Invalid input, please enter y, n, or q."  # Red for error
+            log "Invalid input, please enter y, n, or q." 2
             ;;
         esac
     done
-}
+} 

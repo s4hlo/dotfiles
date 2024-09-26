@@ -6,7 +6,7 @@ domestic_setup() {
     install_package qbittorrent
 
      # this is necessary for installing in Debian-based Linux only
-    echo "\e[32m[INFO]\e[0m - \e[33mPlease run the following commands manually before installing Spotify:\e[0m"
+    log "Please run the following commands manually before installing Spotify" 1
     echo " "
     echo "\e[36mcurl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg\e[0m"
     echo "\e[36mecho \"deb http://repository.spotify.com stable non-free\" | sudo tee /etc/apt/sources.list.d/spotify.list\e[0m"
