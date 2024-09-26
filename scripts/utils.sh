@@ -3,6 +3,7 @@ install_package() {
     if dpkg -l | grep -q "^ii  $package "; then
         echo "\e[32m[INFO]\e[0m - $package is already installed."  # Green for installed
     else
+        # TODO: update pack istaller to pacman when update to arch
         sudo apt install -y $package
         echo "\e[32m[INFO]\e[0m - $package installation finished"  # Green for success
     fi

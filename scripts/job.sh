@@ -3,19 +3,12 @@ job_setup() {
     . ~/dotfiles/scripts/utils.sh
     
     install_package dbeaver
-    install_package insomnia
     install_package gh
 
-    if dpkg -l | grep -q "^ii pritunl-client "; then
-        sudo tee /etc/apt/sources.list.d/pritunl.list <<EOF
-deb http://repo.pritunl.com/stable/apt bookworm main
-EOF
-        sudo apt install -y dirmngr
-        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
-        sudo apt update
-        sudo apt install -y pritunl-client-electron
-        echo "\e[32m[INFO]\e[0m - pritunl-client is already installed."
-    else
-        echo "\e[32m[INFO]\e[0m - pritunl-client installation finished"
-    fi
+    echo "\e[32m[INFO]\e[0m - \e[33mSome apps must be installed direct via .deb in the official sources:\e[0m"
+    echo " "
+    echo "\e[36m - Insomnia\e[0m"
+    echo "\e[36m - Pritunl\e[0m"
+    echo "\e[36m - Discord\e[0m"
+    echo " "
 }
