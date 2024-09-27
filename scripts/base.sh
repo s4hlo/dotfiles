@@ -25,6 +25,7 @@ base_setup() {
     # xclip is necessary to enable shared clipboard but only works in x11 system
     # ! CONFIG TOOL - to check where use it, search for ocurrences using grep
     install_package xinput
+    install_package curl
     install_package gdm3
     install_package x11-utils # this provides xprop 
     install_package xdotool
@@ -42,12 +43,6 @@ base_setup() {
     install_package hcxtools
     install_package luarocks
 
-    if [ -d "$HOME/.cargo" ]; then
-      log "rust is already installed." 
-    else
-      curl https://sh.rustup.rs -sSf | sh
-      log "rust installation finished" 
-    fi
 
     if [ -d "$HOME/.nvm" ]; then
       log "nvm is already installed." 
@@ -73,5 +68,37 @@ base_setup() {
       tar xzvf ~/Downloads/nvim-linux64.tar.gz -C ~/dotfiles
       log "neovim installation finished" 
     fi 
+
+
+    # other package installtions
+    install_cargo_package() {
+        local package_name=$1
+        local install_cmd=$2
+
+        if cargo install --list | grep -q "$package_name"; then
+            log "$package_name is already installed."
+        else
+            eval "$install_cmd"
+            log "$package_name installation finished."
+        fi
+    }
+
+    if [ -d "$HOME/.cargo" ]; then
+      log "rust is already installed." 
+      install_cargo_package "atac" "cargo install atac --locked"
+      install_cargo_package "yazi-fm" "cargo install --locked yazi-fm"
+      install_cargo_package "yazi-cli" "cargo install --locked yazi-cli"
+      install_cargo_package "gobang" "cargo install --version 0.1.0-alpha.5 gobang"
+    else
+      curl https://sh.rustup.rs -sSf | sh
+      log "rust installation finished" 
+    fi
+
+    if luarocks list | grep -q "magick"; then
+        log "Pacote magick já está instalado."
+    else
+        sudo luarocks install magick
+        log "Pacote magick instalado com sucesso."
+    fi
 
 }
