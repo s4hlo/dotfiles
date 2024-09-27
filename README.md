@@ -53,3 +53,7 @@ npm i -g neovim
 - [NVM Github repositoy](https://github.com/nvm-sh/nvm#installing-and-updating)
 - [Starship Website](https://starship.rs/)
 - [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
+
+todo : fix starship installation, it is not working
+todo : add install curl just for assurance
+some notes run luarocks install magick
