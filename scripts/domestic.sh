@@ -1,6 +1,6 @@
 domestic_setup() {
     . ~/dotfiles/scripts/utils.sh
-    install_package bpytop
+    install_package btop
     install_package xournalpp
     install_package vlc
     install_package qbittorrent
