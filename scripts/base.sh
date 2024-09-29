@@ -42,7 +42,10 @@ base_setup() {
     install_package hcxdumptool
     install_package hcxtools
     install_package luarocks
-
+    install_package pulseaudio
+    install_package libasound2-dev
+    install_package libssl-dev
+    install_package pkg-config
 
     if [ -d "$HOME/.nvm" ]; then
       log "nvm is already installed." 
@@ -69,6 +72,12 @@ base_setup() {
       log "neovim installation finished" 
     fi 
 
+    if luarocks list | grep -q "magick"; then
+        log "magick is already installed."
+    else
+        sudo luarocks install magick
+        log "magick installation finished"
+    fi
 
     # other package installtions
     install_cargo_package() {
@@ -89,16 +98,9 @@ base_setup() {
       install_cargo_package "yazi-fm" "cargo install --locked yazi-fm"
       install_cargo_package "yazi-cli" "cargo install --locked yazi-cli"
       install_cargo_package "gobang" "cargo install --version 0.1.0-alpha.5 gobang"
+      install_cargo_package "spotify-tui" "cargo install spotify-tui"
     else
       curl https://sh.rustup.rs -sSf | sh
       log "rust installation finished" 
     fi
-
-    if luarocks list | grep -q "magick"; then
-        log "Pacote magick já está instalado."
-    else
-        sudo luarocks install magick
-        log "Pacote magick instalado com sucesso."
-    fi
-
 }

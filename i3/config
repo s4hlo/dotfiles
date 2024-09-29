@@ -197,9 +197,7 @@ mode "media" {
     bindsym comma exec playerctl -a next; mode "default"
     bindsym period exec playerctl -a previous; mode "default"
 
-    # bindsym m exec --no-startup-id bash -c 'pactl list sources | grep "Name:" | awk "{print \$2}" | xargs -I {} pactl set-source-mute {} toggle'; exec_always --no-startup-id $refresh_i3status 
-
-    # bindsym m exec --no-startup-id pulseaudio-ctl mute-input
+    bindsym m exec --no-startup-id bash -c 'pactl list sources | grep "Name:" | awk "{print \$2}" | xargs -I {} pactl set-source-mute {} toggle'; exec_always --no-startup-id $refresh_i3status 
 
     # Volta ao modo normal: Enter ou Escape
     bindsym Return mode "default"
