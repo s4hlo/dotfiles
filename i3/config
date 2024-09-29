@@ -95,22 +95,6 @@ bindsym --release $mod+space exec --no-startup-id xdotool key ctrl+shift+p
 # start flameshot for screenshots
 bindsym --release $mod+p exec flameshot gui
 
-# Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-# Media player controls 
-bindsym XF86AudioPlay exec playerctl -a play-pause
-bindsym XF86AudioPause exec playerctl -a pause 
-bindsym XF86AudioNext exec playerctl -a next 
-bindsym XF86AudioPrev exec playerctl -a previous
-
-# brightess control
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
-
 # start a terminal
 bindsym $mod+Return exec kitty
 
@@ -178,7 +162,6 @@ bindsym $mod+6 workspace $documents
 bindsym $mod+7 workspace $mindmap
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $terms
@@ -190,30 +173,48 @@ bindsym $mod+Shift+6 move container to workspace $documents
 bindsym $mod+Shift+7 move container to workspace $mindmap
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
+# brightess control
+# OVER C - this only work on notebooks
+bindsym $mod+Shift+equal exec --no-startup-id brightnessctl set +5%
+bindsym $mod+Shift+minus exec --no-startup-id brightnessctl set 5%-
+
+bindsym $mod+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym $mod+0 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+# TODO add polybar indicator
+
 # MODES -------------------------------------------------------------------------------
 
-# resize window 
-mode "resize" {
-        # (you can also use the mouse for that)
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+mode "media" {
+    # Controles de mídia
+    bindsym space exec playerctl -a play-pause; mode "default"
+    bindsym comma exec playerctl -a next; mode "default"
+    bindsym period exec playerctl -a previous; mode "default"
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # bindsym m exec --no-startup-id bash -c 'pactl list sources | grep "Name:" | awk "{print \$2}" | xargs -I {} pactl set-source-mute {} toggle'; exec_always --no-startup-id $refresh_i3status 
+
+    # bindsym m exec --no-startup-id pulseaudio-ctl mute-input
+
+    # Volta ao modo normal: Enter ou Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+m mode "media"
 
-mode "move" {
+# resize window 
+mode "edit" {
+    # (you can also use the mouse for that)
+    bindsym Shift+h resize shrink width 10 px or 10 ppt
+    bindsym Shift+j resize grow height 10 px or 10 ppt
+    bindsym Shift+k resize shrink height 10 px or 10 ppt
+    bindsym Shift+l resize grow width 10 px or 10 ppt
+
     bindsym $mod+Tab focus right
 
     bindsym h move left 30
@@ -225,8 +226,7 @@ mode "move" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
-bindsym $mod+m mode "move" focus floating
+bindsym $mod+r mode "edit"
 
 # System mode 
 mode "system" {
