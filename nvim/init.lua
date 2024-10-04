@@ -22,7 +22,7 @@ Plugin("copilot")
 Plugin("git")
 Plugin("glance")
 Plugin("illuminate")
-Plugin("image")
+-- Plugin("image") -- rage comment
 Plugin("indentline")
 Plugin("lsp-file-ops")
 Plugin("lspconfig") -- TODO needs refactor
