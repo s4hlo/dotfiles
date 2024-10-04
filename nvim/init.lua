@@ -3,12 +3,14 @@ require("user.options")
 require("user.keymaps")
 require("user.autocmds")
 
-Plugin("filetype.markdown")
--- Plugin("filetype.molten") -- uncomment this line to add python support
-Plugin("filetype.nest")
--- Plugin("filetype.obsidian") -- TODO: add a proper way to sync obsidian data
-Plugin("filetype.prettier")
-Plugin("filetype.prettier")
+-- Uncomment this as you need support for different filetypes
+-- TODO make this ft detection automatic
+-- Plugin("filetype.markdown")
+-- Plugin("filetype.molten")
+-- Plugin("filetype.nest")
+-- Plugin("filetype.obsidian") 
+-- Plugin("filetype.prettier")
+-- Plugin("filetype.prettier")
 
 Plugin("autopairs")
 Plugin("marks")

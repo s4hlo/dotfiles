@@ -81,7 +81,7 @@ bindkey -M viins jk vi-cmd-mode
 
 # run keyboard remaps
 
-xmodmap ~/dotfiles/.Xmodmap
+# xmodmap ~/dotfiles/.Xmodmap
 
 # My personal aliases 
 # Improved ls alias with additional options
