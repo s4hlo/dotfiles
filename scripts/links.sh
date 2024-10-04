@@ -1,11 +1,12 @@
 links_setup() {
-    rm -rf ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc ~/.config/nvim
+    rm -rf ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc 
+    rm -rf ~/.config/nvim ~/.config/hypr ~/.config/gh ~/.config/kitty
 
-    # Create necessary directories
-    CONFIG_DIRS=(gh kitty)
-    for dir in "${CONFIG_DIRS[@]}"; do
-        mkdir -p ~/.config/$dir
-    done
+    # # Create necessary directories
+    # CONFIG_DIRS=(gh kitty)
+    # for dir in "${CONFIG_DIRS[@]}"; do
+    #     mkdir -p ~/.config/$dir
+    # done
 
   # declare -A LINKS=(
   #     [~/.tmux.conf]="~/dotfiles/tmux/.tmux.conf"
@@ -25,9 +26,10 @@ links_setup() {
     ln -fns ~/dotfiles/.gitconfig ~/.gitconfig
     ln -fns ~/dotfiles/.vimrc ~/.vimrc
     ln -fns ~/dotfiles/.zshrc ~/.zshrc
-    ln -fns ~/dotfiles/gh ~/.config/gh
-    ln -fns ~/dotfiles/nvim ~/.config/nvim
-    ln -fns ~/dotfiles/kitty ~/.config/kitty
+    ln -fns ~/dotfiles/hypr ~/.config/
+    ln -fns ~/dotfiles/gh ~/.config/
+    ln -fns ~/dotfiles/nvim ~/.config/
+    ln -fns ~/dotfiles/kitty ~/.config/
 
     tmux source-file ~/.tmux.conf
     zsh -c "source ~/.zshrc"
