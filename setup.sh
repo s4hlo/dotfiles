@@ -17,12 +17,9 @@ echo '\e[35m<__________\\______)\__)\e[0m'
 echo "\e[34m--------------------------------------------\e[0m"
 
 . $HOME/dotfiles/scripts/utils.sh
+ask_and_execute "Do you want to install the Nerd Font" "$HOME/dotfiles/scripts/font.sh" "font_setup"
+ask_and_execute "Do you want to sync the packages" "$HOME/dotfiles/scripts/base.sh" "base_setup"
 ask_and_execute "Do you want to link the dotfiles" "$HOME/dotfiles/scripts/links.sh" "links_setup"
-ask_and_execute "Do you want to install base apps" "$HOME/dotfiles/scripts/base.sh" "base_setup"
-ask_and_execute "Do you want to install i3 base apps" "$HOME/dotfiles/scripts/i3.sh" "i3_setup"
-ask_and_execute "Do you want to install domestic apps" "$HOME/dotfiles/scripts/domestic.sh" "domestic_setup"
-ask_and_execute "Do you want to install job apps" "$HOME/dotfiles/scripts/job.sh" "job_setup"
-ask_and_execute "Do you want to download and install the Nerd Font" "$HOME/dotfiles/scripts/font.sh" "font_setup"
 
 echo '
 #################################################################################

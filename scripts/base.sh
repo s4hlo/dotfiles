@@ -1,25 +1,5 @@
 base_setup() {
     . ~/dotfiles/scripts/utils.sh
-    # add debian source repo bacause Kali linux source repo sucks
-    repo_debian="deb http://deb.debian.org/debian oldstable main non-free contrib"
-    repo_ubuntu="deb http://archive.ubuntu.com/ubuntu focal-updates main"
-
-    # Add Debian repository if it doesn't exist
-    if grep -Fxq "$repo_debian" /etc/apt/sources.list; then
-        log "\033[33mREPOSITORY\033[0m - Debian repository line already exists in sources.list."
-    else
-        echo "$repo_debian" | sudo tee -a /etc/apt/sources.list
-        log "\033[33mREPOSITORY\033[0m - Debian repository line added."
-    fi
-
-    # Add Ubuntu repository if it doesn't exist
-    if grep -Fxq "$repo_ubuntu" /etc/apt/sources.list; then
-        log "\033[33mREPOSITORY\033[0m - Ubuntu repository line already exists in sources.list."
-    else
-        echo "$repo_ubuntu" | sudo tee -a /etc/apt/sources.list
-        log "\033[33mREPOSITORY\033[0m - Ubuntu repository line added."
-    fi 
-
     # ! those two apps are not required to setup 
     # but they are useful tools to help in configuration
     # xclip is necessary to enable shared clipboard but only works in x11 system
@@ -46,61 +26,36 @@ base_setup() {
     install_package libasound2-dev
     install_package libssl-dev
     install_package pkg-config
+    # domestic
+    install_package btop
+    install_package xournalpp
+    install_package vlc
+    install_package qbittorrent
+    # job
+    install_package dbeaver
+    install_package gh
+    log "\e[33mSome apps must be installed direct via .deb in the official sources:\e[0m"
+    echo " "
+    echo "\e[36m - Insomnia\e[0m"
+    echo "\e[36m - Pritunl\e[0m"
+    echo "\e[36m - Discord\e[0m"
+    echo "\e[36m - Spotify\e[0m"
+    echo "\e[36m - Starship\e[0m"
+    echo "\e[36m - Neovim\e[0m"
+    echo "\e[36m - nvm\e[0m"
+    echo "\e[36m - rust\e[0m"
+    echo " "
 
-    if [ -d "$HOME/.nvm" ]; then
-      log "nvm is already installed." 
-    else
-      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-      log "nvm installation finished" 
-    fi
-
-    if command -v starship &> /dev/null; then
-      log "starship is already installed." 
-    else
-      (curl -sS https://starship.rs/install.sh | sh > /dev/null 2>&1)
-      log  "starship installation finished" 
-    fi
-
-    # this assure nvim to be installed 
-    # with the latest version
-    # This ensures nvim to be installed with the latest version
-    if [ -d "$HOME/dotfiles/nvim-linux64" ]; then
-      log "neovim is already installed." 
-    else #                                                         V
-      wget https://github.com/neovim/neovim/releases/download/v0.10.0/nvim-linux64.tar.gz -P ~/Downloads
-      tar xzvf ~/Downloads/nvim-linux64.tar.gz -C ~/dotfiles
-      log "neovim installation finished" 
-    fi 
-
-    if luarocks list | grep -q "magick"; then
-        log "magick is already installed."
-    else
-        sudo luarocks install magick
-        log "magick installation finished"
-    fi
-
-    # other package installtions
-    install_cargo_package() {
-        local package_name=$1
-        local install_cmd=$2
-
-        if cargo install --list | grep -q "$package_name"; then
-            log "$package_name is already installed."
-        else
-            eval "$install_cmd"
-            log "$package_name installation finished."
-        fi
-    }
-
-    if [ -d "$HOME/.cargo" ]; then
-      log "rust is already installed." 
-      install_cargo_package "atac" "cargo install atac --locked"
-      install_cargo_package "yazi-fm" "cargo install --locked yazi-fm"
-      install_cargo_package "yazi-cli" "cargo install --locked yazi-cli"
-      install_cargo_package "gobang" "cargo install --version 0.1.0-alpha.5 gobang"
-      install_cargo_package "spotify-tui" "cargo install spotify-tui"
-    else
-      curl https://sh.rustup.rs -sSf | sh
-      log "rust installation finished" 
-    fi
+    # _______________________________________________________________________________________
+    
+    # TODO: check if this is over or not
+    # for compatibility we must install
+    # using luarocks:
+    # - magick
+    # using cargo: 
+    # - atac
+    # - yazi-fm
+    # - yazi-cli
+    # - gobang
+    # - spotify-tui
 }
