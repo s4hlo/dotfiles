@@ -1,27 +1,27 @@
-echo "\e[34mWelcome to the setup script for my dotfiles!\e[0m"
-echo "\e[34m--------------------------------------------\e[0m"
-echo ''
+echo -e "\e[34mWelcome to the setup script for my dotfiles!\e[0m"
+echo -e "\e[34m--------------------------------------------\e[0m"
+echo -e ''
 
-echo ''
-echo '\e[35m                     .                  \e[32m REQUIREMENTS:\e[0m'
-echo '\e[35m                    / V\\                 \e[32m- Git\e[0m'
-echo '\e[35m                  / `  /                 \e[32m- Zsh\e[0m'
-echo '\e[35m                 <<   |                 \e[32m\e[0m'
-echo '\e[35m                 /    |                 \e[32m FOLLOW THE INSTRUCTIONS\e[0m'
-echo '\e[35m               /      |                 \e[32m FOR SETUP!\e[0m'
-echo '\e[35m             /        |\e[0m'
-echo '\e[35m           /    \  \ / \e[0m'
-echo '\e[35m          (      ) | |\e[0m'
-echo '\e[35m  ________|   _/_  | |\e[0m'
-echo '\e[35m<__________\\______)\__)\e[0m'
-echo "\e[34m--------------------------------------------\e[0m"
+echo -e ''
+echo -e '\e[35m                     .                  \e[32m REQUIREMENTS:\e[0m'
+echo -e '\e[35m                    / V\\                 \e[32m- Git\e[0m'
+echo -e '\e[35m                  / `  /                 \e[32m- Zsh\e[0m'
+echo -e '\e[35m                 <<   |                 \e[32m\e[0m'
+echo -e '\e[35m                 /    |                 \e[32m FOLLOW THE INSTRUCTIONS\e[0m'
+echo -e '\e[35m               /      |                 \e[32m FOR SETUP!\e[0m'
+echo -e '\e[35m             /        |\e[0m'
+echo -e '\e[35m           /    \  \ / \e[0m'
+echo -e '\e[35m          (      ) | |\e[0m'
+echo -e '\e[35m  ________|   _/_  | |\e[0m'
+echo -e '\e[35m<__________\\______)\__)\e[0m'
+echo -e "\e[34m--------------------------------------------\e[0m"
 
 . $HOME/dotfiles/scripts/utils.sh
 ask_and_execute "Do you want to install the Nerd Font" "$HOME/dotfiles/scripts/font.sh" "font_setup"
 ask_and_execute "Do you want to sync the packages" "$HOME/dotfiles/scripts/base.sh" "base_setup"
 ask_and_execute "Do you want to link the dotfiles" "$HOME/dotfiles/scripts/links.sh" "links_setup"
 
-echo '
+echo -e '
 #################################################################################
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠓⢤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠱⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀

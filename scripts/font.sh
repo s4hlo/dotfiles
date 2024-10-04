@@ -1,6 +1,8 @@
 font_setup() {
     . ~/dotfiles/scripts/utils.sh
 
+    sudo pacman -S --needed unzip
+
     if fc-list | grep -qi "JetBrains Mono"; then
         log "jetbrains mono is already installed."
     else

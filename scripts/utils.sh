@@ -4,19 +4,19 @@ log() {
 
     case $type in
         0)
-            echo "\e[32m[INFO]\e[0m - $content"  # GREEN
+            echo -e "\e[32m[INFO]\e[0m - $content"  # GREEN
             ;;
         1)
-            echo "\e[33m[WARN]\e[0m - $content"  # YELLOW
+            echo -e "\e[33m[WARN]\e[0m - $content"  # YELLOW
             ;;
         2)
-            echo "\e[31m[ERROR]\e[0m - $content"  # RED
+            echo -e "\e[31m[ERROR]\e[0m - $content"  # RED
             ;;
         3)
-            echo "\e[31m[EXIT]\e[0m - $content"  # RED
+            echo -e "\e[31m[EXIT]\e[0m - $content"  # RED
             ;;
         *)
-            echo "\e[32m[INFO]\e[0m - $content" # GREEN
+            echo -e "\e[32m[INFO]\e[0m - $content" # GREEN
             ;;
     esac
 }
@@ -40,7 +40,7 @@ ask_and_execute() {
     local setup_function=$3
 
     while true; do
-        read -p "$(echo "\e[34m$prompt_message?\e[0m (y/n/q): ")" yn  # Blue for prompt
+        read -p "$(echo -e "\e[34m$prompt_message?\e[0m (y/n/q): ")" yn  # Blue for prompt
         case $yn in
         [Yy]*) 
             . $script_path
