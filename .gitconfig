@@ -4,7 +4,7 @@
 
 [core]
     ; @target
-    editor = ~/dotfiles/nvim-linux64/bin/nvim 
+    editor = nvim 
     autocrlf = input
 
 [credential]
