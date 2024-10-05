@@ -32,6 +32,7 @@ links_setup() {
     ln -fns ~/dotfiles/kitty ~/.config/
     ln -fns ~/dotfiles/waybar ~/.config/
     ln -fns ~/dotfiles/wofi ~/.config/
+    ln -fns ~/dotfiles/spicetify ~/.config/spicetify/Themes/Tokyo
 
     tmux source-file ~/.tmux.conf
     zsh -c "source ~/.zshrc"
