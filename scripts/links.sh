@@ -31,6 +31,7 @@ links_setup() {
     ln -fns ~/dotfiles/nvim ~/.config/
     ln -fns ~/dotfiles/kitty ~/.config/
     ln -fns ~/dotfiles/waybar ~/.config/
+    ln -fns ~/dotfiles/wofi ~/.config/
 
     tmux source-file ~/.tmux.conf
     zsh -c "source ~/.zshrc"
