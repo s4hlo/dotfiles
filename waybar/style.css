@@ -42,15 +42,6 @@ window#waybar.hidden {
   color: #C0CAF5;
 }
 
-#window {
-	margin-top: 6px;
-	padding-left: 10px;
-	padding-right: 10px;
-	transition: none;
-  color: transparent;
-	background: transparent;
-}
-
 #tray {
     margin-top: 6px;
     margin-left: 8px;
@@ -63,35 +54,36 @@ window#waybar.hidden {
     background: rgba(100, 100, 100, 0.5);
 }
 
-#battery {
-	margin-top: 6px;
-	margin-left: 8px;
-	margin-right: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	transition: none;
+#clock {
+	margin-left: 25px;
 	color: #161320;
-	background: #B5E8E0;
+	background: #7AA2F7;
 }
 
+#battery {
+	margin-right: 25px;
+	color: #161320;
+	background: #73DACA;
+}
+
+
 #battery.charging, #battery.plugged {
-    background-color: #B5E8E0;
+	background-color: #73DACA;
 }
 
 #battery.critical:not(.charging) {
-    background-color: #B5E8E0;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  background-color: #73DACA;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 @keyframes blink {
-    to {
-        background-color: #BF616A;
-        color: #B5E8E0;
-    }
+  to {
+    background-color: #BF616A;
+    color: #B5E8E0;
+  }
 }
 
