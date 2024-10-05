@@ -7,10 +7,10 @@ require("user.autocmds")
 -- TODO make this ft detection automatic
 -- Plugin("filetype.markdown")
 -- Plugin("filetype.molten")
--- Plugin("filetype.nest")
 -- Plugin("filetype.obsidian") 
--- Plugin("filetype.prettier")
--- Plugin("filetype.prettier")
+Plugin("filetype.nest")
+Plugin("filetype.prettier")
+Plugin("filetype.prettier")
 
 Plugin("autopairs")
 Plugin("marks")

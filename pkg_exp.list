@@ -1,11 +1,18 @@
 acpi
+btop
+curl
 discord
 git
+github-cli
 hyprland
+imagemagick
 kitty
+luarocks
 neovim
 networkmanager
 noto-fonts-cjk
+noto-fonts-emoji
+qbittorrent
 ripgrep
 spotify-launcher
 starship
@@ -16,4 +23,6 @@ waybar
 wget
 wofi
 xdg-desktop-portal-hyprland
+xournalpp
+yazi
 zsh
