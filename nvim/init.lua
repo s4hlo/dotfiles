@@ -8,12 +8,12 @@ require("user.autocmds")
 -- Plugin("filetype.markdown")
 -- Plugin("filetype.molten")
 -- Plugin("filetype.obsidian") 
+-- Plugin("filetype.image") -- rage comment
 Plugin("filetype.nest")
 Plugin("filetype.prettier")
 Plugin("filetype.prettier")
 
 Plugin("autopairs")
-Plugin("marks")
 Plugin("cmp")
 Plugin("colorizer")
 Plugin("colorscheme") -- theme
@@ -22,11 +22,11 @@ Plugin("copilot")
 Plugin("git")
 Plugin("glance")
 Plugin("illuminate")
--- Plugin("image") -- rage comment
 Plugin("indentline")
-Plugin("lsp-file-ops")
 Plugin("lspconfig") -- TODO needs refactor
+Plugin("lsp-file-ops")
 Plugin("lualine")
+Plugin("marks")
 Plugin("mason")
 Plugin("neo-tree")
 Plugin("noice")
