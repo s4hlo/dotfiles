@@ -12,10 +12,10 @@ base_setup() {
         log "yay is already installed."
     fi
 
-    sudo yay -S --needed - < ~/dotfiles/pkg_exp.list
+    sudo pacman -S --needed - < ~/dotfiles/pkg_exp.list
     yay -S --needed - < ~/dotfiles/pkg_exp_aur.list
+
     # dbeaver
-    # Insomnia
     # Pritunl
 
     # _______________________________________________________________________________________
