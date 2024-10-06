@@ -17,11 +17,4 @@ base_setup() {
 
     # dbeaver
     # Pritunl
-
-    # _______________________________________________________________________________________
-    
-    # TODO: check if this is over or not
-    # for compatibility we must install
-    # using luarocks:
-    # - magick
 }
