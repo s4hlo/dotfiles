@@ -15,7 +15,7 @@ label.module {
   margin-bottom: 0px;
   transition: none;
   color: #C0CAF5;
-  background: rgba(100, 100, 100, 0.5);
+  background: rgba(26, 27, 38, 0.8);
 }
 
 window#waybar {
@@ -35,7 +35,7 @@ window#waybar.hidden {
   margin-bottom: 0px;
   transition: none;
   color: #C0CAF5;
-  background: rgba(100, 100, 100, 0.5);
+  background: rgba(26, 27, 38, 0.8);
 }
 
 #workspaces button {
@@ -51,7 +51,7 @@ window#waybar.hidden {
     margin-bottom: 0px;
     transition: none;
     color: #C0CAF5;
-    background: rgba(100, 100, 100, 0.5);
+    background: rgba(26, 27, 38, 0.8);
 }
 
 #clock {
