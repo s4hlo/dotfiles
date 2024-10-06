@@ -10,7 +10,7 @@ label.module,
 #workspaces, 
 #tray {
     margin: 10px 8px 0;
-    padding: 5px 10px;
+    padding: 2px 10px;
     transition: none;
     color: #C0CAF5;
     background: rgba(26, 27, 38, 0.8);
