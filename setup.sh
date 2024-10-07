@@ -16,7 +16,6 @@ echo -e '\e[35m  ________|   _/_  | |\e[0m'
 echo -e '\e[35m<__________\\______)\__)\e[0m'
 echo -e "\e[34m--------------------------------------------\e[0m"
 
-# dbeaver
 # Pritunl
 
 log() {
@@ -34,7 +33,7 @@ ask_and_execute() {
 
     while true; do
         read -p "$(echo -e "\e[34m$prompt_message?\e[0m (y/n/q): ")" yn
-        case ${yn,,} in  # Converte para minúsculas
+        case ${yn,,} in
             y*) $setup_function; return 0 ;;
             n*) log "Skipping" 1; return 1 ;;
             q*) log "Exiting the program." 3; exit 0 ;;
@@ -48,7 +47,6 @@ pacman_bulk() {
 }
 
 yay_bulk() {
-    . ~/dotfiles/scripts/utils.sh
 
     if ! command -v yay &> /dev/null; then
         log "yay not found. Installing..." 1
@@ -90,7 +88,6 @@ links_setup() {
 }
 
 
-. $HOME/dotfiles/scripts/utils.sh
 ask_and_execute "Do you want to sync pacman packages" "pacman_bulk"
 ask_and_execute "Do you want to sync yay packages" "yay_bulk"
 ask_and_execute "Do you want to link the dotfiles" "links_setup"
