@@ -9,7 +9,7 @@ set $refresh_i3status killall -SIGUSR1 i3status
 
 # to lock screen with the wallpaper
 # @target
-set $i3lockwall i3lock -i ~/dotfiles/wallpapers/wallpaper8.png -c 222222
+set $i3lockwall i3lock -i ~/dotfiles/wallpapers/wallpaper_mocha.jpg -c 222222
 
 # workspaces definitions
 # ! you can find more icons in:
@@ -79,7 +79,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # ! to avoid change this file, always rename the wallpaper to "wallpaper.png"
 # @target
-exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpapers/wallpaper_legacy.jpg
+exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpapers/wallpaper_mocha.jpg
 
 # startup picom
 exec --no-startup-id picom -b -f --config ~/dotfiles/i3/picom.conf
