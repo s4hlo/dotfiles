@@ -130,7 +130,7 @@ function M.config()
 					symbols = {
 						status = {
 							icons = {
-								enabled = "",
+								enabled = " ",
 								sleep = " ", -- auto-trigger disabled
 								disabled = " ",
 								warning = " ",

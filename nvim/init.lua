@@ -24,7 +24,6 @@ Plugin("glance")
 Plugin("illuminate")
 Plugin("indentline")
 Plugin("lspconfig") -- TODO needs refactor
-Plugin("lsp-file-ops")
 Plugin("lualine")
 Plugin("marks")
 Plugin("mason")

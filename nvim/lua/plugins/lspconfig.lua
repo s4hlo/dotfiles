@@ -9,6 +9,17 @@ local M = {
 	},
 }
 
+local N = {
+	"antosha417/nvim-lsp-file-operations",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+	},
+}
+
+function N.config()
+	require("lsp-file-operations").setup()
+end
+
 function M.common_capabilities()
 	local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 	if status_ok then
@@ -39,7 +50,7 @@ function M.config()
 		"ts_ls",
 		"astro",
 		"pyright",
-    "jsonls",
+		"jsonls",
 		"bashls",
 		"yamlls",
 		"marksman",
@@ -118,4 +129,4 @@ function M.config()
 	})
 end
 
-return M
+return { M, N }

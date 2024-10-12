@@ -1,5 +1,0 @@
--- vim.bo.tabstop = 4
--- vim.bo.shiftwidth = 4
--- vim.bo.expandtab = true
--- -- set colorscheme
--- vim.cmd("colorscheme habamax")
