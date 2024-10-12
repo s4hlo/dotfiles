@@ -74,6 +74,7 @@ links_setup() {
     ln -fns ~/dotfiles/gh ~/.config/
     ln -fns ~/dotfiles/nvim ~/.config/
     ln -fns ~/dotfiles/kitty ~/.config/
+    ln -fns ~/dotfiles/dunst ~/.config/
     ln -fns ~/dotfiles/waybar ~/.config/
     ln -fns ~/dotfiles/wofi ~/.config/
     ln -fns ~/dotfiles/spicetify ~/.config/spicetify/Themes/Tokyo
