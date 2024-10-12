@@ -23,7 +23,7 @@ vim.opt.writebackup = false -- if a file is being edited by another program (or 
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 2 -- insert 2 spaces for a tab
-vim.opt.cursorline = true -- highlight the current line
+vim.opt.cursorline = false -- highlight the current line
 vim.opt.number = true -- set numbered lines
 vim.opt.laststatus = 3
 vim.opt.showcmd = false
@@ -41,6 +41,9 @@ vim.opt_local.foldmethod = "syntax" -- enable folding
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
 vim.opt.fillchars:append({
 	stl = " ",
+})
+vim.opt.fillchars:append({
+  vert = " ",
 })
 vim.opt.shortmess:append("c")
 vim.g.netrw_banner = 0
