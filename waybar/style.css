@@ -28,28 +28,38 @@ window#waybar.hidden {
 
 #clock {
     margin-left: 10px;
-    color: #181825;
-    background: #89b4fa;
+    color: #89b4fa;
+    background: rgba(24, 24, 37, 0.8);
+    border: 2px solid #89b4fa; /* Borda azul */
 }
 
 #battery {
     margin-right: 10px;
-    color: #181825;
-    background: #a6e3a1;
+    color: #a6e3a1;
+    background: transparent;
+    border: 2px solid #a6e3a1; /* Borda verde */
 }
 
 #battery.charging, #battery.plugged {
-    background-color: #a6e3a1;
+    border-color: #a6e3a1;
+}
+
+
+#battery.warning:not(.charging) {
+    border-color: #fab387;
+    color: #fab387;
 }
 
 #battery.critical:not(.charging) {
-    background-color: #a6e3a1;
+    border-color: #f38ba8;
+    color: #f38ba8;
     animation: blink 0.5s linear infinite alternate;
 }
 
+
 @keyframes blink {
     to {
-        background-color: #f38ba8;
-        color: #a6e3a1;
+        border-color: #b4befe;
+        color: #b4befe;
     }
 }
