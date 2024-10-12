@@ -3,7 +3,7 @@ local M = {
 }
 
 function M.config()
-	require("transparent").clear_prefix("NeoTree")
+	-- require("transparent").clear_prefix("NeoTree")
 	require("transparent").setup({ -- Optional, you don't have to run setup.
 		groups = { -- table: default groups
 			"Normal",

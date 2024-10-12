@@ -42,6 +42,9 @@ vim.opt.fillchars = vim.opt.fillchars + "eob: "
 vim.opt.fillchars:append({
 	stl = " ",
 })
+vim.opt.fillchars:append({
+  vert = " ",
+})
 vim.opt.shortmess:append("c")
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2

@@ -8,7 +8,7 @@ require("user.autocmds")
 -- Plugin("filetype.markdown")
 -- Plugin("filetype.molten")
 -- Plugin("filetype.obsidian") 
--- Plugin("filetype.image") -- rage comment
+-- Plugin("image") -- rage comment
 Plugin("filetype.nest")
 Plugin("filetype.prettier")
 Plugin("filetype.prettier")
@@ -24,7 +24,6 @@ Plugin("glance")
 Plugin("illuminate")
 Plugin("indentline")
 Plugin("lspconfig") -- TODO needs refactor
-Plugin("lsp-file-ops")
 Plugin("lualine")
 Plugin("marks")
 Plugin("mason")
