@@ -34,15 +34,6 @@ function M.config()
 			name = "Buffers",
 			b = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
 		},
-		o = {
-			name = "Obsidian",
-			l = { "<cmd>ObsidianLinks<cr>", "Links" },
-			b = { "<cmd>ObsidianBackLinks<cr>", "Back-Links" },
-			d = { "<cmd>ObsidianDailies<cr>", "Dailies" },
-			n = { "<cmd>ObsidianToday<cr>", "Today" },
-			y = { "<cmd>ObsidianYesterday<cr>", "Yesterday" },
-			t = { "<cmd>ObsidianTags<cr>", "Tags" },
-		},
 		m = {
 			name = "Molten",
 			s = { "<cmd>:lua SelectNextPythonCodeBlock()<CR>", "Select cell" },
@@ -55,21 +46,6 @@ function M.config()
 			d = { "<cmd>MoltenDelete<CR>", "Delete Cell" },
 			i = { "<cmd>MoltenInit<CR>", "Init" },
 		},
-		t = {
-			name = "Tab",
-			t = {
-				"<cmd>lua require('telescope').extensions['telescope-tabs'].list_tabs(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Tabs'})<cr>",
-				"Find Tab",
-			},
-			a = { "<cmd>$tabnew<cr>", "New Empty Tab" },
-			A = { "<cmd>tabnew %<cr>", "New Tab" },
-			n = { "<cmd>tabn<cr>", "Next" },
-			o = { "<cmd>tabonly<cr>", "Only" },
-			p = { "<cmd>tabp<cr>", "Prev" },
-			h = { "<cmd>-tabmove<cr>", "Move Left" },
-			l = { "<cmd>+tabmove<cr>", "Move Right" },
-		},
-
 		d = {
 			name = "Debug",
 			t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
@@ -93,12 +69,10 @@ function M.config()
 			b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 			c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
 			f = { "<cmd>Telescope find_files hidden=true<cr>", "Find files" },
-			p = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 			t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
 			s = { "<cmd>Telescope grep_string<cr>", "Find String" },
 			h = { "<cmd>Telescope help_tags<cr>", "Help" },
 			H = { "<cmd>Telescope highlights<cr>", "Highlights" },
-			i = { "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", "Media" },
 			l = { "<cmd>Telescope resume<cr>", "Last Search" },
 			M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
 			r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
@@ -120,17 +94,17 @@ function M.config()
 				"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
 				"Undo Stage Hunk",
 			},
-			o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-			b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 			c = {
 				name = "Conflict",
-        o = { "<cmd>GitConflictChooseOurs<cr>", "Choose Ours" },
-        t = { "<cmd>GitConflictChooseTheirs<cr>", "Choose Theirs" },
-        b = { "<cmd>GitConflictChooseBoth<cr>", "Choose Both" },
-        N = { "<cmd>GitConflictChooseNone<cr>", "Choose None" },
-        n = { "<cmd>GitConflictNextConflict<cr>", "Next Conflict" },
-        p = { "<cmd>GitConflictPrevConflict<cr>", "Prev Conflict" },
+				o = { "<cmd>GitConflictChooseOurs<cr>", "Choose Ours" },
+				t = { "<cmd>GitConflictChooseTheirs<cr>", "Choose Theirs" },
+				b = { "<cmd>GitConflictChooseBoth<cr>", "Choose Both" },
+				N = { "<cmd>GitConflictChooseNone<cr>", "Choose None" },
+				n = { "<cmd>GitConflictNextConflict<cr>", "Next Conflict" },
+				p = { "<cmd>GitConflictPrevConflict<cr>", "Prev Conflict" },
 			},
+			o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+			b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 			C = {
 				"<cmd>Telescope git_bcommits<cr>",
 				"Checkout commit(for current file)",
@@ -143,12 +117,10 @@ function M.config()
 
 		l = {
 			name = "LSP",
-
 			I = { "<cmd>Glance implementations()<CR>", "Implementations" },
 			D = { "<cmd>Glance definitions()<CR>", "Definitions" },
 			T = { "<cmd>Glance type_definitions()<CR>", "Type Definitions" },
-
-			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+			i = { "<cmd>LspInfo<cr>", "Info" },
 			-- f = { "<cmd>lua vim.lsp.buf.format({timeout_ms = 1000000})<cr>", "Format" },
 			f = {
 				function()
@@ -161,10 +133,9 @@ function M.config()
 				end,
 				"Format",
 			},
-
+			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 			r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 			l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-
 			h = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostics" },
 			j = {
 				"<cmd>lua vim.diagnostic.goto_next()<cr>",
@@ -177,7 +148,6 @@ function M.config()
 			q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
 			d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
 			w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-			i = { "<cmd>LspInfo<cr>", "Info" },
 			s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 			S = {
 				"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
@@ -232,13 +202,13 @@ function M.config()
 			-- the presets plugin, adds help for a bunch of default keybindings in Neovim
 			-- No actual key bindings are created
 			presets = {
-				operators = false, -- adds help for operators like d, y, ...
+				operators = true, -- adds help for operators like d, y, ...
 				motions = false, -- adds help for motions
 				text_objects = false, -- help for text objects triggered after entering an operator
-				windows = false, -- default bindings on <c-w>
-				nav = false, -- misc bindings to work with windows
-				z = false, -- bindings for folds, spelling and others prefixed with z
-				g = false, -- bindings for prefixed with g
+				windows = true, -- default bindings on <c-w>
+				nav = true, -- misc bindings to work with windows
+				z = true, -- bindings for folds, spelling and others prefixed with z
+				g = true, -- bindings for prefixed with g
 			},
 		},
 		popup_mappings = {
