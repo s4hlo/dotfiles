@@ -1,19 +1,17 @@
 * {
     border: none;
-    border-radius: 10px; /* Adicione 'px' para evitar erros */
+    border-radius: 10px;
     font-family: "JetbrainsMono Nerd Font";
     font-size: 15px;
     min-height: 10px;
 }
 
-label.module, 
-#workspaces, 
-#tray {
+label.module, #workspaces, #tray {
     margin: 10px 8px 0;
     padding: 2px 10px;
+    color: #b4befe;
+    background: rgba(24, 24, 37, 0.8);
     transition: none;
-    color: #C0CAF5;
-    background: rgba(26, 27, 38, 0.8);
 }
 
 window#waybar {
@@ -25,39 +23,33 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    color: #C0CAF5;
+    color: #b4befe;
 }
 
 #clock {
     margin-left: 10px;
-    color: #161320;
-    background: #7AA2F7;
+    color: #181825;
+    background: #89b4fa;
 }
 
 #battery {
-	margin-right: 10px;
-	color: #161320;
-	background: #73DACA;
+    margin-right: 10px;
+    color: #181825;
+    background: #a6e3a1;
 }
 
-
 #battery.charging, #battery.plugged {
-	background-color: #73DACA;
+    background-color: #a6e3a1;
 }
 
 #battery.critical:not(.charging) {
-  background-color: #73DACA;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+    background-color: #a6e3a1;
+    animation: blink 0.5s linear infinite alternate;
 }
 
 @keyframes blink {
-  to {
-    background-color: #BF616A;
-    color: #B5E8E0;
-  }
+    to {
+        background-color: #f38ba8;
+        color: #a6e3a1;
+    }
 }
-
