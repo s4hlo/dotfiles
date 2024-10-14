@@ -27,3 +27,5 @@ wofi
 xournalpp
 yazi
 zsh
+zsh-autosuggestions
+zsh-syntax-highlighting

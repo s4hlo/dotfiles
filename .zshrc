@@ -35,11 +35,14 @@ zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# enable auto-suggestions if installed
-if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-    . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    # change suggestion color
+if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+   . /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
+fi
+
+if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+    . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+   ZSH_HIGHLIGHT_STYLES[command]='fg=blue,bold' 
 fi
 
 source /usr/share/nvm/init-nvm.sh
@@ -68,7 +71,6 @@ alias hubserver='cd ~/dev/hub-server'
 alias hubweb='cd ~/dev/hub-web-client'
 alias dotfiles='cd ~/dotfiles'
 alias gobang='gobang -c ~/dev/vault/decrypted/gobang.toml'
-alias xprop='xprop | grep WM_CLASS'
 alias setup='~/dotfiles/setup.sh'
 
 ###### MEMENTO MORI ######
