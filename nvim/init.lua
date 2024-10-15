@@ -5,7 +5,7 @@ require("user.autocmds")
 
 -- Uncomment this as you need support for different filetypes
 -- TODO make this ft detection automatic
--- Plugin("filetype.markdown")
+Plugin("filetype.markdown")
 -- Plugin("filetype.molten")
 -- Plugin("filetype.obsidian") 
 -- Plugin("image") -- rage comment
@@ -23,6 +23,7 @@ Plugin("git")
 Plugin("glance")
 Plugin("illuminate")
 Plugin("indentline")
+Plugin("leetcode")
 Plugin("lspconfig") -- TODO needs refactor
 Plugin("lualine")
 Plugin("marks")
