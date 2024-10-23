@@ -23,7 +23,6 @@ Plugin("git")
 Plugin("glance")
 Plugin("illuminate")
 Plugin("indentline")
-Plugin("lsp-file-ops")
 Plugin("lspconfig") -- TODO needs refactor
 Plugin("lualine")
 Plugin("marks")
