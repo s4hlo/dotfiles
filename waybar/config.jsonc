@@ -15,8 +15,6 @@
         "hyprland/workspaces"
     ],
     "modules-right": [
-        "mpd",
-        "keyboard-state",
         "idle_inhibitor",
         "memory",
         "network",
@@ -30,14 +28,12 @@
             "default": " "
         }
     },
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
+    "custom/keyboard": {
+        "format": "  {}",
+        "exec": "setxkbmap -query | grep layout | awk '{print $2}'",
+        "interval": 5,
+        "exec-on-event": true,
+        "on-click": "current=$(setxkbmap -query | grep layout | awk '{print $2}'); if [ $current = 'us' ]; then setxkbmap br; notify-send -i none '  Layout changed to BR'; else setxkbmap us; notify-send -i none '  Layout changed to US'; fi"
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
