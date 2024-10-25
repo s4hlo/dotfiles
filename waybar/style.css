@@ -44,7 +44,6 @@ window#waybar.hidden {
     border-color: #a6e3a1;
 }
 
-
 #battery.warning:not(.charging) {
     border-color: #fab387;
     color: #fab387;
@@ -55,7 +54,6 @@ window#waybar.hidden {
     color: #f38ba8;
     animation: blink 0.5s linear infinite alternate;
 }
-
 
 @keyframes blink {
     to {

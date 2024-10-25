@@ -9,6 +9,7 @@
     "modules-left": [
         "clock",
         "pulseaudio",
+        "custom/keyboard",
         "tray"
     ],
     "modules-center": [
@@ -30,10 +31,8 @@
     },
     "custom/keyboard": {
         "format": "  {}",
-        "exec": "setxkbmap -query | grep layout | awk '{print $2}'",
-        "interval": 5,
-        "exec-on-event": true,
-        "on-click": "current=$(setxkbmap -query | grep layout | awk '{print $2}'); if [ $current = 'us' ]; then setxkbmap br; notify-send -i none '  Layout changed to BR'; else setxkbmap us; notify-send -i none '  Layout changed to US'; fi"
+        "exec": "layout=$(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap'); if [[ \"$layout\" == *\"English (US)\"* ]]; then echo 'US'; elif [[ \"$layout\" == *\"Portuguese (Brazil)\"* ]]; then echo 'BR'; else echo \"$layout\"; fi",
+        "interval": 5
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
