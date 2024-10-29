@@ -1,4 +1,5 @@
 acpi
+brightnessctl
 btop
 curl
 dbeaver
@@ -8,9 +9,9 @@ hyprland
 hyprlock
 hyprpaper
 kitty
+less
 neovim
 networkmanager
-less
 noto-fonts-cjk
 noto-fonts-emoji
 qbittorrent
