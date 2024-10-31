@@ -79,8 +79,8 @@ links_setup() {
     ln -fns ~/dotfiles/wofi ~/.config/
     ln -fns ~/dotfiles/spicetify ~/.config/spicetify/Themes/Tokyo
     ln -fns ~/dotfiles/vencord/midnight-catppuccin-mocha.theme.css ~/.config/vesktop/themes
+    sudo ln -fns ~/dotfiles/sddm.conf /etc/sddm.conf
 
-    # Definir o Zsh como o shell padrão
     if [ "$SHELL" != "/bin/zsh" ]; then
         chsh -s $(which zsh)
     fi
