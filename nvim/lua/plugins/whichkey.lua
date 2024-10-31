@@ -148,7 +148,11 @@ function M.config()
 			q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
 			d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
 			w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-			s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+		  s = { "<cmd>Neotree float toggle document_symbols<CR>", "Document Symbols" },
+			-- s = {
+			-- 	"<cmd>lua require('telescope.builtin').lsp_document_symbols({ symbols = { 'Class', 'Method', 'Constructor' } })<CR>",
+			-- 	"Class Methods & Constructors",
+			-- },
 			S = {
 				"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 				"Workspace Symbols",

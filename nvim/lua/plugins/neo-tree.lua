@@ -39,6 +39,7 @@ M.config = function()
 			"filesystem",
 			"buffers",
 			"git_status",
+			"document_symbols",
 		},
 		source_selector = {
 			winbar = false,
@@ -49,6 +50,7 @@ M.config = function()
 				{ source = "filesystem" },
 				{ source = "buffers" },
 				{ source = "git_status" },
+				{ source = "document_symbols" },
 			},
 		},
 		close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
@@ -201,12 +203,20 @@ M.config = function()
 					"toggle_node",
 					nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
 				},
+				["l"] = {
+					"toggle_node",
+					nowait = true, -- disable `nowait` if you have existing combos starting with this char that you want to use
+				},
+				["h"] = {
+					"toggle_node",
+					nowait = true, -- disable `nowait` if you have existing combos starting with this char that you want to use
+				},
 				["<2-LeftMouse>"] = "open",
 				["<cr>"] = "open",
 				["<esc>"] = "cancel", -- close preview or floating neo-tree window
 				["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
 				-- Read `# Preview Mode` for more information
-				["l"] = "focus_preview",
+				-- ["l"] = "focus_preview",
 				["S"] = "open_split",
 				["s"] = "open_vsplit",
 				-- ["S"] = "split_with_window_picker",
