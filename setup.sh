@@ -85,6 +85,7 @@ links_setup() {
         chsh -s $(which zsh)
     fi
 
+    sudo timedatectl set-timezone Etc/GMT-3
     tmux source-file ~/.tmux.conf
     zsh -c "source ~/.zshrc"
 }
