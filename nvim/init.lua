@@ -19,6 +19,7 @@ Plugin("colorizer")
 Plugin("colorscheme") -- theme
 Plugin("comment")
 Plugin("copilot")
+Plugin("dap")
 Plugin("git")
 Plugin("glance")
 Plugin("illuminate")
