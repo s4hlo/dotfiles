@@ -42,6 +42,39 @@ ask_and_execute() {
     done
 }
 
+ask_for_wm_installation() {
+    local prompt_message="Choose Window Manager to install:"
+    while true; do
+        read -p "$(echo -e "\e[34m$prompt_message\e[0m \n1) Hypr\n2) i3\n3) skip \n")" choice
+        case $choice in
+            1)
+              echo -e "\e[32mInstalling Hypr... NO TESTE\e[0m"
+                log "Installing Hypr... NOT TESTED" 2
+                sudo pacman -S --needed - < ~/dotfiles/pkg_hypr.list
+                mkdir -p ~/.config/i3 ~/.config/rofi ~/.config/polybar
+                ln -fns ~/dotfiles/hypr ~/.config/
+                ln -fns ~/dotfiles/waybar ~/.config/
+                ln -fns ~/dotfiles/wofi ~/.config/
+                log "Hypr installed successfully! NOT TESTED" 2
+                return 0
+                ;;
+            2)
+                log "Installing i3..." 1
+                sudo pacman -S --needed - < ~/dotfiles/pkg_i3.list
+                mkdir -p ~/.config/i3 ~/.config/rofi ~/.config/polybar
+                ln -fns ~/dotfiles/i3/config ~/.config/i3/config
+                ln -fns ~/dotfiles/i3/rofi/config.rasi ~/.config/rofi/config.rasi
+                ln -fns ~/dotfiles/i3/polybar/launch.sh ~/.config/polybar/launch.sh
+                ln -fns ~/dotfiles/i3/polybar/config.ini ~/.config/polybar/config.ini
+                log "i3 installed successfully!" 0
+                return 0
+                ;;
+            3)log "Skipping" 1; return 1 ;;
+            *) log "Invalid input, please enter 1, 2, or 3." 2 ;;
+        esac
+    done
+}
+
 pacman_bulk() {
     sudo pacman -S --needed - < ~/dotfiles/pkg.list
 }
@@ -70,10 +103,6 @@ links_setup() {
     ln -fns ~/dotfiles/.gitconfig ~/.gitconfig
     ln -fns ~/dotfiles/.vimrc ~/.vimrc
     ln -fns ~/dotfiles/.zshrc ~/.zshrc
-    # ln -fns ~/dotfiles/hypr ~/.config/
-    # ln -fns ~/dotfiles/waybar ~/.config/
-    # ln -fns ~/dotfiles/wofi ~/.config/
-    # sudo ln -fns ~/dotfiles/sddm.conf /etc/sddm.conf
     ln -fns ~/dotfiles/gh ~/.config/
     ln -fns ~/dotfiles/nvim ~/.config/
     ln -fns ~/dotfiles/kitty ~/.config/
@@ -93,6 +122,7 @@ links_setup() {
 
 ask_and_execute "Do you want to sync pacman packages" "pacman_bulk"
 ask_and_execute "Do you want to sync yay packages" "yay_bulk"
+ask_for_wm_installation
 ask_and_execute "Do you want to link the dotfiles" "links_setup"
 
 echo -e '
