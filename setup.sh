@@ -43,7 +43,7 @@ ask_and_execute() {
 }
 
 pacman_bulk() {
-    sudo pacman -S --needed - < ~/dotfiles/pkg_exp.list
+    sudo pacman -S --needed - < ~/dotfiles/pkg.list
 }
 
 yay_bulk() {
@@ -59,7 +59,7 @@ yay_bulk() {
         log "yay is already installed."
     fi
 
-    yay -S --needed - < ~/dotfiles/pkg_exp_aur.list
+    yay -S --needed - < ~/dotfiles/pkg_aur.list
 }
 
 links_setup() {
@@ -70,19 +70,19 @@ links_setup() {
     ln -fns ~/dotfiles/.gitconfig ~/.gitconfig
     ln -fns ~/dotfiles/.vimrc ~/.vimrc
     ln -fns ~/dotfiles/.zshrc ~/.zshrc
-    ln -fns ~/dotfiles/hypr ~/.config/
+    # ln -fns ~/dotfiles/hypr ~/.config/
+    # ln -fns ~/dotfiles/waybar ~/.config/
+    # ln -fns ~/dotfiles/wofi ~/.config/
+    # sudo ln -fns ~/dotfiles/sddm.conf /etc/sddm.conf
     ln -fns ~/dotfiles/gh ~/.config/
     ln -fns ~/dotfiles/nvim ~/.config/
     ln -fns ~/dotfiles/kitty ~/.config/
     ln -fns ~/dotfiles/dunst ~/.config/
-    ln -fns ~/dotfiles/waybar ~/.config/
-    ln -fns ~/dotfiles/wofi ~/.config/
     ln -fns ~/dotfiles/spicetify ~/.config/spicetify/Themes/Tokyo
     ln -fns ~/dotfiles/vencord/midnight-catppuccin-mocha.theme.css ~/.config/vesktop/themes
-    sudo ln -fns ~/dotfiles/sddm.conf /etc/sddm.conf
 
     if [ "$SHELL" != "/bin/zsh" ]; then
-        chsh -s $(which zsh)
+        sudo chsh -s $(which zsh)
     fi
 
     sudo timedatectl set-timezone Etc/GMT-3

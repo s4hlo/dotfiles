@@ -5,9 +5,6 @@ curl
 dbeaver
 git
 github-cli
-hyprland
-hyprlock
-hyprpaper
 kitty
 less
 neovim
@@ -22,9 +19,7 @@ tmux
 unrar
 unzip
 vlc
-waybar
 wget
-wofi
 xournalpp
 yazi
 zsh
