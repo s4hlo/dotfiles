@@ -72,14 +72,14 @@ exec --no-startup-id nm-applet
 
 # ! this may change depend of the laptop,
 # ! CONFIG TOOL - to check device names use -> xinput
-exec xinput set-prop "MSFT0001:01 06CB:CE78 Touchpad" "libinput Tapping Enabled" 1
+exec xinput set-prop "PIXA3848:00 093A:3848 Touchpad" "libinput Tapping Enabled" 1
 
 # ! if polybar is not starting up, check if the launch.sh can be executed
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # ! to avoid change this file, always rename the wallpaper to "wallpaper.png"
 # @target
-exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpapers/1.png
+exec_always --no-startup-id xwallpaper --zoom ~/dotfiles/wallpapers/poke.png
 
 # startup picom
 exec --no-startup-id picom -b -f --config ~/dotfiles/i3/picom.conf
@@ -245,8 +245,8 @@ bindsym $mod+BackSpace mode "system"
 
 default_border none
 
-gaps inner 5
-gaps top 20
+gaps inner 4
+gaps top 25
 
 # smart_gaps inverse_outer
 
