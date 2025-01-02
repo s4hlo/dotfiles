@@ -1,10 +1,10 @@
 acpi
-flameshot
 brightnessctl
 btop
 curl
 dbeaver
 dunst
+flameshot
 git
 github-cli
 kitty
@@ -13,6 +13,7 @@ neovim
 networkmanager
 noto-fonts-cjk
 noto-fonts-emoji
+obsidian
 qbittorrent
 ripgrep
 spotify-launcher

@@ -25,5 +25,5 @@ keymap("v", ">", ">gv", opts)
 
 keymap("x", "p", [["_dP]])
 
--- THIS IS THE MOST IMPORTANT REMAP THAT I'VE EVER DONE
+-- THIS IS THE MOST IMPORTANT REMAP THAT I'VE EVER DONE - I was wrong
 -- keymap("i", "jk", "<Esc>", opts)

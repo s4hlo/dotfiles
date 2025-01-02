@@ -5,10 +5,10 @@ require("user.autocmds")
 
 -- Uncomment this as you need support for different filetypes
 -- TODO make this ft detection automatic
-Plugin("filetype.markdown")
 -- Plugin("filetype.molten")
--- Plugin("filetype.obsidian") 
 -- Plugin("image") -- rage comment
+Plugin("filetype.obsidian") 
+Plugin("filetype.markdown")
 Plugin("filetype.nest")
 Plugin("filetype.prettier")
 Plugin("filetype.prettier")

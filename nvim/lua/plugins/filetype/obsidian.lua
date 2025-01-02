@@ -20,7 +20,7 @@ return {
 		workspaces = {
 			{
 				name = "personal",
-				path = "~/obsidian/sleight/",
+				path = "~/notes",
 			},
 		},
 		ui = {
