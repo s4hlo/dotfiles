@@ -26,53 +26,10 @@ end
 
 function M.config()
 	local mappings = {
-		["q"] = { "<cmd>confirm q<CR>", "Quit" },
-		["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
-		["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 		["e"] = { "<cmd>Neotree reveal toggle filesystem<CR>", "Explorer" },
-		b = {
-			name = "Buffers",
-			b = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
-		},
-		m = {
-			name = "Molten",
-			s = { "<cmd>:lua SelectNextPythonCodeBlock()<CR>", "Select cell" },
-			j = { "<cmd>MoltenNext<CR>", "Next Cell" },
-			k = { "<cmd>MoltenPrev<CR>", "Prev Cell" },
-			o = { "<cmd>MoltenEvaluateOperator<CR>", "Evaluate Operator" },
-			x = { "<cmd>noautocmd MoltenEnterOutput<CR>", "Open Output" },
-			e = { "<cmd>MoltenReevaluateCell<CR>", "Re-eval Cell" },
-			h = { "<cmd>MoltenHideOutput<CR>", "Close Output" },
-			d = { "<cmd>MoltenDelete<CR>", "Delete Cell" },
-			i = { "<cmd>MoltenInit<CR>", "Init" },
-		},
-		d = {
-			name = "Debug",
-			t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
-			b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
-			c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-			C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
-			d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
-			g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
-			S = {
-				function()
-					require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
-				end,
-				"Conditional Breakpoint",
-			},
-			i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
-			o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
-			u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
-			p = { "<cmd>lua require'dap'.pause()<cr>", "Pause" },
-			r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
-			s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
-			q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
-			U = { "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Toggle UI" },
-		},
-
 		f = {
 			name = "Find",
-			b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+			b = { "<cmd>Telescope buffers previewer=false<cr>", "buffers" },
 			c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
 			f = { "<cmd>Telescope find_files hidden=true<cr>", "Find files" },
 			t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
@@ -115,10 +72,7 @@ function M.config()
 				"<cmd>Telescope git_bcommits<cr>",
 				"Checkout commit(for current file)",
 			},
-			d = {
-				"<cmd>DiffviewOpen<cr>",
-				"Open Diffview",
-			},
+			d = { "<cmd>DiffviewOpen<cr>", "Open Diffview" },
 		},
 
 		l = {
@@ -164,6 +118,43 @@ function M.config()
 				"Workspace Symbols",
 			},
 			e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
+		},
+
+		m = {
+			name = "Molten",
+			s = { "<cmd>:lua SelectNextPythonCodeBlock()<CR>", "Select cell" },
+			j = { "<cmd>MoltenNext<CR>", "Next Cell" },
+			k = { "<cmd>MoltenPrev<CR>", "Prev Cell" },
+			o = { "<cmd>MoltenEvaluateOperator<CR>", "Evaluate Operator" },
+			x = { "<cmd>noautocmd MoltenEnterOutput<CR>", "Open Output" },
+			e = { "<cmd>MoltenReevaluateCell<CR>", "Re-eval Cell" },
+			h = { "<cmd>MoltenHideOutput<CR>", "Close Output" },
+			d = { "<cmd>MoltenDelete<CR>", "Delete Cell" },
+			i = { "<cmd>MoltenInit<CR>", "Init" },
+		},
+
+		d = {
+			name = "Debug",
+			t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+			b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
+			c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+			C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
+			d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
+			g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
+			S = {
+				function()
+					require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+				end,
+				"Conditional Breakpoint",
+			},
+			i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
+			o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
+			u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
+			p = { "<cmd>lua require'dap'.pause()<cr>", "Pause" },
+			r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
+			s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
+			q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
+			U = { "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Toggle UI" },
 		},
 	}
 

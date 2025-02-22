@@ -15,7 +15,6 @@ function M.config()
 		debug = true,
 		sources = {
 			-- CONFIG TOOL -
-			-- add more formatters here as needed +
 			formatting.clang_format,
 			formatting.stylua,
 			formatting.bashls,
@@ -26,6 +25,7 @@ function M.config()
 				end,
 			}),
 			null_ls.builtins.completion.spell,
+			-- + add more formatters here as needed
 		},
 		-- on_attach = function(client, bufnr)
 		-- 	if client.supports_method("textDocument/formatting") then

@@ -44,6 +44,8 @@ fi
 source /usr/share/nvm/init-nvm.sh
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+export PATH="$HOME/.cargo/bin:$PATH"
+
 
 function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -63,7 +65,8 @@ eval "$(starship init zsh)"
 alias tks="tmux kill-session -t"
 alias hs='cd ~/dev/hub-server'
 alias hw='cd ~/dev/hub-web-client'
-alias df='cd ~/dotfiles'
+alias dot='cd ~/dotfiles'
+alias vault='cd ~/vault'
 alias gobang='gobang -c ~/dev/vault/decrypted/gobang.toml'
 alias setup='~/dotfiles/setup.sh'
 
