@@ -14,10 +14,11 @@ function M.config()
 	null_ls.setup({
 		debug = true,
 		sources = {
-      -- CONFIG TOOL -
-      -- add more formatters here as needed +
-      formatting.clang_format,
+			-- CONFIG TOOL -
+			-- add more formatters here as needed +
+			formatting.clang_format,
 			formatting.stylua,
+			formatting.bashls,
 			formatting.prettier.with({
 				extra_filetypes = { "typescriptreact", "javascriptreact", "md", "json", "yaml", "toml" },
 				condition = function(utils)

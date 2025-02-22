@@ -18,7 +18,7 @@ local M = {
 			"windwp/nvim-ts-autotag",
 			event = "VeryLazy",
 			commit = "6be1192965df35f94b8ea6d323354f7dc7a557e4",
-		}
+		},
 	},
 }
 function M.config()

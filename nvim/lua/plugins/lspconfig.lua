@@ -56,8 +56,8 @@ function M.config()
 		"marksman",
 		"tailwindcss",
 		"lua_ls",
-    "clangd",
-    -- + add more servers here as needed
+		"clangd",
+		-- + add more servers here as needed
 	}
 
 	local default_diagnostic_config = {

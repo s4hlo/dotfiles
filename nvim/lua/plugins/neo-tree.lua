@@ -163,12 +163,12 @@ M.config = function()
 					end
 				end,
 			},
-      {
-        event = "neo_tree_buffer_enter",
-        handler = function()
-          vim.opt_local.number = true
-        end,
-      },
+			{
+				event = "neo_tree_buffer_enter",
+				handler = function()
+					vim.opt_local.number = true
+				end,
+			},
 			--{
 			--  event = "neo_tree_window_before_close",
 			--  handler = function(args)

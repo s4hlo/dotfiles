@@ -27,4 +27,4 @@ function M.config()
 	require("faster").setup({})
 end
 
-return N 
+return N

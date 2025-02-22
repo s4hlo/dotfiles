@@ -7,7 +7,7 @@ local M = {
 	},
 }
 
--- is more assure install lsp, linter and formatter on demand, to avoid setup overload 
+-- is more assure install lsp, linter and formatter on demand, to avoid setup overload
 function M.config()
 	require("mason").setup({
 		ui = {
@@ -20,11 +20,11 @@ function M.config()
 			"lua_ls",
 			"html",
 			"ts_ls",
-      "bashls",
+			"bashls",
 			"pyright",
 			"marksman",
 			"tailwindcss",
-      "jsonls"
+			"jsonls",
 		},
 	})
 	require("mason-tool-installer").setup({
