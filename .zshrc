@@ -69,7 +69,7 @@ alias hs='cd ~/dev/hub-server'
 alias hw='cd ~/dev/hub-web-client'
 alias gobang='gobang -c ~/dev/vault/decrypted/gobang.toml'
 alias setup='~/dotfiles/setup.sh'
-alias brg='~/notes/brg.sh'
+alias b='~/notes/brg.sh'
 
 ###### MEMENTO MORI ######
 
