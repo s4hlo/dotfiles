@@ -63,12 +63,13 @@ eval "$(starship init zsh)"
 [ -z "$TMUX" ] && exec tmux
 
 alias tks="tmux kill-session -t"
-alias hs='cd ~/dev/hub-server'
-alias hw='cd ~/dev/hub-web-client'
 alias dot='cd ~/dotfiles'
 alias vault='cd ~/vault'
+alias hs='cd ~/dev/hub-server'
+alias hw='cd ~/dev/hub-web-client'
 alias gobang='gobang -c ~/dev/vault/decrypted/gobang.toml'
 alias setup='~/dotfiles/setup.sh'
+alias brg='~/notes/brg.sh'
 
 ###### MEMENTO MORI ######
 
