@@ -35,12 +35,12 @@ M.config = function()
 	vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
 	require("neo-tree").setup({
-		-- sources = {
-		-- 	"filesystem",
-		-- 	"buffers",
-		-- 	"git_status",
-		-- 	"document_symbols",
-		-- },
+		sources = {
+			"filesystem",
+			"buffers",
+			"git_status",
+			"document_symbols",
+		},
 		-- source_selector = {
 		-- 	winbar = false,
 		-- 	statusline = false,
