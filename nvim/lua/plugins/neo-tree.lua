@@ -7,7 +7,7 @@ local M = {
 		"MunifTanjim/nui.nvim",
 		{
 			"s1n7ax/nvim-window-picker",
-			version = "2.*",
+			version = "3.*",
 			config = function()
 				require("window-picker").setup({
 					filter_rules = {
@@ -35,22 +35,24 @@ M.config = function()
 	vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
 	require("neo-tree").setup({
-		sources = {
-			"filesystem",
-			"buffers",
-			"git_status",
-		},
-		source_selector = {
-			winbar = false,
-			statusline = false,
-			separator = { left = "", right = "" },
-			tabs_layout = "start",
-			sources = {
-				{ source = "filesystem" },
-				{ source = "buffers" },
-				{ source = "git_status" },
-			},
-		},
+		-- sources = {
+		-- 	"filesystem",
+		-- 	"buffers",
+		-- 	"git_status",
+		-- 	"document_symbols",
+		-- },
+		-- source_selector = {
+		-- 	winbar = false,
+		-- 	statusline = false,
+		-- 	separator = { left = "", right = "" },
+		-- 	tabs_layout = "start",
+		-- 	sources = {
+		-- 		{ source = "filesystem" },
+		-- 		{ source = "buffers" },
+		-- 		{ source = "git_status" },
+		-- 		{ source = "document_symbols" },
+		-- 	},
+		-- },
 		close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 		popup_border_style = "rounded",
 		enable_git_status = true,
@@ -87,6 +89,17 @@ M.config = function()
 				folder_closed = " ",
 				folder_open = " ",
 				folder_empty = "󰜌",
+				provider = function(icon, node, state) -- default icon provider utilizes nvim-web-devicons if available
+					if node.type == "file" or node.type == "terminal" then
+						local success, web_devicons = pcall(require, "nvim-web-devicons")
+						local name = node.type == "terminal" and "terminal" or node.name
+						if success then
+							local devicon, hl = web_devicons.get_icon(name)
+							icon.text = devicon or icon.text
+							icon.highlight = hl or icon.highlight
+						end
+					end
+				end,
 				-- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
 				-- then these will never be used.
 				default = "*",
@@ -118,19 +131,23 @@ M.config = function()
 			},
 			-- If you don't want to use these columns, you can set `enabled = false` for each of them individually
 			file_size = {
-				enabled = false,
+				enabled = true,
+				width = 12, -- width of the column
 				required_width = 64, -- min width of window required to show this column
 			},
 			type = {
-				enabled = false,
+				enabled = true,
+				width = 10, -- width of the column
 				required_width = 122, -- min width of window required to show this column
 			},
 			last_modified = {
-				enabled = false,
+				enabled = true,
+				width = 20, -- width of the column
 				required_width = 88, -- min width of window required to show this column
 			},
 			created = {
-				enabled = false,
+				enabled = true,
+				width = 20, -- width of the column
 				required_width = 110, -- min width of window required to show this column
 			},
 			symlink_target = {
@@ -146,6 +163,12 @@ M.config = function()
 					end
 				end,
 			},
+      {
+        event = "neo_tree_buffer_enter",
+        handler = function()
+          vim.opt_local.number = true
+        end,
+      },
 			--{
 			--  event = "neo_tree_window_before_close",
 			--  handler = function(args)
@@ -189,7 +212,7 @@ M.config = function()
 		-- see `:h neo-tree-custom-commands-global`
 		commands = {},
 		window = {
-			position = "right",
+			position = "current",
 			width = 40,
 			mapping_options = {
 				noremap = true,
@@ -201,12 +224,20 @@ M.config = function()
 					"toggle_node",
 					nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
 				},
+				["l"] = {
+					"toggle_node",
+					nowait = true, -- disable `nowait` if you have existing combos starting with this char that you want to use
+				},
+				["h"] = {
+					"toggle_node",
+					nowait = true, -- disable `nowait` if you have existing combos starting with this char that you want to use
+				},
 				["<2-LeftMouse>"] = "open",
 				["<cr>"] = "open",
 				["<esc>"] = "cancel", -- close preview or floating neo-tree window
 				["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
 				-- Read `# Preview Mode` for more information
-				["l"] = "focus_preview",
+				-- ["l"] = "focus_preview",
 				["S"] = "open_split",
 				["s"] = "open_vsplit",
 				-- ["S"] = "split_with_window_picker",
@@ -231,6 +262,7 @@ M.config = function()
 				["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
 				["d"] = "delete",
 				["r"] = "rename",
+				["b"] = "rename_basename",
 				["y"] = "copy_to_clipboard",
 				["x"] = "cut_to_clipboard",
 				["p"] = "paste_from_clipboard",
@@ -266,6 +298,9 @@ M.config = function()
 				},
 				always_show = { -- remains visible even if other settings would normally hide it
 					--".gitignored",
+				},
+				always_show_by_pattern = { -- uses glob style patterns
+					--".env*",
 				},
 				never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
 					--".DS_Store",
@@ -316,6 +351,7 @@ M.config = function()
 					["<C-n>"] = "move_cursor_down",
 					["<up>"] = "move_cursor_up",
 					["<C-p>"] = "move_cursor_up",
+					["<esc>"] = "close",
 					-- ['<key>'] = function(state, scroll_padding) ... end,
 				},
 			},
@@ -347,6 +383,7 @@ M.config = function()
 		},
 		git_status = {
 			window = {
+				position = "float",
 				mappings = {
 					["A"] = "git_add_all",
 					["gu"] = "git_unstage_file",
@@ -366,7 +403,6 @@ M.config = function()
 			},
 		},
 	})
-
 	vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
 end
 

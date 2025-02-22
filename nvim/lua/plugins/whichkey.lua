@@ -54,6 +54,12 @@ function M.config()
 			C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
 			d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
 			g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
+			S = {
+				function()
+					require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+				end,
+				"Conditional Breakpoint",
+			},
 			i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
 			o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
 			u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
@@ -148,7 +154,11 @@ function M.config()
 			q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
 			d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
 			w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-			s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+			s = { "<cmd>Neotree float toggle document_symbols<CR>", "Document Symbols" },
+			-- s = {
+			-- 	"<cmd>lua require('telescope.builtin').lsp_document_symbols({ symbols = { 'Class', 'Method', 'Constructor' } })<CR>",
+			-- 	"Class Methods & Constructors",
+			-- },
 			S = {
 				"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 				"Workspace Symbols",
