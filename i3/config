@@ -99,7 +99,7 @@ bindsym --release $mod+p exec flameshot gui
 bindsym $mod+Return exec kitty
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+c kill
 
 # start rofi (a program launcher)
 # ! if rofi is not installed or isn't working change to dmenu
