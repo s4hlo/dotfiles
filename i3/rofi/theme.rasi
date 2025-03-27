@@ -8,15 +8,12 @@
 * {
     font:   "JetBrainsMono Nerd Font 12";
 
-    background-s4:   #00000000;
-    primaray-s4:     #d8dee9;
-    secundary-24:    #444444;
-    nord8:           #C5C8C6;
-    nord13:          #ebcb8b;
+    background-s4:   #1e1e2f;
+    foreground-s4:     #cdd6f5;
 
     background-color:   transparent;
-    text-color:         @primaray-s4;
-    accent-color:       @nord8;
+    text-color:         @foreground-s4;
+    accent-color:       @foreground-s4;
 
     margin:     0px;
     padding:    0px;
@@ -60,7 +57,7 @@ element {
 }
 
 element normal urgent {
-    text-color: @nord13;
+    text-color: @foreground-s4;
 }
 
 element normal active {
@@ -68,7 +65,7 @@ element normal active {
 }
 
 element selected {
-    text-color: @secundary-24;
+    text-color: @background-s4;
 }
 
 element selected normal {
@@ -76,11 +73,11 @@ element selected normal {
 }
 
 element selected urgent {
-    background-color:   @nord13;
+    background-color:   @foreground-s4;
 }
 
 element selected active {
-    background-color:   @nord8;
+    background-color:   @foreground-s4;
 }
 
 element-icon {
