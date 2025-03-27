@@ -55,10 +55,11 @@ local M = {
 }
 
 function M.config()
-	vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
-	vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
-	vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = "#F64D00" })
-	vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
+	local colors = require("user.colors")
+	vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = colors.green })
+	vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = colors.purple })
+	vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = colors.orange })
+	vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = colors.yellow })
 
 	local cmp = require("cmp")
 	local luasnip = require("luasnip")

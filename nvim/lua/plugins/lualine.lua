@@ -7,54 +7,54 @@ local M = {
 }
 
 function M.config()
-	local sl_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
+	local colors = require("user.colors")
 
 	local theme = function()
-		local colors = {
+		local colors_lualine = {
 			blue = nil,
 			green = nil,
 			purple = nil,
 			cyan = nil,
 			red1 = nil,
-			red2 = "#be5046",
+			red2 = colors.red,
 			yellow = nil,
 			bg = nil,
-			fg = "#282c34",
+			fg = colors.background,
 			gray1 = nil,
 			gray2 = nil,
 			gray3 = nil,
 		}
 
-		-- local colors = {
-		--   blue = "#61afef",
-		--   green = "#98c379",
-		--   purple = "#c678dd",
-		--   cyan = "#56b6c2",
-		--   red1 = "#e06c75",
-		--   red2 = "#be5046",
-		--   yellow = "#e5c07b",
-		--   fg = "#abb2bf",
-		--   bg = "#282c34",
-		--   gray1 = "#828997",
-		--   gray2 = nil,
-		--   gray3 = "#3e4452",
-		-- }
+		local colors_lualine_alt_ = {
+			blue = colors.blue,
+			green = colors.green,
+			purple = colors.purple,
+			cyan = colors.cyan,
+			red1 = colors.red,
+			red2 = colors.red,
+			yellow = colors.yellow,
+			fg = colors.white,
+			bg = colors.surface, 
+			gray1 = colors.surface2,
+			gray2 = nil,
+			gray3 = colors.surface,
+		}
 
 		return {
 			normal = {
-				a = { fg = colors.bg, bg = colors.green, gui = "bold" },
-				b = { fg = colors.fg, bg = colors.gray3 },
-				c = { fg = colors.red2, bg = colors.gray2 },
+				a = { fg = colors_lualine.bg, bg = colors_lualine.green, gui = "bold" },
+				b = { fg = colors_lualine.fg, bg = colors_lualine.gray3 },
+				c = { fg = colors_lualine.red2, bg = colors_lualine.gray2 },
 			},
-			command = { a = { fg = colors.bg, bg = colors.yellow, gui = "bold" } },
-			insert = { a = { fg = colors.bg, bg = colors.blue, gui = "bold" } },
-			visual = { a = { fg = colors.bg, bg = colors.purple, gui = "bold" } },
-			terminal = { a = { fg = colors.bg, bg = colors.cyan, gui = "bold" } },
-			replace = { a = { fg = colors.bg, bg = colors.red1, gui = "bold" } },
+			command = { a = { fg = colors_lualine.bg, bg = colors_lualine.yellow, gui = "bold" } },
+			insert = { a = { fg = colors_lualine.bg, bg = colors_lualine.blue, gui = "bold" } },
+			visual = { a = { fg = colors_lualine.bg, bg = colors_lualine.purple, gui = "bold" } },
+			terminal = { a = { fg = colors_lualine.bg, bg = colors_lualine.cyan, gui = "bold" } },
+			replace = { a = { fg = colors_lualine.bg, bg = colors_lualine.red1, gui = "bold" } },
 			inactive = {
-				a = { fg = colors.gray1, bg = colors.bg, gui = "bold" },
-				b = { fg = colors.gray1, bg = colors.bg },
-				c = { fg = colors.gray1, bg = colors.gray2 },
+				a = { fg = colors_lualine.gray1, bg = colors_lualine.bg, gui = "bold" },
+				b = { fg = colors_lualine.gray1, bg = colors_lualine.bg },
+				c = { fg = colors_lualine.gray1, bg = colors_lualine.gray2 },
 			},
 		}
 	end
@@ -137,15 +137,15 @@ function M.config()
 								unknown = " ",
 							},
 							hl = {
-								enabled = "#50FA7B",
-								sleep = "#AEB7D0",
-								disabled = "#6272A4",
-								warning = "#FFB86C",
-								unknown = "#FF5555",
+								enabled = colors.green,
+								sleep = colors.white,
+								disabled = colors.maroon,
+								warning = colors.orange,
+								unknown = colors.red,
 							},
 						},
 						spinners = require("copilot-lualine.spinners").dots,
-						spinner_color = "#6272A4",
+						spinner_color = colors.green,
 					},
 					show_colors = true,
 					show_loading = true,

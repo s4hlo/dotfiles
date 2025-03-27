@@ -11,7 +11,7 @@ return {
 				end,
 				style = "night",
 				-- on_colors = function(colors)
-				-- 	colors.border = "#565f89"
+				-- 	colors.border = "HEX here"
 				-- end,
 			})
 		end,
