@@ -50,7 +50,16 @@ ask_for_wm_installation() {
             1)
               echo -e "\e[32mInstalling Hypr... NO TESTE\e[0m"
                 log "Installing Hypr... NOT TESTED" 2
-                sudo pacman -S --needed - < ~/dotfiles/pkg_hypr.list
+                sudo pacman -S --needed hyprland
+                yay -S --needed \
+                      hyprpaper \
+                      waybar \
+                      hyprshade \
+                      hyprshot \
+                      wofi 
+                      # check if those two are installed with the above when zero setup
+                      # hyprlock 
+                      # hyprpicker-git \
                 mkdir -p ~/.config/i3 ~/.config/rofi ~/.config/polybar
                 ln -fns ~/dotfiles/hypr ~/.config/
                 ln -fns ~/dotfiles/waybar ~/.config/
