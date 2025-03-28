@@ -16,6 +16,7 @@
         "hyprland/workspaces"
     ],
     "modules-right": [
+        "custom/filesystem",
         "backlight",
         "memory",
         "network",
@@ -28,6 +29,11 @@
             "active": " ",
             "default": " "
         }
+    },
+    "custom/filesystem": {
+      "format": "{}  ",
+      "exec": "df -h --output=pcent / | awk 'NR==2 {print substr($1, 1, length($1)-1)}'",
+      "interval": 5
     },
     "custom/keyboard": {
         "format": "  {}",
@@ -82,7 +88,7 @@
         "tooltip": false
     },
     "memory": {
-        "format": "{}  "
+        "format": "{}  "
     },
     "temperature": {
         // "thermal-zone": 2,
