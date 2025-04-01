@@ -26,12 +26,12 @@ You'll probably notice you don't have support for copy/paste also that python an
 
 > TODO: auto-check X11 or wayland
 
-copy/paste:
+install those pkg for the proper env ( check availability )
 
 ```sh
-sudo apt install xclip # for X11 (prefer this, will be installed in setup.sh)
-sudo apt install xsel # for X11
-sudo apt install wl-clipboard # for wayland
+xclip # for X11 (prefer this, will be installed in setup.sh)
+xsel # for X11
+wl-clipboard # for wayland
 ```
 
 python and node support:
@@ -42,18 +42,9 @@ npm i -g neovim
 
 ```
 
-## 4. Qutebrowser Memento
-
-```
-:config-source
-```
 ## References
 
 - [Snapcraft Website](https://snapcraft.io/snapd)
 - [NVM Github repositoy](https://github.com/nvm-sh/nvm#installing-and-updating)
 - [Starship Website](https://starship.rs/)
 - [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
-
-todo : fix starship installation, it is not working
-todo : add install curl just for assurance
-some notes run luarocks install magick
