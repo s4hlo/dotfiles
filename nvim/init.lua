@@ -14,6 +14,7 @@ Plugin("filetype.prettier")
 Plugin("filetype.prettier")
 
 Plugin("autopairs")
+Plugin("avante")
 Plugin("cmp")
 Plugin("colorizer")
 Plugin("colorscheme") -- theme
