@@ -50,7 +50,7 @@ ask_for_wm_installation() {
             1)
               echo -e "\e[32mInstalling Hypr... NO TESTE\e[0m"
                 log "Installing Hypr... NOT TESTED" 2
-                sudo pacman -S --needed hyprland
+                sudo pacman -S --needed hyprland xdg-desktop-portal-hyprland
                 yay -S --needed \
                       hyprpaper \
                       waybar \
