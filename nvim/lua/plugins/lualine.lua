@@ -34,7 +34,7 @@ function M.config()
 			red2 = colors.red,
 			yellow = colors.yellow,
 			fg = colors.white,
-			bg = colors.surface, 
+			bg = colors.surface,
 			gray1 = colors.surface2,
 			gray2 = nil,
 			gray3 = colors.surface,
@@ -67,6 +67,33 @@ function M.config()
 		return "[  " .. reg .. "]"
 	end
 
+	local copilotStatus = {
+		"copilot",
+		-- Default values
+		symbols = {
+			status = {
+				icons = {
+					enabled = " ",
+					sleep = " ", -- auto-trigger disabled
+					disabled = " ",
+					warning = " ",
+					unknown = " ",
+				},
+				hl = {
+					enabled = colors.green,
+					sleep = colors.white,
+					disabled = colors.maroon,
+					warning = colors.orange,
+					unknown = colors.red,
+				},
+			},
+			spinners = require("copilot-lualine.spinners").dots,
+			spinner_color = colors.green,
+		},
+		show_colors = true,
+		show_loading = true,
+	}
+
 	require("lualine").setup({
 		options = {
 			theme = theme(),
@@ -79,23 +106,6 @@ function M.config()
 
 			ignore_focus = {},
 		},
-
-		-- sections = {
-		--   lualine_a = { "mode" },
-		--   lualine_b = { "filename" },
-		--   lualine_c = { "diff" },
-		--   lualine_x = {
-		--     "diagnostics",
-		--   },
-		--   lualine_y = {
-		--     { "filetype", icon_only = true },
-		--     {
-		--       "copilot",
-		--       show_colors = true,
-		--     },
-		--   },
-		--   lualine_z = { "progress" },
-		-- },
 
 		--minimal
 		sections = {
@@ -124,32 +134,7 @@ function M.config()
 			lualine_b = { "diff" },
 			lualine_c = {
 				isRecording,
-				{
-					"copilot",
-					-- Default values
-					symbols = {
-						status = {
-							icons = {
-								enabled = " ",
-								sleep = " ", -- auto-trigger disabled
-								disabled = " ",
-								warning = " ",
-								unknown = " ",
-							},
-							hl = {
-								enabled = colors.green,
-								sleep = colors.white,
-								disabled = colors.maroon,
-								warning = colors.orange,
-								unknown = colors.red,
-							},
-						},
-						spinners = require("copilot-lualine.spinners").dots,
-						spinner_color = colors.green,
-					},
-					show_colors = true,
-					show_loading = true,
-				},
+				-- copilotStatus,
 			},
 
 			lualine_x = { "diagnostics" },
