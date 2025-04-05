@@ -1,9 +1,11 @@
 acpi
+bat
 brightnessctl
 btop
 curl
 dbeaver
 dunst
+eza
 flameshot
 git
 github-cli

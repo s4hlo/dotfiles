@@ -62,6 +62,12 @@ bindkey -M viins jk vi-cmd-mode
 eval "$(starship init zsh)"
 [ -z "$TMUX" ] && exec tmux
 
+if command -v eza &> /dev/null; then
+  alias ls="eza --icons=always"
+else
+  alias ls="ls"  # or whatever fallback you prefer
+fi
+
 alias tks="tmux kill-session -t"
 alias dot='cd ~/dotfiles'
 alias vault='cd ~/vault'
