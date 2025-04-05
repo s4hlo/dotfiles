@@ -77,5 +77,8 @@ alias gobang='gobang -c ~/dev/vault/decrypted/gobang.toml'
 alias setup='~/dotfiles/setup.sh'
 alias b='~/notes/brg.sh'
 
+quote=$(curl -s https://zenquotes.io/api/today | jq -r '.[0].q + " — " + .[0].a')
+echo "🌱 $quote"
+
 ###### MEMENTO MORI ######
 
