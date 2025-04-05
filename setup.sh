@@ -1,20 +1,23 @@
 echo -e "\e[34mWelcome to the setup script for my dotfiles!\e[0m"
-echo -e "\e[34m--------------------------------------------\e[0m"
-echo -e ''
+if command -v catnap &> /dev/null; then
+    catnap
+else
+    echo -e "\e[34mWelcome to the setup script for my dotfiles!\e[0m"
+    echo -e ''
+    echo -e '\e[35m                     .                  \e[32m REQUIREMENTS:\e[0m'
+    echo -e '\e[35m                    / V\\                 \e[32m- Git\e[0m'
+    echo -e '\e[35m                  / `  /                 \e[32m- Zsh\e[0m'
+    echo -e '\e[35m                 <<   |                 \e[32m\e[0m'
+    echo -e '\e[35m                 /    |                 \e[32m FOLLOW THE INSTRUCTIONS\e[0m'
+    echo -e '\e[35m               /      |                 \e[32m FOR SETUP!\e[0m'
+    echo -e '\e[35m             /        |\e[0m'
+    echo -e '\e[35m           /    \  \ / \e[0m'
+    echo -e '\e[35m          (      ) | |\e[0m'
+    echo -e '\e[35m  ________|   _/_  | |\e[0m'
+    echo -e '\e[35m<__________\\______)\__)\e[0m'
+    echo -e " "
+fi
 
-echo -e ''
-echo -e '\e[35m                     .                  \e[32m REQUIREMENTS:\e[0m'
-echo -e '\e[35m                    / V\\                 \e[32m- Git\e[0m'
-echo -e '\e[35m                  / `  /                 \e[32m- Zsh\e[0m'
-echo -e '\e[35m                 <<   |                 \e[32m\e[0m'
-echo -e '\e[35m                 /    |                 \e[32m FOLLOW THE INSTRUCTIONS\e[0m'
-echo -e '\e[35m               /      |                 \e[32m FOR SETUP!\e[0m'
-echo -e '\e[35m             /        |\e[0m'
-echo -e '\e[35m           /    \  \ / \e[0m'
-echo -e '\e[35m          (      ) | |\e[0m'
-echo -e '\e[35m  ________|   _/_  | |\e[0m'
-echo -e '\e[35m<__________\\______)\__)\e[0m'
-echo -e "\e[34m--------------------------------------------\e[0m"
 
 # Pritunl
 
@@ -127,11 +130,23 @@ links_setup() {
     zsh -c "source ~/.zshrc"
 }
 
-
-ask_and_execute "Do you want to sync pacman packages" "pacman_bulk"
-ask_and_execute "Do you want to sync yay packages" "yay_bulk"
-ask_for_wm_installation
-ask_and_execute "Do you want to link the dotfiles" "links_setup"
+# Verifica o argumento passado
+case "$1" in
+    pacman)
+        pacman_bulk
+        ;;
+    yay)
+        yay_bulk
+        ;;
+    link)
+        link_setup;;
+    *)
+        ask_and_execute "Do you want to sync pacman packages" "pacman_bulk"
+        ask_and_execute "Do you want to sync yay packages" "yay_bulk"
+        ask_for_wm_installation
+        ask_and_execute "Do you want to link the dotfiles" "links_setup"
+        ;;
+esac
 
 echo -e '
 #################################################################################
