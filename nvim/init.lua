@@ -19,7 +19,7 @@ Plugin("cmp")
 Plugin("colorizer")
 Plugin("colorscheme") -- theme
 Plugin("comment")
--- Plugin("copilot")
+Plugin("copilot")
 Plugin("dap")
 Plugin("faster")
 Plugin("git")

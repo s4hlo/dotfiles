@@ -134,7 +134,7 @@ function M.config()
 			lualine_b = { "diff" },
 			lualine_c = {
 				isRecording,
-				-- copilotStatus,
+				copilotStatus,
 			},
 
 			lualine_x = { "diagnostics" },
