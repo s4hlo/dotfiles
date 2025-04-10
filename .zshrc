@@ -78,8 +78,10 @@ alias setup='~/dotfiles/setup.sh'
 alias b='~/notes/brg.sh'
 alias cal='calcurse -D ~/dev/calendar'
 
+[[ -f ~/vault/decrypted/.zshrc_alias ]] && source ~/vault/decrypted/.zshrc_alias
+
 quote=$(curl -s https://zenquotes.io/api/today | jq -r '.[0].q + " — " + .[0].a')
-echo "✨ $quote ✨"
+echo "✨ $quote"
 
 ###### MEMENTO MORI ######
 
