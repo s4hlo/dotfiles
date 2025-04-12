@@ -1,7 +1,6 @@
 local M = {
 	"nvim-telescope/telescope.nvim",
 	dependencies = { { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true } },
-	commit = "74ce793a60759e3db0d265174f137fb627430355",
 	lazy = true,
 	cmd = "Telescope",
 }
@@ -33,15 +32,13 @@ function M.config()
 				"--smart-case",
 				"--hidden",
 				"--glob=!.git/",
+				"--trim",
 			},
 
 			mappings = {
 				i = {
-					["<C-n>"] = actions.cycle_history_next,
-					["<C-p>"] = actions.cycle_history_prev,
-
-					["<C-j>"] = actions.move_selection_next,
-					["<C-k>"] = actions.move_selection_previous,
+					["<Down>"] = actions.cycle_history_next,
+					["<Up>"] = actions.cycle_history_prev,
 				},
 				n = {
 					["<esc>"] = actions.close,
@@ -52,14 +49,6 @@ function M.config()
 			},
 		},
 		pickers = {
-			live_grep = {
-				theme = "dropdown",
-			},
-
-			grep_string = {
-				theme = "dropdown",
-			},
-
 			find_files = {
 				theme = "dropdown",
 				previewer = false,
@@ -78,42 +67,8 @@ function M.config()
 					},
 				},
 			},
-
-			planets = {
-				show_pluto = true,
-				show_moon = true,
-			},
-
 			colorscheme = {
 				enable_preview = true,
-			},
-
-			lsp_references = {
-				theme = "dropdown",
-				initial_mode = "normal",
-			},
-
-			lsp_definitions = {
-				theme = "dropdown",
-				initial_mode = "normal",
-			},
-
-			lsp_declarations = {
-				theme = "dropdown",
-				initial_mode = "normal",
-			},
-
-			lsp_implementations = {
-				theme = "dropdown",
-				initial_mode = "normal",
-			},
-		},
-		extensions = {
-			fzf = {
-				fuzzy = true, -- false will only do exact matching
-				override_generic_sorter = true, -- override the generic sorter
-				override_file_sorter = true, -- override the file sorter
-				case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			},
 		},
 	})

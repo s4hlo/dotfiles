@@ -4,7 +4,7 @@ local M = {
 
 function M.config()
 	require("copilot").setup({
-		suggestion = { enabled = true },
+		suggestion = { enabled = true, auto_refresh = true },
 		panel = { enabled = true },
 	})
 end

@@ -1,6 +1,5 @@
 local M = {
 	"nvim-lualine/lualine.nvim",
-	commit = "7533b0ead663d80452210c0c089e5105089697e5",
 	dependencies = {
 		{ "AndreM222/copilot-lualine" },
 	},
