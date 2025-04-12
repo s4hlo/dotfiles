@@ -31,9 +31,10 @@ function M.config()
 		ignore_install = { "" },
 		auto_install = true,
 		sync_install = true,
+
 		highlight = {
 			enable = true,
-			disable = { "markdown" },
+			-- disable = { "markdown" },
 			additional_vim_regex_highlighting = false,
 		},
 
