@@ -33,6 +33,29 @@ end
 
 function M.config()
 	local which_key = require("which-key")
+
+	which_key.setup({
+		triggers = {
+			{ "<leader>", mode = { "n", "v" } },
+		},
+		win = {
+			no_overlap = true,
+			border = "rounded",
+			padding = { 1, 2 }, -- extra window padding [top/bottom, right/left]
+			title = true,
+			title_pos = "center",
+			zindex = 1000,
+			bo = {},
+			wo = {
+				-- winblend = 10, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+			},
+		},
+		disable = {
+			buftypes = {},
+			filetypes = { "TelescopePrompt" },
+		},
+	})
+
 	which_key.add({
 		{ "<leader>f", group = "Find" },
 		{
