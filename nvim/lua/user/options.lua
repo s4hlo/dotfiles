@@ -36,8 +36,14 @@ vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 8
 vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
 vim.opt.title = false
-vim.opt.foldopen = "all" -- makes buffers open with all folds open
-vim.opt_local.foldmethod = "syntax" -- enable folding
+
+-- ufo config
+vim.opt.foldcolumn = "0" -- '0' is not bad
+vim.opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
 vim.opt.fillchars:append({
 	stl = " ",

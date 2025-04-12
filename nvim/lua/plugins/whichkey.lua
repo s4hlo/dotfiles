@@ -37,6 +37,7 @@ function M.config()
 	which_key.setup({
 		triggers = {
 			{ "<leader>", mode = { "n", "v" } },
+			{ "z", mode = { "n", "v" } },
 		},
 		win = {
 			no_overlap = true,
@@ -54,6 +55,27 @@ function M.config()
 			buftypes = {},
 			filetypes = { "TelescopePrompt" },
 		},
+	})
+	local ufo = require("ufo")
+	which_key.add({
+		{ "ZR", ufo.openAllFolds, desc = "Open all folds", mode = "n" },
+		{ "ZM", ufo.closeAllFolds, desc = "Close all folds", mode = "n" },
+		{
+			"ZK",
+			function()
+				local winid = ufo.peekFoldedLinesUnderCursor()
+				if not winid then vim.lsp.buf.hover() end
+			end,
+			desc = "Peek Fold",
+			mode = "n",
+		},
+	})
+
+	which_key.add({
+		{ "<leader>e", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
+	})
+	which_key.add({
+		{ "<leader>a", group = "AI", mode = { "n", "v" } },
 	})
 
 	which_key.add({
@@ -81,13 +103,6 @@ function M.config()
 		{ "<leader>fR", "<cmd>Telescope registers<cr>", desc = "Recents", mode = "n" },
 		{ "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps", mode = "n" },
 		{ "<leader>fC", "<cmd>Telescope commands<cr>", desc = "Commands", mode = "n" },
-	})
-
-	which_key.add({
-		{ "<leader>e", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
-	})
-	which_key.add({
-		{ "<leader>a", group = "AI", mode = { "n", "v" } },
 	})
 
 	which_key.add({
