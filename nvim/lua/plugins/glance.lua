@@ -18,9 +18,7 @@ function M.config()
 
 		-- Or use a function to enable `detached` only when the active window is too small
 		-- (default behavior)
-		detached = function(winid)
-			return vim.api.nvim_win_get_width(winid) < 100
-		end,
+		detached = function(winid) return vim.api.nvim_win_get_width(winid) < 100 end,
 
 		preview_win_opts = { -- Configure preview window options
 			cursorline = true,

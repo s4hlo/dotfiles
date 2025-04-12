@@ -16,15 +16,11 @@ local N = {
 	},
 }
 
-function N.config()
-	require("lsp-file-operations").setup()
-end
+function N.config() require("lsp-file-operations").setup() end
 
 function M.common_capabilities()
 	local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-	if status_ok then
-		return cmp_nvim_lsp.default_capabilities()
-	end
+	if status_ok then return cmp_nvim_lsp.default_capabilities() end
 
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -90,7 +86,8 @@ function M.config()
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
 	end
 
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+	vim.lsp.handlers["textDocument/hover"] =
+		vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 	vim.lsp.handlers["textDocument/signatureHelp"] =
 		vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 	require("lspconfig.ui.windows").default_options.border = "rounded"
@@ -108,9 +105,7 @@ function M.config()
 		}
 
 		local require_ok, settings = pcall(require, "user.lspsettings." .. server)
-		if require_ok then
-			opts = vim.tbl_deep_extend("force", settings, opts)
-		end
+		if require_ok then opts = vim.tbl_deep_extend("force", settings, opts) end
 
 		lspconfig[server].setup(opts)
 	end

@@ -4,9 +4,7 @@ local M = {
 	dependencies = {
 		{
 			"zbirenbaum/copilot-cmp",
-			config = function()
-				require("copilot_cmp").setup()
-			end,
+			config = function() require("copilot_cmp").setup() end,
 		},
 		{
 			"hrsh7th/cmp-nvim-lsp",
@@ -164,13 +162,9 @@ function M.config()
 						return false
 					end
 
-					if ctx.prev_context.filetype == "markdown" then
-						return true
-					end
+					if ctx.prev_context.filetype == "markdown" then return true end
 
-					if kind == "Text" then
-						return false
-					end
+					if kind == "Text" then return false end
 
 					return true
 				end,

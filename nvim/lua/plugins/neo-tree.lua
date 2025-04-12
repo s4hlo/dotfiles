@@ -165,9 +165,7 @@ M.config = function()
 			},
 			{
 				event = "neo_tree_buffer_enter",
-				handler = function()
-					vim.opt_local.number = true
-				end,
+				handler = function() vim.opt_local.number = true end,
 			},
 			--{
 			--  event = "neo_tree_window_before_close",
@@ -185,9 +183,7 @@ M.config = function()
 			},
 			{
 				event = "file_opened",
-				handler = function()
-					require("neo-tree.command").execute({ action = "close" })
-				end,
+				handler = function() require("neo-tree.command").execute({ action = "close" }) end,
 			},
 		},
 
@@ -336,7 +332,11 @@ M.config = function()
 					["<c-x>"] = "clear_filter",
 					["[g"] = "prev_git_modified",
 					["]g"] = "next_git_modified",
-					["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+					["o"] = {
+						"show_help",
+						nowait = false,
+						config = { title = "Order by", prefix_key = "o" },
+					},
 					["oc"] = { "order_by_created", nowait = false },
 					["od"] = { "order_by_diagnostics", nowait = false },
 					["og"] = { "order_by_git_status", nowait = false },
@@ -371,7 +371,11 @@ M.config = function()
 					["bd"] = "buffer_delete",
 					["<bs>"] = "navigate_up",
 					["."] = "set_root",
-					["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+					["o"] = {
+						"show_help",
+						nowait = false,
+						config = { title = "Order by", prefix_key = "o" },
+					},
 					["oc"] = { "order_by_created", nowait = false },
 					["od"] = { "order_by_diagnostics", nowait = false },
 					["om"] = { "order_by_modified", nowait = false },
@@ -392,7 +396,11 @@ M.config = function()
 					["gc"] = "git_commit",
 					["gp"] = "git_push",
 					["gg"] = "git_commit_and_push",
-					["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+					["o"] = {
+						"show_help",
+						nowait = false,
+						config = { title = "Order by", prefix_key = "o" },
+					},
 					["oc"] = { "order_by_created", nowait = false },
 					["od"] = { "order_by_diagnostics", nowait = false },
 					["om"] = { "order_by_modified", nowait = false },

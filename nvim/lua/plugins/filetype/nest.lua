@@ -1,7 +1,7 @@
 return {
 	"kyazdani42/nvim-web-devicons",
 	config = function()
-    local colors = require("user.colors")
+		local colors = require("user.colors")
 		require("nvim-web-devicons").setup({
 			override = {
 				["service.ts"] = {

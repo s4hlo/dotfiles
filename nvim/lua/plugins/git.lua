@@ -34,12 +34,8 @@ return {
 							actions.goto_file_edit()
 							vim.cmd("tabclose #")
 						end,
-						["q"] = function()
-							vim.cmd("tabclose")
-						end,
-						["<leader>e"] = function()
-							vim.cmd("DiffviewToggleFiles")
-						end,
+						["q"] = function() vim.cmd("tabclose") end,
+						["<leader>e"] = function() vim.cmd("DiffviewToggleFiles") end,
 					},
 				},
 			})

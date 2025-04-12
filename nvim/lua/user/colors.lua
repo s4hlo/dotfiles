@@ -31,9 +31,9 @@ local colors = {
 	subtext1 = mocha.subtext1 or "#bac2df",
 
 	theme = mocha, -- full palette if needed
-  
-  pure_white = "#ffffff",
-  pure_black = "#000000",
+
+	pure_white = "#ffffff",
+	pure_black = "#000000",
 }
 
 return colors

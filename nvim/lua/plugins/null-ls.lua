@@ -19,9 +19,17 @@ function M.config()
 			formatting.stylua,
 			formatting.bashls,
 			formatting.prettier.with({
-				extra_filetypes = { "typescriptreact", "javascriptreact", "md", "json", "yaml", "toml" },
+				extra_filetypes = {
+					"typescriptreact",
+					"javascriptreact",
+					"md",
+					"json",
+					"yaml",
+					"toml",
+				},
 				condition = function(utils)
-					return utils.root_has_file(".prettierrc") or utils.root_has_file("prettier.config.js")
+					return utils.root_has_file(".prettierrc")
+						or utils.root_has_file("prettier.config.js")
 				end,
 			}),
 			null_ls.builtins.completion.spell,
