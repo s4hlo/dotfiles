@@ -24,8 +24,46 @@ return {
 			},
 		},
 		ui = {
-			enable = false,
+			enable = true,
 		},
+
+		-- Optional, customize how note file names are generated given the ID, target directory, and title.
+		---@param spec { id: string, dir: obsidian.Path, title: string|? }
+		---@return string|obsidian.Path The full path to the new note.
+		note_path_func = function(spec)
+			local base_title = tostring(spec.title)
+			local base_path = spec.dir / base_title
+			local path = base_path:with_suffix(".md")
+
+			local i = 1
+			while path:exists() do
+				local new_title = string.format("%s-%d", base_title, i)
+				path = (spec.dir / new_title):with_suffix(".md")
+				i = i + 1
+			end
+
+			return path
+		end,
+
+		-- Optional, customize how note IDs are generated given an optional title.
+		---@param title string|?
+		---@return string
+		note_id_func = function(title)
+			-- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
+			-- In this case a note with the title 'My new note' will be given an ID that looks
+			-- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
+			local suffix = ""
+			if title ~= nil then
+				-- If title is given, transform it into valid file name.
+				suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+			else
+				-- If title is nil, just add 4 random uppercase letters to the suffix.
+				for _ = 1, 4 do
+					suffix = suffix .. string.char(math.random(65, 90))
+				end
+			end
+			return tostring(os.time()) .. "-" .. suffix
+		end,
 
 		-- see below for full list of options 👇
 		daily_notes = {
