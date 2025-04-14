@@ -77,6 +77,7 @@ alias gobang='gobang -c ~/dev/vault/decrypted/gobang.toml'
 alias setup='~/dotfiles/setup.sh'
 alias b='~/notes/brg.sh'
 alias cal='calcurse -D ~/dev/calendar'
+alias pomo='nohup ~/dotfiles/pomo.sh 25 5 &'
 
 [[ -f ~/vault/decrypted/.zshrc_alias ]] && source ~/vault/decrypted/.zshrc_alias
 
