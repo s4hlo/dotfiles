@@ -43,7 +43,7 @@ M.config = function()
 		},
 		{
 			event = "neo_tree_buffer_enter",
-			handler = function() vim.opt_local.number = true end,
+			handler = function() vim.opt_local.number = not require("user.config").clean end,
 		},
 		--{
 		--  event = "neo_tree_window_before_close",
@@ -86,7 +86,7 @@ M.config = function()
 			},
 		},
 		close_if_last_window = require("user.config").clean and true or false, -- Close Neo-tree if it is the last window left in the tab
-		popup_border_style = require("user.config").border,
+		popup_border_style = require("user.config").border == "rounded" and "rounded" or "rounded",
 		enable_git_status = true,
 		enable_diagnostics = true,
 		open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes

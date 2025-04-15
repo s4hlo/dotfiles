@@ -6,6 +6,8 @@ local neotree_key = require("user.config").clean
 					if vim.bo.filetype == "neo-tree" then
 						vim.cmd("wincmd p")
 					else
+						-- run twice to when symbols is not the current tab
+						vim.cmd("Neotree")
 						vim.cmd("Neotree")
 					end
 				end,
