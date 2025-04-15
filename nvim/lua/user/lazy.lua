@@ -32,7 +32,7 @@ require("user.options")
 -- Setup lazy.nvim
 require("lazy").setup({
 	ui = {
-		border = "rounded",
+		border = require("user.config").border,
 	},
 	spec = LAZY_PLUGIN_SPEC,
 	-- spec = {

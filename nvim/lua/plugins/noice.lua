@@ -35,7 +35,7 @@ function M.config()
 			command_palette = false, -- position the cmdline and popupmenu together
 			long_message_to_split = true, -- long messages will be sent to a split
 			inc_rename = false, -- enables an input dialog for inc-rename.nvim
-			lsp_doc_border = true, -- add a border to hover docs and signature help
+			lsp_doc_border = require("user.config").border == "rounded", -- add a border to hover docs and signature help
 		},
 		messages = {
 			-- NOTE: If you enable messages, then the cmdline is enabled automatically.
@@ -69,7 +69,7 @@ function M.config()
 		},
 		cmdline = {
 			enabled = true, -- enables the Noice cmdline UI
-			view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+			view = "cmdline", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
 			opts = {}, -- global options for the cmdline. See section on views
 			format = {
 				-- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.

@@ -73,7 +73,7 @@ function M.config()
 		float = {
 			focusable = true,
 			style = "minimal",
-			border = "rounded",
+			border = require("user.config").border,
 			source = "always",
 			header = "",
 			prefix = "",
@@ -87,10 +87,10 @@ function M.config()
 	end
 
 	vim.lsp.handlers["textDocument/hover"] =
-		vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+		vim.lsp.with(vim.lsp.handlers.hover, { border = require("user.config").border })
 	vim.lsp.handlers["textDocument/signatureHelp"] =
-		vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
-	require("lspconfig.ui.windows").default_options.border = "rounded"
+		vim.lsp.with(vim.lsp.handlers.signature_help, { border = require("user.config").border })
+	require("lspconfig.ui.windows").default_options.border = require("user.config").border
 
 	for _, server in pairs(servers) do
 		local opts = {

@@ -82,7 +82,7 @@ function M.config()
 		},
 		win = {
 			no_overlap = true,
-			border = "rounded",
+			border = require("user.config").border,
 			padding = { 1, 2 }, -- extra window padding [top/bottom, right/left]
 			title = true,
 			title_pos = "center",

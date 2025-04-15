@@ -86,7 +86,7 @@ M.config = function()
 			},
 		},
 		close_if_last_window = require("user.config").clean and true or false, -- Close Neo-tree if it is the last window left in the tab
-		popup_border_style = "rounded",
+		popup_border_style = require("user.config").border,
 		enable_git_status = true,
 		enable_diagnostics = true,
 		open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
@@ -334,6 +334,8 @@ M.config = function()
 					["<c-x>"] = "clear_filter",
 					["[g"] = "prev_git_modified",
 					["]g"] = "next_git_modified",
+					["h"] = "close",
+          ["l"] = "open",
 					["o"] = {
 						"show_help",
 						nowait = false,
