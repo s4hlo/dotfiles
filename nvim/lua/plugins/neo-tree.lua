@@ -34,6 +34,38 @@ M.config = function()
 	vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 	vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
+	local i_event_handlers = {
+		{
+			event = "neo_tree_window_after_open",
+			handler = function(args)
+				if args.position == "left" or args.position == "right" then vim.cmd("wincmd =") end
+			end,
+		},
+		{
+			event = "neo_tree_buffer_enter",
+			handler = function() vim.opt_local.number = true end,
+		},
+		--{
+		--  event = "neo_tree_window_before_close",
+		--  handler = function(args)
+		--    print("neo_tree_window_before_close", vim.inspect(args))
+		--  end
+		--},
+		{
+			event = "neo_tree_window_after_close",
+			handler = function(args)
+				if args.position == "left" or args.position == "right" then vim.cmd("wincmd =") end
+			end,
+		},
+	}
+
+	if not require("user.config").clean then
+		table.insert(i_event_handlers, {
+			event = "file_opened",
+			handler = function() require("neo-tree.command").execute({ action = "close" }) end,
+		})
+	end
+
 	require("neo-tree").setup({
 		sources = {
 			"filesystem",
@@ -41,19 +73,19 @@ M.config = function()
 			"git_status",
 			"document_symbols",
 		},
-		-- source_selector = {
-		-- 	winbar = false,
-		-- 	statusline = false,
-		-- 	separator = { left = "", right = "" },
-		-- 	tabs_layout = "start",
-		-- 	sources = {
-		-- 		{ source = "filesystem" },
-		-- 		{ source = "buffers" },
-		-- 		{ source = "git_status" },
-		-- 		{ source = "document_symbols" },
-		-- 	},
-		-- },
-		close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+		source_selector = {
+			winbar = true,
+			statusline = false,
+			separator = { left = "", right = "" },
+			tabs_layout = "start",
+			sources = {
+				{ source = "filesystem" },
+				{ source = "buffers" },
+				{ source = "git_status" },
+				{ source = "document_symbols" },
+			},
+		},
+		close_if_last_window = require("user.config").clean and true or false, -- Close Neo-tree if it is the last window left in the tab
 		popup_border_style = "rounded",
 		enable_git_status = true,
 		enable_diagnostics = true,
@@ -154,38 +186,7 @@ M.config = function()
 				enabled = false,
 			},
 		},
-		event_handlers = {
-			{
-				event = "neo_tree_window_after_open",
-				handler = function(args)
-					if args.position == "left" or args.position == "right" then
-						vim.cmd("wincmd =")
-					end
-				end,
-			},
-			{
-				event = "neo_tree_buffer_enter",
-				handler = function() vim.opt_local.number = true end,
-			},
-			--{
-			--  event = "neo_tree_window_before_close",
-			--  handler = function(args)
-			--    print("neo_tree_window_before_close", vim.inspect(args))
-			--  end
-			--},
-			{
-				event = "neo_tree_window_after_close",
-				handler = function(args)
-					if args.position == "left" or args.position == "right" then
-						vim.cmd("wincmd =")
-					end
-				end,
-			},
-			{
-				event = "file_opened",
-				handler = function() require("neo-tree.command").execute({ action = "close" }) end,
-			},
-		},
+		event_handlers = i_event_handlers,
 
 		events = {
 			{
@@ -208,7 +209,8 @@ M.config = function()
 		-- see `:h neo-tree-custom-commands-global`
 		commands = {},
 		window = {
-			position = "current",
+			position = require("user.config").clean and "left" or "current",
+			"current",
 			width = 40,
 			mapping_options = {
 				noremap = true,

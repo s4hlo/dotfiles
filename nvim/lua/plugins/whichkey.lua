@@ -1,3 +1,27 @@
+local neotree_key = require("user.config").clean
+		and {
+			{
+				"<leader>e",
+				function()
+					if vim.bo.filetype == "neo-tree" then
+						vim.cmd("wincmd p")
+					else
+						vim.cmd("Neotree")
+					end
+				end,
+				desc = "clean-xplorer toggle",
+				mode = "n",
+			},
+		}
+	or {
+		{
+			"<leader>e",
+			"<cmd>Neotree reveal toggle filesystem<CR>",
+			desc = "no-clean-Explorer",
+			mode = "n",
+		},
+	}
+
 local M = {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
@@ -6,9 +30,7 @@ local M = {
 		-- or leave it empty to use the default settings
 		-- refer to the configuration section below
 	},
-	keys = {
-		{ "<leader>e", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
-	},
+	keys = neotree_key,
 }
 
 -- molten
@@ -71,9 +93,6 @@ function M.config()
 		},
 	})
 
-	which_key.add({
-		{ "<leader>e", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
-	})
 	which_key.add({
 		{ "<leader>a", group = "AI", mode = { "n", "v" } },
 	})
