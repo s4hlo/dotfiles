@@ -9,7 +9,20 @@ local neotree_key = require("user.config").clean
 						vim.cmd("Neotree")
 					end
 				end,
-				desc = "clean-xplorer toggle",
+				desc = "Explorer (clean)",
+				mode = "n",
+			},
+			{
+      -- TODO (s4hlo) make it better
+				"<leader>ls",
+				function()
+					if vim.bo.filetype == "neo-tree" then
+						vim.cmd("wincmd p")
+					else
+						vim.cmd("Neotree document_symbols")
+					end
+				end,
+				desc = "Document Symbols (clean)",
 				mode = "n",
 			},
 		}
@@ -17,7 +30,13 @@ local neotree_key = require("user.config").clean
 		{
 			"<leader>e",
 			"<cmd>Neotree reveal toggle filesystem<CR>",
-			desc = "no-clean-Explorer",
+			desc = "Explorer",
+			mode = "n",
+		},
+		{
+			"<leader>ls",
+			"<cmd>Neotree float toggle document_symbols<CR>",
+			desc = "Document Symbols",
 			mode = "n",
 		},
 	}
@@ -224,12 +243,6 @@ function M.config()
 			mode = "n",
 		},
 		{ "<leader>lw", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics", mode = "n" },
-		{
-			"<leader>ls",
-			"<cmd>Neotree float toggle document_symbols<CR>",
-			desc = "Document Symbols",
-			mode = "n",
-		},
 		-- { "<leader>ls", "<cmd>lua require('telescope.builtin').lsp_document_symbols({ symbols = { 'Class', 'Method', 'Constructor' } })<CR>", desc = "Class Methods & Constructors", mode = "n" },
 		{
 			"<leader>lS",

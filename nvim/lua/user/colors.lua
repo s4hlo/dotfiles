@@ -1,5 +1,27 @@
 local mocha = require("catppuccin.palettes").get_palette("mocha")
 
+local TelescopeColor = {
+	TelescopeMatching = { fg = mocha.flamingo },
+	TelescopeSelection = { fg = mocha.text, bg = mocha.surface0, bold = true },
+
+	TelescopePromptPrefix = { bg = mocha.surface0 },
+	TelescopePromptNormal = { bg = mocha.surface0 },
+	TelescopeResultsNormal = { bg = mocha.mantle },
+	TelescopePreviewNormal = { bg = mocha.mantle },
+	TelescopePromptBorder = { bg = mocha.surface0, fg = mocha.surface0 },
+	TelescopeResultsBorder = { bg = mocha.mantle, fg = mocha.mantle },
+	TelescopePreviewBorder = { bg = mocha.mantle, fg = mocha.mantle },
+	TelescopePromptTitle = { bg = mocha.pink, fg = mocha.mantle },
+	TelescopeResultsTitle = { fg = mocha.mantle },
+	TelescopePreviewTitle = { bg = mocha.green, fg = mocha.mantle },
+}
+
+if require("user.config").border ~= "rounded" then
+	for hl, col in pairs(TelescopeColor) do
+		vim.api.nvim_set_hl(0, hl, col)
+	end
+end
+
 local colors = {
 	white = mocha.text or "#cdd6f5",
 	black = mocha.crust or "#11111c",
