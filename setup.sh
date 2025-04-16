@@ -51,8 +51,7 @@ ask_for_wm_installation() {
         read -p "$(echo -e "\e[34m$prompt_message\e[0m \n1) Hypr\n2) i3\n3) skip \n")" choice
         case $choice in
             1)
-              echo -e "\e[32mInstalling Hypr... NO TESTE\e[0m"
-                log "Installing Hypr... NOT TESTED" 2
+                log "Installing Hypr... " 1
                 sudo pacman -S --needed hyprland xdg-desktop-portal-hyprland
                 yay -S --needed \
                       hyprpaper \
@@ -64,10 +63,13 @@ ask_for_wm_installation() {
                       # hyprlock 
                       # hyprpicker-git \
                 mkdir -p ~/.config/i3 ~/.config/rofi ~/.config/polybar
+                [ -d ~/.config/hypr ] && [ ! -L ~/.config/hypr ] && rm -rf ~/.config/hypr
                 ln -fns ~/dotfiles/hypr ~/.config/
+                [ -d ~/.config/waybar ] && [ ! -L ~/.config/waybar ] && rm -rf ~/.config/waybar
                 ln -fns ~/dotfiles/waybar ~/.config/
+                [ -d ~/.config/wofi ] && [ ! -L ~/.config/wofi ] && rm -rf ~/.config/wofi
                 ln -fns ~/dotfiles/wofi ~/.config/
-                log "Hypr installed successfully! NOT TESTED" 2
+                log "Hypr installed successfully!" 0
                 return 0
                 ;;
             2)
