@@ -16,7 +16,7 @@ local neotree_key = require("user.config").clean
 			},
 			{
 				-- TODO (s4hlo) make it better
-				"<leader>ls",
+				"A-s",
 				function()
 					if vim.bo.filetype == "neo-tree" then
 						vim.cmd("wincmd p")
@@ -29,18 +29,8 @@ local neotree_key = require("user.config").clean
 			},
 		}
 	or {
-		{
-			"<leader>e",
-			"<cmd>Neotree reveal toggle filesystem<CR>",
-			desc = "Explorer",
-			mode = "n",
-		},
-		{
-			"<leader>ls",
-			"<cmd>Neotree float toggle document_symbols<CR>",
-			desc = "Document Symbols",
-			mode = "n",
-		},
+		{ "<leader>e", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
+		{ "<leader>ls", "<cmd>Neotree float toggle document_symbols<CR>", desc = "Document Symbols", mode = "n" },
 	}
 
 local M = {
@@ -83,16 +73,7 @@ function M.config()
 			{ "z", mode = { "n", "v" } },
 		},
 		win = {
-			no_overlap = true,
 			border = require("user.config").border,
-			padding = { 1, 2 }, -- extra window padding [top/bottom, right/left]
-			title = true,
-			title_pos = "center",
-			zindex = 1000,
-			bo = {},
-			wo = {
-				-- winblend = 10, -- value between 0-100 0 for fully opaque and 100 for fully transparent
-			},
 		},
 		disable = {
 			buftypes = {},
@@ -103,15 +84,6 @@ function M.config()
 	which_key.add({
 		{ "ZR", ufo.openAllFolds, desc = "Open all folds", mode = "n" },
 		{ "ZM", ufo.closeAllFolds, desc = "Close all folds", mode = "n" },
-		{
-			"ZK",
-			function()
-				local winid = ufo.peekFoldedLinesUnderCursor()
-				if not winid then vim.lsp.buf.hover() end
-			end,
-			desc = "Peek Fold",
-			mode = "n",
-		},
 	})
 
 	local ai_keys = {
@@ -131,18 +103,13 @@ function M.config()
 
 	local lps_keys = {
 		{ "<leader>l", group = "LSP", mode = { "n", "v" } },
-		{
-			"<leader>la",
-			"<cmd>lua vim.lsp.buf.code_action()<cr>",
-			desc = "Code Action",
-			mode = "v",
-		},
-		{
-			"<leader>la",
-			"<cmd>lua vim.lsp.buf.code_action()<cr>",
-			desc = "Code Action",
-			mode = "n",
-		},
+		{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", mode = "v" },
+		{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", mode = "n" },
+		{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename", mode = "n" },
+		{ "<leader>lh", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "Diagnostics", mode = "n" },
+		{ "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic", mode = "n" },
+		{ "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic", mode = "n" },
+		{ "<leader>ld", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics", mode = "n" },
 		{
 			"<leader>lf",
 			function()
@@ -156,176 +123,55 @@ function M.config()
 			desc = "Format (null-ls only)",
 			mode = "n",
 		},
-		{
-			"<leader>lr",
-			"<cmd>lua vim.lsp.buf.rename()<cr>",
-			desc = "Rename",
-			mode = "n",
-		},
-		{
-			"<leader>lh",
-			"<cmd>lua vim.diagnostic.open_float()<CR>",
-			desc = "Diagnostics",
-			mode = "n",
-		},
-		{
-			"<leader>lj",
-			"<cmd>lua vim.diagnostic.goto_next()<cr>",
-			desc = "Next Diagnostic",
-			mode = "n",
-		},
-		{
-			"<leader>lk",
-			"<cmd>lua vim.diagnostic.goto_prev()<cr>",
-			desc = "Prev Diagnostic",
-			mode = "n",
-		},
-		{ "<leader>ld", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics", mode = "n" },
 	}
 
 	local git_keys = {
 		{ "<leader>g", group = "Git" },
-		{
-			"<leader>gj",
-			"<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>",
-			desc = "Next Hunk",
-			mode = "n",
-		},
-		{
-			"<leader>gk",
-			"<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
-			desc = "Prev Hunk",
-			mode = "n",
-		},
-		{
-			"<leader>gl",
-			"<cmd>lua require 'gitsigns'.blame_line()<cr>",
-			desc = "Blame",
-			mode = "n",
-		},
-		{
-			"<leader>gp",
-			"<cmd>lua require 'gitsigns'.preview_hunk()<cr>",
-			desc = "Preview Hunk",
-			mode = "n",
-		},
-		{
-			"<leader>gr",
-			"<cmd>lua require 'gitsigns'.reset_hunk()<cr>",
-			desc = "Reset Hunk",
-			mode = "n",
-		},
-		{
-			"<leader>gR",
-			"<cmd>lua require 'gitsigns'.reset_buffer()<cr>",
-			desc = "Reset Buffer",
-			mode = "n",
-		},
-		{
-			"<leader>go",
-			"<cmd>Telescope git_status<cr>",
-			desc = "Open Changed File",
-			mode = "n",
-		},
-		{
-			"<leader>gd",
-			"<cmd>DiffviewOpen<cr>",
-			desc = "Open Diffview",
-			mode = "n",
-		},
+		{ "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", desc = "Next Hunk", mode = "n" },
+		{ "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", desc = "Prev Hunk", mode = "n" },
+		{ "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "Blame", mode = "n" },
+		{ "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", desc = "Preview Hunk", mode = "n" },
+		{ "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk", mode = "n" },
+		{ "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer", mode = "n" },
+		{ "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open Changed File", mode = "n" },
+		{ "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Open Diffview", mode = "n" },
 
 		{ "<leader>gc", group = "Conflict" },
-		{
-			"<leader>gco",
-			"<cmd>GitConflictChooseOurs<cr>",
-			desc = "Choose Ours",
-			mode = "n",
-		},
-		{
-			"<leader>gct",
-			"<cmd>GitConflictChooseTheirs<cr>",
-			desc = "Choose Theirs",
-			mode = "n",
-		},
-		{
-			"<leader>gcb",
-			"<cmd>GitConflictChooseBoth<cr>",
-			desc = "Choose Both",
-			mode = "n",
-		},
-		{
-			"<leader>gcN",
-			"<cmd>GitConflictChooseNone<cr>",
-			desc = "Choose None",
-			mode = "n",
-		},
-		{
-			"<leader>gcn",
-			"<cmd>GitConflictNextConflict<cr>",
-			desc = "Next Conflict",
-			mode = "n",
-		},
-		{
-			"<leader>gcp",
-			"<cmd>GitConflictPrevConflict<cr>",
-			desc = "Prev Conflict",
-			mode = "n",
-		},
+		{ "<leader>gco", "<cmd>GitConflictChooseOurs<cr>", desc = "Choose Ours", mode = "n" },
+		{ "<leader>gct", "<cmd>GitConflictChooseTheirs<cr>", desc = "Choose Theirs", mode = "n" },
+		{ "<leader>gcb", "<cmd>GitConflictChooseBoth<cr>", desc = "Choose Both", mode = "n" },
+		{ "<leader>gcN", "<cmd>GitConflictChooseNone<cr>", desc = "Choose None", mode = "n" },
+		{ "<leader>gcn", "<cmd>GitConflictNextConflict<cr>", desc = "Next Conflict", mode = "n" },
+		{ "<leader>gcp", "<cmd>GitConflictPrevConflict<cr>", desc = "Prev Conflict", mode = "n" },
 	}
 
 	local debug_keys = {
 		{ "<leader>d", group = "Debug" },
-		{
-			"<leader>dt",
-			"<cmd>lua require'dap'.toggle_breakpoint()<cr>",
-			desc = "Toggle Breakpoint",
-			mode = "n",
-		},
+		{ "<leader>dt", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle Breakpoint", mode = "n" },
 		{ "<leader>db", "<cmd>lua require'dap'.step_back()<cr>", desc = "Step Back", mode = "n" },
 		{ "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", desc = "Continue", mode = "n" },
-		{
-			"<leader>dC",
-			"<cmd>lua require'dap'.run_to_cursor()<cr>",
-			desc = "Run To Cursor",
-			mode = "n",
-		},
+		{ "<leader>dC", "<cmd>lua require'dap'.run_to_cursor()<cr>", desc = "Run To Cursor", mode = "n" },
 		{ "<leader>dd", "<cmd>lua require'dap'.disconnect()<cr>", desc = "Disconnect", mode = "n" },
 		{ "<leader>dg", "<cmd>lua require'dap'.session()<cr>", desc = "Get Session", mode = "n" },
+		{ "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", desc = "Step Into", mode = "n" },
+		{ "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", desc = "Step Over", mode = "n" },
+		{ "<leader>du", "<cmd>lua require'dap'.step_out()<cr>", desc = "Step Out", mode = "n" },
+		{ "<leader>dp", "<cmd>lua require'dap'.pause()<cr>", desc = "Pause", mode = "n" },
+		{ "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", desc = "Toggle Repl", mode = "n" },
+		{ "<leader>ds", "<cmd>lua require'dap'.continue()<cr>", desc = "Start", mode = "n" },
+		{ "<leader>dq", "<cmd>lua require'dap'.close()<cr>", desc = "Quit", mode = "n" },
+		{ "<leader>dU", "<cmd>lua require'dapui'.toggle({reset = true})<cr>", desc = "Toggle UI", mode = "n" },
 		{
 			"<leader>dS",
 			function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
 			desc = "Conditional Breakpoint",
 			mode = "n",
 		},
-
-		{ "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", desc = "Step Into", mode = "n" },
-		{ "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", desc = "Step Over", mode = "n" },
-		{ "<leader>du", "<cmd>lua require'dap'.step_out()<cr>", desc = "Step Out", mode = "n" },
-		{ "<leader>dp", "<cmd>lua require'dap'.pause()<cr>", desc = "Pause", mode = "n" },
-		{
-			"<leader>dr",
-			"<cmd>lua require'dap'.repl.toggle()<cr>",
-			desc = "Toggle Repl",
-			mode = "n",
-		},
-		{ "<leader>ds", "<cmd>lua require'dap'.continue()<cr>", desc = "Start", mode = "n" },
-		{ "<leader>dq", "<cmd>lua require'dap'.close()<cr>", desc = "Quit", mode = "n" },
-		{
-			"<leader>dU",
-			"<cmd>lua require'dapui'.toggle({reset = true})<cr>",
-			desc = "Toggle UI",
-			mode = "n",
-		},
 	}
 
 	local molten_keys = {
 		{ "<leader>m", group = "Molten" },
-		{
-			"<leader>ms",
-			"<cmd>lua SelectNextPythonCodeBlock()<CR>",
-			desc = "Select cell",
-			mode = "n",
-		},
+		{ "<leader>ms", "<cmd>lua SelectNextPythonCodeBlock()<CR>", desc = "Select cell", mode = "n" },
 		{ "<leader>mj", "<cmd>MoltenNext<CR>", desc = "Next Cell", mode = "n" },
 		{ "<leader>mk", "<cmd>MoltenPrev<CR>", desc = "Prev Cell", mode = "n" },
 		{ "<leader>mo", "<cmd>MoltenEvaluateOperator<CR>", desc = "Evaluate Operator", mode = "n" },
@@ -337,11 +183,12 @@ function M.config()
 	}
 
 	which_key.add(ai_keys)
+	which_key.add(molten_keys)
+	which_key.add(debug_keys)
+
 	which_key.add(find_keys)
 	which_key.add(lps_keys)
 	which_key.add(git_keys)
-	which_key.add(molten_keys)
-	which_key.add(debug_keys)
 end
 
 return M

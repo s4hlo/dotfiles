@@ -27,10 +27,7 @@ function M.config()
 					"yaml",
 					"toml",
 				},
-				condition = function(utils)
-					return utils.root_has_file(".prettierrc")
-						or utils.root_has_file("prettier.config.js")
-				end,
+				condition = function(utils) return utils.root_has_file(".prettierrc") or utils.root_has_file("prettier.config.js") end,
 			}),
 			null_ls.builtins.completion.spell,
 			-- + add more formatters here as needed

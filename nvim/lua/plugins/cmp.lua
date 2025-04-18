@@ -158,9 +158,7 @@ function M.config()
 				name = "nvim_lsp",
 				entry_filter = function(entry, ctx)
 					local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
-					if kind == "Snippet" and ctx.prev_context.filetype == "java" then
-						return false
-					end
+					if kind == "Snippet" and ctx.prev_context.filetype == "java" then return false end
 
 					if ctx.prev_context.filetype == "markdown" then return true end
 
@@ -204,9 +202,7 @@ function M.config()
 	})
 
 	pcall(function()
-		local function on_confirm_done(...)
-			require("nvim-autopairs.completion.cmp").on_confirm_done()(...)
-		end
+		local function on_confirm_done(...) require("nvim-autopairs.completion.cmp").on_confirm_done()(...) end
 		require("cmp").event:off("confirm_done", on_confirm_done)
 		require("cmp").event:on("confirm_done", on_confirm_done)
 	end)

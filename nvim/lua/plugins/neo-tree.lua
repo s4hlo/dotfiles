@@ -335,7 +335,7 @@ M.config = function()
 					["[g"] = "prev_git_modified",
 					["]g"] = "next_git_modified",
 					["h"] = "close",
-          ["l"] = "open",
+					["l"] = "open",
 					["o"] = {
 						"show_help",
 						nowait = false,
