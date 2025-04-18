@@ -1,7 +1,7 @@
 local neotree_key = require("user.config").clean
 		and {
 			{
-				"<leader>e",
+				"<A-e>",
 				function()
 					if vim.bo.filetype == "neo-tree" then
 						vim.cmd("wincmd p")
@@ -15,7 +15,7 @@ local neotree_key = require("user.config").clean
 				mode = "n",
 			},
 			{
-      -- TODO (s4hlo) make it better
+				-- TODO (s4hlo) make it better
 				"<leader>ls",
 				function()
 					if vim.bo.filetype == "neo-tree" then
@@ -114,38 +114,22 @@ function M.config()
 		},
 	})
 
-	which_key.add({
+	local ai_keys = {
 		{ "<leader>a", group = "AI", mode = { "n", "v" } },
-	})
+	}
 
-	which_key.add({
+	local find_keys = {
 		{ "<leader>f", group = "Find" },
-		{
-			"<leader>ff",
-			"<cmd>Telescope find_files hidden=true<cr>",
-			desc = "Find File",
-			mode = "n",
-		},
-		{
-			"<leader>fb",
-			"<cmd>Telescope buffers previewer=false<cr>",
-			desc = "Buffers",
-			mode = "n",
-		},
-		{ "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme", mode = "n" },
+		{ "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File", mode = "n" },
+		{ "<leader>fb", "<cmd>Telescope buffers previewer=false<cr>", desc = "Buffers", mode = "n" },
 		{ "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find Text", mode = "n" },
 		{ "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Find String", mode = "n" },
-		{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help", mode = "n" },
-		{ "<leader>fH", "<cmd>Telescope highlights<cr>", desc = "Highlights", mode = "n" },
 		{ "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search", mode = "n" },
-		{ "<leader>fM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages", mode = "n" },
 		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File", mode = "n" },
 		{ "<leader>fR", "<cmd>Telescope registers<cr>", desc = "Recents", mode = "n" },
-		{ "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps", mode = "n" },
-		{ "<leader>fC", "<cmd>Telescope commands<cr>", desc = "Commands", mode = "n" },
-	})
+	}
 
-	which_key.add({
+	local lps_keys = {
 		{ "<leader>l", group = "LSP", mode = { "n", "v" } },
 		{
 			"<leader>la",
@@ -154,9 +138,9 @@ function M.config()
 			mode = "v",
 		},
 		{
-			"<leader>lF",
-			"<cmd>lua vim.lsp.buf.format({timeout_ms = 1000000})<cr>",
-			desc = "Format",
+			"<leader>la",
+			"<cmd>lua vim.lsp.buf.code_action()<cr>",
+			desc = "Code Action",
 			mode = "n",
 		},
 		{
@@ -173,45 +157,9 @@ function M.config()
 			mode = "n",
 		},
 		{
-			"<leader>lI",
-			"<cmd>Glance implementations()<CR>",
-			desc = "Implementations",
-			mode = "n",
-		},
-		{
-			"<leader>lD",
-			"<cmd>Glance definitions()<CR>",
-			desc = "Definitions",
-			mode = "n",
-		},
-		{
-			"<leader>lT",
-			"<cmd>Glance type_definitions()<CR>",
-			desc = "Type Definitions",
-			mode = "n",
-		},
-		{
-			"<leader>li",
-			"<cmd>LspInfo<cr>",
-			desc = "Info",
-			mode = "n",
-		},
-		{
-			"<leader>la",
-			"<cmd>lua vim.lsp.buf.code_action()<cr>",
-			desc = "Code Action",
-			mode = "n",
-		},
-		{
 			"<leader>lr",
 			"<cmd>lua vim.lsp.buf.rename()<cr>",
 			desc = "Rename",
-			mode = "n",
-		},
-		{
-			"<leader>ll",
-			"<cmd>lua vim.lsp.codelens.run()<cr>",
-			desc = "CodeLens Action",
 			mode = "n",
 		},
 		{
@@ -232,30 +180,10 @@ function M.config()
 			desc = "Prev Diagnostic",
 			mode = "n",
 		},
-		{
-			"<leader>lq",
-			"<cmd>lua vim.diagnostic.setloclist()<cr>",
-			desc = "Quickfix",
-			mode = "n",
-		},
-		{
-			"<leader>ld",
-			"<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>",
-			desc = "Buffer Diagnostics",
-			mode = "n",
-		},
-		{ "<leader>lw", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics", mode = "n" },
-		-- { "<leader>ls", "<cmd>lua require('telescope.builtin').lsp_document_symbols({ symbols = { 'Class', 'Method', 'Constructor' } })<CR>", desc = "Class Methods & Constructors", mode = "n" },
-		{
-			"<leader>lS",
-			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-			desc = "Workspace Symbols",
-			mode = "n",
-		},
-		{ "<leader>le", "<cmd>Telescope quickfix<cr>", desc = "Telescope Quickfix", mode = "n" },
-	})
+		{ "<leader>ld", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics", mode = "n" },
+	}
 
-	which_key.add({
+	local git_keys = {
 		{ "<leader>g", group = "Git" },
 		{
 			"<leader>gj",
@@ -294,33 +222,9 @@ function M.config()
 			mode = "n",
 		},
 		{
-			"<leader>gs",
-			"<cmd>lua require 'gitsigns'.stage_hunk()<cr>",
-			desc = "Stage Hunk",
-			mode = "n",
-		},
-		{
-			"<leader>gu",
-			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-			desc = "Undo Stage Hunk",
-			mode = "n",
-		},
-		{
 			"<leader>go",
 			"<cmd>Telescope git_status<cr>",
 			desc = "Open Changed File",
-			mode = "n",
-		},
-		{
-			"<leader>gb",
-			"<cmd>Telescope git_branches<cr>",
-			desc = "Checkout Branch",
-			mode = "n",
-		},
-		{
-			"<leader>gC",
-			"<cmd>Telescope git_bcommits<cr>",
-			desc = "Checkout Commit (Current File)",
 			mode = "n",
 		},
 		{
@@ -367,11 +271,10 @@ function M.config()
 			desc = "Prev Conflict",
 			mode = "n",
 		},
-	})
+	}
 
-	which_key.add({
+	local debug_keys = {
 		{ "<leader>d", group = "Debug" },
-
 		{
 			"<leader>dt",
 			"<cmd>lua require'dap'.toggle_breakpoint()<cr>",
@@ -388,7 +291,6 @@ function M.config()
 		},
 		{ "<leader>dd", "<cmd>lua require'dap'.disconnect()<cr>", desc = "Disconnect", mode = "n" },
 		{ "<leader>dg", "<cmd>lua require'dap'.session()<cr>", desc = "Get Session", mode = "n" },
-
 		{
 			"<leader>dS",
 			function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
@@ -414,12 +316,10 @@ function M.config()
 			desc = "Toggle UI",
 			mode = "n",
 		},
-	})
+	}
 
-	-- molten
-	which_key.add({
+	local molten_keys = {
 		{ "<leader>m", group = "Molten" },
-
 		{
 			"<leader>ms",
 			"<cmd>lua SelectNextPythonCodeBlock()<CR>",
@@ -434,7 +334,14 @@ function M.config()
 		{ "<leader>mh", "<cmd>MoltenHideOutput<CR>", desc = "Close Output", mode = "n" },
 		{ "<leader>md", "<cmd>MoltenDelete<CR>", desc = "Delete Cell", mode = "n" },
 		{ "<leader>mi", "<cmd>MoltenInit<CR>", desc = "Init", mode = "n" },
-	})
+	}
+
+	which_key.add(ai_keys)
+	which_key.add(find_keys)
+	which_key.add(lps_keys)
+	which_key.add(git_keys)
+	which_key.add(molten_keys)
+	which_key.add(debug_keys)
 end
 
 return M
