@@ -117,6 +117,7 @@ links_setup() {
     ln -fns ~/dotfiles/.gitconfig ~/.gitconfig
     ln -fns ~/dotfiles/.vimrc ~/.vimrc
     ln -fns ~/dotfiles/.zshrc ~/.zshrc
+    ln -fns ~/dotfiles/btop ~/.config
     ln -fns ~/dotfiles/gh ~/.config/
     ln -fns ~/dotfiles/nvim ~/.config/
     ln -fns ~/dotfiles/kitty ~/.config/
