@@ -113,6 +113,8 @@ links_setup() {
     rm -rf ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc 
     rm -rf ~/.config/nvim ~/.config/hypr ~/.config/gh ~/.config/kitty
 
+    ln -fns ~/dotfiles/cursor/settings.json ~/.config/Cursor/User/settings.json
+    ln -fns ~/dotfiles/cursor/keybindings.json ~/.config/Cursor/User/keybindings.json
     ln -fns ~/dotfiles/.tmux.conf ~/.tmux.conf
     ln -fns ~/dotfiles/.gitconfig ~/.gitconfig
     ln -fns ~/dotfiles/.vimrc ~/.vimrc

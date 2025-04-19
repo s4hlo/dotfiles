@@ -1,0 +1,23 @@
+[
+    {
+        "key": "alt+e",
+        "command": "workbench.view.explorer"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-composer.startComposerPrompt"
+    },
+    {
+        "key": "alt+f8",
+        "command": "-editor.action.marker.next",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+f",
+        "command": "workbench.action.findInFiles"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "-workbench.action.findInFiles"
+    },
+]
