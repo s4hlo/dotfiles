@@ -10,6 +10,8 @@ lazydocker
 nvm
 nwg-look
 pgcli
+python-black
+python-poetry
 stylua-git
 ttf-jetbrains-mono-nerd
 tty-clock
