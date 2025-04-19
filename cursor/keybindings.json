@@ -4,20 +4,46 @@
         "command": "workbench.view.explorer"
     },
     {
-        "key": "ctrl+i",
-        "command": "-composer.startComposerPrompt"
+        "key": "alt+f",
+        "command": "workbench.action.findInFiles"
     },
+    {
+        "key": "q",
+        "command": "git.openFile",
+        "when": "isInDiffEditor"
+    },
+    {
+        "key": "alt+g",
+        "command": "workbench.scm.action.focusNextResourceGroup",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+shift+g",
+        "command": "workbench.scm.action.focusNextResourceGroup",
+        "when": "!editorFocus"
+    },
+    {
+        "key": "alt+g",
+        "command": "workbench.view.scm",
+        "when": "workbench.scm.active && !editorFocus && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+    },
+    /** Keybindings disabled */
     {
         "key": "alt+f8",
         "command": "-editor.action.marker.next",
         "when": "editorFocus"
     },
     {
-        "key": "alt+f",
-        "command": "workbench.action.findInFiles"
-    },
-    {
         "key": "ctrl+shift+f",
         "command": "-workbench.action.findInFiles"
     },
+    {
+        "key": "ctrl+shift+g g",
+        "command": "-workbench.view.scm",
+        "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-composer.startComposerPrompt"
+    }
 ]

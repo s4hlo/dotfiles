@@ -1,170 +1,89 @@
 {
-    "window.titleBarStyle": "native",
-    "window.title": "${dirty} ${activeEditorShort}${separator}${rootName}",
-    "window.titleSeparator": " | ",
-    "window.restoreFullscreen": true,
-    "workbench.activityBar.location": "hidden",
-    "workbench.editor.tabSizing": "fixed",
-    "workbench.editor.highlightModifiedTabs": true,
-    "workbench.editor.closeOnFileDelete": true,
-    "workbench.editor.limit.enabled": true,
-    "catppuccin-icons.associations.extensions": {
-        "controller.ts": "nest-controller",
-        "service.ts": "nest-service",
-        "module.ts": "nest",
-        "guard.ts": "nest-guard",
-        "middleware.ts": "nest-middleware",
-        "filter.ts": "nest-filter",
-        "interceptor.ts": "nest-interceptor",
-        "pipe.ts": "nest-pipe"
+  "window.titleBarStyle": "native",
+  "window.title": "${dirty} ${activeEditorShort}${separator}${rootName}",
+  "window.titleSeparator": " | ",
+  "window.restoreFullscreen": true,
+  "workbench.activityBar.location": "hidden",
+  "workbench.editor.tabSizing": "fixed",
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.limit.enabled": true,
+  "catppuccin-icons.associations.extensions": {
+    "controller.ts": "nest-controller",
+    "service.ts": "nest-service",
+    "module.ts": "nest",
+    "guard.ts": "nest-guard",
+    "middleware.ts": "nest-middleware",
+    "filter.ts": "nest-filter",
+    "interceptor.ts": "nest-interceptor",
+    "pipe.ts": "nest-pipe"
+  },
+  "editor.fontSize": 12,
+  "editor.fontWeight": "700",
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "editor.fontLigatures": true,
+  "editor.wordWrap": "on",
+  "editor.inlineSuggest.enabled": true,
+  "editor.useTabStops": false,
+  "editor.tabSize": 2,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.renderWhitespace": "none",
+  "editor.guides.bracketPairs": true,
+  "editor.minimap.enabled": false,
+  "editor.cursorSurroundingLines": 10,
+  "breadcrumbs.filePath": "off",
+  "extensions.ignoreRecommendations": true,
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha",
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-p>": false,
+    "<C-z>": true,
+    "<C-w>": true,
+    "<C-i>": true
+  },
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "l", "f"],
+      "commands": ["editor.action.formatDocument"]
     },
-    "editor.fontSize": 12,
-    "editor.fontWeight": "700",
-    "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
-    "editor.fontLigatures": true,
-    "editor.wordWrap": "on",
-    "editor.inlineSuggest.enabled": true,
-    "editor.useTabStops": false,
-    "editor.tabSize": 2,
-    "editor.bracketPairColorization.enabled": true,
-    "editor.renderWhitespace": "none",
-    "editor.guides.bracketPairs": true,
-    "editor.minimap.enabled": false,
-    "editor.cursorSurroundingLines": 10,
-    "breadcrumbs.filePath": "off",
-    "extensions.ignoreRecommendations": true,
-    "workbench.colorTheme": "Catppuccin Mocha",
-    "workbench.iconTheme": "catppuccin-mocha",
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
-    "vim.leader": "<space>",
-    "vim.handleKeys": {
-        "<C-p>": false,
-        "<C-z>": true,
-        "<C-w>": true,
-        "<C-i>": true
+    {
+      "before": ["<leader>", "g", "j"],
+      "commands": ["workbench.action.editor.nextChange"]
     },
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "<leader>",
-                "l",
-                "f"
-            ],
-            "commands": [
-                "editor.action.formatDocument"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "j"
-            ],
-            "commands": [
-                "workbench.action.editor.nextChange"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "k"
-            ],
-            "commands": [
-                "workbench.action.editor.previousChange"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "r"
-            ],
-            "commands": [
-                "git.revertSelectedRanges"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "l",
-                "a"
-            ],
-            "commands": [
-                "editor.action.quickFix"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "l",
-                "j"
-            ],
-            "commands": [
-                "editor.action.marker.next"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "l",
-                "k"
-            ],
-            "commands": [
-                "editor.action.marker.prev"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "l",
-                "h"
-            ],
-            "commands": [
-                "editor.action.showHover"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "l",
-                "r"
-            ],
-            "commands": [
-                "editor.action.rename"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "f",
-                "f"
-            ],
-            "commands": [
-                "workbench.action.quickOpen"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "e"
-            ],
-            "commands": [
-                "workbench.action.toggleSidebarVisibility"
-            ],
-            "when": "editorTextFocus"
-        },
-        {
-            "before": [
-                "<c-n>"
-            ],
-            "commands": [
-                ":nohl"
-            ]
-        }
-    ],
-    "window.menuBarVisibility": "compact",
-    "workbench.layoutControl.enabled": false // ! ANYTHING BELOW THIS LINE IS AUTO GENERATED BY VSCODE
+    {
+      "before": ["<leader>", "g", "k"],
+      "commands": ["workbench.action.editor.previousChange"]
+    },
+    {
+      "before": ["<leader>", "g", "r"],
+      "commands": ["git.revertSelectedRanges"]
+    },
+    {
+      "before": ["<leader>", "l", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["<leader>", "l", "j"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["<leader>", "l", "k"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["<leader>", "l", "h"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "before": ["<leader>", "l", "r"],
+      "commands": ["editor.action.rename"]
+    },
+  ],
+  "window.menuBarVisibility": "compact",
+  "workbench.layoutControl.enabled": false,
+  "gitlens.mode.active": "zen" // ! ANYTHING BELOW THIS LINE IS AUTO GENERATED BY VSCODE
 }
