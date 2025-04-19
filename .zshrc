@@ -78,6 +78,7 @@ alias setup='~/dotfiles/setup.sh'
 alias b='~/notes/brg.sh'
 alias cal='calcurse -D ~/dev/calendar'
 alias pomo='~/dotfiles/pomo.sh'
+alias nvim='echo "use cursor ai!!"'
 
 [[ -f ~/vault/decrypted/.zshrc_alias ]] && source ~/vault/decrypted/.zshrc_alias
 
