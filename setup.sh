@@ -111,7 +111,7 @@ yay_bulk() {
 
 links_setup() {
     rm -rf ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc 
-    rm -rf ~/.config/nvim ~/.config/hypr ~/.config/gh ~/.config/kitty
+    rm -rf ~/.config/nvim ~/.config/hypr ~/.config/gh ~/.config/kitty ~/.config/btop
 
     ln -fns ~/dotfiles/cursor/settings.json ~/.config/Cursor/User/settings.json
     ln -fns ~/dotfiles/cursor/keybindings.json ~/.config/Cursor/User/keybindings.json
@@ -128,6 +128,7 @@ links_setup() {
 
     if [ "$SHELL" != "/bin/zsh" ]; then
         sudo chsh -s $(which zsh)
+        chsh -s $(which zsh)
     fi
 
     sudo timedatectl set-timezone Etc/GMT-3

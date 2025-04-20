@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        // Add your extension IDs here, for example:
+        // "ms-vscode.cpptools",
+        // "dbaeumer.vscode-eslint"
+    ]
+} 
