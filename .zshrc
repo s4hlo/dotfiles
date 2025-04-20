@@ -80,7 +80,7 @@ alias cal='calcurse -D ~/dev/calendar'
 alias pomo='~/dotfiles/pomo.sh'
 alias nvim='echo "use cursor ai!!"'
 
-[[ -f ~/vault/decrypted/.zshrc_alias ]] && source ~/vault/decrypted/.zshrc_alias
+[[ -f ~/vault/decrypted/.zshrc_extra ]] && source ~/vault/decrypted/.zshrc_extra
 
 quote=$(curl -s https://zenquotes.io/api/today | jq -r '.[0].q + " — " + .[0].a')
 echo "✨ $quote"

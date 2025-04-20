@@ -145,7 +145,7 @@ case "$1" in
         yay_bulk
         ;;
     link)
-        link_setup;;
+        links_setup;;
     *)
         ask_and_execute "Do you want to sync pacman packages" "pacman_bulk"
         ask_and_execute "Do you want to sync yay packages" "yay_bulk"
