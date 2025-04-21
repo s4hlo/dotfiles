@@ -85,7 +85,6 @@
   ],
   "window.menuBarVisibility": "compact",
   "workbench.layoutControl.enabled": false,
-  "gitlens.mode.active": "zen",
   "projectManager.git.baseFolders": [
     "~/dev",
     "~/dotfiles",
