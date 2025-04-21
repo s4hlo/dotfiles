@@ -62,7 +62,6 @@ ask_for_wm_installation() {
                       # check if those two are installed with the above when zero setup
                       # hyprlock 
                       # hyprpicker-git \
-                mkdir -p ~/.config/i3 ~/.config/rofi ~/.config/polybar
                 [ -d ~/.config/hypr ] && [ ! -L ~/.config/hypr ] && rm -rf ~/.config/hypr
                 ln -fns ~/dotfiles/hypr ~/.config/
                 [ -d ~/.config/waybar ] && [ ! -L ~/.config/waybar ] && rm -rf ~/.config/waybar
