@@ -110,7 +110,7 @@ yay_bulk() {
 
 links_setup() {
     rm -rf ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc 
-    rm -rf ~/.config/nvim ~/.config/hypr ~/.config/gh ~/.config/kitty ~/.config/btop
+    rm -rf ~/.config/nvim ~/.config/gh ~/.config/kitty ~/.config/btop
 
     ln -fns ~/dotfiles/cursor/settings.json ~/.config/Cursor/User/settings.json
     ln -fns ~/dotfiles/cursor/keybindings.json ~/.config/Cursor/User/keybindings.json
