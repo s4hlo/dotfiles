@@ -18,11 +18,7 @@ chmod +x ./setup.sh
 
 ```
 
-## 3. Neovim Supplemental
-
-```
-:checkhealth
-```
+## 3. Supplemental
 
 You'll probably notice you don't have support for copy/paste also that python and node haven't been setup
 
@@ -39,6 +35,7 @@ wl-clipboard # for wayland
 python and node support:
 
 ```sh
+nvm install --lts
 pip install pynvim
 npm i -g neovim
 
