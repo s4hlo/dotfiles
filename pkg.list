@@ -16,6 +16,7 @@ jq
 kitty
 less
 libcamera
+libreoffice
 ncdu
 neovim
 networkmanager
@@ -34,6 +35,7 @@ starship
 tmux
 unrar
 unzip
+uv
 vlc
 wget
 xdg-desktop-portal-gtk
