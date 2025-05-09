@@ -1,4 +1,17 @@
 return {
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
+
+			-- Only one of these is needed.
+			"nvim-telescope/telescope.nvim", -- optional
+			"ibhagwan/fzf-lua", -- optional
+			"echasnovski/mini.pick", -- optional
+			"folke/snacks.nvim", -- optional
+		},
+	},
 	{ "akinsho/git-conflict.nvim", version = "*", config = true },
 	{
 		"sindrets/diffview.nvim",
@@ -26,7 +39,7 @@ return {
 				},
 				icons = { -- Only applies when use_icons is true.
 					folder_closed = " ",
-					folder_open = " ",
+					folder_open = i(" "),
 				},
 				keymaps = {
 					file_panel = {

@@ -16,7 +16,7 @@ local neotree_key = require("user.config").clean
 			},
 			{
 				-- TODO (s4hlo) make it better
-				"A-s",
+				"<A-s>",
 				function()
 					if vim.bo.filetype == "neo-tree" then
 						vim.cmd("wincmd p")
