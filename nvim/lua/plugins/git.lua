@@ -39,7 +39,7 @@ return {
 				},
 				icons = { -- Only applies when use_icons is true.
 					folder_closed = " ",
-					folder_open = i(" "),
+					folder_open = (" "),
 				},
 				keymaps = {
 					file_panel = {
