@@ -14,6 +14,8 @@ local neotree_key = require("user.config").clean
 				desc = "Explorer (clean)",
 				mode = "n",
 			},
+			{ "<C-p>", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File", mode = "n" },
+			{ "<A-f>", "<cmd>Telescope live_grep<cr>", desc = "Find Text", mode = "n" },
 			{
 				-- TODO (s4hlo) make it better
 				"<A-s>",
@@ -92,9 +94,9 @@ function M.config()
 
 	local find_keys = {
 		{ "<leader>f", group = "Find" },
-		{ "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File", mode = "n" },
+		-- { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File", mode = "n" },
 		{ "<leader>fb", "<cmd>Telescope buffers previewer=false<cr>", desc = "Buffers", mode = "n" },
-		{ "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find Text", mode = "n" },
+		-- { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find Text", mode = "n" },
 		{ "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Find String", mode = "n" },
 		{ "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search", mode = "n" },
 		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File", mode = "n" },
@@ -132,6 +134,7 @@ function M.config()
 		{ "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "Blame", mode = "n" },
 		{ "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", desc = "Preview Hunk", mode = "n" },
 		{ "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk", mode = "n" },
+		{ "<leader>gS", "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", desc = "stage_buffer", mode = "n" },
 		{ "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer", mode = "n" },
 		{ "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open Changed File", mode = "n" },
 		{ "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Open Diffview", mode = "n" },
