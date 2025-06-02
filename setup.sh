@@ -122,7 +122,7 @@ links_setup() {
     ln -fns ~/dotfiles/gh ~/.config/
     ln -fns ~/dotfiles/nvim ~/.config/
     ln -fns ~/dotfiles/kitty ~/.config/
-    ln -fns ~/dotfiles/dunst ~/.config/
+    ln -fns ~/dotfiles/swaync ~/.config/
     ln -fns ~/dotfiles/vencord/midnight-catppuccin-mocha.theme.css ~/.config/vesktop/themes
 
     if [ "$SHELL" != "/bin/zsh" ]; then
