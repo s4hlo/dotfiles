@@ -1,4 +1,4 @@
 local M = {}
-M.clean = true
-M.border = "none"
+M.clean = false
+M.border = "rounded"
 return M

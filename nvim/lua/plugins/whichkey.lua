@@ -31,8 +31,10 @@ local neotree_key = require("user.config").clean
 			},
 		}
 	or {
-		{ "<leader>e", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
-		{ "<leader>ls", "<cmd>Neotree float toggle document_symbols<CR>", desc = "Document Symbols", mode = "n" },
+		{ "<C-p>", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File", mode = "n" },
+		{ "<A-f>", "<cmd>Telescope live_grep<cr>", desc = "Find Text", mode = "n" },
+		{ "<A-e>", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
+		{ "<A-s>", "<cmd>Neotree float toggle document_symbols<CR>", desc = "Document Symbols", mode = "n" },
 	}
 
 local M = {
