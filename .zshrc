@@ -79,7 +79,6 @@ alias cal='calcurse -D ~/dev/calendar'
 alias pomo='~/dotfiles/pomo.sh'
 alias dbdev="pgcli -h $DB_DEV_HOST -p 5432 -U hub -d hubDB-dev"
 alias dbprod="pgcli -h $DB_PROD_HOST -p 5432 -U hub -d hubDB-prod"
-alias nvim='echo "use cursor ai!!"'
 
 quote=$(curl -s https://zenquotes.io/api/today | jq -r '.[0].q + " — " + .[0].a')
 echo "✨ $quote"
