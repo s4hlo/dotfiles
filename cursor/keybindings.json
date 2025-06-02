@@ -14,18 +14,13 @@
     },
     {
         "key": "alt+g",
-        "command": "workbench.scm.action.focusNextResourceGroup",
-        "when": "editorFocus"
+        "command": "workbench.view.scm",
+        "when": "workbench.scm.active"
     },
     {
         "key": "alt+shift+g",
         "command": "workbench.scm.action.focusNextResourceGroup",
         "when": "!editorFocus"
-    },
-    {
-        "key": "alt+g",
-        "command": "workbench.view.scm",
-        "when": "workbench.scm.active && !editorFocus && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
     },
     /** Keybindings disabled */
     {
@@ -45,5 +40,20 @@
     {
         "key": "ctrl+i",
         "command": "-composer.startComposerPrompt"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "-workbench.view.scm",
+        "when": "workbench.scm.active"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "-workbench.action.terminal.openDetectedLink",
+        "when": "accessibleViewIsShown && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal'"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-notebook.centerActiveCell",
+        "when": "notebookEditorFocused"
     }
 ]
