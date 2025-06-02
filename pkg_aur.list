@@ -11,6 +11,7 @@ nvm
 nwg-look
 pgcli
 python-black
+python-jupytext
 python-poetry
 stylua-git
 ttf-jetbrains-mono-nerd

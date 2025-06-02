@@ -3,6 +3,8 @@ alsa-utils
 bat
 brightnessctl
 btop
+cmake
+cpio
 curl
 dbeaver
 dunst
@@ -17,6 +19,7 @@ kitty
 less
 libcamera
 libreoffice
+meson
 ncdu
 neovim
 networkmanager
@@ -25,7 +28,9 @@ noto-fonts-emoji
 obsidian
 pavucontrol
 pipewire
+pkgconf
 prettier
+pyenv
 qbittorrent
 ripgrep
 rust
