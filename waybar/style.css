@@ -8,6 +8,13 @@
     margin: 0;
 }
 
+#privacy {
+    margin-top: 5px;
+    margin-right: 11px;
+    color: #b4befe;
+    background: rgba(24, 24, 37, 0.8);
+}
+
 label.module, #tray {
     margin: 5px 4px 0;
     padding: 0px 10px;
