@@ -60,7 +60,9 @@ set -o vi
 bindkey -M viins jk vi-cmd-mode
 
 eval "$(starship init zsh)"
-[ -z "$TMUX" ] && exec tmux
+if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
+    exec tmux
+fi
 
 if command -v eza &> /dev/null; then
   alias ls="eza --icons=always"

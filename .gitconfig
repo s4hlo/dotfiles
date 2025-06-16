@@ -6,6 +6,7 @@
     ; @target
     editor = nvim 
     autocrlf = input
+    pager = delta
 
 [credential]
 	helper = store
@@ -22,4 +23,19 @@
 [push]
 	autoSetupRemote = true
 [pull]
-	rebase = false
+  rebase = false
+
+[interactive]
+    diffFilter = delta --color-only
+
+[include]
+    path = ~/dotfiles/catppuccin.gitconfig
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  dark = true      # or light = true, or omit for auto-detection
+  line-numbers = true
+  side-by-side = true
+  features = catppuccin-mocha
+  ; hunk-header-style = file
+[merge]
+    conflictstyle = zdiff3
