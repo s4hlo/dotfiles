@@ -65,6 +65,12 @@ if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
     exec tmux
 fi
 
+if command -v bat &> /dev/null; then
+  alias cat="bat"
+else
+  alias cat="cat"  # or whatever fallback you prefer
+fi
+
 if command -v eza &> /dev/null; then
   alias ls="eza --icons=always"
 else
