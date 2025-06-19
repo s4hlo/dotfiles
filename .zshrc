@@ -33,6 +33,7 @@ zstyle ':completion:*' use-compctl false
 
 if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
    . /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+   # bindkey '^I' autosuggest-accept
    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 fi
 
@@ -87,3 +88,4 @@ echo "✨ $quote"
 
 ###### MEMENTO MORI ######
 
+eval "$(atuin init zsh)"
