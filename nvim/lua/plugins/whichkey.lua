@@ -34,6 +34,7 @@ local neotree_key = require("user.config").clean
 		{ "<C-p>", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File", mode = "n" },
 		{ "<A-f>", "<cmd>Telescope live_grep<cr>", desc = "Find Text", mode = "n" },
 		{ "<A-e>", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
+		{ "<A-g>", "<cmd>Telescope git_status<cr>", desc = "Open Changed File", mode = "n" },
 		{ "<A-s>", "<cmd>Neotree float toggle document_symbols<CR>", desc = "Document Symbols", mode = "n" },
 	}
 
@@ -138,7 +139,6 @@ function M.config()
 		{ "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk", mode = "n" },
 		{ "<leader>gS", "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", desc = "stage_buffer", mode = "n" },
 		{ "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer", mode = "n" },
-		{ "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open Changed File", mode = "n" },
 		{ "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Open Diffview", mode = "n" },
 
 		{ "<leader>gc", group = "Conflict" },
