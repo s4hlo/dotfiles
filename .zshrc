@@ -80,8 +80,9 @@ fi
 alias tks="tmux kill-session -t"
 alias dot='cd ~/dotfiles'
 alias vault='cd ~/vault'
-alias hs='cd ~/dev/hub-server'
-alias hw='cd ~/dev/hub-web-client'
+alias tarken='cd ~/dev/tarken'
+alias hs='cd ~/dev/tarken/hub-server'
+alias hw='cd ~/dev/tarken/hub-web-client'
 alias setup='~/dotfiles/setup.sh'
 alias b='~/notes/brg.sh'
 alias cal='calcurse -D ~/dev/calendar'
