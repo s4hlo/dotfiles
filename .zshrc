@@ -61,6 +61,8 @@ set -o vi
 bindkey -M viins jk vi-cmd-mode
 
 eval "$(starship init zsh)"
+eval "$(atuin init zsh)"
+eval "$(zoxide init zsh)"
 if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
     exec tmux
 fi
@@ -93,6 +95,5 @@ alias dbprod="pgcli -h $DB_PROD_HOST -p 5432 -U hub -d hubDB-prod"
 quote=$(curl -s https://zenquotes.io/api/today | jq -r '.[0].q + " — " + .[0].a')
 echo "✨ $quote"
 
-###### MEMENTO MORI ######
 
-eval "$(atuin init zsh)"
+###### MEMENTO MORI ######
