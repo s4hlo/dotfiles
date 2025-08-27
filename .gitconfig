@@ -1,6 +1,7 @@
 [user]
-    name = S4hlo 
-    email = rfl.magno02@gmail.com
+    name = s4hlo 
+    email = rafael.nunes@tarken.ag
+    signingkey = 0aa7718241314113
 
 [core]
     ; @target
@@ -12,11 +13,11 @@
 	helper = store
 
 [alias]
+    lg = log --graph --pretty=format:'%C(yellow)%h%Creset %C(cyan)[%G?]%Creset %C(bold blue)<%an>%Creset %C(green)(%cr)%Creset%C(magenta)%d%Creset%n    %s'
     co = checkout
     ci = commit
     st = status
     br = branch
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 [color]
     ui = auto
@@ -39,3 +40,6 @@
   ; hunk-header-style = file
 [merge]
     conflictstyle = zdiff3
+
+[commit]
+    gpgsign = true
