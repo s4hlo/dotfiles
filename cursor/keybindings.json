@@ -55,5 +55,9 @@
         "key": "ctrl+p",
         "command": "-notebook.centerActiveCell",
         "when": "notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "composerMode.background"
     }
 ]
