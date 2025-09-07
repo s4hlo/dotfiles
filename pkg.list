@@ -35,6 +35,7 @@ pyenv
 qbittorrent
 ripgrep
 rust
+shfmt
 sof-firmware
 spotify-launcher
 starship
