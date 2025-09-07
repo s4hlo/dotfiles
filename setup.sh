@@ -112,18 +112,14 @@ links_setup() {
 }
 
 show_menu() {
-    echo -e "\e[34m╔═════════════════════════════════════════════════════════╗\e[0m"
-    echo -e "\e[34m║\e[0m                  \e[93m Available Options \e[0m                    \e[34m║\e[0m"
-    echo -e "\e[34m╠═════════════════════════════════════════════════════════╣\e[0m"
-    echo -e "\e[34m║\e[0m                                                         \e[34m║\e[0m"
-    echo -e "\e[34m║\e[0m  \e[95m1)\e[0m \e[92mpacman\e[0m     Install packages from pkg.list           \e[34m║\e[0m"
-    echo -e "\e[34m║\e[0m  \e[95m2)\e[0m \e[92myay\e[0m        Install AUR packages from pkg_aur.list   \e[34m║\e[0m"
-    echo -e "\e[34m║\e[0m  \e[95m3)\e[0m \e[92mhypr\e[0m       Install Hyprland window manager          \e[34m║\e[0m"
-    echo -e "\e[34m║\e[0m  \e[95m4)\e[0m \e[92mi3\e[0m         Install i3 window manager                \e[34m║\e[0m"
-    echo -e "\e[34m║\e[0m  \e[95m5)\e[0m \e[92mlink\e[0m       Create symlinks for dotfiles             \e[34m║\e[0m"
-    echo -e "\e[34m║\e[0m  \e[95m6)\e[0m \e[91mexit\e[0m       Exit the setup                           \e[34m║\e[0m"
-    echo -e "\e[34m║\e[0m                                                         \e[34m║\e[0m"
-    echo -e "\e[34m╚═════════════════════════════════════════════════════════╝\e[0m"
+    echo -e "\e[34m> Available Options \e[0m"
+    echo -e ""
+    echo -e "\e[95m  1)\e[0m \e[92mpacman\e[0m     Install packages from pkg.list           \e[0m"
+    echo -e "\e[95m  2)\e[0m \e[92myay\e[0m        Install AUR packages from pkg_aur.list   \e[0m"
+    echo -e "\e[95m  3)\e[0m \e[92mhypr\e[0m       Install Hyprland window manager          \e[0m"
+    echo -e "\e[95m  4)\e[0m \e[92mi3\e[0m         Install i3 window manager                \e[0m"
+    echo -e "\e[95m  5)\e[0m \e[92mlink\e[0m       Create symlinks for dotfiles             \e[0m"
+    echo -e "\e[95m  6)\e[0m \e[91mexit\e[0m       Exit the setup                           \e[0m"
     echo -e ""
     echo -e "\e[34m> Enter your choice (1-6): \e[0m"
 }
