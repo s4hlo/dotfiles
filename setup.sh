@@ -1,4 +1,6 @@
+#!/bin/bash
 echo -e "\e[34mWelcome to the setup script for my dotfiles!\e[0m"
+cd ~/dotfiles || exit 1
 if command -v catnap &>/dev/null; then
     catnap
 else
@@ -29,28 +31,21 @@ log() {
     echo -e "${colors[$type]}${labels[$type]}\e[0m - $content"
 }
 
-ask_and_execute() {
-    local prompt_message=$1
-    local setup_function=$2
-
-    while true; do
-        read -p "$(echo -e "\e[34m$prompt_message?\e[0m (y/n/q): ")" yn
-        case ${yn,,} in
-        y*)
-            $setup_function
-            return 0
-            ;;
-        n*)
-            log "Skipping" 1
-            return 1
-            ;;
-        q*)
-            log "Exiting the program." 3
-            exit 0
-            ;;
-        *) log "Invalid input, please enter y, n, or q." 2 ;;
-        esac
-    done
+show_help() {
+    echo -e "\e[34mUsage: $0 [COMMAND]\e[0m"
+    echo -e ""
+    echo -e "\e[32mAvailable commands:\e[0m"
+    echo -e "  \e[33mpacman\e[0m     Install packages from pkg.list"
+    echo -e "  \e[33myay\e[0m        Install AUR packages from pkg_aur.list"
+    echo -e "  \e[33mhypr\e[0m       Install Hyprland window manager"
+    echo -e "  \e[33mi3\e[0m         Install i3 window manager"
+    echo -e "  \e[33mlink\e[0m       Create symlinks for dotfiles"
+    echo -e "  \e[33mhelp\e[0m       Show this help message"
+    echo -e ""
+    echo -e "\e[32mExamples:\e[0m"
+    echo -e "  $0 pacman     # Install pacman packages only"
+    echo -e "  $0 hypr       # Install Hyprland only"
+    echo -e "  $0 all        # Interactive setup (old behavior)"
 }
 
 install_hypr() {
@@ -141,15 +136,18 @@ pacman)
 yay)
     yay_bulk
     ;;
+hypr)
+    install_hypr
+    ;;
+i3)
+    install_i3
+    ;;
 link)
     links_setup
     ;;
 *)
-    ask_and_execute "Do you want to sync pacman packages" "pacman_bulk"
-    ask_and_execute "Do you want to sync yay packages" "yay_bulk"
-    ask_and_execute "Do you want to install Hypr" "install_hypr"
-    ask_and_execute "Do you want to install i3" "install_i3"
-    ask_and_execute "Do you want to link the dotfiles" "links_setup"
+    show_help
+    exit 1
     ;;
 esac
 
