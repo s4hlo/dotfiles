@@ -53,71 +53,36 @@ ask_and_execute() {
     done
 }
 
-# install_hypr() {
-#     log "Installing Hypr... " 1
-#     sudo pacman -S --needed hyprland xdg-desktop-portal-hyprland
-#     yay -S --needed \
-#         hyprpaper \
-#         waybar \
-#         hyprshade \
-#         hyprshot \
-#         wofi
-#     # check if those two are installed with the above when zero setup
-#     # hyprlock
-#     # hyprpicker-git \
-#     [ -d ~/.config/hypr ] && [ ! -L ~/.config/hypr ] && rm -rf ~/.config/hypr
-#     ln -fns ~/dotfiles/hypr ~/.config/
-#     [ -d ~/.config/waybar ] && [ ! -L ~/.config/waybar ] && rm -rf ~/.config/waybar
-#     ln -fns ~/dotfiles/waybar ~/.config/
-#     [ -d ~/.config/wofi ] && [ ! -L ~/.config/wofi ] && rm -rf ~/.config/wofi
-#     ln -fns ~/dotfiles/wofi ~/.config/
-#     log "Hypr installed successfully!" 0
-# }
+install_hypr() {
+    log "Installing Hypr... " 1
+    sudo pacman -S --needed hyprland xdg-desktop-portal-hyprland
+    yay -S --needed \
+        hyprpaper \
+        waybar \
+        hyprshade \
+        hyprshot \
+        wofi
+    # check if those two are installed with the above when zero setup
+    # hyprlock
+    # hyprpicker-git \
+    [ -d ~/.config/hypr ] && [ ! -L ~/.config/hypr ] && rm -rf ~/.config/hypr
+    ln -fns ~/dotfiles/hypr ~/.config/
+    [ -d ~/.config/waybar ] && [ ! -L ~/.config/waybar ] && rm -rf ~/.config/waybar
+    ln -fns ~/dotfiles/waybar ~/.config/
+    [ -d ~/.config/wofi ] && [ ! -L ~/.config/wofi ] && rm -rf ~/.config/wofi
+    ln -fns ~/dotfiles/wofi ~/.config/
+    log "Hypr installed successfully!" 0
+}
 
-ask_for_wm_installation() {
-    local prompt_message="Choose Window Manager to install:"
-    while true; do
-        read -p "$(echo -e "\e[34m$prompt_message\e[0m \n1) Hypr\n2) i3\n3) skip \n")" choice
-        case $choice in
-        1)
-            log "Installing Hypr... " 1
-            sudo pacman -S --needed hyprland xdg-desktop-portal-hyprland
-            yay -S --needed \
-                hyprpaper \
-                waybar \
-                hyprshade \
-                hyprshot \
-                wofi
-            # check if those two are installed with the above when zero setup
-            # hyprlock
-            # hyprpicker-git \
-            [ -d ~/.config/hypr ] && [ ! -L ~/.config/hypr ] && rm -rf ~/.config/hypr
-            ln -fns ~/dotfiles/hypr ~/.config/
-            [ -d ~/.config/waybar ] && [ ! -L ~/.config/waybar ] && rm -rf ~/.config/waybar
-            ln -fns ~/dotfiles/waybar ~/.config/
-            [ -d ~/.config/wofi ] && [ ! -L ~/.config/wofi ] && rm -rf ~/.config/wofi
-            ln -fns ~/dotfiles/wofi ~/.config/
-            log "Hypr installed successfully!" 0
-            return 0
-            ;;
-        2)
-            log "Installing i3..." 1
-            sudo pacman -S --needed - <~/dotfiles/pkg_i3.list
-            mkdir -p ~/.config/i3 ~/.config/rofi ~/.config/polybar
-            ln -fns ~/dotfiles/i3/config ~/.config/i3/config
-            ln -fns ~/dotfiles/i3/rofi/config.rasi ~/.config/rofi/config.rasi
-            ln -fns ~/dotfiles/i3/polybar/launch.sh ~/.config/polybar/launch.sh
-            ln -fns ~/dotfiles/i3/polybar/config.ini ~/.config/polybar/config.ini
-            log "i3 installed successfully!" 0
-            return 0
-            ;;
-        3)
-            log "Skipping" 1
-            return 1
-            ;;
-        *) log "Invalid input, please enter 1, 2, or 3." 2 ;;
-        esac
-    done
+install_i3() {
+    log "Installing i3..." 1
+    sudo pacman -S --needed - <~/dotfiles/pkg_i3.list
+    mkdir -p ~/.config/i3 ~/.config/rofi ~/.config/polybar
+    ln -fns ~/dotfiles/i3/config ~/.config/i3/config
+    ln -fns ~/dotfiles/i3/rofi/config.rasi ~/.config/rofi/config.rasi
+    ln -fns ~/dotfiles/i3/polybar/launch.sh ~/.config/polybar/launch.sh
+    ln -fns ~/dotfiles/i3/polybar/config.ini ~/.config/polybar/config.ini
+    log "i3 installed successfully!" 0
 }
 
 pacman_bulk() {
@@ -182,7 +147,8 @@ link)
 *)
     ask_and_execute "Do you want to sync pacman packages" "pacman_bulk"
     ask_and_execute "Do you want to sync yay packages" "yay_bulk"
-    ask_for_wm_installation
+    ask_and_execute "Do you want to install Hypr" "install_hypr"
+    ask_and_execute "Do you want to install i3" "install_i3"
     ask_and_execute "Do you want to link the dotfiles" "links_setup"
     ;;
 esac
