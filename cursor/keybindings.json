@@ -69,5 +69,41 @@
     "key": "alt+k",
     "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
-  }
+  },
+  // jupyter notebook related 
+  {
+    "key": "alt+j",
+    "command": "notebook.focusNextEditor",
+    "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'none' && notebookEditorCursorAtBoundary != 'top'"
+  },
+  {
+    "key": "j",
+    "command": "-notebook.focusNextEditor",
+    "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'none' && notebookEditorCursorAtBoundary != 'top'"
+  },
+  {
+    "key": "alt+k",
+    "command": "notebook.focusPreviousEditor",
+    "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'bottom' && notebookEditorCursorAtBoundary != 'none'"
+  },
+  {
+    "key": "k",
+    "command": "-notebook.focusPreviousEditor",
+    "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'bottom' && notebookEditorCursorAtBoundary != 'none'"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "-notebook.cell.executeAndFocusContainer",
+    "when": "notebookCellListFocused || editorTextFocus && inputFocus && notebookEditorFocused"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "notebook.cell.execute",
+    "when": "notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "-editor.action.insertLineAfter",
+    "when": "editorTextFocus && !editorReadonly"
+  },
 ]
