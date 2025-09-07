@@ -1,5 +1,5 @@
 #!/bin/bash
-echo -e "\e[34mWelcome to the setup script for my dotfiles!\e[0m"
+echo -e "\e[34m> Welcome to the setup script for my dotfiles!\e[0m"
 cd ~/dotfiles || exit 1
 if command -v catnap &>/dev/null; then
     catnap
@@ -29,23 +29,6 @@ log() {
     local labels=("[INFO]" "[WARN]" "[ERROR]" "[EXIT]")
 
     echo -e "${colors[$type]}${labels[$type]}\e[0m - $content"
-}
-
-show_help() {
-    echo -e "\e[34mUsage: $0 [COMMAND]\e[0m"
-    echo -e ""
-    echo -e "\e[32mAvailable commands:\e[0m"
-    echo -e "  \e[33mpacman\e[0m     Install packages from pkg.list"
-    echo -e "  \e[33myay\e[0m        Install AUR packages from pkg_aur.list"
-    echo -e "  \e[33mhypr\e[0m       Install Hyprland window manager"
-    echo -e "  \e[33mi3\e[0m         Install i3 window manager"
-    echo -e "  \e[33mlink\e[0m       Create symlinks for dotfiles"
-    echo -e "  \e[33mhelp\e[0m       Show this help message"
-    echo -e ""
-    echo -e "\e[32mExamples:\e[0m"
-    echo -e "  $0 pacman     # Install pacman packages only"
-    echo -e "  $0 hypr       # Install Hyprland only"
-    echo -e "  $0 all        # Interactive setup (old behavior)"
 }
 
 install_hypr() {
@@ -128,28 +111,78 @@ links_setup() {
     zsh -c "source ~/.zshrc"
 }
 
-# Verifica o argumento passado
-case "$1" in
-pacman)
-    pacman_bulk
-    ;;
-yay)
-    yay_bulk
-    ;;
-hypr)
-    install_hypr
-    ;;
-i3)
-    install_i3
-    ;;
-link)
-    links_setup
-    ;;
-*)
-    show_help
-    exit 1
-    ;;
-esac
+show_menu() {
+    echo -e "\e[35m╔═════════════════════════════════════════════════════════╗\e[0m"
+    echo -e "\e[35m║\e[0m                  \e[36m Available Options \e[0m                    \e[35m║\e[0m"
+    echo -e "\e[35m╠═════════════════════════════════════════════════════════╣\e[0m"
+    echo -e "\e[35m║\e[0m                                                         \e[35m║\e[0m"
+    echo -e "\e[35m║\e[0m  \e[33m1)\e[0m \e[32mpacman\e[0m     Install packages from pkg.list           \e[35m║\e[0m"
+    echo -e "\e[35m║\e[0m  \e[33m2)\e[0m \e[32myay\e[0m        Install AUR packages from pkg_aur.list   \e[35m║\e[0m"
+    echo -e "\e[35m║\e[0m  \e[33m3)\e[0m \e[32mhypr\e[0m       Install Hyprland window manager          \e[35m║\e[0m"
+    echo -e "\e[35m║\e[0m  \e[33m4)\e[0m \e[32mi3\e[0m         Install i3 window manager                \e[35m║\e[0m"
+    echo -e "\e[35m║\e[0m  \e[33m5)\e[0m \e[32mlink\e[0m       Create symlinks for dotfiles             \e[35m║\e[0m"
+    echo -e "\e[35m║\e[0m  \e[33m6)\e[0m \e[31mexit\e[0m       Exit the setup                           \e[35m║\e[0m"
+    echo -e "\e[35m║\e[0m                                                         \e[35m║\e[0m"
+    echo -e "\e[35m╚═════════════════════════════════════════════════════════╝\e[0m"
+    echo -e ""
+    echo -e "\e[34m> Enter your choice (1-6): \e[0m"
+}
+
+run_command() {
+    case "$1" in
+    1 | pacman)
+        pacman_bulk
+        ;;
+    2 | yay)
+        yay_bulk
+        ;;
+    3 | hypr)
+        install_hypr
+        ;;
+    4 | i3)
+        install_i3
+        ;;
+    5 | link)
+        links_setup
+        ;;
+    6 | exit)
+        echo -e "\e[32mExiting setup. Goodbye!\e[0m"
+        exit 0
+        ;;
+    *)
+        log "Invalid option. Please choose 1-6." 2
+        return 1
+        ;;
+    esac
+}
+
+ask_continue() {
+    echo -e ""
+    echo -n "Do you want to run another command? (y/n): "
+    read -r continue_choice
+    case "$continue_choice" in
+    y | Y | yes | YES)
+        return 0
+        ;;
+    *)
+        return 1
+        ;;
+    esac
+}
+
+# Main interactive loop
+while true; do
+    show_menu
+    read -r choice
+
+    if run_command "$choice"; then
+        if ! ask_continue; then
+            echo -e "\e[32mSetup completed. Goodbye!\e[0m"
+
+            break
+        fi
+    fi
+done
 
 echo -e '
 #################################################################################
