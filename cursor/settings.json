@@ -89,6 +89,7 @@
   "window.titleBarStyle": "native",
   "window.titleSeparator": " | ",
   "workbench.activityBar.location": "hidden",
+  "workbench.activityBar.orientation": "horizontal",
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.highlightModifiedTabs": true,
