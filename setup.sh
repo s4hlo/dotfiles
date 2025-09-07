@@ -63,6 +63,21 @@ install_i3() {
     log "i3 installed successfully!" 0
 }
 
+minimal_yay() {
+    if ! command -v yay &>/dev/null; then
+        log "yay not found. Installing..." 1
+        sudo pacman -S --needed git base-devel
+        git clone https://aur.archlinux.org/yay.git
+        cd yay
+        makepkg -si --noconfirm
+        log "yay installed successfully!"
+    else
+        log "yay is already installed."
+    fi
+
+    yay -S --needed - <~/dotfiles/minimal.list
+}
+
 pacman_bulk() {
     sudo pacman -S --needed - <~/dotfiles/pkg.list
 }
