@@ -69,7 +69,7 @@ install() {
 }
 
 configure_hyprland() {
-    log "Installing Hypr... " 1
+    log "Starting Hyprland configuration..." 0
 
     install "hyprland xdg-desktop-portal-hyprland"
     install "hyprpaper waybar hyprshade hyprshot wofi"
@@ -82,11 +82,11 @@ configure_hyprland() {
     link waybar ~/.config/waybar
     link wofi ~/.config/wofi
 
-    log "Hypr installed successfully!" 0
+    log "Hyprland configuration completed!" 0
 }
 
 configure_i3() {
-    log "Installing i3..." 1
+    log "Starting i3 configuration..." 0
 
     install "i3 picom polybar rofi xwallpaper xorg-xinput"
 
@@ -96,19 +96,24 @@ configure_i3() {
     link i3/rofi ~/.config/rofi
     link i3/polybar ~/.config/polybar
 
-    log "i3 installed successfully!" 0
+    log "i3 configuration completed!" 0
 }
 
 add_minimal() {
+    log "Installing minimal packages..." 0
     install $(cat ~/dotfiles/minimal.list)
+    log "Minimal packages installed!" 0
 }
 
 add_full() {
+    log "Installing all packages..." 0
     install $(cat ~/dotfiles/pkg.list)
     install $(cat ~/dotfiles/pkg_aur.list)
+    log "All packages installed!" 0
 }
 
 link_minimal() {
+    log "Creating minimal symlinks(WSL)..." 0
 
     link .bashrc ~/.bashrc
     link .gitconfig ~/.gitconfig
@@ -124,9 +129,13 @@ link_minimal() {
     else
         source ~/.bashrc
     fi
+    
+    log "Minimal symlinks created!" 0
 }
 
 links_setup() {
+    log "Creating full symlinks setup..." 0
+    
     link_minimal
 
     link nvim ~/.config/nvim
@@ -143,6 +152,8 @@ links_setup() {
     sudo timedatectl set-timezone Etc/GMT-3
     tmux source-file ~/.tmux.conf
     zsh -c "source ~/.zshrc"
+    
+    log "Full symlinks setup completed!" 0
 }
 
 show_menu() {
