@@ -77,12 +77,11 @@ install_hypr() {
     # check if those two are installed with the above when zero setup
     # hyprlock
     # hyprpicker-git \
-    [ -d ~/.config/hypr ] && [ ! -L ~/.config/hypr ] && rm -rf ~/.config/hypr
-    ln -fns ~/dotfiles/hypr ~/.config/
-    [ -d ~/.config/waybar ] && [ ! -L ~/.config/waybar ] && rm -rf ~/.config/waybar
-    ln -fns ~/dotfiles/waybar ~/.config/
-    [ -d ~/.config/wofi ] && [ ! -L ~/.config/wofi ] && rm -rf ~/.config/wofi
-    ln -fns ~/dotfiles/wofi ~/.config/
+
+    link hypr ~/.config/hypr
+    link waybar ~/.config/waybar
+    link wofi ~/.config/wofi
+
     log "Hypr installed successfully!" 0
 }
 
@@ -91,11 +90,12 @@ install_i3() {
 
     install "i3 picom polybar rofi xwallpaper xorg-xinput"
 
-    mkdir -p ~/.config/i3 ~/.config/rofi ~/.config/polybar
-    ln -fns ~/dotfiles/i3/config ~/.config/i3/config
-    ln -fns ~/dotfiles/i3/rofi/config.rasi ~/.config/rofi/config.rasi
-    ln -fns ~/dotfiles/i3/polybar/launch.sh ~/.config/polybar/launch.sh
-    ln -fns ~/dotfiles/i3/polybar/config.ini ~/.config/polybar/config.ini
+    mkdir ~/.config/i3
+
+    link i3/config ~/.config/i3/config
+    link i3/rofi ~/.config/rofi
+    link i3/polybar ~/.config/polybar
+
     log "i3 installed successfully!" 0
 }
 
