@@ -68,7 +68,7 @@ install() {
     fi
 }
 
-install_hypr() {
+configure_hyprland() {
     log "Installing Hypr... " 1
 
     install "hyprland xdg-desktop-portal-hyprland"
@@ -85,7 +85,7 @@ install_hypr() {
     log "Hypr installed successfully!" 0
 }
 
-install_i3() {
+configure_i3() {
     log "Installing i3..." 1
 
     install "i3 picom polybar rofi xwallpaper xorg-xinput"
@@ -99,39 +99,41 @@ install_i3() {
     log "i3 installed successfully!" 0
 }
 
-minimal_yay() {
+add_minimal() {
     install $(cat ~/dotfiles/minimal.list)
 }
 
-pacman_bulk() {
+add_full() {
     install $(cat ~/dotfiles/pkg.list)
     install $(cat ~/dotfiles/pkg_aur.list)
 }
 
 link_minimal() {
+
     link .bashrc ~/.bashrc
-    link .tmux.conf ~/.tmux.conf
     link .gitconfig ~/.gitconfig
+    link .tmux.conf ~/.tmux.conf
+    link .zshrc ~/.zshrc
+    link bat ~/.config/bat
+    link btop ~/.config/btop
     link gh ~/.config/gh
+
+    # identifie shell and source it
+    if [ "$SHELL" != "/bin/zsh" ]; then
+        source ~/.zshrc
+    else
+        source ~/.bashrc
+    fi
 }
 
 links_setup() {
-    rm -rf ~/.zshrc ~/.tmux.conf ~/.gitconfig ~/.vimrc
-    rm -rf ~/.config/nvim ~/.config/gh ~/.config/kitty ~/.config/btop ~/.config/bat
+    link_minimal
 
-    ln -fns ~/dotfiles/cursor/settings.json ~/.config/Cursor/User/settings.json
-    ln -fns ~/dotfiles/cursor/keybindings.json ~/.config/Cursor/User/keybindings.json
-    ln -fns ~/dotfiles/.tmux.conf ~/.tmux.conf
-    ln -fns ~/dotfiles/bat ~/.config/
-    ln -fns ~/dotfiles/.gitconfig ~/.gitconfig
-    ln -fns ~/dotfiles/.vimrc ~/.vimrc
-    ln -fns ~/dotfiles/.zshrc ~/.zshrc
-    ln -fns ~/dotfiles/btop ~/.config
-    ln -fns ~/dotfiles/gh ~/.config/
-    ln -fns ~/dotfiles/nvim ~/.config/
-    ln -fns ~/dotfiles/kitty ~/.config/
-    ln -fns ~/dotfiles/swaync ~/.config/
-    ln -fns ~/dotfiles/vencord/midnight-catppuccin-mocha.theme.css ~/.config/vesktop/themes
+    link nvim ~/.config/nvim
+    link kitty ~/.config/kitty
+    link cursor/settings.json ~/.config/Cursor/User/settings.json
+    link cursor/keybindings.json ~/.config/Cursor/User/keybindings.json
+    link swaync ~/.config/swaync
 
     if [ "$SHELL" != "/bin/zsh" ]; then
         sudo chsh -s $(which zsh)
@@ -158,22 +160,25 @@ show_menu() {
 
 run_command() {
     case "$1" in
-    1 | pacman)
-        pacman_bulk
+    1 | minimal)
+        add_full
         ;;
-    2 | yay)
-        yay_bulk
+    2 | full)
+        add_full
         ;;
     3 | hypr)
-        install_hypr
+        configure_hyprland
         ;;
     4 | i3)
-        install_i3
+        configure_i3
         ;;
     5 | link)
         links_setup
         ;;
-    6 | exit)
+    6 | link_minimal)
+        links_setup
+        ;;
+    7 | exit)
         echo -e "\e[32mExiting setup. Goodbye!\e[0m"
         exit 0
         ;;
