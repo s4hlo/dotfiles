@@ -31,15 +31,49 @@ log() {
     echo -e "${colors[$type]}${labels[$type]}\e[0m - $content"
 }
 
+link() {
+    src=~/dotfiles/$1
+    dst=$2
+
+    if [ ! -e "$src" ]; then
+        echo "Erro: $src não existe."
+        return 1
+    fi
+
+    if [ -z "$dst" ]; then
+        echo "Erro: destino não informado."
+        return 1
+    fi
+
+    rm -rf -- "$dst"
+    ln -sfn "$src" "$dst"
+}
+
+install() {
+    if [ -f /etc/arch-release ]; then
+        if ! command -v yay &>/dev/null; then
+            log "yay not found. Installing..." 1
+            sudo pacman -S --needed git base-devel
+            git clone https://aur.archlinux.org/yay.git
+            cd yay
+            makepkg -si --noconfirm
+            log "yay installed successfully!"
+        else
+            log "yay is already installed."
+        fi
+        yay -S --needed $1
+    else
+        # TODO: install $1 on other distros
+        log "Package installation not implemented for this distribution." 2
+    fi
+}
+
 install_hypr() {
     log "Installing Hypr... " 1
-    sudo pacman -S --needed hyprland xdg-desktop-portal-hyprland
-    yay -S --needed \
-        hyprpaper \
-        waybar \
-        hyprshade \
-        hyprshot \
-        wofi
+
+    install "hyprland xdg-desktop-portal-hyprland"
+    install "hyprpaper waybar hyprshade hyprshot wofi"
+    
     # check if those two are installed with the above when zero setup
     # hyprlock
     # hyprpicker-git \
@@ -54,7 +88,9 @@ install_hypr() {
 
 install_i3() {
     log "Installing i3..." 1
-    sudo pacman -S --needed - <~/dotfiles/pkg_i3.list
+
+    install "i3 picom polybar rofi xwallpaper xorg-xinput"
+
     mkdir -p ~/.config/i3 ~/.config/rofi ~/.config/polybar
     ln -fns ~/dotfiles/i3/config ~/.config/i3/config
     ln -fns ~/dotfiles/i3/rofi/config.rasi ~/.config/rofi/config.rasi
@@ -64,38 +100,19 @@ install_i3() {
 }
 
 minimal_yay() {
-    if ! command -v yay &>/dev/null; then
-        log "yay not found. Installing..." 1
-        sudo pacman -S --needed git base-devel
-        git clone https://aur.archlinux.org/yay.git
-        cd yay
-        makepkg -si --noconfirm
-        log "yay installed successfully!"
-    else
-        log "yay is already installed."
-    fi
-
-    yay -S --needed - <~/dotfiles/minimal.list
+    install $(cat ~/dotfiles/minimal.list)
 }
 
 pacman_bulk() {
-    sudo pacman -S --needed - <~/dotfiles/pkg.list
+    install $(cat ~/dotfiles/pkg.list)
+    install $(cat ~/dotfiles/pkg_aur.list)
 }
 
-yay_bulk() {
-
-    if ! command -v yay &>/dev/null; then
-        log "yay not found. Installing..." 1
-        sudo pacman -S --needed git base-devel
-        git clone https://aur.archlinux.org/yay.git
-        cd yay
-        makepkg -si --noconfirm
-        log "yay installed successfully!"
-    else
-        log "yay is already installed."
-    fi
-
-    yay -S --needed - <~/dotfiles/pkg_aur.list
+link_minimal() {
+    link .bashrc ~/.bashrc
+    link .tmux.conf ~/.tmux.conf
+    link .gitconfig ~/.gitconfig
+    link gh ~/.config/gh
 }
 
 links_setup() {
@@ -169,7 +186,7 @@ run_command() {
 
 ask_continue() {
     echo -e ""
-    echo -n "Do you want to run another command? (y/n): "
+    echo -e "\e[34m> Do you want to run another command? (y/n): \e[0m"
     read -r continue_choice
     case "$continue_choice" in
     y | Y | yes | YES)
