@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "catppuccin.catppuccin-vsc-pack",
+    "anysphere.remote-wsl",
+    "vscodevim.vim",
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    "davidanson.vscode-markdownlint",
+    "naumovs.color-highlight",
+    "anysphere.cursorpyright",
+    "ms-toolsai.jupyter"
+  ]
+}
