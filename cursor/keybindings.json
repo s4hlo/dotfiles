@@ -13,15 +13,15 @@
     "when": "workbench.scm.active"
   },
   {
-    "key": "q",
-    "command": "git.openFile",
-    "when": "isInDiffEditor"
-  },
-  // review
-  {
     "key": "alt+shift+g",
     "command": "workbench.scm.action.focusNextResourceGroup",
     "when": "!editorFocus"
+  },
+  // review
+  {
+    "key": "q",
+    "command": "git.openFile",
+    "when": "isInDiffEditor"
   },
   {
     "key": "alt+j",
