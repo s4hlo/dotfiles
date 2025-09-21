@@ -1,27 +1,38 @@
 [
   {
-    "key": "alt+e",
-    "command": "workbench.view.explorer"
+    "key": "tab",
+    "command": "workbench.action.quickOpenNavigateNext",
+    "when": "inQuickOpen"
   },
   {
-    "key": "alt+f",
-    "command": "workbench.action.findInFiles"
+    "key": "shift+tab",
+    "command": "workbench.action.quickOpenNavigatePrevious",
+    "when": "inQuickOpen"
   },
   {
     "key": "alt+g",
-    "command": "workbench.view.scm",
-    "when": "workbench.scm.active"
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.scm.focus",
+        "workbench.scm.action.focusNextResourceGroup"
+      ]
+    },
+    "when": "editorTextFocus"
   },
   {
-    "key": "alt+shift+g",
-    "command": "workbench.scm.action.focusNextResourceGroup",
-    "when": "!editorFocus"
+    "key": "alt+shift+f",
+    "command": "workbench.action.findInFiles"
+    // "command": "workbench.action.quickTextSearch"
   },
-  // review
   {
-    "key": "q",
-    "command": "git.openFile",
-    "when": "isInDiffEditor"
+    "key": "alt+f",
+    "command": "workbench.action.quickTextSearch"
+    // "command": "workbench.action.findInFiles"
+  },
+  {
+    "key": "alt+e",
+    "command": "workbench.view.explorer"
   },
   {
     "key": "alt+j",
@@ -34,16 +45,11 @@
     "when": "inQuickOpen"
   },
   {
-    "key": "ctrl+tab",
-    "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    "key": "q",
+    "command": "git.openFile",
+    "when": "isInDiffEditor"
   },
-  {
-    "key": "ctrl+shift+tab",
-    "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
-  },
-  // jupyter notebook related 
+  // jupyter notebook related
   {
     "key": "alt+j",
     "command": "notebook.focusNextEditor",
@@ -58,6 +64,16 @@
     "key": "ctrl+enter",
     "command": "notebook.cell.execute",
     "when": "notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
   },
   /** Keybindings disabled */
   {
@@ -88,5 +104,5 @@
     "key": "ctrl+enter",
     "command": "-editor.action.insertLineAfter",
     "when": "editorTextFocus && !editorReadonly"
-  },
+  }
 ]
