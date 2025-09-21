@@ -172,6 +172,7 @@
   "gitlens.advanced.repositorySearchDepth": 1,
   "gitlens.views.repositories.files.layout": "auto",
   "jupyter.executionAnalysis.enabled": true,
+  "jupyter.interactiveWindow.textEditor.executeSelection": true,
   "catppuccin-icons.hidesExplorerArrows": true,
   "catppuccin-icons.associations.extensions": {
     "controller.ts": "nest-controller",
