@@ -1,38 +1,21 @@
 [
   {
-    "key": "tab",
-    "command": "workbench.action.quickOpenNavigateNext",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "shift+tab",
-    "command": "workbench.action.quickOpenNavigatePrevious",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "alt+g",
-    "command": "runCommands",
-    "args": {
-      "commands": [
-        "workbench.scm.focus",
-        "workbench.scm.action.focusNextResourceGroup"
-      ]
-    },
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+shift+f",
-    "command": "workbench.action.findInFiles"
-    // "command": "workbench.action.quickTextSearch"
+    "key": "alt+g"
+    // my extension when fineshed
   },
   {
     "key": "alt+f",
     "command": "workbench.action.quickTextSearch"
-    // "command": "workbench.action.findInFiles"
   },
   {
-    "key": "alt+e",
-    "command": "workbench.view.explorer"
+    "key": "tab",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "shift+tab",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
   },
   {
     "key": "alt+j",
@@ -43,37 +26,6 @@
     "key": "alt+k",
     "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
-  },
-  {
-    "key": "q",
-    "command": "git.openFile",
-    "when": "isInDiffEditor"
-  },
-  // jupyter notebook related
-  {
-    "key": "alt+j",
-    "command": "notebook.focusNextEditor",
-    "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'none' && notebookEditorCursorAtBoundary != 'top'"
-  },
-  {
-    "key": "alt+k",
-    "command": "notebook.focusPreviousEditor",
-    "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'bottom' && notebookEditorCursorAtBoundary != 'none'"
-  },
-  {
-    "key": "ctrl+enter",
-    "command": "notebook.cell.execute",
-    "when": "notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
-  },
-  {
-    "key": "ctrl+tab",
-    "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
-  },
-  {
-    "key": "ctrl+shift+tab",
-    "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
   },
   /** Keybindings disabled */
   {

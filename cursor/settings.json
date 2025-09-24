@@ -39,6 +39,7 @@
   "editor.fontSize": 12,
   "editor.fontWeight": "700",
   "editor.formatOnType": false,
+  "editor.formatOnSave": false,
   "editor.glyphMargin": false,
   "editor.guides.bracketPairs": true,
   "editor.inlineSuggest.enabled": true,
@@ -52,7 +53,7 @@
   "editor.renderWhitespace": "none",
   "editor.scrollbar.horizontal": "auto",
   "editor.scrollbar.vertical": "auto",
-  "editor.showFoldingControls": "never",
+  "editor.showFoldingControls": "mouseover",
   "editor.smoothScrolling": false,
   "editor.stickyScroll.enabled": false,
   "editor.suggestOnTriggerCharacters": false,
@@ -99,6 +100,7 @@
   "workbench.tree.enableStickyScroll": false,
 
   // vim settings
+  "vim.foldfix": true,
   "vim.useSystemClipboard": true,
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
@@ -115,8 +117,16 @@
       "commands": ["editor.action.formatDocument"]
     },
     {
+      "before": ["<leader>", "g", "a"],
+      "commands": ["git.stage"]
+    },
+    {
       "before": ["<leader>", "g", "j"],
       "commands": ["workbench.action.editor.nextChange"]
+    },
+    {
+      "before": ["g", "d"],
+      "commands": ["editor.action.goToReferences"]
     },
     {
       "before": ["<leader>", "g", "k"],
@@ -171,6 +181,7 @@
   "cursor.composer.shouldChimeAfterChatFinishes": true,
   "gitlens.advanced.repositorySearchDepth": 1,
   "gitlens.views.repositories.files.layout": "auto",
+	"gitlens.keymap": "none",
   "jupyter.executionAnalysis.enabled": true,
   "jupyter.interactiveWindow.textEditor.executeSelection": true,
   "catppuccin-icons.hidesExplorerArrows": true,
