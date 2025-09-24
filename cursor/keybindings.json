@@ -1,9 +1,5 @@
 [
   {
-    "key": "alt+g"
-    // my extension when fineshed
-  },
-  {
     "key": "alt+f",
     "command": "workbench.action.quickTextSearch"
   },
