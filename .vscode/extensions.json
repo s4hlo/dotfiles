@@ -5,10 +5,14 @@
     "vscodevim.vim",
     "eamodio.gitlens",
     "github.vscode-pull-request-github",
-    "davidanson.vscode-markdownlint",
     "naumovs.color-highlight",
     "anysphere.cursorpyright",
+    "esbenp.prettier-vscode",
+    "ms-python.python",
     "ms-toolsai.jupyter",
-    "esbenp.prettier-vscode"
+    "github.copilot",
+    "github.copilot-chat",
+    "ms-vscode-remote.remote-containers",
+    "github.codespaces"
   ]
 }
