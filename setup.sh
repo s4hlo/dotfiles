@@ -99,21 +99,14 @@ configure_i3() {
     log "i3 configuration completed!" 0
 }
 
-add_minimal() {
-    log "Installing minimal packages..." 0
+add_wsl() {
+    log "Installing WSL packages..." 0
     install $(cat ~/dotfiles/minimal.list)
-    log "Minimal packages installed!" 0
+    log "WSL packages installed!" 0
 }
 
-add_full() {
-    log "Installing all packages..." 0
-    install $(cat ~/dotfiles/pkg.list)
-    install $(cat ~/dotfiles/pkg_aur.list)
-    log "All packages installed!" 0
-}
-
-link_minimal() {
-    log "Creating minimal symlinks(WSL)..." 0
+link_wsl() {
+    log "Creating WSL symlinks..." 0
 
     link .bashrc ~/.bashrc
     link .gitconfig ~/.gitconfig
@@ -130,13 +123,21 @@ link_minimal() {
         source ~/.bashrc
     fi
     
-    log "Minimal symlinks created!" 0
+    log "WSL symlinks created!" 0
 }
+
+add_full() {
+    log "Installing all packages..." 0
+    install $(cat ~/dotfiles/pkg.list)
+    install $(cat ~/dotfiles/pkg_aur.list)
+    log "All packages installed!" 0
+}
+
 
 links_setup() {
     log "Creating full symlinks setup..." 0
     
-    link_minimal
+    link_wsl
 
     link nvim ~/.config/nvim
     link kitty ~/.config/kitty
@@ -159,12 +160,12 @@ links_setup() {
 show_menu() {
     echo -e "\e[34m> Available Options \e[0m"
     echo -e ""
-    echo -e "\e[95m  1)\e[0m \e[92mminimal\e[0m    Install minimal packages                  \e[0m"
+    echo -e "\e[95m  1)\e[0m \e[92WSL\e[0m    Install WSL packages                  \e[0m"
     echo -e "\e[95m  2)\e[0m \e[92mfull\e[0m       Install all packages (pkg + AUR)         \e[0m"
     echo -e "\e[95m  3)\e[0m \e[92mhypr\e[0m       Install Hyprland window manager          \e[0m"
     echo -e "\e[95m  4)\e[0m \e[92mi3\e[0m         Install i3 window manager                \e[0m"
     echo -e "\e[95m  5)\e[0m \e[92mlink\e[0m       Create symlinks for dotfiles             \e[0m"
-    echo -e "\e[95m  6)\e[0m \e[92mlink_min\e[0m  Create minimal symlinks only              \e[0m"
+    echo -e "\e[95m  6)\e[0m \e[92mlink_wsl\e[0m  Create WSL symlinks only              \e[0m"
     echo -e "\e[95m  7)\e[0m \e[91mexit\e[0m       Exit the setup                           \e[0m"
     echo -e ""
     echo -e "\e[34m> Enter your choice (1-7): \e[0m"
@@ -172,8 +173,8 @@ show_menu() {
 
 run_command() {
     case "$1" in
-    1 | minimal)
-        add_minimal
+    1 | wsl)
+        add_wsl
         ;;
     2 | full)
         add_full
@@ -187,8 +188,8 @@ run_command() {
     5 | link)
         links_setup
         ;;
-    6 | link_min)
-        link_minimal
+    6 | link_wsl)
+        link_wsl
         ;;
     7 | exit)
         echo -e "\e[32mExiting setup. Goodbye!\e[0m"
