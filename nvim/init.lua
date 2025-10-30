@@ -7,7 +7,7 @@ require("user.autocmds")
 -- TODO make this ft detection automatic
 -- Plugin("filetype.molten")
 -- Plugin("image") -- rage comment
-Plugin("filetype.obsidian")
+-- Plugin("filetype.obsidian")
 Plugin("filetype.markdown")
 Plugin("filetype.nest")
 Plugin("filetype.prettier")
