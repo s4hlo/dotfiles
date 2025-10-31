@@ -36,7 +36,7 @@ function M.common_capabilities()
 end
 
 function M.config()
-	local lspconfig = require("lspconfig")
+	local lspconfig = vim.lsp.config
 	local icons = require("user.icons")
 
 	local servers = {

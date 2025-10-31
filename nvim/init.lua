@@ -10,8 +10,9 @@ require("user.autocmds")
 -- Plugin("filetype.obsidian")
 Plugin("filetype.markdown")
 Plugin("filetype.nest")
-Plugin("filetype.prettier")
-Plugin("filetype.prettier")
+
+-- TODO need to make prettier work anyway !!!
+-- Plugin("filetype.prettier")  
 
 Plugin("autopairs")
 Plugin("avante")
