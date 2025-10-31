@@ -1,5 +1,20 @@
 [
   {
+    "key": "escape",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "!editorTextFocus"
+  },
+  {
+    "key": "escape",
+    "command": "git.openFile",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "alt+g",
+    "command": "spyglass.open",
+    "when": "!terminalFocus"
+  },
+  {
     "key": "alt+f",
     "command": "workbench.action.quickTextSearch"
   },
@@ -52,5 +67,13 @@
     "key": "ctrl+enter",
     "command": "-editor.action.insertLineAfter",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "f3",
+    "command": "spyglass.nextModified"
+  },
+  {
+    "key": "shift+f3",
+    "command": "spyglass.previousModified"
   }
 ]
