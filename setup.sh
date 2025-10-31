@@ -31,23 +31,6 @@ log() {
     echo -e "${colors[$type]}${labels[$type]}\e[0m - $content"
 }
 
-link() {
-    src=~/dotfiles/$1
-    dst=$2
-
-    if [ ! -e "$src" ]; then
-        echo "Erro: $src não existe."
-        return 1
-    fi
-
-    if [ -z "$dst" ]; then
-        echo "Erro: destino não informado."
-        return 1
-    fi
-
-    rm -rf -- "$dst"
-    ln -sfn "$src" "$dst"
-}
 
 install() {
     if [ -f /etc/arch-release ]; then
@@ -78,9 +61,9 @@ configure_hyprland() {
     # hyprlock
     # hyprpicker-git \
 
-    link hypr ~/.config/hypr
-    link waybar ~/.config/waybar
-    link wofi ~/.config/wofi
+    rm -rf -- ~/.config/hypr && ln -sfn ~/dotfiles/hypr ~/.config/hypr
+    rm -rf -- ~/.config/waybar && ln -sfn ~/dotfiles/waybar ~/.config/waybar
+    rm -rf -- ~/.config/wofi && ln -sfn ~/dotfiles/wofi ~/.config/wofi
 
     log "Hyprland configuration completed!" 0
 }
@@ -92,9 +75,9 @@ configure_i3() {
 
     mkdir ~/.config/i3
 
-    link i3/config ~/.config/i3/config
-    link i3/rofi ~/.config/rofi
-    link i3/polybar ~/.config/polybar
+    rm -rf -- ~/.config/i3/config && ln -sfn ~/dotfiles/i3/config ~/.config/i3/config
+    rm -rf -- ~/.config/rofi && ln -sfn ~/dotfiles/i3/rofi ~/.config/rofi
+    rm -rf -- ~/.config/polybar && ln -sfn ~/dotfiles/i3/polybar ~/.config/polybar
 
     log "i3 configuration completed!" 0
 }
@@ -108,13 +91,13 @@ add_wsl() {
 link_wsl() {
     log "Creating WSL symlinks..." 0
 
-    link .bashrc ~/.bashrc
-    link .gitconfig ~/.gitconfig
-    link .tmux.conf ~/.tmux.conf
-    link .zshrc ~/.zshrc
-    link bat ~/.config/bat
-    link btop ~/.config/btop
-    link gh ~/.config/gh
+    rm -rf -- ~/.bashrc && ln -sfn ~/dotfiles/.bashrc ~/.bashrc
+    rm -rf -- ~/.gitconfig && ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
+    rm -rf -- ~/.tmux.conf && ln -sfn ~/dotfiles/.tmux.conf ~/.tmux.conf
+    rm -rf -- ~/.zshrc && ln -sfn ~/dotfiles/.zshrc ~/.zshrc
+    rm -rf -- ~/.config/bat && ln -sfn ~/dotfiles/bat ~/.config/bat
+    rm -rf -- ~/.config/btop && ln -sfn ~/dotfiles/btop ~/.config/btop
+    rm -rf -- ~/.config/gh && ln -sfn ~/dotfiles/gh ~/.config/gh
 
     # identify shell and source it
     if [ "$SHELL" = "/bin/zsh" ]; then
@@ -139,11 +122,11 @@ links_setup() {
     
     link_wsl
 
-    link nvim ~/.config/nvim
-    link kitty ~/.config/kitty
-    link cursor/settings.json ~/.config/Cursor/User/settings.json
-    link cursor/keybindings.json ~/.config/Cursor/User/keybindings.json
-    link swaync ~/.config/swaync
+    rm -rf -- ~/.config/nvim && ln -sfn ~/dotfiles/nvim ~/.config/nvim
+    rm -rf -- ~/.config/kitty && ln -sfn ~/dotfiles/kitty ~/.config/kitty
+    rm -rf -- ~/.config/Cursor/User/settings.json && ln -sfn ~/dotfiles/cursor/settings.json ~/.config/Cursor/User/settings.json
+    rm -rf -- ~/.config/Cursor/User/keybindings.json && ln -sfn ~/dotfiles/cursor/keybindings.json ~/.config/Cursor/User/keybindings.json
+    rm -rf -- ~/.config/swaync && ln -sfn ~/dotfiles/swaync ~/.config/swaync
 
     if [ "$SHELL" != "/bin/zsh" ]; then
         sudo chsh -s $(which zsh)
