@@ -53,14 +53,13 @@ install_with_yay() {
 show_menu() {
     echo -e "\e[34m> Available Options \e[0m"
     echo -e ""
-    echo -e "\e[95m  1)\e[0m \e[92 WSL\e[0m    Install WSL packages                  \e[0m"
-    echo -e "\e[95m  2)\e[0m \e[92mfull\e[0m       Install all packages (pkg + AUR)         \e[0m"
-    echo -e "\e[95m  3)\e[0m \e[92mhypr\e[0m       Install Hyprland window manager          \e[0m"
-    echo -e "\e[95m  4)\e[0m \e[92mi3\e[0m         Install i3 window manager                \e[0m"
-    echo -e "\e[95m  5)\e[0m \e[92mlink\e[0m       Create symlinks for dotfiles             \e[0m"
-    echo -e "\e[95m  6)\e[0m \e[91mexit\e[0m       Exit the setup                           \e[0m"
+    echo -e "\e[95m  1)\e[0m \e[92mfull\e[0m       Install all packages (pkg + AUR)         \e[0m"
+    echo -e "\e[95m  2)\e[0m \e[92mhypr\e[0m       Install Hyprland window manager          \e[0m"
+    echo -e "\e[95m  3)\e[0m \e[92mi3\e[0m         Install i3 window manager                \e[0m"
+    echo -e "\e[95m  4)\e[0m \e[92mlink\e[0m       Create symlinks for dotfiles             \e[0m"
+    echo -e "\e[95m  5)\e[0m \e[91mexit\e[0m       Exit the setup                           \e[0m"
     echo -e ""
-    echo -e "\e[34m> Enter your choice (1-7): \e[0m"
+    echo -e "\e[34m> Enter your choice (1-5): \e[0m"
 }
 
 ask_continue() {
@@ -143,7 +142,7 @@ while true; do
             break
         fi
         ;;
-    4 | i3)
+    3 | i3)
         log "Starting i3 configuration..." 0
         install_with_yay "i3 picom polybar rofi xwallpaper xorg-xinput"
 
@@ -192,12 +191,12 @@ while true; do
             break
         fi
         ;;
-    6 | exit)
+    5 | exit)
         echo -e "\e[32mExiting setup. Goodbye!\e[0m"
         exit 0
         ;;
     *)
-        log "Invalid option. Please choose 1-7." 2
+        log "Invalid option. Please choose 1-5." 2
         ;;
     esac
 done
