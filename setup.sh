@@ -53,13 +53,12 @@ install_with_yay() {
 show_menu() {
     echo -e "\e[34m> Available Options \e[0m"
     echo -e ""
-    echo -e "\e[95m  1)\e[0m \e[92WSL\e[0m    Install WSL packages                  \e[0m"
+    echo -e "\e[95m  1)\e[0m \e[92 WSL\e[0m    Install WSL packages                  \e[0m"
     echo -e "\e[95m  2)\e[0m \e[92mfull\e[0m       Install all packages (pkg + AUR)         \e[0m"
     echo -e "\e[95m  3)\e[0m \e[92mhypr\e[0m       Install Hyprland window manager          \e[0m"
     echo -e "\e[95m  4)\e[0m \e[92mi3\e[0m         Install i3 window manager                \e[0m"
     echo -e "\e[95m  5)\e[0m \e[92mlink\e[0m       Create symlinks for dotfiles             \e[0m"
-    echo -e "\e[95m  6)\e[0m \e[92mlink_wsl\e[0m  Create WSL symlinks only              \e[0m"
-    echo -e "\e[95m  7)\e[0m \e[91mexit\e[0m       Exit the setup                           \e[0m"
+    echo -e "\e[95m  6)\e[0m \e[91mexit\e[0m       Exit the setup                           \e[0m"
     echo -e ""
     echo -e "\e[34m> Enter your choice (1-7): \e[0m"
 }
@@ -86,7 +85,9 @@ while true; do
     case "$choice" in
     1 | wsl)
         log "Installing WSL packages..." 0
-        install_with_yay $(cat ~/dotfiles/minimal.list)
+        sudo apt update && sudo apt install -y $(cat ~/dotfiles/wsl.list)
+        snap install atuin
+        snap install yazi
         log "WSL packages installed!" 0
         if ! ask_continue; then
             echo -e "\e[32mSetup completed. Goodbye!\e[0m"
@@ -103,6 +104,8 @@ while true; do
         rm -rf -- ~/.config/gh && ln -sfn ~/dotfiles/gh ~/.config/gh
 
         source ~/.bashrc
+        sudo timedatectl set-timezone Etc/GMT-3
+        tmux source-file ~/.tmux.conf
         
         log "WSL symlinks created!" 0
         if ! ask_continue; then

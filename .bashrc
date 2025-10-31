@@ -117,3 +117,8 @@ if ! shopt -oq posix; then
 fi
 
 eval "$(starship init bash)"
+
+# Auto-start tmux if not already in a tmux session
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    exec tmux
+fi
