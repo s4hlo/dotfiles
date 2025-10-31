@@ -1,14 +1,11 @@
 acpi
 bat
-cmake
 curl
+cmake
 eza
-git
 git-delta
 jq
 less
-meson
-ncdu
 pkgconf
 ripgrep
 shfmt
