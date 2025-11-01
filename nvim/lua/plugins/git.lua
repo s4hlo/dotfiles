@@ -9,7 +9,7 @@ return {
 			"nvim-telescope/telescope.nvim", -- optional
 			"ibhagwan/fzf-lua", -- optional
 			"echasnovski/mini.pick", -- optional
-			"folke/snacks.nvim", -- optional
+			-- "folke/snacks.nvim", -- optional
 		},
 	},
 	{ "akinsho/git-conflict.nvim", version = "*", config = true },

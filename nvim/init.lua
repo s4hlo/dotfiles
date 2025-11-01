@@ -14,15 +14,17 @@ Plugin("filetype.nest")
 -- TODO need to make prettier work anyway !!!
 -- Plugin("filetype.prettier")  
 
+-- Plugin("avante")
+-- Plugin("dap")
+-- Plugin("copilot")
+
+Plugin("transparent") -- theme
+Plugin("faster")
 Plugin("autopairs")
-Plugin("avante")
 Plugin("cmp")
 Plugin("colorizer")
 Plugin("colorscheme") -- theme
 Plugin("comment")
-Plugin("copilot")
-Plugin("dap")
-Plugin("faster")
 Plugin("git")
 Plugin("glance")
 Plugin("illuminate")
@@ -37,7 +39,6 @@ Plugin("notify")
 Plugin("null-ls")
 Plugin("telescope")
 Plugin("tmux")
-Plugin("transparent") -- theme
 Plugin("treesitter")
 Plugin("ufo")
 Plugin("whichkey") -- I was wrong, this is very essencial

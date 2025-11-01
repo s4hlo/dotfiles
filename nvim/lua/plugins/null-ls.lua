@@ -15,7 +15,7 @@ function M.config()
 		debug = true,
 		sources = {
 			-- CONFIG TOOL -
-			formatting.clang_format,
+			-- formatting.clang_format,
 			formatting.stylua,
 			formatting.bashls,
 			formatting.prettier.with({

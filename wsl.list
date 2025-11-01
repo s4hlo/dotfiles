@@ -1,5 +1,6 @@
 acpi
 bat
+fzf
 curl
 cmake
 eza
