@@ -1,7 +1,7 @@
 [user]
     name = s4hlo 
     email = rafael.nunes@tarken.ag
-    signingkey = 0aa7718241314113
+    signingkey = F1B909D2A450B4F7
 
 [core]
     ; @target
@@ -42,4 +42,4 @@
     conflictstyle = zdiff3
 
 [commit]
-    gpgsign = false
+    gpgsign = true
