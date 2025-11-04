@@ -50,7 +50,7 @@ local M = {
 }
 
 -- molten
-SelectNextPythonCodeBlock = function()
+SelectNextPythonCodeBlock2 = function()
 	local save_cursor = vim.api.nvim_win_get_cursor(0)
 	local current_line = save_cursor[1]
 
@@ -67,6 +67,31 @@ SelectNextPythonCodeBlock = function()
 	else
 		vim.api.nvim_win_set_cursor(0, save_cursor)
 	end
+end
+
+SelectNextPythonCodeBlock = function()
+	local save_cursor = vim.api.nvim_win_get_cursor(0)
+	local current_line = save_cursor[1]
+	local last_line = vim.api.nvim_buf_line_count(0)
+
+	-- Procura a célula atual ou a próxima
+	local start_line = vim.fn.search("^# %%%%", "nW", current_line)
+	if start_line == 0 then
+		-- Se não achar nenhuma célula à frente, mantém a posição
+		vim.api.nvim_win_set_cursor(0, save_cursor)
+		return
+	end
+
+	-- Procura a próxima célula para determinar o fim
+	local end_line = vim.fn.search("^# %%%%", "nW", start_line + 1)
+	if end_line == 0 then
+		end_line = last_line + 1 -- seleciona até o final do arquivo
+	end
+
+	-- Seleciona a célula
+	vim.api.nvim_win_set_cursor(0, { start_line + 1, 0 })
+	vim.cmd("normal! V")
+	vim.api.nvim_win_set_cursor(0, { end_line - 1, 0 })
 end
 
 function M.config()

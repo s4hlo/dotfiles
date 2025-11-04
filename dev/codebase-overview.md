@@ -62,6 +62,7 @@ The Neovim setup uses a modular Lua-based plugin system:
 - Custom plugins for file types (markdown, nest)
 - Mason for LSP server management
 - null-ls for additional tooling integration
+- Molten for interactive Jupyter kernel execution (see `dev/molten.md`)
 
 ### Theme Consistency
 

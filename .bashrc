@@ -2,6 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+bind '"\t":menu-complete'
+bind '"\e[Z":menu-complete-backward'
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;

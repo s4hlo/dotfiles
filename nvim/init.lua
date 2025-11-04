@@ -5,7 +5,7 @@ require("user.autocmds")
 
 -- Uncomment this as you need support for different filetypes
 -- TODO make this ft detection automatic
--- Plugin("filetype.molten")
+Plugin("filetype.molten")
 -- Plugin("image") -- rage comment
 -- Plugin("filetype.obsidian")
 Plugin("filetype.markdown")

@@ -42,4 +42,4 @@
     conflictstyle = zdiff3
 
 [commit]
-    gpgsign = true
+    gpgsign = false

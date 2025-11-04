@@ -43,6 +43,12 @@ else
     curl https://cursor.com/install -fsS | bash
 fi
 
+if command -v gemini >/dev/null 2>&1; then
+    echo "gemini $(gemini --version)"
+else
+    npm install -g @google/gemini-cli
+fi
+
 log "WSL packages installed!" 0
 
 log "Creating WSL symlinks..." 0
