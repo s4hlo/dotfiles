@@ -1,6 +1,15 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+# Ignora a diferença entre maiúsculas e minúsculas ao completar (case-insensitive)
+bind 'set completion-ignore-case on'
+
+# Permite que o autocompletar comece no meio do caminho, não apenas no início
+bind 'set show-all-if-ambiguous on'
+
+# Permite usar as setas (cima/baixo) para navegar no histórico começando com o que foi digitado
+bind '"\C-p": history-search-backward'
+bind '"\C-n": history-search-forward'
 
 bind '"\t":menu-complete'
 bind '"\e[Z":menu-complete-backward'
@@ -131,3 +140,29 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$HOME/.local/bin:$PATH"
+
+# Aliases from .zshrc
+if command -v bat &> /dev/null; then
+  alias cat="bat"
+else
+  alias cat="cat"  # or whatever fallback you prefer
+fi
+
+if command -v eza &> /dev/null; then
+  alias ls="eza --icons=always"
+else
+  alias ls="ls"  # or whatever fallback you prefer
+fi
+
+alias tks="tmux kill-session -t"
+alias dot='cd ~/dotfiles'
+alias vault='cd ~/vault'
+alias tarken='cd ~/dev/tarken'
+alias hs='cd ~/dev/tarken/hub-server'
+alias hw='cd ~/dev/tarken/hub-web-client'
+alias setup='~/dotfiles/setup.sh'
+alias b='~/notes/brg.sh'
+alias cal='calcurse -D ~/dev/calendar'
+alias pomo='~/dotfiles/pomo.sh'
+alias dbdev="pgcli -h $DB_DEV_HOST -p 5432 -U hub -d hubDB-dev"
+alias dbprod="pgcli -h $DB_PROD_HOST -p 5432 -U hub -d hubDB-prod"
