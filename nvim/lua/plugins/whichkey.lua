@@ -134,7 +134,7 @@ function M.config()
 
 	local lps_keys = {
 		{ "<leader>l", group = "LSP", mode = { "n", "v" } },
-		{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", mode = "v" },
+    { "<leader>lw", "<cmd>%s/\r//g<cr>", desc = "Remove ^M characters", mode = "v" },
 		{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", mode = "n" },
 		{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename", mode = "n" },
 		{ "<leader>lh", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "Diagnostics", mode = "n" },

@@ -19,10 +19,15 @@ function N.config()
 	})
 end
 
+local J = {
+	"karb94/neoscroll.nvim",
+	opts = {},
+}
+
 local M = {
 	"pteroctopus/faster.nvim",
 }
 
 function M.config() require("faster").setup({}) end
 
-return N
+return { N, J }
