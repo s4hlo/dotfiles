@@ -210,7 +210,6 @@ M.config = function()
 		commands = {},
 		window = {
 			position = require("user.config").clean and "left" or "current",
-			"current",
 			width = 40,
 			mapping_options = {
 				noremap = true,
@@ -334,7 +333,6 @@ M.config = function()
 					["<c-x>"] = "clear_filter",
 					["[g"] = "prev_git_modified",
 					["]g"] = "next_git_modified",
-					["h"] = "close",
 					["l"] = "open",
 					["o"] = {
 						"show_help",

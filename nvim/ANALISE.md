@@ -28,7 +28,7 @@ Sua configuração do Neovim demonstra uma base sólida e bem estruturada, com f
 - **Noice**: UI moderna para mensagens e cmdline
 - **Which-key**: Keymaps bem organizados em grupos (Find, LSP, Git, AI)
 - **Neo-tree**: File explorer completo com múltiplas fontes (filesystem, buffers, git_status, symbols)
-- **AI Integration**: Avante.nvim e Sidekick.nvim configurados para assistência de IA com múltiplos provedores (Claude, Moonshot)
+- **AI Integration**: Sidekick.nvim configurado para assistência de IA via CLI com integração tmux
 - **LSP Keymaps**: Keymap `<leader>lw` para remover caracteres ^M em modo visual
 
 ### 4. **Customizações Inteligentes**
@@ -38,7 +38,7 @@ Sua configuração do Neovim demonstra uma base sólida e bem estruturada, com f
 - **Statusline**: Lualine com tema customizado, suporte a modo "clean", integração com copilot
 
 ### 5. **Workflows Específicos**
-- **AI**: Avante.nvim com keymaps em `<leader>a*` para interação com IA, sidekick para CLI integration
+- **AI**: Sidekick.nvim com keymaps em `<leader>a*` para interação com IA via CLI (toggle, select, send, prompt)
 - **Markdown**: Suporte a markdown com plugins específicos
 
 ---
@@ -46,22 +46,20 @@ Sua configuração do Neovim demonstra uma base sólida e bem estruturada, com f
 ## ⚠️ Pontos Fracos e Melhorias
 
 ### 1. **TODOs e Código Incompleto**
-- **`init.lua` linha 6**: TODO sobre prettier (prettier agora configurado no none-ls, mas TODO permanece)
-- **`init.lua` linha 22**: TODO sobre refatoração do lspconfig
+- **`init.lua` linha 20**: TODO sobre refatoração do lspconfig
 - **`whichkey.lua` linha 21**: TODO sobre melhorar função de document symbols
 
 ### 2. **Configurações Questionáveis**
 - **`null-ls.lua`**: Plugin migrado para `none-ls.nvim` mas ainda usa `require("null-ls")` internamente (compatível, mas pode ser confuso)
 - **`lspconfig.lua`**: Uso de `vim.lsp.config()` e `vim.lsp.enable()` - API nova do Neovim, TODO sobre refatoração permanece
 - **`treesitter.lua` linha 33**: `sync_install = true` pode tornar inicialização mais lenta
-- **`cmp.lua`**: Muitas fontes de completion podem causar poluição (tabnine, crates, tmux, calc, emoji, treesitter) - 10+ fontes ativas
-- **`ai.lua`**: Retorna apenas `N` (sidekick), `M` (avante) não está sendo retornado - pode causar problema de carregamento
+- **`cmp.lua`**: Muitas fontes de completion podem causar poluição (tabnine, crates, tmux, calc, emoji, treesitter) - 11 fontes ativas
 
 ### 3. **Inconsistências**
-- **`neo-tree.lua` linha 212-213**: Posição duplicada `"current"` após condicional (linha 212 tem condicional, linha 213 tem string solta)
+- **`neo-tree.lua` linha 212-213**: Posição duplicada `"current"` após condicional (linha 212 tem condicional, linha 213 tem string solta `"current"` que não faz parte da configuração)
 
 ### 4. **Performance e Otimização**
-- **Muitas fontes de completion**: `cmp.lua` tem 10+ fontes, algumas podem ser desnecessárias
+- **Muitas fontes de completion**: `cmp.lua` tem 11 fontes ativas, algumas podem ser desnecessárias
 - **Treesitter sync_install**: Pode bloquear inicialização em projetos grandes
 - **UFO provider**: Usa LSP + indent, pode ser pesado em arquivos grandes
 - **Neo-tree**: `follow_current_file` habilitado pode causar atualizações frequentes
@@ -76,17 +74,17 @@ Sua configuração do Neovim demonstra uma base sólida e bem estruturada, com f
 ## 🔧 Recomendações Específicas
 
 ### Prioridade Alta
-1. **Resolver prettier**: Remover TODO em `init.lua` linha 6 já que prettier está configurado no none-ls
-2. **Corrigir neo-tree.lua**: Remover linha 213 duplicada `"current"`
+1. **Corrigir neo-tree.lua**: Remover linha 213 duplicada `"current"` (string solta após configuração de position)
 
 ### Prioridade Média
-4. **Refatorar lspconfig**: Resolver TODO linha 22, verificar se nova API `vim.lsp.config()` está estável ou considerar migração
-5. **Otimizar completion**: Reduzir fontes de completion não essenciais (emoji, calc, tmux) se causar lentidão
-6. **Melhorar documentação**: Adicionar comentários em configurações complexas (especialmente ai.lua e lspconfig)
+2. **Refatorar lspconfig**: Resolver TODO linha 20, verificar se nova API `vim.lsp.config()` está estável ou considerar migração
+3. **Otimizar completion**: Reduzir fontes de completion não essenciais (emoji, calc, tmux) se causar lentidão - atualmente 11 fontes ativas
+4. **Melhorar documentação**: Adicionar comentários em configurações complexas (especialmente ai.lua e lspconfig)
+5. **Resolver TODO whichkey**: Melhorar função de document symbols em `whichkey.lua` linha 21
 
 ### Prioridade Baixa
-7. **Avaliar sync_install**: Considerar `sync_install = false` para treesitter
-8. **Revisar keymaps**: Consolidar keymaps duplicados ou pouco usados
+6. **Avaliar sync_install**: Considerar `sync_install = false` para treesitter (linha 33) para melhorar tempo de inicialização
+7. **Revisar keymaps**: Consolidar keymaps duplicados ou pouco usados
 
 ---
 
@@ -104,10 +102,10 @@ Sua configuração do Neovim demonstra uma base sólida e bem estruturada, com f
 
 ## 💡 Observações Finais
 
-Sua configuração demonstra conhecimento avançado do Neovim e das melhores práticas. A escolha de plugins é moderna e bem pensada, incluindo integração com IA (Avante/Sidekick). Os principais pontos de melhoria são:
+Sua configuração demonstra conhecimento avançado do Neovim e das melhores práticas. A escolha de plugins é moderna e bem pensada, incluindo integração com IA (Sidekick.nvim). Os principais pontos de melhoria são:
 
-1. **Corrigir bugs críticos** (ai.lua retornando apenas um plugin, neo-tree com posição duplicada)
-2. **Completar TODOs** pendentes (prettier, lspconfig refactor, document symbols)
-3. **Otimizar performance** (completion sources, sync installs)
+1. **Corrigir bugs críticos** (neo-tree com posição duplicada na linha 213)
+2. **Completar TODOs** pendentes (lspconfig refactor linha 20, document symbols linha 21 em whichkey)
+3. **Otimizar performance** (11 fontes de completion ativas, sync_install em treesitter)
 
 A base está excelente - são ajustes pontuais que vão elevar a configuração de "muito boa" para "excepcional".

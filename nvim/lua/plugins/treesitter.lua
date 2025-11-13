@@ -30,7 +30,7 @@ function M.config()
 		}, -- put the language you want in this array
 		ignore_install = { "" },
 		auto_install = true,
-		sync_install = true,
+		sync_install = false, -- Changed to false for faster startup time
 
 		highlight = {
 			enable = true,
