@@ -1,7 +1,7 @@
 [user]
     name = s4hlo 
     email = rafael.nunes@tarken.ag
-    signingkey = F1B909D2A450B4F7
+    signingkey = "add your key"
 
 [core]
     ; @target
