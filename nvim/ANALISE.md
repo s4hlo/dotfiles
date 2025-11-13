@@ -59,7 +59,6 @@ Sua configuração do Neovim demonstra uma base sólida e bem estruturada, com f
 
 ### 3. **Inconsistências**
 - **`neo-tree.lua` linha 212-213**: Posição duplicada `"current"` após condicional (linha 212 tem condicional, linha 213 tem string solta)
-- **`lualine.lua`**: Lógica condicional complexa para tema que poderia ser simplificada
 
 ### 4. **Performance e Otimização**
 - **Muitas fontes de completion**: `cmp.lua` tem 10+ fontes, algumas podem ser desnecessárias
@@ -86,9 +85,8 @@ Sua configuração do Neovim demonstra uma base sólida e bem estruturada, com f
 6. **Melhorar documentação**: Adicionar comentários em configurações complexas (especialmente ai.lua e lspconfig)
 
 ### Prioridade Baixa
-7. **Simplificar lualine**: Reduzir complexidade da lógica condicional de tema
-8. **Avaliar sync_install**: Considerar `sync_install = false` para treesitter
-9. **Revisar keymaps**: Consolidar keymaps duplicados ou pouco usados
+7. **Avaliar sync_install**: Considerar `sync_install = false` para treesitter
+8. **Revisar keymaps**: Consolidar keymaps duplicados ou pouco usados
 
 ---
 
