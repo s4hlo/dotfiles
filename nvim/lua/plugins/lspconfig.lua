@@ -36,7 +36,6 @@ function M.common_capabilities()
 end
 
 function M.config()
-	local lspconfig = vim.lsp.config
 	local icons = require("user.icons")
 
 	local servers = {
@@ -88,11 +87,14 @@ function M.config()
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = require("user.config").border })
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = require("user.config").border })
-	require("lspconfig.ui.windows").default_options.border = require("user.config").border
+	local ok, lspconfig_ui = pcall(require, "lspconfig.ui.windows")
+	if ok then
+		lspconfig_ui.default_options.border = require("user.config").border
+	end
 
+	-- Configure each server using the new API: vim.lsp.config('server_name', {...})
 	for _, server in pairs(servers) do
 		local opts = {
-			on_attach = M.on_attach,
 			capabilities = M.common_capabilities(),
 			init_options = {
 				preferences = {
@@ -102,26 +104,26 @@ function M.config()
 			},
 		}
 
+		-- Special handling for pyright
+		if server == "pyright" then
+			opts.settings = {
+				python = {
+					analysis = {
+						diagnosticSeverityOverrides = {
+							reportUnusedExpression = "none",
+							reportAttributeAccessIssue = "none",
+						},
+					},
+				},
+			}
+		end
+
 		local require_ok, settings = pcall(require, "user.lspsettings." .. server)
 		if require_ok then opts = vim.tbl_deep_extend("force", settings, opts) end
 
-		lspconfig[server].setup(opts)
+		vim.lsp.config(server, opts)
+		vim.lsp.enable(server)
 	end
-
-	require("lspconfig")["pyright"].setup({
-		on_attach = M.on_attach,
-		capabilities = M.common_capabilities(),
-		settings = {
-			python = {
-				analysis = {
-					diagnosticSeverityOverrides = {
-						reportUnusedExpression = "none",
-						reportAttributeAccessIssue = "none",
-					},
-				},
-			},
-		},
-	})
 end
 
 return { M, N }

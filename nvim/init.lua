@@ -3,21 +3,11 @@ require("user.options")
 require("user.keymaps")
 require("user.autocmds")
 
--- Uncomment this as you need support for different filetypes
--- TODO make this ft detection automatic
-Plugin("filetype.molten")
--- Plugin("image") -- rage comment
--- Plugin("filetype.obsidian")
-Plugin("filetype.markdown")
-Plugin("filetype.nest")
-
 -- TODO need to make prettier work anyway !!!
 -- Plugin("filetype.prettier")  
-
--- Plugin("avante")
--- Plugin("dap")
--- Plugin("copilot")
-
+Plugin("filetype.markdown")
+Plugin("filetype.nest")
+Plugin("copilot")
 Plugin("transparent") -- theme
 Plugin("faster")
 Plugin("autopairs")
