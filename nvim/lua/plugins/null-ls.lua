@@ -2,9 +2,7 @@ local M = {
 	"nvimtools/none-ls.nvim",
 }
 
-local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
 local event = "BufWritePre" -- or "BufWritePost"
-local async = event == "BufWritePost"
 
 function M.config()
 	local null_ls = require("null-ls")
@@ -12,7 +10,7 @@ function M.config()
 	local formatting = null_ls.builtins.formatting
 
 	null_ls.setup({
-		debug = true,
+		debug = false,
 		sources = {
 			-- CONFIG TOOL -
 			-- formatting.clang_format,

@@ -1,3 +1,4 @@
+-- IMPORTANT: is not necessary a plugin is installed and enabled to have their keymaps here
 local neotree_key = require("user.config").clean
 		and {
 			{
