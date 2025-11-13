@@ -214,8 +214,8 @@ function M.config()
 	}
 
 	which_key.add(ai_keys)
-	which_key.add(molten_keys)
-	which_key.add(debug_keys)
+	-- which_key.add(molten_keys)
+	-- which_key.add(debug_keys)
 
 	which_key.add(find_keys)
 	which_key.add(lps_keys)
