@@ -1,5 +1,7 @@
 /nvim-linux64
 
+.gitconfig
+
 /nvim/lazy-lock.json
 
 /gh/hosts.yml
