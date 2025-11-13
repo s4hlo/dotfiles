@@ -77,9 +77,7 @@ function M.config()
 
 	local find_keys = {
 		{ "<leader>f", group = "Find" },
-		-- { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File", mode = "n" },
 		{ "<leader>fb", "<cmd>Telescope buffers previewer=false<cr>", desc = "Buffers", mode = "n" },
-		-- { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find Text", mode = "n" },
 		{ "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Find String", mode = "n" },
 		{ "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search", mode = "n" },
 		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File", mode = "n" },

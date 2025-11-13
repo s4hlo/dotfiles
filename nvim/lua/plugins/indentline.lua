@@ -1,8 +1,3 @@
--- local N = {
---   "lukas-reineke/indent-blankline.nvim",
---   event = "VeryLazy",
--- }
-
 local M = { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }
 
 local highlight = {
@@ -34,7 +29,6 @@ function M.config()
 
 	require("ibl").setup({
 		indent = {
-			-- char = icons.ui.LineLeft,
 			char = icons.ui.LineMiddle,
 		},
 		exclude = {

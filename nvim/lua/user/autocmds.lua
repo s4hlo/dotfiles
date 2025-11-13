@@ -20,10 +20,3 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     ]])
 	end,
 })
-
--- vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
--- 	pattern = { "*" },
--- 	callback = function()
--- 		vim.cmd("checktime")
--- 	end,
--- })

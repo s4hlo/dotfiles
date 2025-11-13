@@ -3,8 +3,6 @@ require("user.options")
 require("user.keymaps")
 require("user.autocmds")
 
--- TODO need to make prettier work anyway !!!
--- Plugin("filetype.prettier")  
 Plugin("filetype.markdown")
 Plugin("filetype.nest")
 Plugin("ai")
