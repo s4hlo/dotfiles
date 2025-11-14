@@ -39,7 +39,6 @@ function M.config()
 	local icons = require("user.icons")
 
 	local servers = {
-		"jdtls",
 		"cssls",
 		"html",
 		"ts_ls",
@@ -51,7 +50,6 @@ function M.config()
 		"marksman",
 		"tailwindcss",
 		"lua_ls",
-		"clangd",
 		-- + add more servers here as needed
 	}
 
