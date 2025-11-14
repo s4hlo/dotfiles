@@ -9,36 +9,21 @@ function M.config()
 	local colors = require("user.colors")
 
 	local theme = function()
-		local colors_lualine = {
-				blue = nil,
-				green = nil,
-				purple = nil,
-				cyan = nil,
-				red1 = nil,
-				red2 = colors.red,
-				yellow = nil,
-				bg = nil,
-				fg = colors.background,
-				gray1 = nil,
-				gray2 = nil,
-				gray3 = nil,
-			}
-
 		return {
 			normal = {
-				a = { fg = colors_lualine.bg, bg = colors_lualine.green, gui = "bold" },
-				b = { fg = colors_lualine.fg, bg = colors_lualine.gray3 },
-				c = { fg = colors_lualine.c_fg, bg = colors_lualine.gray2 },
+				a = { fg = nil, bg = nil, gui = "bold" },
+				b = { fg = colors.background, bg = nil },
+				c = { fg = nil, bg = nil },
 			},
-			command = { a = { fg = colors_lualine.bg, bg = colors_lualine.yellow, gui = "bold" } },
-			insert = { a = { fg = colors_lualine.bg, bg = colors_lualine.blue, gui = "bold" } },
-			visual = { a = { fg = colors_lualine.bg, bg = colors_lualine.purple, gui = "bold" } },
-			terminal = { a = { fg = colors_lualine.bg, bg = colors_lualine.cyan, gui = "bold" } },
-			replace = { a = { fg = colors_lualine.bg, bg = colors_lualine.red1, gui = "bold" } },
+			command = { a = { fg = nil, bg = nil, gui = "bold" } },
+			insert = { a = { fg = nil, bg = nil, gui = "bold" } },
+			visual = { a = { fg = nil, bg = nil, gui = "bold" } },
+			terminal = { a = { fg = nil, bg = nil, gui = "bold" } },
+			replace = { a = { fg = nil, bg = nil, gui = "bold" } },
 			inactive = {
-				a = { fg = colors_lualine.gray1, bg = colors_lualine.bg, gui = "bold" },
-				b = { fg = colors_lualine.gray1, bg = colors_lualine.bg },
-				c = { fg = colors_lualine.gray1, bg = colors_lualine.gray2 },
+				a = { fg = nil, bg = nil, gui = "bold" },
+				b = { fg = nil, bg = nil },
+				c = { fg = nil, bg = nil },
 			},
 		}
 	end
