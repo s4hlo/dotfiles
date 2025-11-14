@@ -43,7 +43,6 @@ function M.config()
 		"html",
 		"ts_ls",
 		"astro",
-		"pyright",
 		"jsonls",
 		"bashls",
 		"yamlls",
@@ -90,7 +89,6 @@ function M.config()
 		lspconfig_ui.default_options.border = "rounded"
 	end
 
-	-- Configure each server using the new API: vim.lsp.config('server_name', {...})
 	for _, server in pairs(servers) do
 		local opts = {
 			capabilities = M.common_capabilities(),
@@ -101,20 +99,6 @@ function M.config()
 				},
 			},
 		}
-
-		-- Special handling for pyright
-		if server == "pyright" then
-			opts.settings = {
-				python = {
-					analysis = {
-						diagnosticSeverityOverrides = {
-							reportUnusedExpression = "none",
-							reportAttributeAccessIssue = "none",
-						},
-					},
-				},
-			}
-		end
 
 		local require_ok, settings = pcall(require, "user.lspsettings." .. server)
 		if require_ok then opts = vim.tbl_deep_extend("force", settings, opts) end
