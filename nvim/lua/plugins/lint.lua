@@ -1,8 +1,8 @@
-
 local M = {
 	"mfussenegger/nvim-lint",
 	opts = {},
 }
--- configure this for ESlint
+
+function M.config() require("conform").setup({}) end
 
 return M
