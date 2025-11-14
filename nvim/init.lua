@@ -35,5 +35,6 @@ Plugin("faster")
 Plugin("noice")
 Plugin("notify")
 Plugin("tmux")
+Plugin("flash")
 
 require("user.lazy")
