@@ -59,7 +59,7 @@ function M.config()
 		{
 			"<leader>lf",
 			function()
-				vim.lsp.buf.format({
+				require("conform").format({
 					async = false,
 				})
 			end,

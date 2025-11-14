@@ -28,6 +28,8 @@ Plugin("comment")
 Plugin("marks")
 Plugin("lualine")
 Plugin("ufo")
+Plugin("conform")
+Plugin("lint")
 
 -- Quality of Life
 Plugin("autopairs")
