@@ -60,13 +60,10 @@ function M.config()
 			"<leader>lf",
 			function()
 				vim.lsp.buf.format({
-					filter = function(cliente)
-						return cliente.name == "null-ls" --this ensures null_ls client is called to format, not normal LspFormatting
-					end,
 					async = false,
 				})
 			end,
-			desc = "Format (null-ls only)",
+			desc = "Format",
 			mode = "n",
 		},
 	}

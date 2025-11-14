@@ -4,7 +4,6 @@ local M = {
 
 function M.config()
 	local actions = require("glance").actions
-	-- local actions = require('glance').actions
 
 	require("glance").setup({
 

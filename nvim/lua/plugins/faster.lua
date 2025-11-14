@@ -24,10 +24,4 @@ local J = {
 	opts = {},
 }
 
-local M = {
-	"pteroctopus/faster.nvim",
-}
-
-function M.config() require("faster").setup({}) end
-
 return { N, J }
