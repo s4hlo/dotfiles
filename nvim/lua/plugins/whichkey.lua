@@ -1,37 +1,4 @@
--- IMPORTANT: is not necessary a plugin is installed and enabled to have their keymaps here
-local neotree_key = require("user.config").clean
-		and {
-			{
-				"<A-e>",
-				function()
-					if vim.bo.filetype == "neo-tree" then
-						vim.cmd("wincmd p")
-					else
-						-- run twice to when symbols is not the current tab
-						vim.cmd("Neotree")
-						vim.cmd("Neotree")
-					end
-				end,
-				desc = "Explorer (clean)",
-				mode = "n",
-			},
-			{ "<C-p>", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File", mode = "n" },
-			{ "<A-f>", "<cmd>Telescope live_grep<cr>", desc = "Find Text", mode = "n" },
-			{
-				"<A-s>",
-				function()
-					if vim.bo.filetype == "neo-tree" then
-						vim.cmd("wincmd p")
-					else
-						-- Use float toggle for consistency with non-clean mode
-						vim.cmd("Neotree float toggle document_symbols")
-					end
-				end,
-				desc = "Document Symbols (clean)",
-				mode = "n",
-			},
-		}
-	or {
+local neotree_key = {
 		{ "<C-p>", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File", mode = "n" },
 		{ "<A-f>", "<cmd>Telescope live_grep<cr>", desc = "Find Text", mode = "n" },
 		{ "<A-e>", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
@@ -42,11 +9,7 @@ local neotree_key = require("user.config").clean
 local M = {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
-	opts = {
-		-- your configuration comes here
-		-- or leave it empty to use the default settings
-		-- refer to the configuration section below
-	},
+	opts = {},
 	keys = neotree_key,
 }
 
@@ -60,7 +23,7 @@ function M.config()
 			{ "z", mode = { "n", "v" } },
 		},
 		win = {
-			border = require("user.config").border,
+			border = "rounded",
 		},
 		disable = {
 			buftypes = {},

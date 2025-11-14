@@ -30,7 +30,7 @@ require("user.options")
 -- Setup lazy.nvim
 require("lazy").setup({
 	ui = {
-		border = require("user.config").border,
+		border = "rounded",
 	},
 	spec = LAZY_PLUGIN_SPEC,
 	-- automatically check for plugin updates

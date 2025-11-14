@@ -9,22 +9,7 @@ function M.config()
 	local colors = require("user.colors")
 
 	local theme = function()
-		local colors_lualine = require("user.config").clean
-				and {
-					blue = colors.blue,
-					green = colors.green,
-					purple = colors.purple,
-					cyan = colors.cyan,
-					red1 = colors.red,
-					c_fg = colors.white,
-					yellow = colors.yellow,
-					fg = colors.white,
-					bg = colors.surface,
-					gray1 = colors.surface2,
-					gray2 = nil,
-					gray3 = colors.surface,
-				}
-			or {
+		local colors_lualine = {
 				blue = nil,
 				green = nil,
 				purple = nil,
@@ -91,53 +76,7 @@ function M.config()
 		show_loading = true,
 	}
 
-	local _sections = require("user.config").clean
-			and {
-				lualine_a = { "mode" },
-				lualine_b = {
-					"branch",
-					"diff",
-				},
-				lualine_c = {
-					{
-						"filename",
-						file_status = true, -- Displays file status (readonly status, modified status)
-						newfile_status = false, -- Display new file status (new file means no write after created)
-						path = 0, -- 0: Just the filename
-						-- 1: Relative path
-						-- 2: Absolute path
-						-- 3: Absolute path, with tilde as the home directory
-						-- 4: Filename and parent dir, with tilde as the home directory
-
-						shorting_target = 40, -- Shortens path to leave 40 spaces in the window
-						-- for other components. (terrible name, any suggestions?)
-						symbols = {
-							modified = "", -- Text to show when the file is modified.
-							readonly = "", -- Text to show when the file is non-modifiable or readonly.
-							unnamed = "[No Name]", -- Text to show for unnamed buffers.
-							newfile = "*", -- Text to show for newly created file before first write
-						},
-					},
-				},
-				lualine_x = {
-					"diagnostics",
-					copilotStatus,
-				},
-				lualine_y = {
-					isRecording,
-					{ "encoding" },
-					{ "fileformat" },
-					{ "filetype", icon_only = false },
-				},
-				lualine_z = { "progress" },
-			}
-		-- lualine_a = {'mode'},
-		-- lualine_b = {'branch', 'diff', 'diagnostics'},
-		-- lualine_c = {'filename'},
-		-- lualine_x = {'encoding', 'fileformat', 'filetype'},
-		-- lualine_y = {'progress'},
-		-- lualine_z = {'location'}
-		or {
+	local _sections = {
 			lualine_a = {
 				{ "filetype", icon_only = true },
 				{

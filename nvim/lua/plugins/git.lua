@@ -69,7 +69,7 @@ return {
 				update_debounce = 200,
 				max_file_length = 40000,
 				preview_config = {
-					border = require("user.config").border,
+					border = "rounded",
 					style = "minimal",
 					relative = "cursor",
 					row = 0,

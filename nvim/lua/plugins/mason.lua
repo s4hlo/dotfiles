@@ -11,7 +11,7 @@ local M = {
 function M.config()
 	require("mason").setup({
 		ui = {
-			border = require("user.config").border,
+			border = "rounded",
 		},
 	})
 	require("mason-lspconfig").setup({

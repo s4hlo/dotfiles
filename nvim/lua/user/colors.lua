@@ -16,11 +16,12 @@ local TelescopeColor = {
 	TelescopePreviewTitle = { bg = mocha.green, fg = mocha.mantle },
 }
 
-if require("user.config").border ~= "rounded" then
-	for hl, col in pairs(TelescopeColor) do
-		vim.api.nvim_set_hl(0, hl, col)
-	end
-end
+-- Border is always rounded, so this condition is never true
+-- if "rounded" ~= "rounded" then
+-- 	for hl, col in pairs(TelescopeColor) do
+-- 		vim.api.nvim_set_hl(0, hl, col)
+-- 	end
+-- end
 
 local colors = {
 	white = mocha.text or "#cdd6f5",

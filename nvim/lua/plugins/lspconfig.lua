@@ -70,7 +70,7 @@ function M.config()
 		float = {
 			focusable = true,
 			style = "minimal",
-			border = require("user.config").border,
+			border = "rounded",
 			source = "always",
 			header = "",
 			prefix = "",
@@ -83,11 +83,11 @@ function M.config()
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
 	end
 
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = require("user.config").border })
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = require("user.config").border })
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 	local ok, lspconfig_ui = pcall(require, "lspconfig.ui.windows")
 	if ok then
-		lspconfig_ui.default_options.border = require("user.config").border
+		lspconfig_ui.default_options.border = "rounded"
 	end
 
 	-- Configure each server using the new API: vim.lsp.config('server_name', {...})
