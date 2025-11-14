@@ -7,9 +7,9 @@ local N = {
 				backend = "tmux",
 				enabled = true,
 			},
-		},
-		prompts = {
-			commit = "Run 'git --no-pager diff --staged' and return ONLY an appropriate commit message (short, in English, and following Conventional Commits)",
+			prompts = {
+				commit = "Run 'git --no-pager diff --staged' and generate an appropriate commit message (short, in English, and following Conventional Commits), then sugest me to run the command 'git commit -m <MESSAGE>', ONLY this nothing more",
+			},
 		},
 	},
 	keys = {
