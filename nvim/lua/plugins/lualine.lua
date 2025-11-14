@@ -8,24 +8,28 @@ local M = {
 function M.config()
 	local colors = require("user.colors")
 
+	local theme_cache = nil
 	local theme = function()
-		return {
-			normal = {
-				a = { fg = nil, bg = nil, gui = "bold" },
-				b = { fg = colors.background, bg = nil },
-				c = { fg = nil, bg = nil },
-			},
-			command = { a = { fg = nil, bg = nil, gui = "bold" } },
-			insert = { a = { fg = nil, bg = nil, gui = "bold" } },
-			visual = { a = { fg = nil, bg = nil, gui = "bold" } },
-			terminal = { a = { fg = nil, bg = nil, gui = "bold" } },
-			replace = { a = { fg = nil, bg = nil, gui = "bold" } },
-			inactive = {
-				a = { fg = nil, bg = nil, gui = "bold" },
-				b = { fg = nil, bg = nil },
-				c = { fg = nil, bg = nil },
-			},
-		}
+		if theme_cache == nil then
+			theme_cache = {
+				normal = {
+					a = { fg = nil, bg = nil, gui = "bold" },
+					b = { fg = colors.background, bg = nil },
+					c = { fg = nil, bg = nil },
+				},
+				command = { a = { fg = nil, bg = nil, gui = "bold" } },
+				insert = { a = { fg = nil, bg = nil, gui = "bold" } },
+				visual = { a = { fg = nil, bg = nil, gui = "bold" } },
+				terminal = { a = { fg = nil, bg = nil, gui = "bold" } },
+				replace = { a = { fg = nil, bg = nil, gui = "bold" } },
+				inactive = {
+					a = { fg = nil, bg = nil, gui = "bold" },
+					b = { fg = nil, bg = nil },
+					c = { fg = nil, bg = nil },
+				},
+			}
+		end
+		return theme_cache
 	end
 
 	local isRecording = function()

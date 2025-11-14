@@ -80,28 +80,21 @@ Esta configuração do Neovim utiliza uma arquitetura moderna baseada em Lua, co
 
 ### Performance
 1. **Lazy loading mais agressivo**: Revisar eventos de plugins para carregar apenas quando necessário
-2. **Desabilitar checker em produção**: Considerar `checker.enabled = false` ou usar `checker.frequency` maior
 3. **Otimizar treesitter**: Manter `sync_install = false` mas adicionar validação de parsers instalados
 4. **Cache de configurações**: Cachear resultados de funções que retornam tabelas estáticas (como `theme()` no lualine)
 
 ### Tratamento de Erros
 1. **Adicionar `pcall()` em pontos críticos**:
    - `lualine.lua`: Proteger `require("user.colors")` e `require("copilot-lualine.spinners")`
-   - `cmp.lua`: Proteger `require("luasnip")` e `require("luasnip/loaders/from_vscode")`
    - `treesitter.lua`: Validar se parsers estão instalados antes de usar
    - `init.lua`: Proteger todos os `Plugin()` calls
-
 2. **Validação de dependências**: Verificar se plugins essenciais estão instalados antes de configurar
 
 ### Limpeza de Código
 1. **Consolidar `fillchars`**: Unificar todas as configurações em uma única chamada
 2. **Remover duplicação de sinais**: Usar apenas a definição em `lspconfig.lua` para sinais de diagnóstico
 3. **Otimizar `check_backspace()`**: Usar `vim.fn.getline()` de forma mais eficiente ou cachear resultado
-
-### Configurações Específicas
-1. **Neo-tree**: Considerar desabilitar colunas não essenciais (`file_size`, `type`, `last_modified`, `created`) em janelas pequenas
 2. **CMP**: Revisar ordem de sources para priorizar LSP sobre buffer quando disponível
-3. **Lualine**: Cachear resultado de `theme()` para evitar recriação de tabela
 
 ## Conclusão
 

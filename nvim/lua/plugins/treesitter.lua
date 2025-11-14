@@ -18,16 +18,33 @@ local M = {
 	},
 }
 function M.config()
+	local required_parsers = {
+		"lua",
+		"typescript",
+		"markdown",
+		"markdown_inline",
+		"bash",
+		"python",
+		"java",
+	}
+
+	-- Validate parsers are available before using
+	local available_parsers = {}
+	local success, parsers = pcall(require, "nvim-treesitter.parsers")
+	if success and parsers then
+		local parser_configs = parsers.get_parser_configs()
+		for _, parser_name in ipairs(required_parsers) do
+			if parser_configs[parser_name] ~= nil then
+				table.insert(available_parsers, parser_name)
+			end
+		end
+	else
+		-- Fallback: use all required parsers if validation fails
+		available_parsers = required_parsers
+	end
+
 	require("nvim-treesitter.configs").setup({
-		ensure_installed = {
-			"lua",
-			"typescript",
-			"markdown",
-			"markdown_inline",
-			"bash",
-			"python",
-			"java",
-		}, -- put the language you want in this array
+		ensure_installed = available_parsers,
 		ignore_install = { "" },
 		auto_install = true,
 		sync_install = false, -- Changed to false for faster startup time

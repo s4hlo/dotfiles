@@ -1,5 +1,6 @@
 local N = {
 	"LunarVim/bigfile.nvim",
+	event = { "BufReadPre", "FileReadPre" },
 }
 
 function N.config()
@@ -22,6 +23,7 @@ end
 local J = {
 	"karb94/neoscroll.nvim",
 	opts = {},
+	event = { "BufReadPost", "BufNewFile" },
 }
 
 return { N, J }

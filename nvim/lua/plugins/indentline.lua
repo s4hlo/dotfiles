@@ -1,4 +1,8 @@
-local M = { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }
+local M = {
+	"lukas-reineke/indent-blankline.nvim",
+	opts = {},
+	event = { "BufReadPost", "BufNewFile" },
+}
 
 local highlight = {
 	"RainbowBlue",

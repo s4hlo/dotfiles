@@ -1,4 +1,8 @@
-local M = { "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } }
+local M = {
+	"kevinhwang91/nvim-ufo",
+	dependencies = { "kevinhwang91/promise-async" },
+	event = { "BufReadPost", "BufNewFile" },
+}
 
 function M.config()
 	local handler = function(virtText, lnum, endLnum, width, truncate)

@@ -11,6 +11,7 @@ local M = {
 
 local N = {
 	"antosha417/nvim-lsp-file-operations",
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},

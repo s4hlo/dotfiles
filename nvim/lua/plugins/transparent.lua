@@ -1,5 +1,6 @@
 local M = {
 	"xiyaowong/transparent.nvim",
+	event = "VeryLazy",
 }
 
 function M.config()
