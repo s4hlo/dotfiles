@@ -28,12 +28,6 @@ local M = {
 }
 
 M.config = function()
-	-- If you want icons for diagnostic errors, you'll need to define them somewhere:
-	vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-	vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-	vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-	vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
-
 	local i_event_handlers = {
 		{
 			event = "neo_tree_window_after_open",
@@ -45,24 +39,31 @@ M.config = function()
 			event = "neo_tree_buffer_enter",
 			handler = function() vim.opt_local.number = true end,
 		},
-		--{
-		--  event = "neo_tree_window_before_close",
-		--  handler = function(args)
-		--    print("neo_tree_window_before_close", vim.inspect(args))
-		--  end
-		--},
 		{
 			event = "neo_tree_window_after_close",
 			handler = function(args)
 				if args.position == "left" or args.position == "right" then vim.cmd("wincmd =") end
 			end,
 		},
+		{
+			event = "file_opened",
+			handler = function() require("neo-tree.command").execute({ action = "close" }) end,
+		},
+		{
+			event = "file_renamed",
+			handler = function(args)
+				-- fix references to file
+				print(args.source, " renamed to ", args.destination)
+			end,
+		},
+		{
+			event = "file_moved",
+			handler = function(args)
+				-- fix references to file
+				print(args.source, " moved to ", args.destination)
+			end,
+		},
 	}
-
-  table.insert(i_event_handlers, {
-    event = "file_opened",
-    handler = function() require("neo-tree.command").execute({ action = "close" }) end,
-  })
 
 	require("neo-tree").setup({
 		sources = {
@@ -185,23 +186,6 @@ M.config = function()
 			},
 		},
 		event_handlers = i_event_handlers,
-
-		events = {
-			{
-				event = "file_renamed",
-				handler = function(args)
-					-- fix references to file
-					print(args.source, " renamed to ", args.destination)
-				end,
-			},
-			{
-				event = "file_moved",
-				handler = function(args)
-					-- fix references to file
-					print(args.source, " moved to ", args.destination)
-				end,
-			},
-		},
 		-- A list of functions, each representing a global custom command
 		-- that will be available in all sources (if not overridden in `opts[source_name].commands`)
 		-- see `:h neo-tree-custom-commands-global`
