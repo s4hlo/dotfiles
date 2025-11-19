@@ -73,7 +73,7 @@ function M.config()
 		{ "<leader>ks", "<cmd>lua require('kulala').run()<cr>", desc = "Send request", mode = { "n", "v" } },
 		{ "<leader>ka", "<cmd>lua require('kulala').run_all()<cr>", desc = "Send all requests", mode = { "n", "v" }, ft = "http" },
 		{ "<leader>kr", "<cmd>lua require('kulala').replay()<cr>", desc = "Replay the last request", ft = { "http", "rest" } },
-		{ "<leader>ke", "<cmd>lua require('kulala').set_selected_env()<cr>", desc = "Replay the last request", ft = { "http", "rest" } },
+		{ "<leader>ke", "<cmd>lua require('kulala').set_selected_env()<cr>", desc = "Select enviroment", ft = { "http", "rest" } },
 	}
 
 	local git_keys = {
