@@ -17,6 +17,8 @@ Plugin("treesitter")
 Plugin("illuminate")
 Plugin("indentline")
 
+Plugin("http")
+
 -- solid SRP plugins
 Plugin("whichkey")
 Plugin("git")
@@ -37,6 +39,6 @@ Plugin("faster")
 Plugin("noice")
 Plugin("notify")
 Plugin("tmux")
-Plugin("flash")
+-- Plugin("flash")
 
 require("user.lazy")

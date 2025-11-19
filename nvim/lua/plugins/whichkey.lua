@@ -68,6 +68,14 @@ function M.config()
 		},
 	}
 
+	local kulala = {
+		{ "<leader>k", group = "Http" },
+		{ "<leader>ks", "<cmd>lua require('kulala').run()<cr>", desc = "Send request", mode = { "n", "v" } },
+		{ "<leader>ka", "<cmd>lua require('kulala').run_all()<cr>", desc = "Send all requests", mode = { "n", "v" }, ft = "http" },
+		{ "<leader>kr", "<cmd>lua require('kulala').replay()<cr>", desc = "Replay the last request", ft = { "http", "rest" } },
+		{ "<leader>ke", "<cmd>lua require('kulala').set_selected_env()<cr>", desc = "Replay the last request", ft = { "http", "rest" } },
+	}
+
 	local git_keys = {
 		{ "<leader>g", group = "Git" },
 		{ "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", desc = "Next Hunk", mode = "n" },
@@ -92,6 +100,7 @@ function M.config()
 
 	which_key.add(find_keys)
 	which_key.add(lps_keys)
+	which_key.add(kulala)
 	which_key.add(git_keys)
 end
 
