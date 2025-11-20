@@ -8,7 +8,7 @@ local N = {
 				enabled = true,
 			},
 			prompts = {
-				commit = "Run 'git --no-pager diff --staged' and generate an appropriate commit message (short, in English, and following Conventional Commits), then sugest me to run the command 'git commit -m <MESSAGE>', ONLY this nothing more",
+				commit = "Run 'git --no-pager diff --staged' and generate an appropriate commit message (short, in English, and following Conventional Commits), then run the command 'git commit -m <MESSAGE>', ONLY this nothing more",
 			},
 		},
 	},
