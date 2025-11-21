@@ -4,6 +4,13 @@
 
 A comprehensive dotfiles collection for Arch Linux with support for both Hyprland (Wayland) and i3 (X11) window managers, featuring a modern development environment with Catppuccin Mocha theme.
 
+
+## Windows Setup
+
+- update temrinal theme
+- update terminal font to some nerd font
+- set padding to 0
+
 ## 🚀 Quick Setup
 
 ```bash
