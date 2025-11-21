@@ -1,6 +1,12 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+#
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 # Ignora a diferença entre maiúsculas e minúsculas ao completar (case-insensitive)
 bind 'set completion-ignore-case on'
 
@@ -14,11 +20,6 @@ bind '"\C-n": history-search-forward'
 bind '"\t":menu-complete'
 bind '"\e[Z":menu-complete-backward'
 
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

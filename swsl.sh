@@ -39,17 +39,10 @@ else
     curl https://cursor.com/install -fsS | bash
 fi
 
-if command -v gemini >/dev/null 2>&1; then
-    echo "gemini $(gemini --version)"
-else
-    npm install -g @google/gemini-cli
-fi
-
 log "WSL packages installed!" 0
 log "Creating WSL symlinks..." 0
 mkdir -p ~/.config
 rm -rf -- ~/.bashrc && ln -sfn ~/dotfiles/.bashrc ~/.bashrc
-rm -rf -- ~/.gitconfig && ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
 rm -rf -- ~/.tmux.conf && ln -sfn ~/dotfiles/.tmux.conf ~/.tmux.conf
 rm -rf -- ~/.zshrc && ln -sfn ~/dotfiles/.zshrc ~/.zshrc
 rm -rf -- ~/.config/bat && ln -sfn ~/dotfiles/bat ~/.config/bat
@@ -66,4 +59,10 @@ sudo timedatectl set-timezone Etc/GMT-3
 tmux source-file ~/.tmux.conf
 log "WSL setup completed!" 0
 
+rm -rf -- ~/.gitconfig && cp ~/dotfiles/.gitconfig ~/.gitconfig
+
+log "RUN gpg --full-generate-key TO GERANEATE A KEY FOR SIGN COMMITS" 
+log "RUN gpg --list-secret-keys --keyid-format=long TO SEE GENERATED KEYS" 
+log "RUN git config --global user.signingkey <id after / in line starting with sec>"
+log "RUN gpg --armor --export SEU_KEY_ID AND ADD IN GITHUB"
 log "RUN source ~/.bashrc IF ANYTHING DONT WORK"
