@@ -1,18 +1,13 @@
 {
   "recommendations": [
-    "catppuccin.catppuccin-vsc-pack",
-    "anysphere.remote-wsl",
-    "vscodevim.vim",
-    "eamodio.gitlens",
-    "github.vscode-pull-request-github",
-    "naumovs.color-highlight",
     "anysphere.cursorpyright",
+    "anysphere.remote-wsl",
+    "catppuccin.catppuccin-vsc-pack",
+    "eamodio.gitlens",
     "esbenp.prettier-vscode",
-    "ms-python.python",
     "ms-toolsai.jupyter",
-    "github.copilot",
-    "github.copilot-chat",
-    "ms-vscode-remote.remote-containers",
-    "github.codespaces"
+    "naumovs.color-highlight",
+    "vscodevim.vim",
+    "ms-python.python",
   ]
 }
