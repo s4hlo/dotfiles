@@ -1,10 +1,10 @@
 local neotree_key = {
-		{ "<C-p>", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File", mode = "n" },
-		{ "<A-f>", "<cmd>Telescope live_grep<cr>", desc = "Find Text", mode = "n" },
-		{ "<A-e>", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
-		{ "<A-g>", "<cmd>Telescope git_status<cr>", desc = "Open Changed File", mode = "n" },
-		{ "<A-s>", "<cmd>Neotree float toggle document_symbols<CR>", desc = "Document Symbols", mode = "n" },
-	}
+	{ "<C-p>", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File", mode = "n" },
+	{ "<A-f>", "<cmd>Telescope live_grep<cr>", desc = "Find Text", mode = "n" },
+	{ "<A-e>", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
+	{ "<A-g>", "<cmd>Telescope git_status<cr>", desc = "Open Changed File", mode = "n" },
+	{ "<A-s>", "<cmd>Neotree float toggle document_symbols<CR>", desc = "Document Symbols", mode = "n" },
+}
 
 local M = {
 	"folke/which-key.nvim",
@@ -12,7 +12,6 @@ local M = {
 	opts = {},
 	keys = neotree_key,
 }
-
 
 function M.config()
 	local which_key = require("which-key")
@@ -71,9 +70,9 @@ function M.config()
 	local kulala = {
 		{ "<leader>k", group = "Http" },
 		{ "<leader>ks", "<cmd>lua require('kulala').run()<cr>", desc = "Send request", mode = { "n", "v" } },
-		{ "<leader>ka", "<cmd>lua require('kulala').run_all()<cr>", desc = "Send all requests", mode = { "n", "v" }, ft = "http" },
-		{ "<leader>kr", "<cmd>lua require('kulala').replay()<cr>", desc = "Replay the last request", ft = { "http", "rest" } },
-		{ "<leader>ke", "<cmd>lua require('kulala').set_selected_env()<cr>", desc = "Select enviroment", ft = { "http", "rest" } },
+		{ "<leader>ka", "<cmd>lua require('kulala').run_all()<cr>", desc = "Send all requests", mode = { "n", "v" } },
+		{ "<leader>kr", "<cmd>lua require('kulala').replay()<cr>", desc = "Replay the last request" },
+		{ "<leader>ke", "<cmd>lua require('kulala').set_selected_env()<cr>", desc = "Select enviroment" },
 	}
 
 	local git_keys = {
