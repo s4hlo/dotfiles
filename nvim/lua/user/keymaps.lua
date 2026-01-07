@@ -24,3 +24,8 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 keymap("x", "p", [["_dP]])
+
+-- Format file
+keymap("n", "<leader>lf", function()
+	require("conform").format({ async = false, lsp_fallback = true })
+end, { desc = "Format file" })

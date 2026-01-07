@@ -33,6 +33,8 @@ function M.config()
 			"stylua",
 			"shfmt",
 			"tree-sitter-cli",
+			"prettierd",
+			"prettier",
 		},
 	})
 end

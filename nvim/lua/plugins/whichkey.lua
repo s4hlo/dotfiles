@@ -60,6 +60,7 @@ function M.config()
 			function()
 				require("conform").format({
 					async = false,
+					lsp_fallback = true,
 				})
 			end,
 			desc = "Format",

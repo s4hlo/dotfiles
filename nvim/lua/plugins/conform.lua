@@ -9,7 +9,17 @@ function M.config()
 			lua = { "stylua" },
 			python = { "isort", "black" },
 			rust = { "rustfmt", lsp_format = "fallback" },
-			javascript = { "prettierd", "prettier", stop_after_first = true },
+			javascript = { "prettierd", "prettier" },
+			javascriptreact = { "prettierd", "prettier" },
+			typescript = { "prettierd", "prettier" },
+			typescriptreact = { "prettierd", "prettier" },
+			json = { "prettierd", "prettier" },
+			html = { "prettierd", "prettier" },
+			css = { "prettierd", "prettier" },
+		},
+		format_on_save = {
+			timeout_ms = 500,
+			lsp_fallback = true,
 		},
 	})
 end
