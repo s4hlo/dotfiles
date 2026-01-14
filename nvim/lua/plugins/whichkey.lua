@@ -2,6 +2,7 @@ local neotree_key = {
 	{ "<C-p>", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File", mode = "n" },
 	{ "<A-f>", "<cmd>Telescope live_grep<cr>", desc = "Find Text", mode = "n" },
 	{ "<A-e>", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
+	{ "<leader>e", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
 	{ "<A-g>", "<cmd>Telescope git_status<cr>", desc = "Open Changed File", mode = "n" },
 	{ "<A-s>", "<cmd>Neotree float toggle document_symbols<CR>", desc = "Document Symbols", mode = "n" },
 }
@@ -33,6 +34,7 @@ function M.config()
 
 	local misc = {
 		{ "<leader>a", group = "AI", mode = { "n", "v" } },
+		{ "<leader>e", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
 		{ "ZR", ufo.openAllFolds, desc = "Open all folds", mode = "n" },
 		{ "ZM", ufo.closeAllFolds, desc = "Close all folds", mode = "n" },
 	}
