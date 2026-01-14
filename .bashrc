@@ -157,6 +157,7 @@ fi
 
 alias tks="tmux kill-session -t"
 alias dot='cd ~/dotfiles'
+alias g=git
 alias vault='cd ~/vault'
 alias tarken='cd ~/dev/tarken'
 alias hs='cd ~/dev/tarken/hub-server'
