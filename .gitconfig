@@ -1,7 +1,8 @@
-[user]
-    name = s4hlo 
-    email = rafael.nunes@tarken.ag
-    signingkey = "add your key"
+[include]
+    path = ~/.gitconfig.user
+
+[commit]
+  gpgsign = true
 
 [core]
     ; @target
@@ -41,5 +42,3 @@
 [merge]
     conflictstyle = zdiff3
 
-[commit]
-    gpgsign = true
