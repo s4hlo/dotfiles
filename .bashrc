@@ -172,6 +172,18 @@ alias dbprod="pgcli -h $DB_PROD_HOST -p 5432 -U hub -d hubDB-prod"
 quote=$(curl -s https://zenquotes.io/api/today | jq -r '.[0].q + " — " + .[0].a')
 echo "✨ $quote"
 
+function nvim() {
+    command nvim "$@"
+    local exit_code=$?
+    if [ $exit_code -eq 0 ] || [ $exit_code -ne 0 ]; then
+        echo -n "\n⏳ Aguarde 5 segundos antes de digitar comandos... "
+        stty -echo
+        sleep 5
+        stty echo
+        echo "✓ Pronto!"
+    fi
+    return $exit_code
+}
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

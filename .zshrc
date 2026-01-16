@@ -57,6 +57,19 @@ function y() {
     rm -f -- "$tmp"
 }
 
+function nvim() {
+    command nvim "$@"
+    local exit_code=$?
+    if [ $exit_code -eq 0 ] || [ $exit_code -ne 0 ]; then
+        echo -n "\n⏳ Aguarde 5 segundos antes de digitar comandos... "
+        stty -echo
+        sleep 5
+        stty echo
+        echo "✓ Pronto!"
+    fi
+    return $exit_code
+}
+
 set -o vi
 bindkey -M viins jk vi-cmd-mode
 
