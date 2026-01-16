@@ -8,7 +8,7 @@ local N = {
 				enabled = true,
 			},
 			prompts = {
-				commit = "Run 'git --no-pager diff --staged' and generate an appropriate commit message (short, in English, and following Conventional Commits), then run the command 'git commit -m <MESSAGE>', ONLY this nothing more",
+				commit = "Run 'git --no-pager diff --staged' and generate an appropriate commit message (one line, in English, and following Conventional Commits with type and scope), then run the command 'git commit -m <MESSAGE>', ONLY this nothing more",
 				review = "Run 'git diff dev...' and perform a concise code review on the output. List good and bad points. For the bad points, suggest technical solutions without writing the actual implementation code. Keep it brief and avoid unnecessary verbosity. Format the output as Markdown and save it to a file named CODE_REVIEW.md in the root directory.",
 			},
 		},
