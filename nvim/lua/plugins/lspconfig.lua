@@ -109,4 +109,27 @@ function M.config()
 	end
 end
 
+function M.get_keys()
+	return {
+		{ "<leader>l", group = "LSP", mode = { "n", "v" } },
+		{ "<leader>lw", "<cmd>%s/\r//g<cr>", desc = "Remove ^M characters", mode = "v" },
+		{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", mode = "n" },
+		{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename", mode = "n" },
+		{ "<leader>lh", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "Diagnostics (float)", mode = "n" },
+		{ "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic", mode = "n" },
+		{ "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic", mode = "n" },
+		{
+			"<leader>lf",
+			function()
+				require("conform").format({
+					async = false,
+					lsp_fallback = true,
+				})
+			end,
+			desc = "Format",
+			mode = "n",
+		},
+	}
+end
+
 return { M, N }

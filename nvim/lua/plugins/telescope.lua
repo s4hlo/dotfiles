@@ -74,4 +74,16 @@ function M.config()
 	})
 end
 
+function M.get_keys()
+	return {
+		{ "<leader>f", group = "Find" },
+		{ "<leader>fb", "<cmd>Telescope buffers previewer=false<cr>", desc = "Buffers", mode = "n" },
+		{ "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Find String", mode = "n" },
+		{ "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search", mode = "n" },
+		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File", mode = "n" },
+		{ "<leader>fR", "<cmd>Telescope registers<cr>", desc = "Registers", mode = "n" },
+		{ "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics", mode = "n" },
+	}
+end
+
 return M
