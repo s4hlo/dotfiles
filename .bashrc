@@ -9,14 +9,16 @@ bind 'set show-all-if-ambiguous on'
 bind '"\C-p": history-search-backward'
 bind '"\C-n": history-search-forward'
 
+
+
+
 bind '"\t":menu-complete'
 bind '"\e[Z":menu-complete-backward'
-
 
 HISTCONTROL=ignoreboth
 
 shopt -s histappend
-PROMPT_COMMAND='history -a; history -n'
+PROMPT_COMMAND='history -a; history -n; '"${PROMPT_COMMAND}"
 
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -73,11 +75,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-
-
 
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     exec tmux
@@ -89,7 +87,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 export PATH="$HOME/.local/bin:$PATH"
-
 
 if [ -f ~/dotfiles/.aliases ]; then
     . ~/dotfiles/.aliases
