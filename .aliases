@@ -1,0 +1,48 @@
+# -------------------- ALIAS --------------------
+if command -v bat &> /dev/null; then
+  alias cat="bat"
+else
+  alias cat="cat"
+fi
+
+if command -v eza &> /dev/null; then
+  alias ls="eza --icons=always"
+else
+  alias ls="ls"
+fi
+
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias b='~/notes/brg.sh'
+alias cal='calcurse -D ~/dev/calendar'
+alias dbdev="pgcli -h $DB_DEV_HOST -p 5432 -U hub -d hubDB-dev"
+alias dbprod="pgcli -h $DB_PROD_HOST -p 5432 -U hub -d hubDB-prod"
+alias dot='cd ~/dotfiles'
+alias g=git
+alias hs='cd ~/dev/tarken/hub-server'
+alias hw='cd ~/dev/tarken/hub-web-client'
+alias pomo='~/dotfiles/pomo.sh'
+alias setup='~/dotfiles/setup.sh'
+alias tarken='cd ~/dev/tarken'
+alias tks="tmux kill-session -t"
+alias vault='cd ~/vault'
+alias shll='ps -p $$'
+
+
+# ---------- MISCELLANEOUS --------------------
+quote=$(curl -s https://zenquotes.io/api/today | jq -r '.[0].q + " — " + .[0].a')
+echo "✨ $quote"
+
+
+function nvim() {
+    command nvim "$@"
+    local exit_code=$?
+    if [ $exit_code -eq 0 ] || [ $exit_code -ne 0 ]; then
+        echo -n "\n⏳ Aguarde 5 segundos antes de digitar comandos... "
+        stty -echo
+        sleep 5
+        stty echo
+        echo "✓ Pronto!"
+    fi
+    return $exit_code
+}
+

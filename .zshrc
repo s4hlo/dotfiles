@@ -57,59 +57,17 @@ function y() {
     rm -f -- "$tmp"
 }
 
-function nvim() {
-    command nvim "$@"
-    local exit_code=$?
-    if [ $exit_code -eq 0 ] || [ $exit_code -ne 0 ]; then
-        echo -n "\n⏳ Aguarde 5 segundos antes de digitar comandos... "
-        stty -echo
-        sleep 5
-        stty echo
-        echo "✓ Pronto!"
-    fi
-    return $exit_code
-}
-
 set -o vi
 bindkey -M viins jk vi-cmd-mode
 
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
-if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
+if [ -z "$TMUX" ]; then
     exec tmux
 fi
 
-if command -v bat &> /dev/null; then
-  alias cat="bat"
-else
-  alias cat="cat"  # or whatever fallback you prefer
-fi
 
-if command -v eza &> /dev/null; then
-  alias ls="eza --icons=always"
-else
-  alias ls="ls"  # or whatever fallback you prefer
-fi
-
-alias tks="tmux kill-session -t"
-alias dot='cd ~/dotfiles'
-alias vault='cd ~/vault'
-alias tarken='cd ~/dev/tarken'
-alias hs='cd ~/dev/tarken/hub-server'
-alias hw='cd ~/dev/tarken/hub-web-client'
-alias setup='~/dotfiles/setup.sh'
-alias b='~/notes/brg.sh'
-alias cal='calcurse -D ~/dev/calendar'
-alias pomo='~/dotfiles/pomo.sh'
-alias dbdev="pgcli -h $DB_DEV_HOST -p 5432 -U hub -d hubDB-dev"
-alias dbprod="pgcli -h $DB_PROD_HOST -p 5432 -U hub -d hubDB-prod"
-
-quote=$(curl -s https://zenquotes.io/api/today | jq -r '.[0].q + " — " + .[0].a')
-echo "✨ $quote"
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+[ -f ~/dotfiles/.aliases ] && . ~/dotfiles/.aliases
 
 ###### MEMENTO MORI ######
