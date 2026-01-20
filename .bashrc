@@ -8,10 +8,6 @@ bind 'set completion-ignore-case on'
 bind 'set show-all-if-ambiguous on'
 bind '"\C-p": history-search-backward'
 bind '"\C-n": history-search-forward'
-
-
-
-
 bind '"\t":menu-complete'
 bind '"\e[Z":menu-complete-backward'
 
