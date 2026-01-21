@@ -18,6 +18,7 @@ PROMPT_COMMAND='history -a; history -n; '"${PROMPT_COMMAND}"
 
 HISTSIZE=1000
 HISTFILESIZE=2000
+HISTIGNORE='ls:cd:cd -:pwd:exit:clear'
 
 shopt -s checkwinsize
 
@@ -78,6 +79,9 @@ if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
 fi
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
+
+[ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
+[ -f /usr/share/bash-completion/completions/fzf ] && source /usr/share/bash-completion/completions/fzf
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
