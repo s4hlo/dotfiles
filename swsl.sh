@@ -49,6 +49,7 @@ rm -rf -- ~/.config/bat && ln -sfn ~/dotfiles/bat ~/.config/bat
 rm -rf -- ~/.config/btop && ln -sfn ~/dotfiles/btop ~/.config/btop
 rm -rf -- ~/.config/gh && ln -sfn ~/dotfiles/gh ~/.config/gh
 rm -rf -- ~/.config/vim && ln -sfn ~/dotfiles/nvim ~/.config/nvim
+rm -rf -- ~/.gitconfig && cp ~/dotfiles/.gitconfig ~/.gitconfig
 log "WSL symlinks created successfully!" 0
 
 log "Start execution setup" 0
@@ -59,7 +60,6 @@ sudo timedatectl set-timezone Etc/GMT-3
 tmux source-file ~/.tmux.conf
 log "WSL setup completed!" 0
 
-rm -rf -- ~/.gitconfig && cp ~/dotfiles/.gitconfig ~/.gitconfig
 
 log "RUN gpg --full-generate-key TO GERANEATE A KEY FOR SIGN COMMITS" 
 log "RUN gpg --list-secret-keys --keyid-format=long TO SEE GENERATED KEYS" 

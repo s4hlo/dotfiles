@@ -5,7 +5,7 @@ require("user.autocmds")
 
 Plugin("filetype.markdown")
 Plugin("filetype.nest")
-Plugin("filetype.python")
+-- Plugin("filetype.python")
 
 Plugin("ai")
 Plugin("cmp")

@@ -8,6 +8,8 @@ eza
 git-delta
 jq
 less
+lua5.1
+luarocks
 pkgconf
 ripgrep
 shfmt
