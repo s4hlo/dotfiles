@@ -27,6 +27,7 @@ alias tarken='cd ~/dev/tarken'
 alias tks="tmux kill-session -t"
 alias vault='cd ~/vault'
 alias shll='ps -p $$'
+alias vim='nvim'
 
 
 # ---------- MISCELLANEOUS --------------------
@@ -34,16 +35,16 @@ quote=$(curl -s https://zenquotes.io/api/today | jq -r '.[0].q + " — " + .[0].
 echo "✨ $quote"
 
 
-function nvim() {
-    command nvim "$@"
-    local exit_code=$?
-    if [ $exit_code -eq 0 ] || [ $exit_code -ne 0 ]; then
-        echo -n "⏳ Wait 5 seconds... "
-        stty -echo
-        sleep 5
-        stty echo
-        echo "✓ Done!"
-    fi
-    return $exit_code
-}
+# function nvim() {
+#     command nvim "$@"
+#     local exit_code=$?
+#     if [ $exit_code -eq 0 ] || [ $exit_code -ne 0 ]; then
+#         echo -n "⏳ Wait 5 seconds... "
+#         stty -echo
+#         sleep 5
+#         stty echo
+#         echo "✓ Done!"
+#     fi
+#     return $exit_code
+# }
 
