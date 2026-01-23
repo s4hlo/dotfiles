@@ -72,6 +72,15 @@ local N = {
 			function() require("sidekick.cli").toggle({ name = "cursor", focus = true }) end,
 			desc = "Sidekick Toggle Cursor",
 		},
+		{
+			"<leader>ac",
+			function()
+				local filepath = vim.fn.expand("%:p")
+				vim.fn.setreg("+", filepath)
+				vim.notify("Copied filepath: " .. filepath, vim.log.levels.INFO)
+			end,
+			desc = "Copy Filepath",
+		},
 	},
 }
 

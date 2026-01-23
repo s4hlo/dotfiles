@@ -55,3 +55,6 @@ vim.opt.fillchars = {
 	vert = " ",
 	diff = " ",
 }
+
+vim.o.verbose = 1
+vim.o.verbosefile = vim.fn.stdpath("state") .. "/messages-only.log"
