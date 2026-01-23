@@ -14,6 +14,7 @@ log "Installing WSL packages..." 0
 sudo apt update && sudo apt install -y $(cat ~/dotfiles/wsl.list)
 sudo snap install nvim --classic
 sudo snap install yazi --classic
+sudo snap install aws-cli --classic
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
