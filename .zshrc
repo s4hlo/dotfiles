@@ -63,7 +63,7 @@ bindkey -M viins jk vi-cmd-mode
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
-if [ -z "$TMUX" ]; then
+if [ -z "$TMUX" ] && [ -z "$TERM_PROGRAM" ]; then
     exec tmux
 fi
 
