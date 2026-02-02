@@ -75,7 +75,14 @@ local N = {
 		{
 			"<leader>ac",
 			function()
-				local filepath = vim.fn.expand("%:p")
+				local filepath_abs = vim.fn.expand("%:p")
+				local cwd = vim.fn.getcwd()
+				local filepath = filepath_abs
+				
+				if vim.startswith(filepath_abs, cwd) then
+					filepath = vim.fn.fnamemodify(filepath_abs, ":.")
+				end
+				
 				vim.fn.setreg("+", filepath)
 				vim.notify("Copied filepath: " .. filepath, vim.log.levels.INFO)
 			end,
