@@ -20,7 +20,7 @@ else
     echo -e " "
 fi
 
-# Pritunl
+[ ! -f /etc/arch-release ] && exit 1
 
 log() {
     local content=$1
@@ -33,21 +33,15 @@ log() {
 
 
 install_with_yay() {
-    if [ -f /etc/arch-release ]; then
-        if ! command -v yay &>/dev/null; then
-            log "yay not found. Installing..." 1
-            sudo pacman -S --needed git base-devel
-            git clone https://aur.archlinux.org/yay.git
-            cd yay
-            makepkg -si --noconfirm
-            log "yay installed successfully!"
-        else
-            log "yay is already installed."
-        fi
-        yay -S --needed $1
-    else
-        log "Package installation not implemented for this distribution." 2
+    if ! command -v yay &>/dev/null; then
+        log "yay not found. Installing..." 1
+        sudo pacman -S --needed git base-devel
+        git clone https://aur.archlinux.org/yay.git
+        (cd yay && makepkg -si --noconfirm)
+        rm -rf yay
+        log "yay installed successfully!"
     fi
+    yay -S --needed $1
 }
 
 show_menu() {
@@ -169,4 +163,3 @@ while true; do
         ;;
     esac
 done
-'
