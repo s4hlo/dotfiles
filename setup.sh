@@ -41,7 +41,7 @@ install_with_yay() {
         rm -rf yay
         log "yay installed successfully!"
     fi
-    yay -S --needed $1
+    yay -S --needed $@
 }
 
 show_menu() {
