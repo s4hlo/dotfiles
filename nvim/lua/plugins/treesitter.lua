@@ -1,6 +1,6 @@
 local M = {
 	"nvim-treesitter/nvim-treesitter",
-	event = { "BufReadPost", "BufNewFile" },
+	lazy = false,
 	build = ":TSUpdate",
 	dependencies = {
 		{
@@ -17,8 +17,14 @@ local M = {
 		},
 	},
 }
+
 function M.config()
-	local required_parsers = {
+	require("nvim-treesitter").setup({
+		install_dir = vim.fn.stdpath("data") .. "/site",
+	})
+
+	-- Install parsers
+	require("nvim-treesitter").install({
 		"lua",
 		"typescript",
 		"markdown",
@@ -26,53 +32,23 @@ function M.config()
 		"bash",
 		"python",
 		"java",
-	}
+	})
 
-	-- Validate parsers are available before using
-	local available_parsers = {}
-	local success, parsers = pcall(require, "nvim-treesitter.parsers")
-	if success and parsers then
-		local parser_configs = parsers.get_parser_configs()
-		for _, parser_name in ipairs(required_parsers) do
-			if parser_configs[parser_name] ~= nil then
-				table.insert(available_parsers, parser_name)
-			end
-		end
-	else
-		-- Fallback: use all required parsers if validation fails
-		available_parsers = required_parsers
-	end
+	-- Enable treesitter highlighting and folding for all filetypes
+	vim.api.nvim_create_autocmd("FileType", {
+		callback = function()
+			pcall(vim.treesitter.start)
+		end,
+	})
 
-	require("nvim-treesitter.configs").setup({
-		ensure_installed = available_parsers,
-		ignore_install = { "" },
-		auto_install = true,
-		sync_install = false, -- Changed to false for faster startup time
-
-		highlight = {
-			enable = true,
-			-- disable = { "markdown" },
-			additional_vim_regex_highlighting = false,
-		},
-
-		indent = { enable = true },
-
-		matchup = {
-			enable = { "astro" },
-			disable = { "lua" },
-		},
-
-		autotag = { enable = true },
-
-		autopairs = { enable = true },
-
-		textobjects = {
+	-- Textobjects config
+	local ok, ts_textobjects = pcall(require, "nvim-treesitter-textobjects")
+	if ok and ts_textobjects.setup then
+		ts_textobjects.setup({
 			select = {
 				enable = true,
-				-- Automatically jump forward to textobj, similar to targets.vim
 				lookahead = true,
 				keymaps = {
-					-- You can use the capture groups defined in textobjects.scm
 					["af"] = "@function.outer",
 					["if"] = "@function.inner",
 					["at"] = "@class.outer",
@@ -97,8 +73,8 @@ function M.config()
 					["iF"] = "@frame.inner",
 				},
 			},
-		},
-	})
+		})
+	end
 end
 
 return M

@@ -20,7 +20,7 @@ else
     echo -e " "
 fi
 
-# Pritunl
+[ ! -f /etc/arch-release ] && exit 1
 
 log() {
     local content=$1
@@ -33,21 +33,15 @@ log() {
 
 
 install_with_yay() {
-    if [ -f /etc/arch-release ]; then
-        if ! command -v yay &>/dev/null; then
-            log "yay not found. Installing..." 1
-            sudo pacman -S --needed git base-devel
-            git clone https://aur.archlinux.org/yay.git
-            cd yay
-            makepkg -si --noconfirm
-            log "yay installed successfully!"
-        else
-            log "yay is already installed."
-        fi
-        yay -S --needed $1
-    else
-        log "Package installation not implemented for this distribution." 2
+    if ! command -v yay &>/dev/null; then
+        log "yay not found. Installing..." 1
+        sudo pacman -S --needed git base-devel
+        git clone https://aur.archlinux.org/yay.git
+        (cd yay && makepkg -si --noconfirm)
+        rm -rf yay
+        log "yay installed successfully!"
     fi
+    yay -S --needed $@
 }
 
 show_menu() {
@@ -82,40 +76,10 @@ while true; do
     read -r choice
 
     case "$choice" in
-    1 | wsl)
-        log "Installing WSL packages..." 0
-        sudo apt update && sudo apt install -y $(cat ~/dotfiles/wsl.list)
-        snap install atuin
-        snap install yazi
-        log "WSL packages installed!" 0
-        if ! ask_continue; then
-            echo -e "\e[32mSetup completed. Goodbye!\e[0m"
-            break
-        fi
-        log "Creating WSL symlinks..." 0
-
-        rm -rf -- ~/.bashrc && ln -sfn ~/dotfiles/.bashrc ~/.bashrc
-        rm -rf -- ~/.gitconfig && ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
-        rm -rf -- ~/.tmux.conf && ln -sfn ~/dotfiles/.tmux.conf ~/.tmux.conf
-        rm -rf -- ~/.zshrc && ln -sfn ~/dotfiles/.zshrc ~/.zshrc
-        rm -rf -- ~/.config/bat && ln -sfn ~/dotfiles/bat ~/.config/bat
-        rm -rf -- ~/.config/btop && ln -sfn ~/dotfiles/btop ~/.config/btop
-        rm -rf -- ~/.config/gh && ln -sfn ~/dotfiles/gh ~/.config/gh
-
-        source ~/.bashrc
-        sudo timedatectl set-timezone Etc/GMT-3
-        tmux source-file ~/.tmux.conf
-        
-        log "WSL symlinks created!" 0
-        if ! ask_continue; then
-            echo -e "\e[32mSetup completed. Goodbye!\e[0m"
-            break
-        fi
-        ;;
-
-    2 | full)
+    1 | full)
         log "Installing all packages..." 0
         install_with_yay $(cat ~/dotfiles/pkg.list)
+        install_with_yay $(cat ~/dotfiles/minimal.list)
         install_with_yay $(cat ~/dotfiles/pkg_aur.list)
         log "All packages installed!" 0
         if ! ask_continue; then
@@ -123,11 +87,11 @@ while true; do
             break
         fi
         ;;
-    3 | hypr)
+    2 | hypr)
         log "Starting Hyprland configuration..." 0
         install_with_yay "hyprland xdg-desktop-portal-hyprland"
         install_with_yay "hyprpaper waybar hyprshade hyprshot wofi"
-        
+
         # check if those two are installed with the above when zero setup
         # hyprlock
         # hyprpicker-git \
@@ -158,10 +122,9 @@ while true; do
             break
         fi
         ;;
-    5 | link)
+    4 | link)
         log "Creating full symlinks setup..." 0
-        
-        log "Creating WSL symlinks..." 0
+
         rm -rf -- ~/.bashrc && ln -sfn ~/dotfiles/.bashrc ~/.bashrc
         rm -rf -- ~/.gitconfig && ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
         rm -rf -- ~/.tmux.conf && ln -sfn ~/dotfiles/.tmux.conf ~/.tmux.conf
@@ -184,7 +147,7 @@ while true; do
         sudo timedatectl set-timezone Etc/GMT-3
         tmux source-file ~/.tmux.conf
         zsh -c "source ~/.zshrc"
-        
+
         log "Full symlinks setup completed!" 0
         if ! ask_continue; then
             echo -e "\e[32mSetup completed. Goodbye!\e[0m"
@@ -200,4 +163,3 @@ while true; do
         ;;
     esac
 done
-'
