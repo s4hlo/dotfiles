@@ -59,6 +59,8 @@ function y() {
 
 set -o vi
 bindkey -M viins jk vi-cmd-mode
+bindkey -M viins '^P' up-line-or-history
+bindkey -M viins '^N' down-line-or-history
 
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
