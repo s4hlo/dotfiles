@@ -2,7 +2,7 @@
     path = ~/.gitconfig.user
 
 [commit]
-  gpgsign = true
+  gpgsign = false
 
 [core]
     ; @target
@@ -42,3 +42,6 @@
 [merge]
     conflictstyle = zdiff3
 
+[user]
+	email = rafael.nunes@tarken.ag
+	name = rafael magno
