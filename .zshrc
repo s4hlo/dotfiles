@@ -15,7 +15,9 @@ setopt interactivecomments
 setopt nonomatch          
 setopt notify             
 setopt numericglobsort     
-setopt promptsubst         
+setopt promptsubst
+setopt auto_menu
+setopt nobeep         
 
 
 autoload -Uz compinit
@@ -57,13 +59,12 @@ function y() {
     rm -f -- "$tmp"
 }
 
-set -o vi
-bindkey -M viins jk vi-cmd-mode
-bindkey -M viins '^P' up-line-or-history
-bindkey -M viins '^N' down-line-or-history
+bindkey -e
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
 
 eval "$(starship init zsh)"
-eval "$(atuin init zsh)"
+# eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
 if [ -z "$TMUX" ] && [ -z "$TERM_PROGRAM" ]; then
     exec tmux
