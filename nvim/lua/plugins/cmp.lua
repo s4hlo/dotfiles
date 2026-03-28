@@ -22,13 +22,6 @@ local M = {
 			"hrsh7th/cmp-path",
 			event = "InsertEnter",
 		},
-		{
-			"hrsh7th/cmp-cmdline",
-			event = "InsertEnter",
-		},
-		{
-			"hrsh7th/cmp-nvim-lua",
-		},
 	},
 }
 
@@ -47,8 +40,7 @@ function M.config()
 	local icons = require("user.icons")
 
 	cmp.setup({
-		snippet = {
-		},
+		snippet = {},
 		mapping = cmp.mapping.preset.insert({
 			["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
 			["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
@@ -93,7 +85,6 @@ function M.config()
 				vim_item.kind = icons.kind[vim_item.kind]
 				vim_item.menu = ({
 					nvim_lsp = "",
-					nvim_lua = "",
 					buffer = "",
 					path = "",
 					emoji = "",
@@ -101,11 +92,6 @@ function M.config()
 				if entry.source.name == "copilot" then
 					vim_item.kind = icons.git.Octoface
 					vim_item.kind_hl_group = "CmpItemKindCopilot"
-				end
-
-				if entry.source.name == "lab.quick_data" then
-					vim_item.kind = icons.misc.CircuitBoard
-					vim_item.kind_hl_group = "CmpItemKindConstant"
 				end
 
 				if entry.source.name == "emoji" then
@@ -131,7 +117,6 @@ function M.config()
 					return true
 				end,
 			},
-			{ name = "nvim_lua" },
 			{ name = "buffer" },
 			{ name = "path" },
 			{ name = "emoji" },

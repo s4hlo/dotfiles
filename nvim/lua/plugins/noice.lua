@@ -56,17 +56,7 @@ function M.config()
 			enabled = false,
 			view = "notify",
 		},
-		routes = {
-			{
-				view = "mini",
-				filter = {
-					event = "msg_showmode",
-					any = {
-						{ find = "loren ipusum" }, -- this is very useful
-					},
-				},
-			},
-		},
+		routes = {},
 		cmdline = {
 			enabled = true, -- enables the Noice cmdline UI
 			view = "cmdline", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
