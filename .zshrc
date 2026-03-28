@@ -3,16 +3,16 @@
 ###########################
 
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=2000
+HISTSIZE=10000
+SAVEHIST=20000
 WORDCHARS=${WORDCHARS//\/} 
 setopt hist_expire_dups_first 
 setopt hist_ignore_dups      
 setopt hist_ignore_space     
-setopt hist_verify            
+setopt share_history
 setopt correct            
 setopt interactivecomments 
-setopt nonomatch          
+setopt nomatch
 setopt notify             
 setopt numericglobsort     
 setopt promptsubst
@@ -45,9 +45,7 @@ if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 fi
 
 source /usr/share/nvm/init-nvm.sh
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-export PATH="$HOME/.cargo/bin:$PATH"
+[[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
 
 function y() {
