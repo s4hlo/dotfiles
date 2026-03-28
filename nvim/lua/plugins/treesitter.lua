@@ -36,9 +36,7 @@ function M.config()
 
 	-- Enable treesitter highlighting and folding for all filetypes
 	vim.api.nvim_create_autocmd("FileType", {
-		callback = function()
-			pcall(vim.treesitter.start)
-		end,
+		callback = function() pcall(vim.treesitter.start) end,
 	})
 
 	-- Textobjects config

@@ -1,14 +1,13 @@
 local M = {
-    "mistweaverco/kulala.nvim",
-    keys = {
-    },
-    ft = { "http", "rest" },
-    opts = {
-      -- your configuration comes here
-      global_keymaps = false,
-      -- global_keymaps_prefix = "<leader>R",
-      -- kulala_keymaps_prefix = "",
-    },
+	"mistweaverco/kulala.nvim",
+	keys = {},
+	ft = { "http", "rest" },
+	opts = {
+		-- your configuration comes here
+		global_keymaps = false,
+		-- global_keymaps_prefix = "<leader>R",
+		-- kulala_keymaps_prefix = "",
+	},
 }
 
 function M.get_keys()

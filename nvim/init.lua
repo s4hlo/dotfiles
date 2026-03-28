@@ -22,7 +22,7 @@ Plugin("http")
 -- solid SRP plugins
 Plugin("whichkey")
 Plugin("git")
-Plugin("colorscheme") 
+Plugin("colorscheme")
 Plugin("glance")
 Plugin("neo-tree")
 Plugin("telescope")

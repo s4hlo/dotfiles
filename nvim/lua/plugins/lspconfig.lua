@@ -86,9 +86,7 @@ function M.config()
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 	local ok, lspconfig_ui = pcall(require, "lspconfig.ui.windows")
-	if ok then
-		lspconfig_ui.default_options.border = "rounded"
-	end
+	if ok then lspconfig_ui.default_options.border = "rounded" end
 
 	for _, server in pairs(servers) do
 		local opts = {

@@ -49,7 +49,6 @@ N.config = function()
 			-- See below for more information
 			-- repl_open_cmd = view.bottom(40),
 
-
 			-- repl_open_cmd can also be an array-style table so that multiple
 			-- repl_open_commands can be given.
 			-- When repl_open_cmd is given as a table, the first command given will
@@ -60,9 +59,9 @@ N.config = function()
 			-- For example,
 			--
 			repl_open_cmd = {
-			  view.split.vertical.rightbelow("%40"), -- cmd_1: open a repl to the right
-			  view.split.rightbelow("%25")  -- cmd_2: open a repl below
-			}
+				view.split.vertical.rightbelow("%40"), -- cmd_1: open a repl to the right
+				view.split.rightbelow("%25"), -- cmd_2: open a repl below
+			},
 		},
 		-- Iron doesn't set keymaps by default anymore.
 		-- You can set them here or manually add keymaps to the functions in iron.core
@@ -103,4 +102,4 @@ N.config = function()
 	vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>")
 end
 
-return { M, N}
+return { M, N }
