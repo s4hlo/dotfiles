@@ -10,7 +10,10 @@ setopt hist_expire_dups_first
 setopt hist_ignore_dups      
 setopt hist_ignore_space     
 setopt share_history
-setopt correct            
+setopt append_history
+setopt inc_append_history
+setopt hist_find_no_dups
+setopt hist_reduce_blanks
 setopt interactivecomments 
 setopt nomatch
 setopt notify             
@@ -21,6 +24,7 @@ setopt nobeep
 
 
 autoload -Uz compinit
+mkdir -p ~/.cache
 compinit -d ~/.cache/zcompdump
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -44,7 +48,7 @@ if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.z
     ZSH_HIGHLIGHT_STYLES[command]='fg=blue,bold'
 fi
 
-source /usr/share/nvm/init-nvm.sh
+[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 [[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
 
@@ -61,9 +65,13 @@ bindkey -e
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 
-eval "$(starship init zsh)"
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init zsh)"
+fi
 # eval "$(atuin init zsh)"
-eval "$(zoxide init zsh)"
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+fi
 if [ -z "$TMUX" ] && [ -z "$TERM_PROGRAM" ]; then
     exec tmux
 fi
