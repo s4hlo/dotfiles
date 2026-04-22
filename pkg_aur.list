@@ -8,6 +8,7 @@ claude-code
 cursor-bin
 git-delta
 lazydocker
+micromamba-bin
 neovim-git
 nvm
 nwg-look
