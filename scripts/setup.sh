@@ -119,6 +119,7 @@ while true; do
     2 | full)
         log "Installing all packages..." 0
         detect_aur_helper
+        log "Using AUR helper: $AUR_HELPER" 0
         install_with_aur $(cat ~/dotfiles/pkg.list)
         install_with_aur $(cat ~/dotfiles/minimal.list)
         install_with_aur $(cat ~/dotfiles/pkg_aur.list)
