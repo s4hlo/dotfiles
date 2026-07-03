@@ -46,6 +46,22 @@ install_aur_helper() {
     log "$helper installed successfully!" 0
 }
 
+detect_aur_helper() {
+    if command -v paru &>/dev/null; then
+        AUR_HELPER="paru"
+    elif command -v yay &>/dev/null; then
+        AUR_HELPER="yay"
+    else
+        log "No AUR helper found. Installing yay..." 1
+        install_aur_helper "yay"
+        AUR_HELPER="yay"
+    fi
+}
+
+install_with_aur() {
+    "$AUR_HELPER" -S --needed $@
+}
+
 install_with_yay() {
     if ! command -v yay &>/dev/null; then
         log "yay not found. Installing..." 1
@@ -114,9 +130,10 @@ while true; do
         ;;
     2 | full)
         log "Installing all packages..." 0
-        install_with_yay $(cat ~/dotfiles/pkg.list)
-        install_with_yay $(cat ~/dotfiles/minimal.list)
-        install_with_yay $(cat ~/dotfiles/pkg_aur.list)
+        detect_aur_helper
+        install_with_aur $(cat ~/dotfiles/pkg.list)
+        install_with_aur $(cat ~/dotfiles/minimal.list)
+        install_with_aur $(cat ~/dotfiles/pkg_aur.list)
         log "All packages installed!" 0
         if ! ask_continue; then
             echo -e "\e[32mSetup completed. Goodbye!\e[0m"
