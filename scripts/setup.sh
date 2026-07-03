@@ -62,18 +62,6 @@ install_with_aur() {
     "$AUR_HELPER" -S --needed $@
 }
 
-install_with_yay() {
-    if ! command -v yay &>/dev/null; then
-        log "yay not found. Installing..." 1
-        sudo pacman -S --needed git base-devel
-        git clone https://aur.archlinux.org/yay.git
-        (cd yay && makepkg -si --noconfirm)
-        rm -rf yay
-        log "yay installed successfully!"
-    fi
-    yay -S --needed $@
-}
-
 show_menu() {
     echo -e "\e[34m> Available Options \e[0m"
     echo -e ""
@@ -142,8 +130,9 @@ while true; do
         ;;
     3 | hypr)
         log "Starting Hyprland configuration..." 0
-        install_with_yay "hyprland xdg-desktop-portal-hyprland"
-        install_with_yay "hyprpaper waybar hyprshade hyprshot wofi"
+        detect_aur_helper
+        install_with_aur "hyprland xdg-desktop-portal-hyprland"
+        install_with_aur "hyprpaper waybar hyprshade hyprshot wofi"
 
         # check if those two are installed with the above when zero setup
         # hyprlock
@@ -161,7 +150,8 @@ while true; do
         ;;
     4 | i3)
         log "Starting i3 configuration..." 0
-        install_with_yay "i3 picom polybar rofi xwallpaper xorg-xinput"
+        detect_aur_helper
+        install_with_aur "i3 picom polybar rofi xwallpaper xorg-xinput"
 
         mkdir ~/.config/i3
 
