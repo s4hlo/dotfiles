@@ -32,28 +32,47 @@ log() {
 }
 
 
-install_with_yay() {
-    if ! command -v yay &>/dev/null; then
-        log "yay not found. Installing..." 1
-        sudo pacman -S --needed git base-devel
-        git clone https://aur.archlinux.org/yay.git
-        (cd yay && makepkg -si --noconfirm)
-        rm -rf yay
-        log "yay installed successfully!"
+install_aur_helper() {
+    local helper=$1
+    if command -v "$helper" &>/dev/null; then
+        log "$helper is already installed." 0
+        return
     fi
-    yay -S --needed $@
+    log "$helper not found. Installing..." 1
+    sudo pacman -S --needed git base-devel
+    git clone "https://aur.archlinux.org/${helper}.git"
+    (cd "$helper" && makepkg -si --noconfirm)
+    rm -rf "$helper"
+    log "$helper installed successfully!" 0
+}
+
+detect_aur_helper() {
+    if command -v paru &>/dev/null; then
+        AUR_HELPER="paru"
+    elif command -v yay &>/dev/null; then
+        AUR_HELPER="yay"
+    else
+        log "No AUR helper found. Installing yay..." 1
+        install_aur_helper "yay"
+        AUR_HELPER="yay"
+    fi
+}
+
+install_with_aur() {
+    "$AUR_HELPER" -S --needed $@
 }
 
 show_menu() {
     echo -e "\e[34m> Available Options \e[0m"
     echo -e ""
-    echo -e "\e[95m  1)\e[0m \e[92mfull\e[0m       Install all packages (pkg + AUR)         \e[0m"
-    echo -e "\e[95m  2)\e[0m \e[92mhypr\e[0m       Install Hyprland window manager          \e[0m"
-    echo -e "\e[95m  3)\e[0m \e[92mi3\e[0m         Install i3 window manager                \e[0m"
-    echo -e "\e[95m  4)\e[0m \e[92mlink\e[0m       Create symlinks for dotfiles             \e[0m"
-    echo -e "\e[95m  5)\e[0m \e[91mexit\e[0m       Exit the setup                           \e[0m"
+    echo -e "\e[95m  1)\e[0m \e[92maur\e[0m        Install an AUR helper (paru/yay)         \e[0m"
+    echo -e "\e[95m  2)\e[0m \e[92mfull\e[0m       Install all packages (pkg + AUR)         \e[0m"
+    echo -e "\e[95m  3)\e[0m \e[92mhypr\e[0m       Install Hyprland window manager          \e[0m"
+    echo -e "\e[95m  4)\e[0m \e[92mi3\e[0m         Install i3 window manager                \e[0m"
+    echo -e "\e[95m  5)\e[0m \e[92mlink\e[0m       Create symlinks for dotfiles             \e[0m"
+    echo -e "\e[95m  6)\e[0m \e[91mexit\e[0m       Exit the setup                           \e[0m"
     echo -e ""
-    echo -e "\e[34m> Enter your choice (1-5): \e[0m"
+    echo -e "\e[34m> Enter your choice (1-6): \e[0m"
 }
 
 ask_continue() {
@@ -76,21 +95,45 @@ while true; do
     read -r choice
 
     case "$choice" in
-    1 | full)
+    1 | aur)
+        log "Choose an AUR helper to install:" 0
+        echo -e "\e[95m  1)\e[0m paru"
+        echo -e "\e[95m  2)\e[0m yay"
+        read -r aur_choice
+        case "$aur_choice" in
+        1 | paru)
+            install_aur_helper "paru"
+            ;;
+        2 | yay)
+            install_aur_helper "yay"
+            ;;
+        *)
+            log "Invalid choice. Please choose 1-2." 2
+            ;;
+        esac
+        if ! ask_continue; then
+            echo -e "\e[32mSetup completed. Goodbye!\e[0m"
+            break
+        fi
+        ;;
+    2 | full)
         log "Installing all packages..." 0
-        install_with_yay $(cat ~/dotfiles/pkg.list)
-        install_with_yay $(cat ~/dotfiles/minimal.list)
-        install_with_yay $(cat ~/dotfiles/pkg_aur.list)
+        detect_aur_helper
+        log "Using AUR helper: $AUR_HELPER" 0
+        install_with_aur $(cat ~/dotfiles/pkg.list)
+        install_with_aur $(cat ~/dotfiles/minimal.list)
+        install_with_aur $(cat ~/dotfiles/pkg_aur.list)
         log "All packages installed!" 0
         if ! ask_continue; then
             echo -e "\e[32mSetup completed. Goodbye!\e[0m"
             break
         fi
         ;;
-    2 | hypr)
+    3 | hypr)
         log "Starting Hyprland configuration..." 0
-        install_with_yay "hyprland xdg-desktop-portal-hyprland"
-        install_with_yay "hyprpaper waybar hyprshade hyprshot wofi"
+        detect_aur_helper
+        install_with_aur "hyprland xdg-desktop-portal-hyprland"
+        install_with_aur "hyprpaper waybar hyprshade hyprshot wofi"
 
         # check if those two are installed with the above when zero setup
         # hyprlock
@@ -106,9 +149,10 @@ while true; do
             break
         fi
         ;;
-    3 | i3)
+    4 | i3)
         log "Starting i3 configuration..." 0
-        install_with_yay "i3 picom polybar rofi xwallpaper xorg-xinput"
+        detect_aur_helper
+        install_with_aur "i3 picom polybar rofi xwallpaper xorg-xinput"
 
         mkdir ~/.config/i3
 
@@ -122,7 +166,7 @@ while true; do
             break
         fi
         ;;
-    4 | link)
+    5 | link)
         log "Creating full symlinks setup..." 0
 
         rm -rf -- ~/.bashrc && ln -sfn ~/dotfiles/.bashrc ~/.bashrc
@@ -154,12 +198,12 @@ while true; do
             break
         fi
         ;;
-    5 | exit)
+    6 | exit)
         echo -e "\e[32mExiting setup. Goodbye!\e[0m"
         exit 0
         ;;
     *)
-        log "Invalid option. Please choose 1-5." 2
+        log "Invalid option. Please choose 1-6." 2
         ;;
     esac
 done

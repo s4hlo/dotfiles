@@ -93,3 +93,4 @@ if [ -f ~/dotfiles/.aliases ]; then
     . ~/dotfiles/.aliases
 fi
 
+export PATH="$HOME/.local/bin:$PATH"

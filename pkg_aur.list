@@ -1,5 +1,4 @@
-bruno
-btop-theme-catppuccin 
+btop-theme-catppuccin
 catnap-git
 catppuccin-cursors-mocha
 catppuccin-gtk-theme-mocha
@@ -8,6 +7,7 @@ claude-code
 cursor-bin
 git-delta
 lazydocker
+micromamba-bin
 neovim-git
 nvm
 nwg-look
@@ -18,11 +18,9 @@ python-poetry
 stylua-git
 ttf-jetbrains-mono-nerd
 tty-clock
-vesktop
-vesktop-bin
-yay
 zen-browser-bin
 zoxide-git
+rtk
 
 heroic-games-launcher-bin
 proton-ge-custom-bin

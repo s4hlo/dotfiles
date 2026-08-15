@@ -16,8 +16,8 @@ A comprehensive dotfiles collection for Arch Linux with support for both Hyprlan
 ```bash
 git clone https://github.com/s4hlo/dotfiles ~/dotfiles
 cd ~/dotfiles
-chmod +x ./setup.sh
-./setup.sh
+chmod +x ./scripts/setup.sh
+./scripts/setup.sh
 ```
 
 ## 📦 What's Included
@@ -89,7 +89,7 @@ Everything is themed with **Catppuccin Mocha** for a consistent, modern look:
 
 ## 🛠️ Setup Script Features
 
-The `setup.sh` script is an interactive installer that automates the entire dotfiles setup process:
+The `scripts/setup.sh` script is an interactive installer that automates the entire dotfiles setup process:
 
 ### Interactive Installation Process
 1. **Package Installation** - Installs packages from `pkg.list` via pacman
@@ -105,16 +105,16 @@ The `setup.sh` script is an interactive installer that automates the entire dotf
 ### Script Usage Options
 ```bash
 # Interactive mode (recommended)
-./setup.sh
+./scripts/setup.sh
 
 # Install only pacman packages
-./setup.sh pacman
+./scripts/setup.sh pacman
 
 # Install only AUR packages
-./setup.sh yay
+./scripts/setup.sh yay
 
 # Create symlinks only
-./setup.sh link
+./scripts/setup.sh link
 ```
 
 ### What Gets Linked

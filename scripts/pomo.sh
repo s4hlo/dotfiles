@@ -50,4 +50,4 @@ fi
 start_pomodoro $1 $2
 
 ## alias in .zshrc
-# alias pomo='~/dotfiles/pomo.sh'
+# alias pomo='~/dotfiles/scripts/pomo.sh'

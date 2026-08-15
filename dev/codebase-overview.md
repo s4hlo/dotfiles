@@ -7,7 +7,7 @@ This dotfiles repository is organized into configuration directories for various
 ## Core Architecture
 
 ### Setup System
-The `setup.sh` script provides an interactive menu-driven installation system with the following options:
+The `scripts/setup.sh` script provides an interactive menu-driven installation system with the following options:
 - **WSL packages**: Installs minimal packages from `minimal.list`
 - **Full installation**: Installs all packages (pkg.list + pkg_aur.list)
 - **Hyprland setup**: Installs Hyprland window manager and dependencies
