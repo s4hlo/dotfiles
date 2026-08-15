@@ -57,6 +57,13 @@ log "Start execution setup" 0
 source ~/.bashrc
 nvm install --lts
 nvm use --lts
+
+if tree-sitter --version >/dev/null 2>&1; then
+    echo "tree-sitter $(tree-sitter --version)"
+else
+    # ignore-scripts=false: binary is fetched by a postinstall script
+    npm i -g tree-sitter-cli --ignore-scripts=false
+fi
 sudo timedatectl set-timezone Etc/GMT-3
 tmux source-file ~/.tmux.conf
 log "WSL setup completed!" 0
