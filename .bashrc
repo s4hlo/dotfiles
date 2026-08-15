@@ -94,3 +94,19 @@ if [ -f ~/dotfiles/.aliases ]; then
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
+
+export GITHUB_PERSONAL_ACCESS_TOKEN="$(gh auth token)"
+cpid() {
+    local cmd
+    cmd=$(fc -ln -1)
+    local uuid
+    uuid=$(printf '%s\n' "$cmd" | grep -oEi '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' | tail -1)
+
+    if [ -n "$uuid" ]; then
+        printf '%s' "$uuid" | clip.exe
+        echo "Copiado: $uuid"
+    else
+        echo "Nenhum UUID no comando anterior."
+        return 1
+    fi
+}

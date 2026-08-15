@@ -31,6 +31,7 @@ alias tks="tmux kill-session -t"
 alias vault='cd ~/vault'
 alias shll='ps -p $$'
 alias vim='nvim'
+alias tk='npx tenkai'
 
 
 # ---------- MISCELLANEOUS --------------------
