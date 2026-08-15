@@ -93,6 +93,12 @@ if [ -f ~/dotfiles/.aliases ]; then
     . ~/dotfiles/.aliases
 fi
 
+# bash não herda completion em alias; carrega o script do git e liga no `g`
+if [ -f /usr/share/bash-completion/completions/git ]; then
+    . /usr/share/bash-completion/completions/git
+    __git_complete g __git_main
+fi
+
 export PATH="$HOME/.local/bin:$PATH"
 
 export GITHUB_PERSONAL_ACCESS_TOKEN="$(gh auth token)"
