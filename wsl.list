@@ -17,4 +17,5 @@ tmux
 unrar
 unzip
 wget
+yq
 zoxide

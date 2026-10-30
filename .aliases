@@ -9,7 +9,7 @@ else
 fi
 
 if command -v eza &> /dev/null; then
-  alias ls="eza --icons=always"
+  alias ls="eza --icons=always --sort=extension"
 else
   alias ls="ls"
 fi
