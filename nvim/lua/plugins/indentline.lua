@@ -1,6 +1,5 @@
 local M = {
 	"lukas-reineke/indent-blankline.nvim",
-	opts = {},
 	event = { "BufReadPost", "BufNewFile" },
 }
 

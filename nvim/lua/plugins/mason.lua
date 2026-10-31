@@ -3,7 +3,6 @@ local M = {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"williamboman/mason.nvim",
-		"nvim-lua/plenary.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 }
@@ -16,7 +15,7 @@ function M.config()
 		},
 	})
 	require("mason-lspconfig").setup({
-		automatic_installation = true,
+		automatic_enable = false, -- lspconfig.lua enables servers
 		ensure_installed = require("plugins.lspconfig")[1].servers,
 	})
 	require("mason-tool-installer").setup({

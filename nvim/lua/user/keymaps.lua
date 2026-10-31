@@ -6,11 +6,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- glance
-keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
 keymap("n", "gd", "<cmd>Glance definitions<CR>")
 keymap("n", "gD", "<CMD>Glance references<CR>")
 
--- Better window navigation
+-- Keep search results centered
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
 keymap("n", "*", "*zz", opts)

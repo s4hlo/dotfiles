@@ -6,7 +6,7 @@ local M = {
 function M.config()
 	local colors = require("user.colors")
 	require("notify").setup({
-		-- background_colour = colors.pure_white,
+		background_colour = colors.pure_black,
 	})
 end
 

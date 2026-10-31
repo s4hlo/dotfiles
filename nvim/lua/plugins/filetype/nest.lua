@@ -1,5 +1,5 @@
 return {
-	"kyazdani42/nvim-web-devicons",
+	"nvim-tree/nvim-web-devicons",
 	config = function()
 		local colors = require("user.colors")
 		require("nvim-web-devicons").setup({

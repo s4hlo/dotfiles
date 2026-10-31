@@ -37,9 +37,7 @@ function M.config()
 			"IndentBlanklineChar",
 			-- make floating windows transparent
 			"LspFloatWinNormal",
-			"Normal",
 			"Pmenu",
-			"Normal:Pmenu",
 			"CmpNormal",
 			"FloatBorder",
 			"Float",

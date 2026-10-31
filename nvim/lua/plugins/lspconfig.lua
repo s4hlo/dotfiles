@@ -55,14 +55,15 @@ end
 function M.config()
 	local icons = require("user.icons")
 
-	local default_diagnostic_config = {
+	local severity = vim.diagnostic.severity
+
+	vim.diagnostic.config({
 		signs = {
-			active = true,
-			values = {
-				{ name = "DiagnosticSignError", text = icons.diagnostics.Error },
-				{ name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-				{ name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-				{ name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+			text = {
+				[severity.ERROR] = icons.diagnostics.Error,
+				[severity.WARN] = icons.diagnostics.Warning,
+				[severity.HINT] = icons.diagnostics.Hint,
+				[severity.INFO] = icons.diagnostics.Information,
 			},
 		},
 		virtual_text = false,
@@ -77,22 +78,14 @@ function M.config()
 			header = "",
 			prefix = "",
 		},
-	}
+	})
 
-	vim.diagnostic.config(default_diagnostic_config)
-
-	for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
-		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
-	end
-
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
-	local ok, lspconfig_ui = pcall(require, "lspconfig.ui.windows")
-	if ok then lspconfig_ui.default_options.border = "rounded" end
+	-- hover/signature borders come from noice (presets.lsp_doc_border)
+	local capabilities = M.common_capabilities()
 
 	for _, server in pairs(M.servers) do
 		local opts = {
-			capabilities = M.common_capabilities(),
+			capabilities = capabilities,
 			init_options = {
 				preferences = {
 					importModuleSpecifierPreference = "relative",

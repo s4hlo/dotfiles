@@ -10,7 +10,6 @@ local neotree_key = {
 local M = {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
-	opts = {},
 	keys = neotree_key,
 }
 
@@ -34,7 +33,6 @@ function M.config()
 
 	local misc = {
 		{ "<leader>a", group = "AI", mode = { "n", "v" } },
-		{ "<leader>e", "<cmd>Neotree reveal toggle filesystem<CR>", desc = "Explorer", mode = "n" },
 		{ "ZR", ufo.openAllFolds, desc = "Open all folds", mode = "n" },
 		{ "ZM", ufo.closeAllFolds, desc = "Close all folds", mode = "n" },
 	}

@@ -8,29 +8,20 @@ local M = {
 function M.config()
 	local colors = require("user.colors")
 
-	local theme_cache = nil
-	local theme = function()
-		if theme_cache == nil then
-			theme_cache = {
-				normal = {
-					a = { fg = nil, bg = nil, gui = "bold" },
-					b = { fg = colors.background, bg = nil },
-					c = { fg = nil, bg = nil },
-				},
-				command = { a = { fg = nil, bg = nil, gui = "bold" } },
-				insert = { a = { fg = nil, bg = nil, gui = "bold" } },
-				visual = { a = { fg = nil, bg = nil, gui = "bold" } },
-				terminal = { a = { fg = nil, bg = nil, gui = "bold" } },
-				replace = { a = { fg = nil, bg = nil, gui = "bold" } },
-				inactive = {
-					a = { fg = nil, bg = nil, gui = "bold" },
-					b = { fg = nil, bg = nil },
-					c = { fg = nil, bg = nil },
-				},
-			}
-		end
-		return theme_cache
-	end
+	local bold = { gui = "bold" }
+	local theme = {
+		normal = {
+			a = bold,
+			b = { fg = colors.background },
+			c = {},
+		},
+		command = { a = bold },
+		insert = { a = bold },
+		visual = { a = bold },
+		terminal = { a = bold },
+		replace = { a = bold },
+		inactive = { a = bold, b = {}, c = {} },
+	}
 
 	local isRecording = function()
 		local reg = vim.fn.reg_recording()
@@ -101,7 +92,7 @@ function M.config()
 
 	require("lualine").setup({
 		options = {
-			theme = theme(),
+			theme = theme,
 			component_separators = { left = "", right = "-" },
 			section_separators = { left = "", right = "" },
 

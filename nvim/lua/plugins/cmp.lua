@@ -15,22 +15,10 @@ local M = {
       },
       config = function() require("copilot_cmp").setup() end,
     },
-    {
-      "hrsh7th/cmp-nvim-lsp",
-      event = "InsertEnter",
-    },
-    {
-      "hrsh7th/cmp-emoji",
-      event = "InsertEnter",
-    },
-    {
-      "hrsh7th/cmp-buffer",
-      event = "InsertEnter",
-    },
-    {
-      "hrsh7th/cmp-path",
-      event = "InsertEnter",
-    },
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-emoji",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
   },
 }
 
@@ -40,11 +28,6 @@ function M.config()
   vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = colors.yellow })
 
   local cmp = require("cmp")
-
-  local check_backspace = function()
-    local col = vim.fn.col(".") - 1
-    return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-  end
 
   local icons = require("user.icons")
 
@@ -68,8 +51,6 @@ function M.config()
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        elseif check_backspace() then
-          fallback()
         else
           fallback()
         end
@@ -155,8 +136,8 @@ function M.config()
 
   pcall(function()
     local function on_confirm_done(...) require("nvim-autopairs.completion.cmp").on_confirm_done()(...) end
-    require("cmp").event:off("confirm_done", on_confirm_done)
-    require("cmp").event:on("confirm_done", on_confirm_done)
+    cmp.event:off("confirm_done", on_confirm_done)
+    cmp.event:on("confirm_done", on_confirm_done)
   end)
 end
 

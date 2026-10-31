@@ -1,9 +1,6 @@
 local M = {
 	"folke/noice.nvim",
 	event = "VeryLazy",
-	opts = {
-		-- add any options here
-	},
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 		"MunifTanjim/nui.nvim",
@@ -15,10 +12,6 @@ local M = {
 }
 
 function M.config()
-	local colors = require("user.colors")
-	require("notify").setup({
-		background_colour = colors.pure_black,
-	})
 	require("noice").setup({
 		views = {
 			mini = {
@@ -98,7 +91,6 @@ function M.config()
 				view = "mini",
 			},
 		},
-		-- you can enable a preset for easier configuration
 	})
 end
 
