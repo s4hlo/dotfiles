@@ -1,5 +1,7 @@
 vim.opt.backup = false -- creates a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
+-- skip provider auto-detection: on WSL it scans every /mnt/c dir in $PATH (~170ms at startup)
+if vim.env.TMUX then vim.g.clipboard = "tmux" end
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
