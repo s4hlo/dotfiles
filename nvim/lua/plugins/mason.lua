@@ -17,16 +17,7 @@ function M.config()
 	})
 	require("mason-lspconfig").setup({
 		automatic_installation = true,
-		ensure_installed = {
-			"lua_ls",
-			"html",
-			"ts_ls",
-			"bashls",
-			"pyright",
-			"marksman",
-			"tailwindcss",
-			"jsonls",
-		},
+		ensure_installed = require("plugins.lspconfig")[1].servers,
 	})
 	require("mason-tool-installer").setup({
 		ensure_installed = {

@@ -4,7 +4,6 @@ local opts = { noremap = true, silent = true }
 keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-keymap("n", "<C-Space>", "<cmd>WhichKey \\<space><cr>", opts)
 
 -- glance
 keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")

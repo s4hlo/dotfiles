@@ -19,6 +19,22 @@ local N = {
 
 function N.config() require("lsp-file-operations").setup() end
 
+-- single source of truth: also used by mason.lua for ensure_installed
+M.servers = {
+	"cssls",
+	"html",
+	"ts_ls",
+	"astro",
+	"jsonls",
+	"bashls",
+	"yamlls",
+	"marksman",
+	"tailwindcss",
+	"lua_ls",
+	"pyright",
+	-- + add more servers here as needed
+}
+
 function M.common_capabilities()
 	local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 	if status_ok then return cmp_nvim_lsp.default_capabilities() end
@@ -38,20 +54,6 @@ end
 
 function M.config()
 	local icons = require("user.icons")
-
-	local servers = {
-		"cssls",
-		"html",
-		"ts_ls",
-		"astro",
-		"jsonls",
-		"bashls",
-		"yamlls",
-		"marksman",
-		"tailwindcss",
-		"lua_ls",
-		-- + add more servers here as needed
-	}
 
 	local default_diagnostic_config = {
 		signs = {
@@ -88,7 +90,7 @@ function M.config()
 	local ok, lspconfig_ui = pcall(require, "lspconfig.ui.windows")
 	if ok then lspconfig_ui.default_options.border = "rounded" end
 
-	for _, server in pairs(servers) do
+	for _, server in pairs(M.servers) do
 		local opts = {
 			capabilities = M.common_capabilities(),
 			init_options = {
