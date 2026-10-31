@@ -7,6 +7,18 @@ local M = {
 			"nvim-telescope/telescope.nvim", -- picker
 		},
 	},
+	{
+		"sindrets/diffview.nvim",
+		config = function()
+			local close = { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" } }
+			require("diffview").setup({
+				keymaps = {
+					view = { close },
+					file_panel = { close },
+				},
+			})
+		end,
+	},
 	{ "akinsho/git-conflict.nvim", version = "*", config = true },
 	{
 		"lewis6991/gitsigns.nvim",
@@ -44,7 +56,18 @@ function M.get_keys()
 		{ "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk", mode = "n" },
 		{ "<leader>gS", "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", desc = "Stage Buffer", mode = "n" },
 		{ "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer", mode = "n" },
-		{ "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Open Diffview", mode = "n" },
+		{
+			"<leader>gd",
+			function()
+				if require("diffview.lib").get_current_view() then
+					vim.cmd("DiffviewClose")
+				else
+					vim.cmd("DiffviewOpen")
+				end
+			end,
+			desc = "Toggle Diffview",
+			mode = "n",
+		},
 
 		{ "<leader>gc", group = "Conflict" },
 		{ "<leader>gco", "<cmd>GitConflictChooseOurs<cr>", desc = "Choose Ours", mode = "n" },
