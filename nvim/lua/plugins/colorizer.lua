@@ -1,5 +1,5 @@
 local M = {
-	"norcalli/nvim-colorizer.lua",
+	"catgoose/nvim-colorizer.lua", -- maintained fork; norcalli's calls deprecated vim.tbl_flatten
 	event = { "BufReadPost", "BufNewFile" },
 }
 
