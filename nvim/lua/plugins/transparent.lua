@@ -1,6 +1,7 @@
 local M = {
 	"xiyaowong/transparent.nvim",
-	event = "VeryLazy",
+	lazy = false, -- must apply before first draw, otherwise the background flashes on startup
+	priority = 999, -- right after the colorscheme
 }
 
 function M.config()
