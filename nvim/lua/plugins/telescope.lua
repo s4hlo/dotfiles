@@ -72,6 +72,8 @@ function M.config()
 			},
 		},
 	})
+
+	require("telescope").load_extension("fzf")
 end
 
 function M.get_keys()

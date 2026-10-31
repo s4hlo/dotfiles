@@ -84,18 +84,20 @@ function M.config()
 	local capabilities = M.common_capabilities()
 
 	for _, server in pairs(M.servers) do
-		local opts = {
-			capabilities = capabilities,
-			init_options = {
+		local opts = { capabilities = capabilities }
+
+		if server == "ts_ls" then
+			opts.init_options = {
 				preferences = {
 					importModuleSpecifierPreference = "relative",
 					importModuleSpecifierEnding = "minimal",
 				},
-			},
-		}
+			}
+		end
 
+		-- per-server overrides win over the defaults above
 		local require_ok, settings = pcall(require, "user.lspsettings." .. server)
-		if require_ok then opts = vim.tbl_deep_extend("force", settings, opts) end
+		if require_ok then opts = vim.tbl_deep_extend("force", opts, settings) end
 
 		vim.lsp.config(server, opts)
 		vim.lsp.enable(server)
@@ -105,18 +107,18 @@ end
 function M.get_keys()
 	return {
 		{ "<leader>l", group = "LSP", mode = { "n", "v" } },
-		{ "<leader>lw", "<cmd>%s/\r//g<cr>", desc = "Remove ^M characters", mode = "v" },
+		{ "<leader>lw", ":s/\\r//ge<cr>", desc = "Remove ^M characters", mode = "v" },
 		{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", mode = "n" },
 		{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename", mode = "n" },
 		{ "<leader>lh", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "Diagnostics (float)", mode = "n" },
-		{ "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic", mode = "n" },
-		{ "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic", mode = "n" },
+		{ "<leader>lj", function() vim.diagnostic.jump({ count = 1, float = true }) end, desc = "Next Diagnostic", mode = "n" },
+		{ "<leader>lk", function() vim.diagnostic.jump({ count = -1, float = true }) end, desc = "Prev Diagnostic", mode = "n" },
 		{
 			"<leader>lf",
 			function()
 				require("conform").format({
 					async = false,
-					lsp_fallback = true,
+					lsp_format = "fallback",
 				})
 			end,
 			desc = "Format",

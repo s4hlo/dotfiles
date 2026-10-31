@@ -32,7 +32,9 @@ function M.config()
   local icons = require("user.icons")
 
   cmp.setup({
-    snippet = {},
+    snippet = {
+      expand = function(args) vim.snippet.expand(args.body) end,
+    },
     mapping = cmp.mapping.preset.insert({
       ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
       ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),

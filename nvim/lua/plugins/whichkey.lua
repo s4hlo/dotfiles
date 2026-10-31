@@ -33,8 +33,8 @@ function M.config()
 
 	local misc = {
 		{ "<leader>a", group = "AI", mode = { "n", "v" } },
-		{ "ZR", ufo.openAllFolds, desc = "Open all folds", mode = "n" },
-		{ "ZM", ufo.closeAllFolds, desc = "Close all folds", mode = "n" },
+		{ "zR", ufo.openAllFolds, desc = "Open all folds", mode = "n" },
+		{ "zM", ufo.closeAllFolds, desc = "Close all folds", mode = "n" },
 	}
 
 	local telescope_plugin = require("plugins.telescope")

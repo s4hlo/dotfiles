@@ -18,7 +18,7 @@ function M.config()
 		},
 		format_on_save = {
 			timeout_ms = 500,
-			lsp_fallback = true,
+			lsp_format = "fallback",
 		},
 	})
 end
