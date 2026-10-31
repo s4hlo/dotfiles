@@ -10,8 +10,12 @@
     autocrlf = input
     pager = delta
 
-[credential]
-	helper = store
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !gh auth git-credential
 
 [alias]
     lg = log --graph --pretty=format:'%C(yellow)%h%Creset %C(cyan)[%G?]%Creset %C(bold blue)<%an>%Creset %C(green)(%cr)%Creset%C(magenta)%d%Creset%n    %s'

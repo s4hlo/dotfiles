@@ -94,3 +94,6 @@ fi
 unset __mamba_setup
 # <<< mamba initialize <<<
 export PATH="$HOME/.local/bin:$PATH"
+
+# WSL: open links (gh auth login, etc.) in the Windows browser
+[[ -n "$WSL_DISTRO_NAME" ]] && export BROWSER=explorer.exe
