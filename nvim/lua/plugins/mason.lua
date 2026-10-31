@@ -25,6 +25,8 @@ function M.config()
 			"tree-sitter-cli",
 			"prettierd",
 			"prettier",
+			"black",
+			"isort",
 		},
 	})
 end

@@ -34,6 +34,8 @@ function M.config()
 		"bash",
 		"python",
 		"java",
+		"html",
+		"yaml",
 	})
 
 	-- Enable treesitter highlighting and folding for all filetypes

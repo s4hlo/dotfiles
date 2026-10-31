@@ -5,12 +5,14 @@ gh
 curl
 cmake
 eza
+fd-find
 git-delta
 jq
 less
 lua5.1
 luarocks
 pkgconf
+python3-venv
 ripgrep
 shfmt
 build-essential
