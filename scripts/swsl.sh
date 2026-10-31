@@ -32,6 +32,16 @@ if command -v nvm >/dev/null 2>&1; then
     echo "nvm $(nvm --version)"
 else
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    . "$NVM_DIR/nvm.sh"
+fi
+
+# nvim-treesitter needs tree-sitter-cli >= 0.26.1 (apt is older, npm unsupported)
+if command -v tree-sitter >/dev/null 2>&1; then
+    echo "tree-sitter $(tree-sitter --version)"
+else
+    mkdir -p ~/.local/bin
+    curl -fsSL https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz |
+        gunzip >~/.local/bin/tree-sitter && chmod +x ~/.local/bin/tree-sitter
 fi
 
 if command -v cursor-agent >/dev/null 2>&1; then
@@ -49,7 +59,7 @@ rm -rf -- ~/.zshrc && ln -sfn ~/dotfiles/.zshrc ~/.zshrc
 rm -rf -- ~/.config/bat && ln -sfn ~/dotfiles/bat ~/.config/bat
 rm -rf -- ~/.config/btop && ln -sfn ~/dotfiles/btop ~/.config/btop
 rm -rf -- ~/.config/gh && ln -sfn ~/dotfiles/gh ~/.config/gh
-rm -rf -- ~/.config/vim && ln -sfn ~/dotfiles/nvim ~/.config/nvim
+rm -rf -- ~/.config/nvim && ln -sfn ~/dotfiles/nvim ~/.config/nvim
 rm -rf -- ~/.gitconfig && cp ~/dotfiles/.gitconfig ~/.gitconfig
 log "WSL symlinks created successfully!" 0
 
@@ -58,12 +68,6 @@ source ~/.bashrc
 nvm install --lts
 nvm use --lts
 
-if tree-sitter --version >/dev/null 2>&1; then
-    echo "tree-sitter $(tree-sitter --version)"
-else
-    # ignore-scripts=false: binary is fetched by a postinstall script
-    npm i -g tree-sitter-cli --ignore-scripts=false
-fi
 sudo timedatectl set-timezone Etc/GMT-3
 tmux source-file ~/.tmux.conf
 log "WSL setup completed!" 0

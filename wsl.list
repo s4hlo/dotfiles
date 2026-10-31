@@ -13,6 +13,7 @@ luarocks
 pkgconf
 ripgrep
 shfmt
+build-essential
 tmux
 unrar
 unzip
