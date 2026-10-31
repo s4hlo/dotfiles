@@ -1,7 +1,5 @@
 {
   "recommendations": [
-    "anysphere.cursorpyright",
-    "anysphere.remote-wsl",
     "catppuccin.catppuccin-vsc-pack",
     "eamodio.gitlens",
     "esbenp.prettier-vscode",

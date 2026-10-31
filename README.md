@@ -33,7 +33,6 @@ chmod +x ./scripts/setup.sh
 
 ### Development Tools
 - **Neovim** - Modern Vim with LSP, treesitter, and extensive plugin ecosystem
-- **Cursor** - AI-powered code editor with custom settings
 - **Git** - Configured with useful aliases and delta for diffs
 
 ### System Utilities
@@ -68,7 +67,6 @@ Everything is themed with **Catppuccin Mocha** for a consistent, modern look:
 - `nvim/` - Neovim setup with LSP, treesitter, and plugins
 - `kitty/` - Terminal configuration with Catppuccin theme
 - `waybar/` - Modern status bar configuration
-- `cursor/` - Cursor editor settings and keybindings
 
 ### Shell & Tools
 - `.zshrc` - Zsh configuration with Starship prompt
@@ -119,7 +117,7 @@ The `scripts/setup.sh` script is an interactive installer that automates the ent
 
 ### What Gets Linked
 - Shell configurations (`.zshrc`, `.tmux.conf`, `.gitconfig`)
-- Editor configs (`nvim/`, `cursor/`)
+- Editor configs (`nvim/`)
 - Terminal configs (`kitty/`, `bat/`, `btop/`)
 - Window manager configs (`hypr/`, `i3/`, `waybar/`, `wofi/`)
 - System utilities (`swaync/`, `gh/`)

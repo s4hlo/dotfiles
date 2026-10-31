@@ -179,8 +179,6 @@ while true; do
 
         rm -rf -- ~/.config/nvim && ln -sfn ~/dotfiles/nvim ~/.config/nvim
         rm -rf -- ~/.config/kitty && ln -sfn ~/dotfiles/kitty ~/.config/kitty
-        rm -rf -- ~/.config/Cursor/User/settings.json && ln -sfn ~/dotfiles/cursor/settings.json ~/.config/Cursor/User/settings.json
-        rm -rf -- ~/.config/Cursor/User/keybindings.json && ln -sfn ~/dotfiles/cursor/keybindings.json ~/.config/Cursor/User/keybindings.json
         rm -rf -- ~/.config/swaync && ln -sfn ~/dotfiles/swaync ~/.config/swaync
 
         if [ "$SHELL" != "/bin/zsh" ]; then

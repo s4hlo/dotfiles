@@ -25,7 +25,6 @@ The script uses `yay` for AUR package management on Arch Linux and includes erro
 
 **Editor Configurations:**
 - `nvim/` - Neovim configuration with Lua-based plugin system
-- `cursor/` - Cursor editor settings and keybindings
 
 **Terminal & Shell:**
 - `kitty/` - GPU-accelerated terminal emulator config

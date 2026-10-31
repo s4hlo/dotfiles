@@ -44,12 +44,6 @@ else
         gunzip >~/.local/bin/tree-sitter && chmod +x ~/.local/bin/tree-sitter
 fi
 
-if command -v cursor-agent >/dev/null 2>&1; then
-    echo "cursor-agent $(cursor-agent --version)"
-else
-    curl https://cursor.com/install -fsS | bash
-fi
-
 log "WSL packages installed!" 0
 log "Creating WSL symlinks..." 0
 mkdir -p ~/.config
