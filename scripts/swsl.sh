@@ -12,7 +12,6 @@ log() {
 
 log "Installing WSL packages..." 0
 sudo apt update && sudo apt install -y $(cat ~/dotfiles/wsl.list)
-sudo snap install nvim --classic
 sudo snap install yazi --classic
 sudo snap install aws-cli --classic
 
@@ -38,6 +37,18 @@ else
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
     . "$NVM_DIR/nvm.sh"
 fi
+
+# nvim from the official tarball: the snap adds ~100ms (squashfs mount + confinement) to every launch
+if [ -x ~/.local/opt/nvim/bin/nvim ]; then
+    echo "$(~/.local/opt/nvim/bin/nvim --version | head -1)"
+else
+    mkdir -p ~/.local/opt ~/.local/bin
+    rm -rf ~/.local/opt/nvim
+    curl -fsSL https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz |
+        tar -xz -C ~/.local/opt && mv ~/.local/opt/nvim-linux-x86_64 ~/.local/opt/nvim
+    ln -sfn ~/.local/opt/nvim/bin/nvim ~/.local/bin/nvim
+fi
+snap list nvim >/dev/null 2>&1 && sudo snap remove nvim
 
 # nvim-treesitter needs tree-sitter-cli >= 0.26.1 (apt is older, npm unsupported)
 if command -v tree-sitter >/dev/null 2>&1; then
