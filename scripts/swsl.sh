@@ -16,6 +16,10 @@ sudo snap install nvim --classic
 sudo snap install yazi --classic
 sudo snap install aws-cli --classic
 
+# WSL's login session ends right after boot; without linger systemd stops user@1000
+# ~10s later, removing /run/user/1000 (breaks snaps) and killing tmux (WSL shuts down)
+sudo loginctl enable-linger "$USER"
+
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
 if [ -s "$NVM_DIR/nvm.sh" ]; then
