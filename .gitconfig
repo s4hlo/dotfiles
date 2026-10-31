@@ -34,11 +34,14 @@
    path = ~/dotfiles/catppuccin.gitconfig
 [delta]
   navigate = true  # use n and N to move between diff sections
+  navigate-regex = ^(commit|added:|removed:|renamed:|Δ)  # only files, not hunks
   dark = true      # or light = true, or omit for auto-detection
   line-numbers = true
   side-by-side = true
   features = catppuccin-mocha
   hunk-header-style = file
+  file-decoration-style = "#6c7086" box ul
+  hunk-header-decoration-style = "#6c7086" ul
 [merge]
     conflictstyle = zdiff3
 
