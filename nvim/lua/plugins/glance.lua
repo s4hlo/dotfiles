@@ -1,5 +1,6 @@
 local M = {
 	"DNLHC/glance.nvim",
+	cmd = "Glance",
 }
 
 function M.config()

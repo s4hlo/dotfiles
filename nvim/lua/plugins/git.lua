@@ -1,6 +1,7 @@
 local M = {
 	{
 		"NeogitOrg/neogit",
+		cmd = "Neogit",
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- required
 			"sindrets/diffview.nvim", -- optional - Diff integration
@@ -9,6 +10,7 @@ local M = {
 	},
 	{
 		"sindrets/diffview.nvim",
+		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory", "DiffviewToggleFiles" },
 		config = function()
 			local close = { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" } }
 			require("diffview").setup({
@@ -19,7 +21,7 @@ local M = {
 			})
 		end,
 	},
-	{ "akinsho/git-conflict.nvim", version = "*", config = true },
+	{ "akinsho/git-conflict.nvim", version = "*", event = { "BufReadPre", "BufNewFile" }, config = true },
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufEnter",

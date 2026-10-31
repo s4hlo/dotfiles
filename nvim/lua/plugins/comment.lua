@@ -7,6 +7,7 @@ local M = {
 --
 local N = {
 	"folke/todo-comments.nvim",
+	event = { "BufReadPost", "BufNewFile" },
 	dependencies = { "nvim-lua/plenary.nvim" },
 	opts = {
 		-- your configuration comes here
