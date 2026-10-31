@@ -45,8 +45,9 @@ vim.opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to de
 vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 vim.opt.shortmess:append("c")
-vim.g.netrw_banner = 0
-vim.g.netrw_mouse = 2
+-- neo-tree hijacks directories; with netrw loaded, `nvim .` draws netrw first, then neo-tree (flash)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.opt.fillchars = {
 	eob = " ",
 	fold = " ",
