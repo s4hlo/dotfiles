@@ -1,154 +1,163 @@
 local M = {
-	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
-	dependencies = {
-		{
-			"zbirenbaum/copilot-cmp",
-			config = function() require("copilot_cmp").setup() end,
-		},
-		{
-			"hrsh7th/cmp-nvim-lsp",
-			event = "InsertEnter",
-		},
-		{
-			"hrsh7th/cmp-emoji",
-			event = "InsertEnter",
-		},
-		{
-			"hrsh7th/cmp-buffer",
-			event = "InsertEnter",
-		},
-		{
-			"hrsh7th/cmp-path",
-			event = "InsertEnter",
-		},
-	},
+  "hrsh7th/nvim-cmp",
+  event = "InsertEnter",
+  dependencies = {
+    {
+      "zbirenbaum/copilot-cmp",
+      dependencies = {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        opts = {
+          -- suggestions come through cmp instead
+          suggestion = { enabled = false },
+          panel = { enabled = false },
+        },
+      },
+      config = function() require("copilot_cmp").setup() end,
+    },
+    {
+      "hrsh7th/cmp-nvim-lsp",
+      event = "InsertEnter",
+    },
+    {
+      "hrsh7th/cmp-emoji",
+      event = "InsertEnter",
+    },
+    {
+      "hrsh7th/cmp-buffer",
+      event = "InsertEnter",
+    },
+    {
+      "hrsh7th/cmp-path",
+      event = "InsertEnter",
+    },
+  },
 }
 
 function M.config()
-	local colors = require("user.colors")
-	vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = colors.green })
-	vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = colors.yellow })
+  local colors = require("user.colors")
+  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = colors.green })
+  vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = colors.yellow })
 
-	local cmp = require("cmp")
+  local cmp = require("cmp")
 
-	local check_backspace = function()
-		local col = vim.fn.col(".") - 1
-		return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-	end
+  local check_backspace = function()
+    local col = vim.fn.col(".") - 1
+    return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+  end
 
-	local icons = require("user.icons")
+  local icons = require("user.icons")
 
-	cmp.setup({
-		snippet = {},
-		mapping = cmp.mapping.preset.insert({
-			["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-			["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-			["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-			["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-			["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-			["<C-e>"] = cmp.mapping({
-				i = cmp.mapping.abort(),
-				c = cmp.mapping.close(),
-			}),
-			-- Accept currently selected item. If none selected, `select` first item.
-			-- Set `select` to `false` to only confirm explicitly selected items.
-			["<CR>"] = cmp.mapping.confirm({ select = true }),
-			["<Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_next_item()
-				elseif check_backspace() then
-					fallback()
-				else
-					fallback()
-				end
-			end, {
-				"i",
-				"s",
-			}),
-			["<S-Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_prev_item()
-				else
-					fallback()
-				end
-			end, {
-				"i",
-				"s",
-			}),
-		}),
-		formatting = {
-			fields = { "kind", "abbr", "menu" },
-			format = function(entry, vim_item)
-				vim_item.kind = icons.kind[vim_item.kind]
-				vim_item.menu = ({
-					nvim_lsp = "",
-					buffer = "",
-					path = "",
-					emoji = "",
-				})[entry.source.name]
-				if entry.source.name == "copilot" then
-					vim_item.kind = icons.git.Octoface
-					vim_item.kind_hl_group = "CmpItemKindCopilot"
-				end
+  cmp.setup({
+    snippet = {},
+    mapping = cmp.mapping.preset.insert({
+      ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+      ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+      ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+      ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+      ["<C-e>"] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      -- Accept currently selected item. If none selected, `select` first item.
+      -- Set `select` to `false` to only confirm explicitly selected items.
+      ["<CR>"] = cmp.mapping.confirm({ select = true }),
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif check_backspace() then
+          fallback()
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+      }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+      }),
+    }),
+    formatting = {
+      fields = { "kind", "abbr", "menu" },
+      format = function(entry, vim_item)
+        vim_item.kind = icons.kind[vim_item.kind]
+        vim_item.menu = ({
+          nvim_lsp = "",
+          buffer = "",
+          path = "",
+          emoji = "",
+        })[entry.source.name]
+        if entry.source.name == "copilot" then
+          vim_item.kind = icons.git.Octoface
+          vim_item.kind_hl_group = "CmpItemKindCopilot"
+        end
 
-				if entry.source.name == "emoji" then
-					vim_item.kind = icons.misc.Smiley
-					vim_item.kind_hl_group = "CmpItemKindEmoji"
-				end
+        if entry.source.name == "emoji" then
+          vim_item.kind = icons.misc.Smiley
+          vim_item.kind_hl_group = "CmpItemKindEmoji"
+        end
 
-				return vim_item
-			end,
-		},
-		sources = {
-			{ name = "copilot" },
-			{
-				name = "nvim_lsp",
-				entry_filter = function(entry, ctx)
-					local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
-					if kind == "Snippet" and ctx.prev_context.filetype == "java" then return false end
+        return vim_item
+      end,
+    },
+    sources = {
+      { name = "copilot" },
+      {
+        name = "nvim_lsp",
+        entry_filter = function(entry, ctx)
+          local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
+          if kind == "Snippet" and ctx.prev_context.filetype == "java" then return false end
 
-					if ctx.prev_context.filetype == "markdown" then return true end
+          if ctx.prev_context.filetype == "markdown" then return true end
 
-					if kind == "Text" then return false end
+          if kind == "Text" then return false end
 
-					return true
-				end,
-			},
-			{ name = "buffer" },
-			{ name = "path" },
-			{ name = "emoji" },
-		},
-		confirm_opts = {
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = false,
-		},
-		window = {
-			completion = {
-				border = "rounded",
-				winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:FloatBorder,Search:None",
-				col_offset = -3,
-				side_padding = 1,
-				scrollbar = false,
-				scrolloff = 8,
-			},
-			documentation = {
-				border = "rounded",
-				winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,Search:None",
-			},
-		},
-		experimental = {
-			ghost_text = false,
-		},
-	})
+          return true
+        end,
+      },
+      { name = "buffer" },
+      { name = "path" },
+      { name = "emoji" },
+    },
+    confirm_opts = {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false,
+    },
+    window = {
+      completion = {
+        border = "rounded",
+        winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:FloatBorder,Search:None",
+        col_offset = -3,
+        side_padding = 1,
+        scrollbar = false,
+        scrolloff = 8,
+      },
+      documentation = {
+        border = "rounded",
+        winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,Search:None",
+      },
+    },
+    experimental = {
+      ghost_text = false,
+    },
+  })
 
-	pcall(function()
-		local function on_confirm_done(...) require("nvim-autopairs.completion.cmp").on_confirm_done()(...) end
-		require("cmp").event:off("confirm_done", on_confirm_done)
-		require("cmp").event:on("confirm_done", on_confirm_done)
-	end)
+  pcall(function()
+    local function on_confirm_done(...) require("nvim-autopairs.completion.cmp").on_confirm_done()(...) end
+    require("cmp").event:off("confirm_done", on_confirm_done)
+    require("cmp").event:on("confirm_done", on_confirm_done)
+  end)
 end
 
 return M
