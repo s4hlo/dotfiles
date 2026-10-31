@@ -20,8 +20,8 @@ The script uses `yay` for AUR package management on Arch Linux and includes erro
 ### Configuration Directories
 
 **Window Managers:**
-- `hypr/` - Hyprland (Wayland) configuration
-- `i3/` - i3 (X11) window manager configuration
+- `hypr/` - Hyprland (Wayland) configuration, with `waybar/`, `wofi/` and `swaync/` inside
+- `i3/` - i3 (X11) configuration, with `polybar/` and `rofi/` inside
 
 **Editor Configurations:**
 - `nvim/` - Neovim configuration with Lua-based plugin system
@@ -31,12 +31,9 @@ The script uses `yay` for AUR package management on Arch Linux and includes erro
 - Shell configs: `.zshrc`, `.bashrc`, `.tmux.conf`, `.gitconfig`
 
 **System Integration:**
-- `waybar/` - Status bar for Hyprland
-- `swaync/` - Notification center for Wayland
 - `btop/` - System monitor configuration
 - `bat/` - Enhanced cat with syntax highlighting
 - `dunst/` - Notification daemon
-- `wofi/` - Application launcher for Wayland
 
 **Application Themes:**
 - `vencord/` - Discord/Vesktop theme configuration

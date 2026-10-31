@@ -62,11 +62,10 @@ Everything is themed with **Catppuccin Mocha** for a consistent, modern look:
 ## ⚙️ Configuration Files
 
 ### Core Configurations
-- `hypr/` - Hyprland configuration with workspaces, keybindings, and autostart
+- `hypr/` - Hyprland configuration, plus its Waybar, Wofi and Swaync configs
 - `i3/` - i3 configuration with Polybar and Rofi
 - `nvim/` - Neovim setup with LSP, treesitter, and plugins
 - `kitty/` - Terminal configuration with Catppuccin theme
-- `waybar/` - Modern status bar configuration
 
 ### Shell & Tools
 - `.zshrc` - Zsh configuration with Starship prompt
@@ -74,7 +73,6 @@ Everything is themed with **Catppuccin Mocha** for a consistent, modern look:
 - `.gitconfig` - Git configuration with aliases and delta
 
 ### System Integration
-- `swaync/` - Notification center configuration
 - `btop/` - System monitor theme
 - `bat/` - Enhanced cat configuration
 
@@ -119,8 +117,8 @@ The `scripts/setup.sh` script is an interactive installer that automates the ent
 - Shell configurations (`.zshrc`, `.tmux.conf`, `.gitconfig`)
 - Editor configs (`nvim/`)
 - Terminal configs (`kitty/`, `bat/`, `btop/`)
-- Window manager configs (`hypr/`, `i3/`, `waybar/`, `wofi/`)
-- System utilities (`swaync/`, `gh/`)
+- Window manager configs (`hypr/`, `i3/`)
+- System utilities (`gh/`)
 - Application themes (`vencord/`)
 
 ## 🔧 Manual Setup Requirements

@@ -140,8 +140,9 @@ while true; do
         # hyprpicker-git \
 
         rm -rf -- ~/.config/hypr && ln -sfn ~/dotfiles/hypr ~/.config/hypr
-        rm -rf -- ~/.config/waybar && ln -sfn ~/dotfiles/waybar ~/.config/waybar
-        rm -rf -- ~/.config/wofi && ln -sfn ~/dotfiles/wofi ~/.config/wofi
+        rm -rf -- ~/.config/waybar && ln -sfn ~/dotfiles/hypr/waybar ~/.config/waybar
+        rm -rf -- ~/.config/wofi && ln -sfn ~/dotfiles/hypr/wofi ~/.config/wofi
+        rm -rf -- ~/.config/swaync && ln -sfn ~/dotfiles/hypr/swaync ~/.config/swaync
 
         log "Hyprland configuration completed!" 0
         if ! ask_continue; then
@@ -179,7 +180,6 @@ while true; do
 
         rm -rf -- ~/.config/nvim && ln -sfn ~/dotfiles/nvim ~/.config/nvim
         rm -rf -- ~/.config/kitty && ln -sfn ~/dotfiles/kitty ~/.config/kitty
-        rm -rf -- ~/.config/swaync && ln -sfn ~/dotfiles/swaync ~/.config/swaync
 
         if [ "$SHELL" != "/bin/zsh" ]; then
             sudo chsh -s $(which zsh)
