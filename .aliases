@@ -35,8 +35,20 @@ alias tk='npx tenkai'
 
 
 # ---------- MISCELLANEOUS --------------------
-quote=$(curl -s https://zenquotes.io/api/today | jq -r '.[0].q + " — " + .[0].a')
-echo "✨ $quote"
+# Quote of the day, cached: fetching it inline cost ~0.5s on every new shell/tmux pane.
+# A stale cache triggers a detached refresh, so the new quote shows from the next shell on.
+_quote_cache=~/.cache/quote-of-the-day
+if [ "$(date -r "$_quote_cache" +%F 2>/dev/null)" != "$(date +%F)" ]; then
+    # outer subshell keeps the job out of the shell's job table (no "[1] pid" noise)
+    ( (
+        tmp="$_quote_cache.$$"
+        curl -s -m 5 https://zenquotes.io/api/today | jq -r '.[0].q + " — " + .[0].a' >"$tmp" 2>/dev/null &&
+            [ -s "$tmp" ] && mv -f "$tmp" "$_quote_cache"
+        rm -f "$tmp"
+    ) >/dev/null 2>&1 & )
+fi
+[ -s "$_quote_cache" ] && echo "✨ $(<"$_quote_cache")"
+unset _quote_cache
 
 
 # function nvim() {
