@@ -1,6 +1,9 @@
 #!/bin/bash
+set -euo pipefail
+
 echo -e "\e[34m> Welcome to the setup script for my dotfiles!\e[0m"
-cd ~/dotfiles || exit 1
+cd ~/dotfiles
+. ~/dotfiles/scripts/lib.sh
 if command -v catnap &>/dev/null; then
     catnap
 else
@@ -21,15 +24,6 @@ else
 fi
 
 [ ! -f /etc/arch-release ] && exit 1
-
-log() {
-    local content=$1
-    local type=${2:-0}
-    local colors=("\e[32m" "\e[33m" "\e[31m" "\e[31m")
-    local labels=("[INFO]" "[WARN]" "[ERROR]" "[EXIT]")
-
-    echo -e "${colors[$type]}${labels[$type]}\e[0m - $content"
-}
 
 
 install_aur_helper() {
@@ -139,10 +133,10 @@ while true; do
         # hyprlock
         # hyprpicker-git \
 
-        rm -rf -- ~/.config/hypr && ln -sfn ~/dotfiles/hypr ~/.config/hypr
-        rm -rf -- ~/.config/waybar && ln -sfn ~/dotfiles/hypr/waybar ~/.config/waybar
-        rm -rf -- ~/.config/wofi && ln -sfn ~/dotfiles/hypr/wofi ~/.config/wofi
-        rm -rf -- ~/.config/swaync && ln -sfn ~/dotfiles/hypr/swaync ~/.config/swaync
+        link ~/dotfiles/hypr ~/.config/hypr
+        link ~/dotfiles/hypr/waybar ~/.config/waybar
+        link ~/dotfiles/hypr/wofi ~/.config/wofi
+        link ~/dotfiles/hypr/swaync ~/.config/swaync
 
         log "Hyprland configuration completed!" 0
         if ! ask_continue; then
@@ -155,11 +149,9 @@ while true; do
         detect_aur_helper
         install_with_aur "i3 picom polybar rofi xwallpaper xorg-xinput"
 
-        mkdir ~/.config/i3
-
-        rm -rf -- ~/.config/i3/config && ln -sfn ~/dotfiles/i3/config ~/.config/i3/config
-        rm -rf -- ~/.config/rofi && ln -sfn ~/dotfiles/i3/rofi ~/.config/rofi
-        rm -rf -- ~/.config/polybar && ln -sfn ~/dotfiles/i3/polybar ~/.config/polybar
+        link ~/dotfiles/i3/config ~/.config/i3/config
+        link ~/dotfiles/i3/rofi ~/.config/rofi
+        link ~/dotfiles/i3/polybar ~/.config/polybar
 
         log "i3 configuration completed!" 0
         if ! ask_continue; then
@@ -170,16 +162,9 @@ while true; do
     5 | link)
         log "Creating full symlinks setup..." 0
 
-        rm -rf -- ~/.bashrc && ln -sfn ~/dotfiles/.bashrc ~/.bashrc
-        rm -rf -- ~/.gitconfig && ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
-        rm -rf -- ~/.tmux.conf && ln -sfn ~/dotfiles/.tmux.conf ~/.tmux.conf
-        rm -rf -- ~/.zshrc && ln -sfn ~/dotfiles/.zshrc ~/.zshrc
-        rm -rf -- ~/.config/bat && ln -sfn ~/dotfiles/bat ~/.config/bat
-        rm -rf -- ~/.config/btop && ln -sfn ~/dotfiles/btop ~/.config/btop
-        rm -rf -- ~/.config/gh && ln -sfn ~/dotfiles/gh ~/.config/gh
-
-        rm -rf -- ~/.config/nvim && ln -sfn ~/dotfiles/nvim ~/.config/nvim
-        rm -rf -- ~/.config/kitty && ln -sfn ~/dotfiles/kitty ~/.config/kitty
+        link_common
+        link ~/dotfiles/.gitconfig ~/.gitconfig
+        link ~/dotfiles/kitty ~/.config/kitty
 
         if [ "$SHELL" != "/bin/zsh" ]; then
             sudo chsh -s $(which zsh)
@@ -187,8 +172,7 @@ while true; do
         fi
 
         sudo timedatectl set-timezone Etc/GMT-3
-        tmux source-file ~/.tmux.conf
-        zsh -c "source ~/.zshrc"
+        tmux source-file ~/.tmux.conf 2>/dev/null || true
 
         log "Full symlinks setup completed!" 0
         if ! ask_continue; then
