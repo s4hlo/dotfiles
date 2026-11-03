@@ -75,6 +75,10 @@ function M.config()
 			},
 		},
 		lsp = {
+			-- don't pop up signature help when typing "(" (use <C-s> in insert mode to open it)
+			signature = {
+				auto_open = { enabled = false },
+			},
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 			override = {
 				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
