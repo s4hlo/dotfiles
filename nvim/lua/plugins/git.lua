@@ -13,7 +13,21 @@ local M = {
 		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory", "DiffviewToggleFiles" },
 		config = function()
 			local close = { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" } }
+			local hooks = {}
+			if require("user.theme") == "vscode" then
+				-- VS Code look: old side red, new side green, filler lines dimmed
+				local winhl = {
+					a = "DiffAdd:DiffDelete,DiffChange:DiffDelete,DiffText:DiffDeleteText,DiffDelete:DiffviewDiffDeleteDim",
+					b = "DiffChange:DiffAdd,DiffText:DiffAddText,DiffDelete:DiffviewDiffDeleteDim",
+				}
+				hooks.diff_buf_win_enter = function(_, winid, ctx)
+					if ctx.layout_name:match("^diff2") and winhl[ctx.symbol] then
+						vim.wo[winid].winhl = winhl[ctx.symbol]
+					end
+				end
+			end
 			require("diffview").setup({
+				hooks = hooks,
 				keymaps = {
 					view = { close },
 					file_panel = { close },
